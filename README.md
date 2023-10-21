@@ -1,76 +1,46 @@
-# Nuxt 3 Minimal Starter
+# Dooramgi
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![Dewdew](./.github/assets/dewdew.jpg)
 
-## Setup
+## 안녕하세요. FE 개발자 이연주 입니다.
 
-Make sure to install the dependencies:
+## Current Version: 0.1.0
 
-```bash
-# npm
-npm install
+## 🖥️ 사용한 스킬은 아래와 같습니다.
 
-# pnpm
-pnpm install
+[![My Skills](https://skillicons.dev/icons?i=nuxtjs,vue,supabase,vercel,vite,ts,js,postgres,html,sass,vscode,vim,github)](https://skillicons.dev)
 
-# yarn
-yarn install
+1. Nuxt3
+2. Element-Plus
+3. Supabase
+4. Pinia
+5. VueUse
+6. Nuxt/image
+7. Nuxt/color-mode
+8. Nuxt/i18n
+9. Nuxt/robots
+10. Nuxt/supabase
+11. Stylelint
+12. Tabler icons
+13. Tiptap
 
-# bun
-bun install
-```
+## Package manager
 
-## Development Server
+> Bun
 
-Start the development server on `http://localhost:3000`:
+___
 
-```bash
-# npm
-npm run dev
+## 페이지 소개
 
-# pnpm
-pnpm run dev
+- #### 메인페이지
+> 자기소개 및 작업물 소개, 연락방법 등을 간단히 표현
 
-# yarn
-yarn dev
+- #### 블로그
+> 개발 관련 블로그 작성공간 입니다!
 
-# bun
-bun run dev
-```
+- #### 프로젝트
+> 토이토이한 프로젝트 들을 넣어놓는 공간
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-# dewdew_v3
+- #### 아카이브
+> 사진 기록을 담아두는 공간
+> (이미지 슬라이더 활용)
