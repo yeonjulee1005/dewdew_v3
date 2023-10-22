@@ -32,11 +32,11 @@ export default ({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
   },
-  loadingIndicator: {
-    name: 'chasing-dots',
-    color: 'purple',
-    background: 'green'
-  },
+  // loadingIndicator: {
+  //   name: 'chasing-dots',
+  //   color: 'purple',
+  //   background: 'green'
+  // },
   supabase: {
     redirect: false,
     // redirectOptions: {
