@@ -20,37 +20,19 @@ export const useMainStore = defineStore('mainData', () => {
    * ! Pinia Actions !
    */
 
-  const loadMainData = async () => {
-    mainIntroData.value = []
-    mainResumeData.value = []
-    mainSkillData.value = []
-    mainReferenceData.value = []
-    const { data: mainData }:SerializeObject = await useAsyncData('mainData', async () => {
-      const { data } = await useFetch('/api/main', {
-        headers: useRequestHeaders(['cookie']),
-        method: 'GET'
-      })
-      return data
-    })
-    if (!mainData.value) { return }
-    mainData.value?.map((main:SerializeObject) =>
-      separateData(main)
-    )
-  }
-
-  const separateData = (data: SerializeObject) => {
-    switch (data.category) {
+  const updateMainData = (data: SerializeObject[], category:string) => {
+    switch (category) {
       case 'intro' :
-        mainIntroData.value.push(data)
+        mainIntroData.value = data
         break
       case 'resume' :
-        mainResumeData.value.push(data)
+        mainResumeData.value = data
         break
       case 'skills' :
-        mainSkillData.value.push(data)
+        mainSkillData.value = data
         break
       case 'reference' :
-        mainReferenceData.value.push(data)
+        mainReferenceData.value = data
         break
     }
   }
@@ -60,7 +42,7 @@ export const useMainStore = defineStore('mainData', () => {
     mainResumeData,
     mainSkillData,
     mainReferenceData,
-    loadMainData
+    updateMainData
   }
 }, {
   persist: true
