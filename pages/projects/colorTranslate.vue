@@ -121,7 +121,7 @@ useHead({
   meta: [
     { property: 'description', content: t('openGraph.colorsTranslateDesc') },
     { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.colorsTranslate') }) },
-    { property: 'og:url', content: 'https://dewdew.kr/projects/colorTranslate/' },
+    { property: 'og:url', content: 'https://www.dewdew.kr/projects/colorTranslate/' },
     { property: 'og:description', content: t('openGraph.colorsTranslateDesc') }
   ]
 })

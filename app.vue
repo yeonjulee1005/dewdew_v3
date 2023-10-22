@@ -21,6 +21,7 @@ const { loadMenuData, loadMainData } = useLoadComposable()
 const { loadStackData } = useStackStore()
 const { loadPortfolioData } = usePortfolioStore()
 const { loadLeaveColorData } = useLeaveColorStore()
+const { loadArchiveData } = useArchiveStore()
 
 loadMenuData('root')
 loadMenuData('sub')
@@ -34,5 +35,6 @@ loadMainData('reference')
 loadStackData()
 loadPortfolioData()
 loadLeaveColorData()
+loadArchiveData()
 
 </script>

@@ -46,6 +46,11 @@ export default {
     dropperDesc: 'and Dropper Color',
     checkDropper: 'Check.'
   },
+  archives: {
+    title: 'Dewdew History',
+    back: 'Back',
+    historyTitle: 'HISTORY OF'
+  },
   pwa: {
     readyPwa: 'Ready to use PWA!',
     newContent: 'New content! Plz update!',

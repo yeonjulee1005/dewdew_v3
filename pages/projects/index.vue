@@ -25,7 +25,7 @@ useHead({
   meta: [
     { property: 'description', content: t('openGraph.projectDesc') },
     { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.project') }) },
-    { property: 'og:url', content: 'https://dewdew.kr/projects/' },
+    { property: 'og:url', content: 'https://www.dewdew.kr/projects/' },
     { property: 'og:description', content: t('openGraph.projectDesc') }
   ]
 })

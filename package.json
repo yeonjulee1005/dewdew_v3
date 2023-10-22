@@ -4,11 +4,11 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "0.4.2",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --port 4550",
+    "dev": "nuxt dev --port 4500",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
