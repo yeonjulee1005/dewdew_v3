@@ -1,0 +1,30 @@
+@use '../../variables' as *;
+
+/**
+* ! Color Translate Page Style !
+*a
+* ? Shared ?
+*/
+.color-translate {
+  position: relative;
+  width: $space-100vw;
+  .color-translate-form {
+    .el-space {
+      width: $space-percent-100;
+    }
+  }
+  .upload-drag-files {
+    height: calc($space-200 + $space-20);
+    .el-icon--upload {
+      .el-upload__text {
+        @include headline7;
+        text-align: center;
+        .accent {
+          @include headline6;
+          text-align: center;
+          color: var(--d-blue-color-deep)
+        }
+      }
+    }
+  }
+}

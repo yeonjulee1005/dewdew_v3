@@ -23,7 +23,7 @@ interface Menu {
 
 interface Colors {
   color: string,
-  percentage: number
+  percent: number
 }
 
 interface ProgressData {

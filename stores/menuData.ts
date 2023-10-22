@@ -22,16 +22,20 @@ export const useMenuStore = defineStore('menuData', () => {
     mainMenuData.value = []
     subMenuData.value = []
     socialMenuData.value = []
-    const { data: menuData }:SerializeObject = await useAsyncData('menuData', async () => {
+    const { data: menuData, refresh: menuRefresh }:SerializeObject = await useAsyncData('menuData', async () => {
       const { data } = await useFetch('/api/menu', {
         headers: useRequestHeaders(['cookie']),
         method: 'GET'
       })
       return data
     })
-    menuData.value?.forEach((menu:SerializeObject) => {
+    if (!menuData.value) {
+      menuRefresh()
+      return
+    }
+    menuData.value?.map((menu:SerializeObject) =>
       separateData(menu)
-    })
+    )
   }
 
   const separateData = (data: SerializeObject) => {

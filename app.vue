@@ -19,11 +19,13 @@ provide(ID_INJECTION_KEY, {
 const { loadMenuData } = useMenuStore()
 const { loadMainData } = useMainStore()
 const { loadStackData } = useStackStore()
+const { loadPortfolioData } = usePortfolioStore()
 const { loadLeaveColorData } = useLeaveColorStore()
 
 loadMenuData()
 loadMainData()
 loadStackData()
+loadPortfolioData()
 loadLeaveColorData()
 
 </script>

@@ -26,6 +26,7 @@
             {{ title }}
           </p>
           <Icon
+            v-if="!hideCloseButton"
             style="cursor: pointer;"
             name="ep:close-bold"
             @click="close"
@@ -92,6 +93,7 @@ withDefaults(
     openDelay?: number,
     closeDelay?: number,
     hideHeaderTrigger?: boolean,
+    hideCloseButton?: boolean,
     hideDoubleButton?: boolean,
     hideFirstButton?: boolean,
     hideSecondButton?: boolean,
@@ -115,6 +117,7 @@ withDefaults(
     openDelay: 350,
     closeDelay: 200,
     hideHeaderTrigger: false,
+    hideCloseButton: false,
     hideDoubleButton: false,
     hideFirstButton: false,
     hideSecondButton: false,

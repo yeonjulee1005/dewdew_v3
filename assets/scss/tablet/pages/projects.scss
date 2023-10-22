@@ -1,0 +1,15 @@
+@use '../../variables' as *;
+
+/**
+* ! Projects Page Style !
+*a
+* ? Tablet ?
+*/
+.projects {
+  width: $space-100vw;
+  .project-list {
+    width: $space-400;
+    @include headline3;
+    text-align: center;
+  }
+}

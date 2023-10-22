@@ -147,6 +147,8 @@ export default ({
   },
   runtimeConfig: {
     public: {
+      emailJsKey: process.env.EMAILJS_KEY,
+      emailJSsTemplate: process.env.EMAILJS_TEMPLATE,
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? process.env.NUXT_ENV_VERCEL_URL ?? 'http://localhost:4500',
       serviceVersion: JSON.stringify(packageJson.version)
     }

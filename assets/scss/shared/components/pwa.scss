@@ -13,7 +13,7 @@
   padding: calc($space-10 + $space-2);
   border: $space-1 solid $pwa-border;
   border-radius: $space-4;
-  z-index: 1;
+  z-index: 30;
   text-align: left;
   box-shadow: calc($space-2) $space-4 calc($space-4) 0 $pwa-border;
   .el-button {

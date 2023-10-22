@@ -12,14 +12,17 @@
 @use 'basic/color_list' as *;
 @use 'basic/font_variables' as *;
 
-
 /**
 * * Mixins Style *
 */
 .activate {
   opacity: 1 !important;
 }
-
+@mixin skills {
+  position: absolute;
+  width: $space-100;
+  opacity: var(--d-bg-opacity-01);
+}
 
 /**
 * ? Text Editor (Tiptap) Mixins ?
@@ -198,55 +201,5 @@
   .ProseMirror-selectednode iframe {
     transition: outline 0.15s;
     outline: $space-2 solid var(--el-border-color);
-  }
-}
-
-/**
-* ? Keyframes ?
-*/
-@keyframes animation-opacity {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes rotate-icon {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes tilting-icon {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(15deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-@keyframes logo-action {
-  0% {
-    transform: translateX(0%);
-    transform-origin: 50% 50%;
-  }
-  45% {
-    transform: translateX(-5px) rotate(-2deg);
-  }
-  70% {
-    transform: translateX(4px) rotate(1.5deg);
-  }
-  85% {
-    transform: translateX(-2px) rotate(-.7deg);
-  }
-  100% {
-    transform: translateX(0%);
-    transform-origin: 50% 50%;
   }
 }

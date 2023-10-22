@@ -1,0 +1,26 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Portfolio Style !
+* *  Desktop *
+*/
+.main-portfolio {
+  .section-title {
+    margin-left: $space-60;
+  }
+  .section-text {
+    margin-left: $space-60;
+    padding-bottom: $space-4;
+  }
+  .portfolio-list {
+    .portfolio-item {
+      .portfolio-thumb {
+        width: $space-200;
+        height: $space-200;
+      }
+      .portfolio-text {
+        @include headline6;
+      }
+    }
+  }
+}

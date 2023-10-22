@@ -1,0 +1,39 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Skills Style !
+* *  Desktop *
+*/
+.main-skills {
+  .skills-descriptions {
+    width: fit-content;
+    margin-right: calc($space-60 + $space-8);
+    .skills-text {
+      @include headline6;
+      text-align: right;
+      &:nth-child(1),
+      &:nth-child(2) {
+        @include headline3;
+        text-align: right;
+      }
+    }
+    .skills-title-box {
+      top: $space-minus-50;
+      right: 0;
+      width: calc($space-400 + $space-24);
+      height: calc($space-400 + $space-24); 
+    }
+  }
+  .skill-list {
+    .skills-text {
+      @include headline5;
+    }
+    .frontend-list,
+    .backend-list,
+    .tools-list {
+      width: fit-content;
+      height: fit-content;
+      padding: $space-30;
+    }
+  }
+}

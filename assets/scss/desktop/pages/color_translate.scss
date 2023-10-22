@@ -1,0 +1,26 @@
+@use '../../variables' as *;
+
+/**
+* ! Color Translate Page Style !
+*a
+* ? Desktop ?
+*/
+.color-translate {
+  height: $space-80vh;
+  .color-translate-form {
+    width: $space-300;
+  }
+  .upload-drag-files {
+    width: $space-400;
+    .image-preview {
+      width: $space-300;
+      height: $space-200;
+    }
+    .el-icon--upload {
+      height: calc($space-100 + $space-20);
+      .el-upload__text {
+        width: $space-400;
+      }
+    }
+  }
+}
