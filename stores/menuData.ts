@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useMenuStore = defineStore('menuData', () => {
+  // const client = useSupabaseClient()
   /**
    * ! Pinia State !
    *
@@ -18,36 +19,16 @@ export const useMenuStore = defineStore('menuData', () => {
    * ! Pinia Actions !
    */
 
-  const loadMenuData = async () => {
-    mainMenuData.value = []
-    subMenuData.value = []
-    socialMenuData.value = []
-    const { data: menuData, refresh: menuRefresh }:SerializeObject = await useAsyncData('menuData', async () => {
-      const { data } = await useFetch('/api/menu', {
-        headers: useRequestHeaders(['cookie']),
-        method: 'GET'
-      })
-      return data
-    })
-    if (!menuData.value) {
-      menuRefresh()
-      return
-    }
-    menuData.value?.map((menu:SerializeObject) =>
-      separateData(menu)
-    )
-  }
-
-  const separateData = (data: SerializeObject) => {
-    switch (data.menuType) {
+  const updateMenuData = (data: SerializeObject[], menuType:string) => {
+    switch (menuType) {
       case 'root' :
-        mainMenuData.value.push(data)
+        mainMenuData.value = data
         break
       case 'sub' :
-        subMenuData.value.push(data)
+        subMenuData.value = data
         break
       case 'sns' :
-        socialMenuData.value.push(data)
+        socialMenuData.value = data
         break
     }
   }
@@ -56,7 +37,7 @@ export const useMenuStore = defineStore('menuData', () => {
     mainMenuData,
     subMenuData,
     socialMenuData,
-    loadMenuData
+    updateMenuData
   }
 }, {
   persist: true

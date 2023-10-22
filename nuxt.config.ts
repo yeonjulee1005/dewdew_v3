@@ -7,7 +7,6 @@ export default ({
     enabled: true
   },
   app: {
-    keepalive: true,
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       charset: 'utf-16',
@@ -32,11 +31,11 @@ export default ({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
     }
   },
-  // loadingIndicator: {
-  //   name: 'chasing-dots',
-  //   color: 'purple',
-  //   background: 'green'
-  // },
+  loadingIndicator: {
+    name: 'chasing-dots',
+    color: 'purple',
+    background: 'green'
+  },
   supabase: {
     redirect: false,
     // redirectOptions: {
@@ -168,21 +167,6 @@ export default ({
     defaultTimezone: 'Asia/Seoul'
   },
   vite: {
-    build: {
-      chunkSizeWarningLimit: 1000,
-      commonjsOptions: {
-        esmExternals: true
-      },
-      rollupOptions: {
-        output: {
-          manualChunks: (id:string) => {
-            if (id.includes('node_modules')) {
-              return id.toString().split('node_modules/')[1].split('/')[0].toString()
-            }
-          }
-        }
-      }
-    },
     css: {
       preprocessorOptions: {
         scss: {
