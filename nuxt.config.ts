@@ -6,6 +6,37 @@ export default ({
   devtools: {
     enabled: true
   },
+  app: {
+    keepalive: true,
+    pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      charset: 'utf-16',
+      viewport: 'width=device-width, initial-scale=1',
+      title: 'Dewdew',
+      htmlAttrs: {
+        lang: 'ko'
+      },
+      meta: [
+        { name: 'Author', content: 'Dewdew' },
+        { name: 'description', content: '안녕하세요. FE 개발자 이연주입니다.' },
+        { name: 'format-detection', content: 'telephone=no' },
+        { name: 'theme-color', content: '#705757' },
+        { name: 'keywords', content: 'developer,develop,web,portfolio,개발자,FE웹개발자,웹개발자,포트폴리오,개발자 포트폴리오' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: 'FE 개발자 이연주' },
+        { property: 'og:url', content: 'https://www.dewdew.kr' },
+        { property: 'og:image', content: 'https://tgtlrqqasaiavynmlxkc.supabase.co/storage/v1/object/public/assets/banner/main_banner.webp' },
+        { property: 'og:description', content: '안녕하세요. FE 개발자 이연주입니다.' },
+        { property: 'Imagetoolbar', content: 'no' }
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    }
+  },
+  loadingIndicator: {
+    name: 'chasing-dots',
+    color: 'purple',
+    background: 'green'
+  },
   supabase: {
     redirect: false,
     // redirectOptions: {
@@ -126,15 +157,6 @@ export default ({
   typescript: {
     shim: false
   },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/scss/element-theme.scss" as element;'
-        }
-      }
-    }
-  },
   elementPlus: {
     importStyle: 'scss',
     themes: ['dark']
@@ -144,6 +166,30 @@ export default ({
     plugins: ['relativeTime', 'utc', 'timezone'],
     defaultLocale: 'ko',
     defaultTimezone: 'Asia/Seoul'
+  },
+  vite: {
+    build: {
+      chunkSizeWarningLimit: 1000,
+      commonjsOptions: {
+        esmExternals: true
+      },
+      rollupOptions: {
+        output: {
+          manualChunks: (id:string) => {
+            if (id.includes('node_modules')) {
+              return id.toString().split('node_modules/')[1].split('/')[0].toString()
+            }
+          }
+        }
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/scss/element-theme.scss" as element;'
+        }
+      }
+    }
   },
   runtimeConfig: {
     public: {
