@@ -4,7 +4,7 @@
       class="main-title"
       :class="{'activate': mainTitleTrigger}"
     >
-      {{ locale === 'ko' ? mainTitle.textTitle.textKo : mainTitle.textTitle.textEn }}
+      {{ locale === 'ko' ? mainTitle?.textTitle.textKo : mainTitle?.textTitle.textEn }}
     </el-text>
     <div
       class="main-text-group flex flex-column"
@@ -15,7 +15,7 @@
         :key="item.index"
         class="text"
       >
-        {{ locale === 'ko' ? item.textTitle.textKo : item.textTitle.textEn }}
+        {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
       </el-text>
     </div>
     <el-text
@@ -23,7 +23,7 @@
       class="scroll-down"
       :class="{'activate': scrollDownTrigger}"
     >
-      {{ locale === 'ko' ? mainScrollText.textTitle.textKo : mainScrollText.textTitle.textEn }}
+      {{ locale === 'ko' ? mainScrollText?.textTitle.textKo : mainScrollText?.textTitle.textEn }}
     </el-text>
     <nuxt-picture
       :src="url('main_banner.webp', 'assets', 'banner')"

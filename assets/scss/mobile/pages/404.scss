@@ -1,0 +1,18 @@
+@use '../../variables' as *;
+
+/**
+* ! 404 Page Style !
+*a
+* ? Mobile ?
+*/
+.not-found {
+  .desc {
+    width: $space-percent-75;
+  }
+  .page-404 {
+    bottom: 0;
+    left: $space-10vw;
+    font-size: 14em;
+    line-height: $space-160;
+  }
+}

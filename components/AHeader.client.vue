@@ -34,7 +34,7 @@
         </nuxt-link>
         <nuxt-link
           class="github"
-          :to="socialMenuData[0].route"
+          :to="socialMenuData[0].url"
           target="_blank"
         >
           <nuxt-img
@@ -90,12 +90,12 @@ const iconList = reactive<IndexSignature>({
 })
 
 const addMenuIcon = () => {
-  mainMenuData.forEach((menu:Menu) => {
+  mainMenuData.map((menu:Menu) =>
     menuData.value.push({
       ...menu,
       icon: iconList[menu.title]
     })
-  })
+  )
 }
 
 addMenuIcon()

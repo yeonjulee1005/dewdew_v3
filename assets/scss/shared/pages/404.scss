@@ -1,0 +1,48 @@
+@use '../../variables' as *;
+
+/**
+* ! 404 Page Style !
+*a
+* ? Shared ?
+*/
+.not-found {
+  position: absolute;
+  width: $space-percent-100;
+  height: $space-percent-100;
+  background-color: var(--el-bg-white);
+  .desc {
+    top: $space-50vh;
+    margin: 0 auto;
+    padding: $space-30 $space-20;
+    width: $space-300;
+    text-align: center;
+    background-color: var(--el-color-warning-light-9);
+    box-shadow: $space-2 rgba($color: var(--el-color-warning-light-9), $alpha: $space-percent-50);
+    border: $space-1 solid var(--el-color-warning-dark-2);
+    border-radius: $space-8;
+    z-index: 20;
+    h1 {
+      margin: unset;
+    }
+    p {
+      margin: $space-20 0;
+    }
+    a {
+      text-decoration: none;
+      padding:  $space-4 $space-16;
+      color: var(--el-fill-color-lighter);
+      border: $space-1 solid var(--el-color-warning-dark-1);
+      background-color: var(--el-color-warning-dark-2);
+      box-shadow: $space-2 rgba($color: var(--el-color-warning-dark-2), $alpha: $space-percent-50);
+      border-radius: $space-4;
+    }
+  }
+  .page-404 {
+    position: fixed;
+    top: $space-50vh;
+    left: $space-50vw;
+    font-size: 30em;
+    font-weight: 900;
+    opacity: .1;
+  }
+}

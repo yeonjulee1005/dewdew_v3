@@ -1,14 +1,14 @@
 <template>
   <div class="main-skills flex flex-column">
-    <SkillsDescriptions
-      :skills-title="skillsTitle"
-      :skills-first-text="skillsFirstText"
-      :skills-second-text="skillsSecondText"
-      :skills-third-text="skillsThirdText"
+    <LazyMainSkillsDescriptions
+      :skills-title="mainSkillsTitle"
+      :skills-first-text="mainSkillsFirstText"
+      :skills-second-text="mainSkillsSecondText"
+      :skills-third-text="mainSkillsThirdText"
       :skills-text-trigger="skillsTextTrigger"
     />
-    <MainSkillsImage
-      :skills-image="skillsImage"
+    <LazyMainSkillsImage
+      :skills-image="stackLogoData"
       :skills-bg-trigger="skillsBgTrigger"
     />
     <div
@@ -56,13 +56,11 @@
 
 <script setup lang="ts">
 
+const { mainSkillData } = useMainStore()
+const { stackLogoData } = useStackStore()
+
 withDefaults(
   defineProps<{
-    skillsTitle: SerializeObject[],
-    skillsFirstText: SerializeObject[],
-    skillsSecondText: SerializeObject[],
-    skillsThirdText: SerializeObject[],
-    skillsImage: SerializeObject[],
     skillsTextTrigger?: boolean,
     skillsBgTrigger?: boolean,
     skillsListTrigger?: boolean
@@ -73,6 +71,27 @@ withDefaults(
     skillsListTrigger: false
   }
 )
+
+const mainSkillsTitle = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'title'
+  )
+})
+const mainSkillsFirstText = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'first'
+  )
+})
+const mainSkillsSecondText = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'second'
+  )
+})
+const mainSkillsThirdText = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'third'
+  )
+})
 
 const titleLists = {
   frontEndTitle: 'FE Skills',

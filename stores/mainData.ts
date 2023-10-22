@@ -32,9 +32,10 @@ export const useMainStore = defineStore('mainData', () => {
       })
       return data
     })
-    mainData.value?.forEach((main:SerializeObject) => {
+    if (!mainData.value) { return }
+    mainData.value?.map((main:SerializeObject) =>
       separateData(main)
-    })
+    )
   }
 
   const separateData = (data: SerializeObject) => {

@@ -23,11 +23,15 @@
   @include meta.load-css('desktop/components/footer');
   @include meta.load-css('desktop/components/main_intro_banner');
   @include meta.load-css('desktop/components/main_resume');
+  @include meta.load-css('desktop/components/main_skills');
+  @include meta.load-css('desktop/components/main_portfolio');
+  @include meta.load-css('desktop/components/main_contact');
 
   /**
   * *  Page Style *
   */
-  // @include meta.load-css('desktop/page/main');
+  @include meta.load-css('desktop/pages/projects');
+  @include meta.load-css('desktop/pages/color_translate');
 }
 
 /**
@@ -40,11 +44,16 @@
   @include meta.load-css('tablet/components/header');
   @include meta.load-css('tablet/components/main_intro_banner');
   @include meta.load-css('tablet/components/main_resume');
+  @include meta.load-css('tablet/components/main_skills');
+  @include meta.load-css('tablet/components/main_portfolio');
+  @include meta.load-css('tablet/components/main_contact');
 
   /**
   * *  Page Style *
   */
-  // @include meta.load-css('tablet/page/main');
+  @include meta.load-css('tablet/pages/404');
+  @include meta.load-css('tablet/pages/projects');
+  @include meta.load-css('tablet/pages/color_translate');
 }
 
 /**
@@ -58,9 +67,14 @@
   @include meta.load-css('mobile/components/footer');
   @include meta.load-css('mobile/components/main_intro_banner');
   @include meta.load-css('mobile/components/main_resume');
+  @include meta.load-css('mobile/components/main_skills');
+  @include meta.load-css('mobile/components/main_portfolio');
+  @include meta.load-css('tablet/components/main_contact');
 
   /**
   * *  Page Style *
   */
-  // @include meta.load-css('mobile/page/main');
+  @include meta.load-css('mobile/pages/404');
+  @include meta.load-css('mobile/pages/projects');
+  @include meta.load-css('mobile/pages/color_translate');
 }

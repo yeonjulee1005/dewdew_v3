@@ -1,0 +1,22 @@
+@use '../../basic/size_list' as *;
+
+/**
+* ! Main Contact Style !
+* *  Tablet *
+*/
+.main-contact {
+  .contact-lists {
+    flex-direction: column;
+    align-items: center;
+    width: $space-percent-100;
+    .kakaotalk {
+      margin-bottom: $space-30;
+    }
+    .email {
+      margin-top: $space-40;
+      .email-form {
+        width: $space-300;
+      }
+    }
+  }
+}

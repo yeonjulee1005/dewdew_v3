@@ -1,0 +1,14 @@
+@use '../../variables' as *;
+
+/**
+* ! 404 Page Style !
+*a
+* ? Tablet ?
+*/
+.not-found {
+  .page-404 {
+    top: $space-60vh;
+    left: $space-20vw;
+    font-size: 23em;
+  }
+}
