@@ -16,14 +16,21 @@ provide(ID_INJECTION_KEY, {
   current: 0
 })
 
-const { loadMenuData } = useMenuStore()
-const { loadMainData } = useMainStore()
+const { loadMenuData, loadMainData } = useLoadComposable()
+
 const { loadStackData } = useStackStore()
 const { loadPortfolioData } = usePortfolioStore()
 const { loadLeaveColorData } = useLeaveColorStore()
 
-loadMenuData()
-loadMainData()
+loadMenuData('root')
+loadMenuData('sub')
+loadMenuData('sns')
+
+loadMainData('intro')
+loadMainData('resume')
+loadMainData('skills')
+loadMainData('reference')
+
 loadStackData()
 loadPortfolioData()
 loadLeaveColorData()

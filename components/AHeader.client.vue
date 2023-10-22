@@ -98,6 +98,8 @@ const addMenuIcon = () => {
   )
 }
 
+console.log(mainMenuData)
+
 addMenuIcon()
 
 </script>
