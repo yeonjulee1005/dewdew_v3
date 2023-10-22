@@ -1,36 +1,36 @@
 <template>
   <div
     class="skills-descriptions flex flex-column"
-    :class="{'skills-descriptions-on': skillsTextTrigger}"
+    :class="{'activate': skillsTextTrigger}"
   >
-    <span
+    <el-text
       v-for="(item, index) in skillsTitle"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item.textTitle.textKo : item.textTitle.textEn }}
-    </span>
-    <span
+      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+    </el-text>
+    <el-text
       v-for="(item, index) in skillsFirstText"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item.textTitle.textKo : item.textTitle.textEn }}
-    </span>
-    <span
+      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+    </el-text>
+    <el-text
       v-for="(item, index) in skillsSecondText"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item.textTitle.textKo : item.textTitle.textEn }}
-    </span>
-    <span
+      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+    </el-text>
+    <el-text
       v-for="(item, index) in skillsThirdText"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item.textTitle.textKo : item.textTitle.textEn }}
-    </span>
+      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+    </el-text>
     <div class="skills-title-box" />
   </div>
 </template>
@@ -39,7 +39,7 @@
 
 const { locale } = useLocale()
 
-const data = withDefaults(
+withDefaults(
   defineProps<{
     skillsTitle: SerializeObject[],
     skillsFirstText: SerializeObject[],
@@ -51,10 +51,5 @@ const data = withDefaults(
     skillsTextTrigger: false
   }
 )
-
-console.log(data.skillsTitle)
-console.log(data.skillsFirstText)
-console.log(data.skillsSecondText)
-console.log(data.skillsThirdText)
 
 </script>

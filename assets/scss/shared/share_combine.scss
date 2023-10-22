@@ -16,10 +16,15 @@
 @forward './components/pwa';
 @forward './components/main_intro_banner';
 @forward './components/main_resume';
+@forward './components/main_skills';
+@forward './components/main_portfolio';
+@forward './components/main_contact';
 
 // @forward './components/a_table';
 
 /**
 * *  Page Style *
 */
-// @forward 'login';
+@forward './pages/404';
+@forward './pages/projects';
+@forward './pages/color_translate';

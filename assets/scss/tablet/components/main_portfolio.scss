@@ -1,0 +1,23 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Portfolio Style !
+* *  Tablet *
+*/
+.main-portfolio {
+  .section-text {
+    margin: $space-10 0 $space-10;
+  }
+  .portfolio-list {
+    margin: 0 $space-10;
+    .portfolio-item {
+      .portfolio-thumb {
+        width: $space-160;
+        height: $space-160;
+      }
+      .portfolio-text {
+        @include headline6;
+      }
+    }
+  }
+}

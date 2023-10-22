@@ -1,0 +1,101 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Portfolio Style !
+* *  Shared *
+*/
+.main-portfolio {
+  position: relative;
+  width: $space-1000;
+  max-width: $space-90vw;
+  height: fit-content;
+  margin: $space-300 auto $space-300;
+  transition: opacity .9s;
+  opacity: 0;
+  .section-title {
+    @include headline1;
+    align-self: flex-start;
+  }
+  .section-text {
+    width: fit-content;
+    @include headline5;
+    align-self: flex-start;
+    border-bottom: $space-2 solid var(--d-bg-side-color);
+    border-spacing: $space-10;
+  }
+  .section-bg-text {
+    position: absolute;
+    top: $space-200;
+    left: calc($space-minus-400 + $space-minus-30);
+    font-size: $space-200;
+    font-weight: 900;
+    opacity: .1;
+    transform: rotateZ(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+  }
+  .portfolio-background {
+    position: absolute;
+    top: $space-minus-200;
+    left: $space-minus-400;
+    width: calc($space-700 + $space-40);
+    height: calc($space-700 + $space-40);
+    opacity: 0.15;
+    background-color: var(--d-color-17);
+    border-radius: $space-percent-50;
+    z-index: -10;
+    &:last-child {
+      top: calc($space-200 + $space-50);
+      left: calc($space-700 + $space-40);
+      width: $space-400;
+      height: $space-400;
+      opacity: 0.15;
+      background-color: var(--d-color-09);
+      border-radius: $space-400;
+    }
+  }
+  .portfolio-list {
+    width: $space-1000;
+    max-width: $space-90vw;
+    z-index: 20;
+    .portfolio-item {
+      margin: $space-10;
+      .portfolio-thumb {
+        cursor: pointer;
+        object-fit: cover;
+        border-radius: $space-20;
+        border: $space-2 solid var(--d-bg-green-color-deep);
+        box-shadow: $space-2 $space-2 $space-4 var(--d-bg-main-color), $space-minus-2 $space-minus-2 $space-4 var(--d-bg-main-color);
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          box-shadow: $space-4 $space-4 $space-8 var(--d-bg-sub-color), $space-minus-4 $space-minus-4 $space-8 var(--d-bg-sub-color);
+        }
+      }
+    }
+  }
+}
+
+/**
+* ! Portfolio Dialog Style !
+* *  Shared *
+*/
+.portfolio-dialog {
+  .title {
+    width: fit-content;
+    @include headline3;
+    align-self: flex-start;
+    border-bottom: $space-1 solid var(--d-text-color);
+  }
+  .description {
+    @include headline6;
+    align-self: flex-start;
+    margin-bottom: $space-10;
+  }
+  .detail-image {
+    cursor: pointer;
+    .image {
+      width: $space-percent-100;
+      height: auto;
+    }
+  }
+}

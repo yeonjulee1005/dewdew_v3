@@ -1,0 +1,58 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Contact Style !
+* *  Shared *
+*/
+.main-contact {
+  position: relative;
+  max-width: $space-1200;
+  width: $space-90vw;
+  height: fit-content;
+  margin: $space-300 auto $space-100;
+  transition: opacity .9s;
+  opacity: 0;
+  .contact-title {
+    @include headline1;
+  }
+  .contact-lists {
+    .kakaotalk {
+      width: $space-percent-50;
+      .title {
+        @include headline3;
+        color: var(--d-yellow-color);
+      }
+      .image-group {
+        text-decoration: none;
+        .desc {
+          @include headline6;
+        }
+      }
+    }
+    .email {
+      width: $space-percent-50;
+      .email-title {
+        @include headline3;
+        color: var(--d-blue-color);
+      }
+      .email-form {
+        width: $space-300;
+        .el-form-item {
+          .el-form-item__content {
+            justify-content: flex-end;
+            .el-button {
+              color: var(--d-text-color);
+              background-color: var(--d-footer-bg-color);
+              border-color: var(--d-footer-bg-color);
+              &:hover,
+              &:focus {
+              background-color: var(--d-footer-bg-color-deep);
+              border-color: var(--d-footer-bg-color-deep);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

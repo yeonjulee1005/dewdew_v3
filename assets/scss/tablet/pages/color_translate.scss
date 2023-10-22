@@ -1,0 +1,33 @@
+@use '../../variables' as *;
+
+/**
+* ! Color Translate Page Style !
+*a
+* ? Tablet ?
+*/
+.color-translate {
+  height: $space-80vh;
+  .color-translate-form {
+    width: $space-40vw;
+    max-width: $space-300;
+    margin-left: $space-20;
+  }
+  .upload-drag-files {
+    width: $space-50vw;
+    min-width: calc($space-200 + $space-60);
+    max-width: $space-400;
+    .image-preview {
+      width: $space-percent-80;
+      height: calc($space-100 + $space-20);
+    }
+    .el-icon--upload {
+      width: $space-percent-100;
+      height: calc($space-100 + $space-20);
+      .el-upload__text {
+        display: flex;
+        flex-direction: column;
+        width: $space-percent-90;
+      }
+    }
+  }
+}

@@ -1,8 +1,9 @@
 <template>
   <LazyADialog
     :dialog-trigger="leaveDialogTrigger"
-    :hide-double-button="true"
-    :hide-single-button="true"
+    hide-header-trigger
+    hide-double-button
+    hide-single-button
     top="30vh"
     width="300px"
     @close-dialog="closeLeaveDialog"

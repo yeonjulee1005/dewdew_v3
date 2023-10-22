@@ -1,0 +1,326 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Skills Style !
+* *  Shared *
+*/
+.main-skills {
+  position: relative;
+  max-width: $space-1200;
+  width: $space-90vw;
+  height: fit-content;
+  margin: $space-600 auto $space-600;
+  .skill-images {
+    transition: opacity .9s;
+    opacity: 0;
+    .azure {
+      @include skills;
+      top: $space-160;
+      left: $space-minus-50;
+      width: $space-200;
+      height: auto;
+      animation: bubble-azure 3s ease-in-out infinite;
+    }
+    @keyframes bubble-azure {
+      0% { width: $space-200; }
+      50% { width: calc($space-200 + $space-6); }
+      100% { width: $space-200; }
+    }
+    .astro {
+      @include skills;
+      top: $space-minus-100;
+      right: $space-minus-50;
+      width: $space-300;
+      height: auto;
+      animation: bubble-astro 3s ease-in-out infinite;
+    }
+    @keyframes bubble-astro {
+      0% { width: $space-300; }
+      50% { width: calc($space-300 + $space-6); }
+      100% { width: $space-300; }
+    }
+    .bitbucket {
+      @include skills;
+      top: calc($space-300 + $space-60);
+      left: calc($space-200 + $space-40); 
+      width: $space-50;
+      height: auto;
+      animation: bubble-bitbucket 3s ease-in-out infinite;
+    }
+    @keyframes bubble-bitbucket {
+      0% { width: calc($space-50 + $space-6); }
+      50% { width: $space-50; }
+      100% { width: calc($space-50 + $space-6); }
+    }
+    .css3 {
+      @include skills;
+      top: $space-minus-400;
+      left: $space-600;
+      height: auto;
+      animation: bubble-css3 3s ease-in-out infinite;
+    }
+    @keyframes bubble-css3 {
+      0% { width: $space-100; }
+      50% { width: calc($space-100 + $space-6); }
+      100% { width: $space-100; }
+    }
+    .html5 {
+      @include skills;
+      top: calc($space-400 + $space-50);
+      left: $space-minus-50;
+      height: auto;
+      animation: bubble-html5 3s ease-in-out infinite;
+    }
+    @keyframes bubble-html5 {
+      0% { width: calc($space-100 + $space-6); }
+      50% { width: $space-100; }
+      100% { width: calc($space-100 + $space-6); }
+    }
+    .github {
+      @include skills;
+      opacity: var(--d-bg-opacity-03);
+      top: $space-600;
+      left: calc($space-100 + $space-50);
+      width: calc($space-200 + $space-50);
+      height: auto;
+      animation: bubble-git-hub 3s ease-in-out infinite;
+    }
+    @keyframes bubble-git-hub {
+      0% { width: calc($space-200 + $space-50); }
+      50% { width: calc(calc($space-200 + $space-50) + $space-6); }
+      100% { width: calc($space-200 + $space-50); }
+    }
+    .vueuse {
+      @include skills;
+      top: $space-minus-300;
+      left: calc($space-900 + $space-60);
+      width: $space-160;
+      height: auto;
+      animation: bubble-vueuse 3s ease-in-out infinite;
+    }
+    @keyframes bubble-vueuse {
+      0% { width: $space-100; }
+      50% { width: calc($space-100 + $space-6); }
+      100% { width: $space-100; }
+    }
+    .obsidian {
+      @include skills;
+      top: calc($space-400 + $space-50);
+      left: $space-1200;
+      width: $space-100;
+      height: auto;
+    }
+    .node {
+      @include skills;
+      top: calc($space-600 + $space-50);
+      left: $space-900;
+      width: $space-200;
+      height: auto;
+    }
+    .illustration {
+      @include skills;
+      top: $space-500;
+      left: $space-900;
+      width: $space-50;
+      height: auto;
+    }
+    .xd {
+      @include skills;
+      top: $space-minus-200;
+      left: calc($space-1000 + $space-100);
+      height: auto;
+    }
+    .javaScript {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: $space-minus-160;
+      left: $space-minus-70;
+      width: $space-200;
+      height: auto;
+    }
+    .typeScript {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-minus-400 + $space-minus-30);
+      left: $space-200;
+      width: $space-200;
+      height: auto;
+    }
+    .nuxt {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-minus-200 + $space-minus-50);
+      left: calc($space-200 + $space-50);
+      width: $space-400;
+      height: auto;
+    }
+    .pgadmin {
+      @include skills;
+      top: calc($space-300 + $space-60);
+      left: calc($space-700 + $space-40);
+      height: auto;
+    }
+    .postman {
+      @include skills;
+      top: $space-160;
+      left: $space-600;
+      height: auto;
+    }
+    .python {
+      @include skills;
+      top: $space-400; 
+      left: calc($space-1000 + $space-100); 
+      height: auto;
+    }
+    .sass {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-200 + $space-50); 
+      left: calc($space-300 + $space-60); 
+      width: $space-300;
+      height: auto;
+    }
+    .pinia {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-700 + $space-50); 
+      right: calc($space-minus-100 + $space-minus-50); 
+      width: $space-160;
+      height: auto;
+    }
+    .bun {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: $space-400; 
+      right: calc($space-100 + $space-60); 
+      width: $space-300;
+      height: auto;
+    }
+    .vim {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: $space-160;
+      left: calc($space-200 + $space-40);
+      height: auto;
+    }
+    .vscode {
+      @include skills;
+      top: $space-minus-160; 
+      left: calc($space-700 + $space-40); 
+      width: $space-80;
+      height: auto;
+    }
+    .jira {
+      @include skills;
+      top: $space-minus-400; 
+      left: $space-minus-50; 
+      width: $space-80;
+      height: auto;
+    }
+    .vue {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-600 + $space-50);
+      left: calc($space-400 + $space-80); 
+      width: $space-300;
+      height: auto;
+    }
+    .firebase {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-minus-400 + $space-minus-50);
+      left: $space-800;
+      width: $space-300;
+      height: auto;
+    }
+    .figma {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-600 + $space-50);
+      left: $space-minus-50;
+      width: $space-160;
+      height: auto;
+    }
+    .supabase {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-900 + $space-50);
+      left: $space-minus-100;
+      width: $space-160;
+      height: auto;
+      animation: bubble-supabase 3s ease-in-out infinite;
+    }
+    @keyframes bubble-supabase {
+      0% { width: $space-160; }
+      50% { width: calc($space-160 + $space-6); }
+      100% { width: $space-160; }
+    }
+    .vercel {
+      @include skills;
+      opacity: var(--d-bg-opacity-02);
+      top: calc($space-minus-400 + $space-minus-50);
+      left: $space-1200;
+      width: $space-200;
+      height: auto;
+    }
+  }
+  .skills-descriptions {
+    position: relative;
+    height: fit-content;
+    z-index: 10;
+    transition: opacity .9s;
+    opacity: 0;
+    .skills-text {
+      margin-right: calc($space-60 + $space-8);
+      z-index: 10;
+      &:nth-child(3),
+      &:nth-child(6),
+      &:nth-child(9) {
+        margin-top: $space-10;
+      }
+    }
+    .skills-title-box {
+      position: absolute;
+      background-color: var(--d-color-01-opacity);
+      border-radius: $space-percent-50;
+      box-shadow: $space-2 $space-2 $space-4 var(--d-bg-sub-color), -2px -2px $space-4 var(--d-bg-main-color);
+    }
+  }
+  .skill-list {
+    margin-top: calc($space-600 + $space-50);
+    transition: opacity .9s;
+    opacity: 0;
+    z-index: 10;
+    .skill-title-text {
+      width: $space-200;
+      margin-bottom: $space-30;
+      @include headline2;
+      text-align: left;
+    }
+    .skills-text {
+      width: $space-100;
+      margin-bottom: $space-20;
+    }
+    .progress {
+      margin-bottom: $space-20;
+    }
+    .frontend-list,
+    .backend-list,
+    .tools-list {
+      padding: $space-20;
+      box-shadow: $space-2 $space-2 $space-4 var(--d-bg-sub-color), -2px -2px $space-4 var(--d-bg-main-color);
+    }
+    .frontend-list {
+      background-color: var(--d-color-06-deep);
+    }
+    .backend-list {
+      background-color: var(--d-color-04-deep);
+    }
+    .tools-list {
+      background-color: var(--d-color-18-deep);
+    }
+  }
+  .skill-list-on {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,50 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Skills Style !
+* *  Mobile *
+*/
+.main-skills {
+  .skills-descriptions {
+    width: fit-content;
+    padding-top: $space-40;
+    .skills-text {
+      margin-right: $space-20;
+      @include headline6;
+        text-align: right;
+      &:nth-child(1),
+      &:nth-child(2) {
+        @include headline4;
+        text-align: right;
+      }
+    }
+    .skills-title-box {
+      top: $space-minus-50;
+      right: $space-minus-100;
+      width: $space-500;
+      height: $space-500; 
+    }
+  }
+  .skill-list {
+    flex-direction: column;
+    width: $space-percent-100;
+    .main-skill-list {
+      flex-direction: column;
+      width: $space-percent-100;
+    }
+    .skills-text {
+      @include headline6;
+    }
+    .frontend-list,
+    .backend-list,
+    .tools-list {
+      width: $space-percent-80;
+      height: fit-content;
+      margin: 0 auto $space-40;
+      padding: $space-20;
+      .el-progress {
+        width: $space-percent-100 !important;
+      }
+    }
+  }
+}

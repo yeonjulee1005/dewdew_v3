@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <MainIntroBanner
+    <LazyMainIntroBanner
       :main-title="mainTitle"
       :main-text="mainText"
       :main-scroll-text="mainScrollText"
@@ -15,14 +15,19 @@
       :main-resume-trigger="mainResumeTrigger"
     />
     <MainSkillContents
-      :skills-title="mainSkillTitle"
-      :skills-first-text="mainSkillFirstText"
-      :skills-second-text="mainSkillSecondText"
-      :skills-third-text="mainSkillThirdText"
-      :skills-image="stackLogoData"
-      :skills-text-trigger="true"
-      :skills-bg-trigger="true"
-      :skills-list-trigger="true"
+      :skills-text-trigger="mainSkillsTextTrigger"
+      :skills-bg-trigger="mainSkillsBgTrigger"
+      :skills-list-trigger="mainSkillsListTrigger"
+    />
+    <MainPortfolio
+      :portfolio-title="mainPortfolioTitle"
+      :portfolio-description="mainPortfolioText"
+      :portfolio-background="mainPortfolioBackground"
+      :portfolio-image-data="portfolioData"
+      :portfolio-trigger="true"
+    />
+    <MainContact
+      :contact-trigger="contactTrigger"
     />
   </div>
 </template>
@@ -33,8 +38,8 @@ const { t } = useLocale()
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
-const { mainIntroData, mainResumeData, mainSkillData, mainReferenceData } = useMainStore()
-const { stackLogoData } = useStackStore()
+const { mainIntroData, mainResumeData, mainReferenceData } = useMainStore()
+const { portfolioData } = usePortfolioStore()
 
 useHead({
   meta: [{ property: 'og:title', content: t('openGraph.dewdew', { text: 'dewdew' }) }]
@@ -71,25 +76,20 @@ const mainCareerData = computed(() => {
     (item: SerializeObject) => item.textType === 'career'
   )
 })
-const mainSkillTitle = computed(() => {
-  return mainSkillData.filter(
+const mainPortfolioTitle = computed(() => {
+  return mainReferenceData.filter(
     (item: SerializeObject) => item.textType === 'title'
-  )
+  )[0]
 })
-const mainSkillFirstText = computed(() => {
-  return mainSkillData.filter(
-    (item: SerializeObject) => item.textType === 'first'
-  )
+const mainPortfolioText = computed(() => {
+  return mainReferenceData.filter(
+    (item: SerializeObject) => item.textType === 'desc'
+  )[0]
 })
-const mainSkillSecondText = computed(() => {
-  return mainSkillData.filter(
-    (item: SerializeObject) => item.textType === 'second'
-  )
-})
-const mainSkillThirdText = computed(() => {
-  return mainSkillData.filter(
-    (item: SerializeObject) => item.textType === 'third'
-  )
+const mainPortfolioBackground = computed(() => {
+  return mainReferenceData.filter(
+    (item: SerializeObject) => item.textType === 'background'
+  )[0]
 })
 
 const mainTitleTrigger = ref(true)
@@ -101,8 +101,6 @@ const mainSkillsBgTrigger = ref(false)
 const mainSkillsListTrigger = ref(false)
 const referenceListTrigger = ref(false)
 const contactTrigger = ref(false)
-
-console.log(mainIntroData, mainResumeData, mainSkillData, mainReferenceData)
 
 watchEffect(() => {
   if (!y.value) { return }
@@ -141,7 +139,7 @@ const tablet = (scrollY:number) => {
   scrollDownTrigger.value = scrollY < 500
   mainResumeTrigger.value = scrollY > 300 && scrollY < 1600
   mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
-  mainSkillsBgTrigger.value = scrollY > 1200 && scrollY < 2600
+  mainSkillsBgTrigger.value = scrollY > 1200 && scrollY < 4000
   mainSkillsListTrigger.value = scrollY > 2700 && scrollY < 5100
   referenceListTrigger.value = scrollY > 5000 && scrollY < 7300
   contactTrigger.value = scrollY > 7200
@@ -153,7 +151,7 @@ const desktop = (scrollY:number) => {
   scrollDownTrigger.value = scrollY < 650
   mainResumeTrigger.value = scrollY > 150 && scrollY < 1250
   mainSkillsTextTrigger.value = scrollY > 1300 && scrollY < 2200
-  mainSkillsBgTrigger.value = scrollY > 900 && scrollY < 2700
+  mainSkillsBgTrigger.value = scrollY > 900 && scrollY < 3000
   mainSkillsListTrigger.value = scrollY > 2300 && scrollY < 3800
   referenceListTrigger.value = scrollY > 4000 && scrollY < 5800
   contactTrigger.value = scrollY > 5500

@@ -1,0 +1,16 @@
+@use '../../basic/size_list' as *;
+
+/**
+* ! Main Contact Style !
+* *  Desktop *
+*/
+.main-contact {
+  .contact-lists {
+    width: $space-800;
+    .email {
+      .email-form {
+        width: $space-300;
+      }
+    }
+  }
+}
