@@ -8,6 +8,22 @@
       :main-text-trigger="mainTextTrigger"
       :scroll-down-trigger="scrollDownTrigger"
     />
+    <MainResumeDesc
+      :resume-title="mainResumeTitle"
+      :educate-text="mainEducateText"
+      :career-data="mainCareerData"
+      :main-resume-trigger="mainResumeTrigger"
+    />
+    <MainSkillContents
+      :skills-title="mainSkillTitle"
+      :skills-first-text="mainSkillFirstText"
+      :skills-second-text="mainSkillSecondText"
+      :skills-third-text="mainSkillThirdText"
+      :skills-image="stackLogoData"
+      :skills-text-trigger="true"
+      :skills-bg-trigger="true"
+      :skills-list-trigger="true"
+    />
   </div>
 </template>
 
@@ -18,6 +34,7 @@ const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
 const { mainIntroData, mainResumeData, mainSkillData, mainReferenceData } = useMainStore()
+const { stackLogoData } = useStackStore()
 
 useHead({
   meta: [{ property: 'og:title', content: t('openGraph.dewdew', { text: 'dewdew' }) }]
@@ -37,6 +54,42 @@ const mainScrollText = computed(() => {
   return mainIntroData.filter(
     (item: SerializeObject) => item.textType === 'scroll'
   )[0]
+})
+
+const mainResumeTitle = computed(() => {
+  return mainResumeData.filter(
+    (item: SerializeObject) => item.textType === 'title'
+  )[0]
+})
+const mainEducateText = computed(() => {
+  return mainResumeData.filter(
+    (item: SerializeObject) => item.textType === 'educate'
+  )[0]
+})
+const mainCareerData = computed(() => {
+  return mainResumeData.filter(
+    (item: SerializeObject) => item.textType === 'career'
+  )
+})
+const mainSkillTitle = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'title'
+  )
+})
+const mainSkillFirstText = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'first'
+  )
+})
+const mainSkillSecondText = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'second'
+  )
+})
+const mainSkillThirdText = computed(() => {
+  return mainSkillData.filter(
+    (item: SerializeObject) => item.textType === 'third'
+  )
 })
 
 const mainTitleTrigger = ref(true)

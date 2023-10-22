@@ -37,7 +37,11 @@ $space-500: 500px;
 $space-600: 600px;
 $space-700: 700px;
 $space-1000: 1000px;
+$space-1200: 1200px;
 
+/**
+* ? Space Minus Pixel ?
+*/
 $space-minus-50: -50px;
 $space-minus-100: -100px;
 $space-minus-160: -160px;
@@ -52,12 +56,15 @@ $space-100vh: 100vh;
 $space-50vw: 50vw;
 $space-60vw: 60vw;
 $space-80vw: 80vw;
+$space-90vw: 90vw;
 $space-100vw: 100vw;
 
 /**
 * ? Space Percent ?
 */
 $space-percent-5: 5%;
+$space-percent-40: 40%;
 $space-percent-50: 50%;
+$space-percent-60: 60%;
 $space-percent-80: 80%;
 $space-percent-100: 100%;

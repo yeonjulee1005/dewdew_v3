@@ -15,10 +15,6 @@
 
 const { idle } = useIdle(10 * 60 * 1000)
 
-const idleTrigger = ref(false)
-
-watch(idle, () => {
-  idle.value ? idleTrigger.value = true : idleTrigger.value = false
-})
+const idleTrigger = computed(() => { return idle.value })
 
 </script>

@@ -1,0 +1,29 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Resume Style !
+* *  Desktop *
+*/
+.main-resume {
+  margin: calc($space-200 + $space-40) auto $space-200;
+  .resume-container {
+    height: $space-600;
+    .resume-image {
+      width: $space-percent-40;
+    }
+    .resume-texts {
+      width: $space-percent-60;
+      .title-container {
+        .title {
+          @include headline1;
+        }
+        .educate {
+          @include headline5;
+        }
+      }
+      .career-container {
+        @include headline6;
+      }
+    }
+  }
+}

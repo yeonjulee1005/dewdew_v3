@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await client
     .from('main')
-    .select('index, textKo, textEn, textType, category')
+    .select('index, textType, category, textTitle(textKo, textEn), textDescription(textKo, textEn))')
     .order('index', { ascending: true })
 
   if (error) {

@@ -1,0 +1,43 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Resume Style !
+* *  Tablet *
+*/
+.main-resume {
+  margin: $space-200 auto $space-200;
+  .resume-container {
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    padding: $space-20 0;
+    .resume-image {
+      width: $space-percent-80;
+      margin: $space-20 auto;
+    }
+    .resume-texts {
+      width: $space-percent-80;
+      .title-container {
+        .title {
+          @include headline2;
+        }
+        .educate {
+          @include headline4;
+        }
+      }
+      .career-container {
+        position: relative;
+        @include headline5;
+        .title-group {
+          gap: 50px;
+        }
+        .desc-group {
+          position: absolute;
+          top: 0;
+          height: $space-50;
+          gap: 50px;
+        }
+      }
+    }
+  }
+}

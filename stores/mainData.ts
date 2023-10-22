@@ -45,7 +45,7 @@ export const useMainStore = defineStore('mainData', () => {
       case 'resume' :
         mainResumeData.value.push(data)
         break
-      case 'skill' :
+      case 'skills' :
         mainSkillData.value.push(data)
         break
       case 'reference' :

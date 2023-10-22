@@ -1,0 +1,51 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Resume Style !
+* *  Shared *
+*/
+.main-resume {
+  position: relative;
+  max-width: $space-1200;
+  width: $space-90vw;
+  height: fit-content;
+  transition: opacity .9s;
+  opacity: 0;
+  .resume-container {
+    width: $space-percent-100;
+    border-radius: $space-30;
+    background-color: var(--d-bg-blue-color);
+    .resume-image {
+      text-align: center;
+      .dewdew {
+        width: $space-300;
+        height: $space-300;
+        border-radius: $space-percent-50;
+      }
+    }
+    .resume-texts {
+      .title-container {
+        width: fit-content;
+        padding-bottom: $space-10;
+        border-bottom:  $space-2 double var(--d-text-color);
+        .title {
+          align-self: flex-start;
+        }
+      }
+      .career-container {
+        .career-title {
+          @include headline6;
+          font-weight: 700;
+          align-self: flex-start;
+          word-break: keep-all;
+        }
+        .career-desc {
+          margin-left: $space-20;
+          @include headline6;
+          align-self: flex-start;
+          word-break: keep-all;
+        }
+      }
+    }
+  }
+}

@@ -23,6 +23,7 @@
       &:last-child {
         margin-top: $space-10;
         @include headline6;
+        color: var(--d-green-color-deep);
       }
     }
   }

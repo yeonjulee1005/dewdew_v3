@@ -2,28 +2,28 @@
   <div class="main-intro flex flex-justify-center">
     <el-text
       class="main-title"
-      :class="{'main-title-on': mainTitleTrigger}"
+      :class="{'activate': mainTitleTrigger}"
     >
-      {{ locale === 'ko' ? mainTitle.textKo : mainTitle.textEn }}
+      {{ locale === 'ko' ? mainTitle.textTitle.textKo : mainTitle.textTitle.textEn }}
     </el-text>
     <div
       class="main-text-group flex flex-column"
-      :class="{'main-text-on': mainTextTrigger}"
+      :class="{'activate': mainTextTrigger}"
     >
       <el-text
         v-for="item in mainText"
         :key="item.index"
         class="text"
       >
-        {{ locale === 'ko' ? item.textKo : item.textEn }}
+        {{ locale === 'ko' ? item.textTitle.textKo : item.textTitle.textEn }}
       </el-text>
     </div>
     <el-text
       ref="scrollDown"
       class="scroll-down"
-      :class="{'main-scroll-on': scrollDownTrigger}"
+      :class="{'activate': scrollDownTrigger}"
     >
-      {{ locale === 'ko' ? mainScrollText.textKo : mainScrollText.textEn }}
+      {{ locale === 'ko' ? mainScrollText.textTitle.textKo : mainScrollText.textTitle.textEn }}
     </el-text>
     <nuxt-picture
       :src="url('main_banner.webp', 'assets', 'banner')"

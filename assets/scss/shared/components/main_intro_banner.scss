@@ -26,9 +26,6 @@
     opacity: 0;
     transition: opacity .75s;
   }
-  .main-title-on {
-    opacity: 1;
-  }
   .main-text-group {
     position: absolute;
     height: $space-80;
@@ -42,14 +39,7 @@
       @include headline4;
       word-break: keep-all;
       align-self: flex-start;
-      &:last-child {
-        @include headline6;
-        color: var(--d-green-color-deep);
-      }
     }
-  }
-  .main-text-on {
-    opacity: 1;
   }
   .scroll-down {
     position: absolute;
@@ -64,9 +54,6 @@
       0% { margin-top: 0; }
       100% { margin-top: $space-10; }
     }
-  }
-  .main-scroll-on {
-    opacity: 1;
   }
   .main-banner {
     height: calc($space-700 + $space-40);

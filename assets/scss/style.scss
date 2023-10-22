@@ -22,6 +22,7 @@
   @include meta.load-css('desktop/components/header');
   @include meta.load-css('desktop/components/footer');
   @include meta.load-css('desktop/components/main_intro_banner');
+  @include meta.load-css('desktop/components/main_resume');
 
   /**
   * *  Page Style *
@@ -38,6 +39,7 @@
   */
   @include meta.load-css('tablet/components/header');
   @include meta.load-css('tablet/components/main_intro_banner');
+  @include meta.load-css('tablet/components/main_resume');
 
   /**
   * *  Page Style *
@@ -55,6 +57,7 @@
   @include meta.load-css('mobile/components/header');
   @include meta.load-css('mobile/components/footer');
   @include meta.load-css('mobile/components/main_intro_banner');
+  @include meta.load-css('mobile/components/main_resume');
 
   /**
   * *  Page Style *

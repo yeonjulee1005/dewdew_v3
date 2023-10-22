@@ -1,0 +1,38 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Resume Style !
+* *  Mobile *
+*/
+.main-resume {
+  margin: 0 auto $space-200;
+  .resume-container {
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    padding: $space-20 0;
+    .resume-image {
+      width: $space-percent-80;
+      margin: $space-20 auto;
+      .dewdew {
+        width: $space-percent-100;
+        height: $space-percent-100;
+        border-radius: $space-percent-50;
+      }
+    }
+    .resume-texts {
+      width: $space-percent-80;
+      .title-container {
+        .title {
+          @include headline3;
+        }
+        .educate {
+          @include headline5;
+        }
+      }
+      .career-container {
+        @include headline6;
+      }
+    }
+  }
+}

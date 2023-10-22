@@ -25,3 +25,12 @@ interface Colors {
   color: string,
   percentage: number
 }
+
+interface ProgressData {
+  color: string,
+  duration: number,
+  percent: number,
+  percentText: string,
+  style: string,
+  title: string
+}

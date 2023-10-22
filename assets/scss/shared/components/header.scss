@@ -26,17 +26,21 @@
         color: var(--d-text-dark-color);
         text-decoration: none;
         transition: all .1s ease-in-out;
-      }
-      .menu-links:hover {
-        scale: 1.1;
-        color: var(--d-text-dark-color-deep);
+        cursor: pointer;
+        &:hover {
+          scale: 1.1;
+          color: var(--d-text-dark-color-deep);
+        }
+        &:hover, &:focus {
+          cursor: pointer;
+        }
       }
     }
     .float-mobile-menu {
       position: fixed;
       align-items: center;
       bottom: $space-20vh;
-      left: $space-30;
+      right: $space-30;
       opacity: .4;
       width: $space-50;
       height: calc($space-200 + $space-10);
@@ -48,6 +52,7 @@
         margin: $space-4 auto;
         @include headline3;
         color: var(--d-text-dark-color);
+        cursor: pointer;
       }
     }
     .github {
