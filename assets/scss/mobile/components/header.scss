@@ -1,0 +1,31 @@
+@use '../../variables' as *;
+
+/**
+* ! Header Style !
+* *  Mobile *
+*/
+.header {
+  height: $space-60;
+  .header-container {
+    width: $space-100vw;
+    .logo {
+      .dewdew-logo {
+        width: $space-100;
+        height: auto;
+      }
+    }
+    .github {
+      img {
+        width: $space-24;
+        height: auto;
+        transition: all .1s ease-in-out;
+      }
+      img:hover {
+        scale: 1.1;
+      }
+    }
+    .dark-mode-switch {
+      margin-right: $space-20;
+    }
+  }
+}

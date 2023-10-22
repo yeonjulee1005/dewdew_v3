@@ -1,0 +1,36 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Intro Banner Style !
+* *  mobile *
+*/
+.main-intro {
+  .main-title {
+    width: $space-200;
+    top: calc($space-100 + $space-30);
+    right: $space-minus-50;
+    font-size: 2em;
+  }
+  .main-text-group {
+    top: $space-100vw;
+    width: $space-percent-80;
+    margin-top: $space-50;
+    background-color: unset;
+    .text {
+      @include headline7;
+      &:last-child {
+        margin-top: $space-10;
+      }
+    }
+  }
+  .scroll-down {
+    top: $space-70vh;
+    @include headline7;
+  }
+  .main-banner {
+    .banner {
+      width: auto;
+      height: $space-100vw;
+    }
+  }
+}

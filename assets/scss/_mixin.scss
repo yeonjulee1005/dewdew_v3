@@ -1,0 +1,28 @@
+@use 'basic/size_list' as *;
+
+/**
+* ?  Breakpoint Desktop Style ?
+*/
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile - $space-1}) {
+    @content;
+  }
+}
+
+/**
+* ?  Breakpoint Tablet Style ?
+*/
+@mixin tablet {
+  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-desktop - $space-1}) {
+    @content;
+  }
+}
+
+/**
+* ?  Breakpoint Desktop Style ?
+*/
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}

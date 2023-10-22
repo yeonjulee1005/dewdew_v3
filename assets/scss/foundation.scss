@@ -1,0 +1,44 @@
+@use 'variables' as *;
+
+/**
+* ? Initial Template Style ?
+*/
+
+html {
+  -webkit-text-size-adjust: $space-percent-100;
+  overscroll-behavior: contain;
+}
+
+body {
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+  overflow-x: hidden;
+  -webkit-touch-callout: none;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-use-select: none;
+  scrollbar-width: none;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all .1s ease-in-out;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: .3;
+}

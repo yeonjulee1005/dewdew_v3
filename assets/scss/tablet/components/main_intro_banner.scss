@@ -1,0 +1,32 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Intro Banner Style !
+* *  Tablet *
+*/
+.main-intro {
+  .main-title {
+    width: calc($space-300 + $space-60);
+    top: $space-180;
+    right: $space-minus-100;
+    font-size: 3.5em;
+  }
+  .main-text-group {
+    top: calc($space-60vw + $space-80 );
+    width: fit-content;
+    height: $space-80;
+    .text {
+      @include headline6;
+      &:last-child {
+        margin-top: $space-10;
+        @include headline7;
+      }
+    }
+  }
+  .main-banner {
+    .banner {
+      width: auto;
+      height: $space-100vw;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use '../../variables' as *;
+
+/**
+* ! Header Style !
+* *  Shared *
+*/
+.header {
+  position: fixed;
+  width: $space-100vw;
+  align-items: center;
+  background-color: var(--d-header-bg-color);
+  filter: alpha(opacity=30);
+  z-index: 100;
+  .header-container {
+    width: $space-1000;
+    .logo {
+      margin: $space-10 $space-20;
+      .dewdew-logo {
+        width: $space-160;
+        height: auto;
+      }
+    }
+    .desktop-menu {
+      .menu-links {
+        @include headline4;
+        color: var(--d-text-dark-color);
+        text-decoration: none;
+        transition: all .1s ease-in-out;
+      }
+      .menu-links:hover {
+        scale: 1.1;
+        color: var(--d-text-dark-color-deep);
+      }
+    }
+    .float-mobile-menu {
+      position: fixed;
+      align-items: center;
+      bottom: $space-20vh;
+      left: $space-30;
+      opacity: .4;
+      width: $space-50;
+      height: calc($space-200 + $space-10);
+      padding: $space-4 0;
+      gap: $space-8;
+      border-radius: $space-12;
+      background-color: var(--d-bg-white-color);
+      .mobile-menu-links {
+        margin: $space-4 auto;
+        @include headline3;
+        color: var(--d-text-dark-color);
+      }
+    }
+    .github {
+      cursor: pointer;
+      img {
+        width: $space-30;
+        height: auto;
+      }
+    }
+    .select-language {
+      width: $space-80;
+      border-radius: $space-8;
+      background-color: var(--d-footer-bg-color);
+      
+      --el-select-border-color-hover: var(--d-footer-bg-color-deep);
+      .select-trigger {
+        .el-input {
+          .el-input__wrapper {
+            border-radius: $space-8;
+          }
+        }
+      }
+    }
+    .dark-mode-switch {
+      --el-switch-on-color: var(--d-footer-bg-color);
+      --el-switch-off-color: var(--d-footer-bg-color);
+    }
+  }
+}

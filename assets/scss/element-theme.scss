@@ -1,0 +1,33 @@
+$-colors: (
+  'white': #FEFCF9,
+  'black': #080807,
+  'primary': (
+    'base': #4B4B3F,
+  ),
+  'success': (
+    'base': #C3BFB5,
+  ),
+  'warning': (
+    'base': #51355A,
+  ),
+  'danger': (
+    'base': #CF938C,
+  ),
+  'error': (
+    'base': #9E2B25,
+  ),
+  'info': (
+    'base': #E1DCD3,
+  ),
+);
+
+/**
+* ?  Element Plus Custom Theme Style ?
+*/
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: $-colors,
+  $bg-color: (
+    'page': #FDFAF7,
+    'overlay': #FFFDFA,
+  )
+);

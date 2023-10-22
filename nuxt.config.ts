@@ -2,11 +2,12 @@
 
 import packageJson from './package.json'
 
-export default defineNuxtConfig({
+export default ({
   devtools: {
     enabled: true
   },
   supabase: {
+    redirect: false,
     // redirectOptions: {
     //   login: '/login',
     //   callback: '/confirm',
@@ -31,6 +32,7 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxt/devtools',
+    '@vite-pwa/nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/supabase',
     '@nuxtjs/stylelint-module',
@@ -43,6 +45,7 @@ export default defineNuxtConfig({
     'dayjs-nuxt'
   ],
   css: [
+    '~/assets/scss/style.scss'
   ],
   stylelint: {
     lintOnStart: true
@@ -60,6 +63,42 @@ export default defineNuxtConfig({
       'stores',
       'stores/**'
     ]
+  },
+  pwa: {
+    registerType: 'autoUpdate',
+    srcDir: './public/worker',
+    filename: 'sw.ts',
+    manifest: {
+      name: 'Dewdew',
+      short_name: 'Dewdew',
+      theme_color: '#fa7474',
+      icons: [
+        {
+          src: 'icon.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
+      ]
+    },
+    workbox: {
+      navigateFallback: '/',
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+    },
+    injectManifest: {
+      globDirectory: './.nuxt/dev-sw-dist',
+      globPatterns: ['**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}'],
+      globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js']
+    },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 20
+    },
+    devOptions: {
+      enabled: true,
+      suppressWarnings: true,
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module'
+    }
   },
   i18n: {
     langDir: './locales',
@@ -86,6 +125,15 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/scss/element-theme.scss" as element;'
+        }
+      }
+    }
   },
   elementPlus: {
     importStyle: 'scss',

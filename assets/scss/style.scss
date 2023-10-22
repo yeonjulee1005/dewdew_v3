@@ -1,0 +1,63 @@
+@use 'sass:meta';
+@use 'basic/fonts' as *;
+@use 'variables' as *;
+@use 'foundation' as *;
+@use '_mixin' as *;
+
+/**
+* ?  Shared Style ?
+*/
+@use 'basic/style_class_list' as *;
+@use "element-plus/dist/index.css" as *;
+@use "element-plus/theme-chalk/src/dark/css-vars" as *;
+@use 'shared/share_combine' as *;
+
+/**
+* ?  Breakpoint Desktop Style ?
+*/
+@include desktop {
+  /**
+  * *  Foundation & Component Style *
+  */
+  @include meta.load-css('desktop/components/header');
+  @include meta.load-css('desktop/components/footer');
+  @include meta.load-css('desktop/components/main_intro_banner');
+
+  /**
+  * *  Page Style *
+  */
+  // @include meta.load-css('desktop/page/main');
+}
+
+/**
+* ?  Breakpoint Tablet Style ?
+*/
+@include tablet {
+  /**
+  * *  foundation & component style *
+  */
+  @include meta.load-css('tablet/components/header');
+  @include meta.load-css('tablet/components/main_intro_banner');
+
+  /**
+  * *  Page Style *
+  */
+  // @include meta.load-css('tablet/page/main');
+}
+
+/**
+* ?  Breakpoint Mobile Style ?
+*/
+@include mobile {
+  /**
+  * *  foundation & component style *
+  */
+  @include meta.load-css('mobile/components/header');
+  @include meta.load-css('mobile/components/footer');
+  @include meta.load-css('mobile/components/main_intro_banner');
+
+  /**
+  * *  Page Style *
+  */
+  // @include meta.load-css('mobile/page/main');
+}

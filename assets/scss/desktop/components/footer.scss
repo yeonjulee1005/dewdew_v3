@@ -1,0 +1,12 @@
+@use '../../variables' as *;
+
+/**
+* ! Footer Style !
+* *  Desktop *
+*/
+.footer {
+  .footer-menu-container {
+    width: $space-300;
+    gap: $space-40;
+  }
+}

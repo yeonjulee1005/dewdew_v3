@@ -1,0 +1,55 @@
+@use 'size_list' as *;
+@use 'color_list' as *;
+
+/**
+* ! Font Variables !
+*/
+@mixin headline1 {
+  font-size: $space-40;
+  font-weight: 900;
+  text-align: left;
+  line-height: $space-50;
+  color: var(--d-text-color);
+}
+@mixin headline2 {
+  font-size: $space-36;
+  font-weight: 700;
+  text-align: left;
+  line-height: $space-48;
+  color: var(--d-text-color);
+}
+@mixin headline3 {
+  font-size: $space-28;
+  font-weight: 700;
+  text-align: left;
+  line-height: $space-40;
+  color: var(--d-text-color);
+}
+@mixin headline4 {
+  font-size: $space-24;
+  font-weight: 700;
+  text-align: left;
+  line-height: $space-30;
+  color: var(--d-text-color);
+}
+@mixin  headline5 {
+  font-size: $space-20;
+  font-weight: 600;
+  text-align: left;
+  line-height: $space-30;
+  color: var(--d-text-color);
+}
+@mixin headline6 {
+  font-size: $space-16;
+  font-weight: 500;
+  text-align: left;
+  line-height: $space-24;
+  color: var(--d-text-color);
+}
+@mixin headline7 {
+  font-size: $space-12;
+  font-weight: 400;
+  text-align: left;
+  line-height: $space-16;
+  color: var(--d-text-color);
+}

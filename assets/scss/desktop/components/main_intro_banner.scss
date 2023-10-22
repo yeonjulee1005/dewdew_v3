@@ -1,0 +1,29 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Intro Banner Style !
+* *  Desktop *
+*/
+.main-intro {
+  .main-title {
+    width: $space-600;
+    top: calc($space-300 + $space-30);
+    right: $space-minus-160;
+    font-size: 6em;
+    line-height: $space-80;
+  }
+  .main-text-group {
+    top: calc($space-500 + $space-50);
+    left: $space-percent-5;
+    width: fit-content;
+    height: $space-100;
+    background-color: var(--d-content-bg-color);
+    .text {
+      @include headline4;
+      &:last-child {
+        margin-top: $space-10;
+        @include headline6;
+      }
+    }
+  }
+}

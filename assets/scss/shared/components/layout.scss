@@ -1,0 +1,12 @@
+@use '../../variables' as *;
+
+/**
+* ! Layout Style !
+*a
+* ? Shared ?
+*/
+.layout-container {
+  position: relative;
+  flex-direction: column;
+  height: $space-100vh;
+}

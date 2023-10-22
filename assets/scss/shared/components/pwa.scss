@@ -1,0 +1,29 @@
+@use '../../variables' as *;
+
+/**
+* ! Pwa Component Style !
+*a
+* ? Shared ?
+*/
+.pwa-toast {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: $space-16;
+  padding: calc($space-10 + $space-2);
+  border: $space-1 solid $pwa-border;
+  border-radius: $space-4;
+  z-index: 1;
+  text-align: left;
+  box-shadow: calc($space-2) $space-4 calc($space-4) 0 $pwa-border;
+  .el-button {
+    border: $space-1 solid $pwa-border;
+    outline: none;
+    margin-right: calc($space-4);
+    border-radius: $space-2;
+    padding: calc($space-2) $space-10;
+  }
+  .message {
+    margin-bottom: $space-8;
+  }
+}

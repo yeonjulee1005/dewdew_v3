@@ -1,0 +1,249 @@
+/**
+* ? Styles Forward Lists ?
+*/
+@forward 'basic/size_list';
+@forward 'basic/color_list';
+@forward 'basic/font_variables';
+
+/**
+* ? Foundation Lists ?
+*/
+@use 'basic/size_list' as *;
+@use 'basic/color_list' as *;
+@use 'basic/font_variables' as *;
+
+
+/**
+* * Mixins Style *
+*/
+
+
+/**
+* ? Text Editor (Tiptap) Mixins ?
+*/
+@mixin tiptap-template {
+  p {
+    line-height: 1.7rem;
+  }
+  ul, ol {
+    padding: 0 1rem;
+  }
+  ul[data-type="taskList"] {
+    list-style: none;
+    padding: 0;
+    p {
+      margin: 0;
+    }
+    li {
+      display: flex;
+      > label {
+        flex: 0 0 auto;
+        margin-right: 0.5rem;
+        user-select: none;
+      }
+      > div {
+        flex: 1 1 auto;
+      }
+    }
+  }
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4;
+  }
+  code {
+    font-size: 0.9rem;
+    padding: 0.25em;
+    border-radius: 0.25em;
+    background-color: var(--el-bg-color);
+    color: var(--el-color-white);
+    box-decoration-break: clone;
+  }
+  pre {
+    background-color: var(--el-bg-color);
+    color: var(--el-color-white);
+    font-family: JetBrainsMono, monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    code {
+      color: inherit;
+      padding: 0;
+      background: none;
+      font-size: 0.8rem;
+    }
+    .hljs-comment,
+    .hljs-quote {
+      color: var(--el-color-white);
+    }
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-attribute,
+    .hljs-tag,
+    .hljs-name,
+    .hljs-regexp,
+    .hljs-link,
+    .hljs-selector-id,
+    .hljs-selector-class {
+      color: var(--el-color-white);
+    }
+    .hljs-number,
+    .hljs-meta,
+    .hljs-built_in,
+    .hljs-builtin-name,
+    .hljs-literal,
+    .hljs-type,
+    .hljs-params {
+      color: var(--el-color-white);
+    }
+    .hljs-string,
+    .hljs-symbol,
+    .hljs-bullet {
+      color: var(--el-color-white);
+    }
+    .hljs-title,
+    .hljs-section {
+      color: var(--el-color-white);
+    }
+    .hljs-keyword,
+    .hljs-selector-tag {
+      color: var(--el-color-white);
+    }
+    .hljs-emphasis {
+      font-style: italic;
+    }
+    .hljs-strong {
+      font-weight: 700;
+    }
+  }
+  img {
+    max-width: $space-percent-80;
+    height: auto;
+  }
+  blockquote {
+    margin: 0 $space-10;
+    padding-left: $space-8;
+    border-right: $space-4 solid black;
+  }
+  hr {
+    border: none;
+    border-top: $space-2 solid black;
+    margin: 2rem 0;
+  }
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: $space-percent-50;
+    margin: 0;
+    overflow: hidden;
+    td,
+    th {
+      min-width: 1em;
+      border: $space-2 solid black;
+      padding: $space-2 $space-4;
+      vertical-align: top;
+      box-sizing: border-box;
+      position: relative;
+      > * {
+        margin-bottom: 0;
+      }
+    }
+    th {
+      font-weight: bold;
+      text-align: left;
+      background-color: oldlace;
+    }
+    .selectedCell::after {
+      z-index: 2;
+      position: absolute;
+      content: "";
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: var(--el-menu-hover-border-color);
+      pointer-events: none;
+    }
+    .column-resize-handle {
+      position: absolute;
+      right: -$space-2;
+      top: 0;
+      bottom: -$space-2;
+      width: $space-4;
+      background-color: var(--el-menu-active-color);
+      pointer-events: none;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: var(--el-info-color);
+    pointer-events: none;
+    height: 0;
+  }
+  iframe {
+    border: $space-4 solid black;
+    border-radius: $space-4;
+    min-width: $space-160;
+    min-height: $space-160;
+    display: block;
+    outline: $space-2 solid transparent;
+  }
+  div[data-youtube-video] {
+    cursor: move;
+  }
+  .ProseMirror-selectednode iframe {
+    transition: outline 0.15s;
+    outline: $space-2 solid var(--el-border-color);
+  }
+}
+
+/**
+* ? Keyframes ?
+*/
+@keyframes animation-opacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes rotate-icon {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes tilting-icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes logo-action {
+  0% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+  45% {
+    transform: translateX(-5px) rotate(-2deg);
+  }
+  70% {
+    transform: translateX(4px) rotate(1.5deg);
+  }
+  85% {
+    transform: translateX(-2px) rotate(-.7deg);
+  }
+  100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+}

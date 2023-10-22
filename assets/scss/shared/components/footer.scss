@@ -1,0 +1,44 @@
+@use '../../variables' as *;
+
+/**
+* ! Footer Style !
+*a
+* ? Shared ?
+*/
+.footer {
+  position: relative;
+  height: $space-20vh;
+  padding: $space-10 0;
+  background-color: var(--d-footer-bg-color);
+  .footer-menu-container {
+    gap: $space-20;
+    .footer-links {
+      @include headline6;
+      text-decoration: unset;
+      transition: all .1s ease-in-out;
+    }
+    .footer-links:hover {
+      color: var(--d-red-color);
+    }
+  }
+  .footer-sns-container {
+    width: $space-160;
+    .sns-links {
+      transition: all .1s ease-in-out;
+      width: $space-40;
+      height: fit-content;
+      margin: auto $space-8;
+      img {
+        width: $space-30;
+        height: auto;
+      }
+    }
+  }
+  .footer-information {
+    span {
+      @include headline7;
+      text-align: center;
+      word-break: keep-all;
+    }
+  }
+}

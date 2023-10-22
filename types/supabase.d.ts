@@ -6,7 +6,7 @@ type Json =
   | { [key: string]: Json | undefined }
   | Json[]
 
-interface SupabaseDatabase {
+interface SupabaseDataBase {
   public: {
     Tables: {
       authority: {

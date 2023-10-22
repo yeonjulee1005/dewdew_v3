@@ -1,0 +1,80 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Intro Banner Style !
+* *  Shared *
+*/
+.main-intro {
+  position: relative;
+  height: fit-content;
+  .main-title, .main-text, .sub-text, .scroll-down {
+    position: absolute;
+    z-index: 10;
+  }
+  .main-title {
+    position: absolute;
+    font-weight: 800;
+    text-align: left;
+    background-image: linear-gradient(120deg, $d-color-03-light, $d-color-15-dark-deep);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    transform: rotateZ(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .75s;
+  }
+  .main-title-on {
+    opacity: 1;
+  }
+  .main-text-group {
+    position: absolute;
+    height: $space-80;
+    padding: $space-20;
+    gap: $space-4;
+    background-color: var(--d-content-bg-color);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .75s;
+    .text {
+      @include headline4;
+      word-break: keep-all;
+      align-self: flex-start;
+      &:last-child {
+        @include headline6;
+        color: var(--d-green-color-deep);
+      }
+    }
+  }
+  .main-text-on {
+    opacity: 1;
+  }
+  .scroll-down {
+    position: absolute;
+    width: fit-content;
+    top: $space-percent-100;
+    @include headline6;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .75s;
+    animation: motion .5s ease-in .5s infinite alternate;
+    @keyframes motion {
+      0% { margin-top: 0; }
+      100% { margin-top: $space-10; }
+    }
+  }
+  .main-scroll-on {
+    opacity: 1;
+  }
+  .main-banner {
+    height: calc($space-700 + $space-40);
+    overflow: hidden;
+    z-index: 5;
+    .banner {
+      width: $space-100vw;
+      height: auto;
+    }
+  }
+}

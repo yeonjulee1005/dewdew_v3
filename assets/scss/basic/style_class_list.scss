@@ -1,0 +1,87 @@
+@use '../basic/size_list' as *;
+
+/**
+* ? Style Class Lists ?
+*
+* ? Text ?
+*/
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.word-break-keep { word-break: keep-all; }
+
+/**
+* ? Layout ?
+*/
+.m-auto { margin: auto; }
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mx-4 { margin: 0 $space-4; }
+
+.mt-8 { margin-top: $space-8; }
+.mb-8 { margin-bottom: $space-8; }
+.ml-8 { margin-left: $space-8; }
+.mr-8 { margin-right: $space-8; }
+
+.mx-default { margin: 0 $space-10; }
+.m-default { margin: $space-10; }
+.mt-default { margin-top: $space-10; }
+.mb-default { margin-bottom: $space-10; }
+.ml-default { margin-left: $space-10; }
+.mr-default { margin-right: $space-10; }
+
+.mt-20 { margin-top: $space-20; }
+.mb-20 { margin-bottom: $space-20; }
+.ml-20 { margin-left: $space-20; }
+.mr-20 { margin-right: $space-20; }
+
+.mt-40 { margin-top: $space-40; }
+.mb-40 { margin-bottom: $space-40; }
+.ml-40 { margin-left: $space-40; }
+.mr-40 { margin-right: $space-40; }
+
+.mt-30 { margin-top: $space-30; }
+
+.table-column-padding { padding: $space-8 $space-4 !important; }
+
+/**
+* ? Flex ?
+*/
+.flex { display: flex; }
+.flex-auto { flex: auto; }
+.inline-flex { display: inline-flex; }
+.inline-block { display: inline-block; }
+
+.flex-row { flex-direction: row; }
+.flex-row-reverse { flex-direction: row-reverse; }
+.flex-column { flex-direction: column; }
+.flex-column-reverse { flex-direction: column-reverse; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-no-wrap { flex-wrap: nowrap; }
+
+.flex-justify-start { justify-content: flex-start; }
+.flex-justify-center { justify-content: center; }
+.flex-justify-end { justify-content: flex-end; }
+.flex-justify-end-i { justify-content: flex-end !important; }
+.flex-space-between { justify-content: space-between; }
+.flex-space-around { justify-content:  space-around; }
+.flex-space-evenly { justify-content: space-evenly; }
+.flex-align-start { align-items: flex-start; }
+.flex-align-center { align-items: center; }
+.flex-align-end { align-items: flex-end; }
+.flex-align-stretch { align-items: stretch; }
+.flex-baseline { align-items: baseline; }
+
+.gap-10 { gap: $space-10; }
+.gap-16 { gap: $space-16; }
+.gap-20 { gap: $space-20; }
+.gap-40 { gap: $space-40; }
+
+.abs-middle {
+  position: absolute;
+  top: $space-percent-50;
+  left: $space-percent-50;
+  transform: translate(-$space-percent-50, -$space-percent-50);
+}

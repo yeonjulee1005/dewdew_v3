@@ -1,14 +1,37 @@
 {
   "cSpell.words": [
+    "ascending",
+    "breakpoint",
     "cleanup",
+    "dark",
+    "deep",
+    "Defaults",
+    "designed",
+    "dewdew",
     "element",
+    "emits",
+    "english",
+    "headline",
+    "Intro",
+    "Logo",
+    "minus",
+    "Moon",
     "nuxt",
     "nuxtjs",
     "pinia",
     "plus",
     "recommended",
+    "Rights",
+    "social",
     "stylelint",
+    "Sunny",
     "supabase",
-    "vueuse"
+    "switch",
+    "Tablet",
+    "vueuse",
+    "yeonju"
+  ],
+  "i18n-ally.localesPaths": [
+    "locales"
   ]
 }
