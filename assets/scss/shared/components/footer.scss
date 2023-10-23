@@ -7,7 +7,7 @@
 */
 .footer {
   position: relative;
-  height: $space-20vh;
+  height: calc($space-200 + $space-40);
   padding: $space-10 0;
   background-color: var(--d-footer-bg-color);
   .footer-menu-container {

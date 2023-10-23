@@ -5,48 +5,49 @@
   >
     <client-only>
       <Carousel
-        :items-to-show="sliderShowCount"
+        warap-around
         :transition="1600"
         :autoplay="1800"
         :wrap-around="true"
+        :breakpoints="breakPoints"
         :touch-drag="touchDrag"
         :mouse-drag="mouseDrag"
       >
         <Slide
-          v-for="item in props.imageData"
-          :key="item.year"
+          v-for="(image, index) in props.imageData"
+          :key="index"
         >
           <nuxt-link
             v-if="props.mainSliderTrigger"
             class="image-component"
-            :to="item.route"
+            :to="`/archives/${image.title}`"
           >
             <nuxt-picture
-              :src="item.url"
+              :src="image.url"
               width="360"
               height="300"
               format="webp"
               :img-attrs="{class: 'thumbnail'}"
-              :alt="item.title"
+              :alt="image.title"
             />
             <div class="text-group">
               <p class="title">
                 {{ $t('archives.historyTitle') }}
               </p>
               <p class="subtitle">
-                {{ item.year }}
+                {{ image.title }}
               </p>
             </div>
           </nuxt-link>
           <div v-else class="image-component">
             <nuxt-picture
-              :src="item.url"
+              :src="image.url"
               width="360"
               height="300"
               format="webp"
               :img-attrs="{class: 'thumbnail'}"
-              :alt="item.title"
-              @click="$emit('open-dialog', item)"
+              :alt="image.title"
+              @click="$emit('open-dialog', image)"
             />
           </div>
         </Slide>
@@ -80,14 +81,14 @@
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
-const { width } = useWindowSize()
 const { url } = useImageStorage()
-
-const sliderShowCount = ref(0)
 
 const props = withDefaults(
   defineProps<{
     imageData: SerializeObject[],
+    desktopShowItemCount?: number,
+    tabletShowItemCount?: number,
+    mobileShowItemCount?: number,
     touchDrag?: boolean,
     mouseDrag?: boolean,
     mainSliderTrigger?: boolean,
@@ -96,6 +97,9 @@ const props = withDefaults(
     showNavigation?: boolean
   }>(),
   {
+    desktopShowItemCount: 4,
+    tabletShowItemCount: 3,
+    mobileShowItemCount: 2,
     touchDrag: true,
     mouseDrag: true,
     mainSliderTrigger: false,
@@ -109,16 +113,19 @@ defineEmits([
   'open-dialog'
 ])
 
-watch(width, () => { handleResize(width.value) })
-
-onMounted(() => {
-  handleResize(width.value)
-})
-
-const handleResize = (width:number) => {
-  const showCount = [1.5, 1.75, 2.5]
-  const caseWidth = Math.min(Math.floor(width / 500), 2)
-  sliderShowCount.value = showCount[caseWidth]
+const breakPoints = {
+  1000: {
+    itemsToShow: props.desktopShowItemCount,
+    snapAlign: 'start'
+  },
+  500: {
+    itemsToShow: props.tabletShowItemCount,
+    snapAlign: 'start'
+  },
+  250: {
+    itemsToShow: props.mobileShowItemCount,
+    snapAlign: 'start'
+  }
 }
 
 </script>

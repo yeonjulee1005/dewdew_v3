@@ -1,0 +1,31 @@
+@use '../../variables' as *;
+
+/** Archives Page */
+.main-archives-title {
+  top: $space-160;
+  @include headline1;
+}
+
+.prev-button {
+  left: $space-20vw;
+  margin: $space-200 auto $space-160;
+}
+
+.main-slider-section {
+  .carousel {
+    height: fit-content;
+    padding-top: calc($space-200 + $space-40);
+  }
+  .image-component {
+    .text-group {
+      .title {
+        @include headline1;
+        text-align: right;
+      }
+      .subtitle {
+        @include headline1;
+        text-align: right;
+      }
+    }
+  }
+}

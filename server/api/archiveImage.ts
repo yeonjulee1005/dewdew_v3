@@ -3,11 +3,13 @@ import { serverSupabaseClient } from '#supabase/server'
 export default defineEventHandler(async (event) => {
   const client = await serverSupabaseClient<SupabaseDataBase>(event)
 
+  const year = getQuery(event).year
+
   const { data, error } = await client
-    .from('stackLogo')
-    .select('orderIndex!inner(index), title, url, deleted')
+    .from('archiveImage')
+    .select('title, years, url, deleted')
+    .eq('years', year)
     .eq('deleted', false)
-    .order('orderIndex(index)', { ascending: true })
 
   if (error) {
     throw createError({ statusMessage: error.message })

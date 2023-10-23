@@ -18,8 +18,6 @@ const { t } = useLocale()
 
 const { subMenuData } = useMenuStore()
 
-console.log(subMenuData)
-
 useHead({
   title: t('pageTitle.project'),
   meta: [

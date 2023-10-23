@@ -1,0 +1,62 @@
+@use '../../variables' as *;
+
+/**
+* ! Archive Main Style !
+*a
+* ? Shared ?
+*/
+.main-archives-title {
+  position: relative;
+  max-width: $space-1000;
+  width: $space-90vw;
+  margin: 0 auto;
+}
+
+.prev-button {
+  position: absolute;
+  z-index: 10;
+  &:focus, &:hover {
+    color: var(--d-text-color);
+    border: $space-1 solid var(--d-bg-main-color);
+    background-color: var(--d-footer-bg-color);
+  }
+}
+
+.main-slider-section {
+  position: relative;
+  max-width: $space-1000;
+  width: $space-90vw;
+  height: calc($space-100vh - $space-160);
+  .carousel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .carousel__viewport {
+      margin-top: $space-60;
+    }
+  }
+  .image-component {
+    position: relative;
+    cursor: pointer;
+    .thumbnail {
+      // width: calc($space-300 + $space-60);
+      // height: $space-300;
+      object-fit: cover;
+      border-radius: $space-36;
+    }
+    .text-group {
+      position: absolute;
+      bottom: $space-20;
+      right: $space-10;
+      .title {
+        color: $d-bg-color-00;
+        margin: unset;
+      }
+      .subtitle {
+        color: $d-bg-color-00;
+        margin: unset;
+      }
+    }
+  }
+}
