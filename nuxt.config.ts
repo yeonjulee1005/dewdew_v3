@@ -64,6 +64,7 @@ export default ({
     '@nuxt/devtools',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
+    '@nuxtjs/robots',
     '@nuxtjs/supabase',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/i18n',
@@ -155,6 +156,10 @@ export default ({
   },
   typescript: {
     shim: false
+  },
+  robots: {
+    UserAgent: '*',
+    Allow: '/'
   },
   elementPlus: {
     importStyle: 'scss',

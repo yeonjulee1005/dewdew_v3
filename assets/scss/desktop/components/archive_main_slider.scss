@@ -1,20 +1,19 @@
 @use '../../variables' as *;
 
-/** Archives Page */
+/**
+* ! Archive Main Style !
+*a
+* ? Desktop ?
+*/
 .main-archives-title {
   top: $space-160;
   @include headline1;
 }
 
-.prev-button {
-  left: $space-20vw;
-  margin: $space-200 auto $space-160;
-}
-
 .main-slider-section {
   .carousel {
     height: fit-content;
-    padding-top: calc($space-200 + $space-40);
+    padding-top: $space-200;
   }
   .image-component {
     .text-group {

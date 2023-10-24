@@ -6,8 +6,8 @@
     <client-only>
       <Carousel
         warap-around
-        :transition="1600"
-        :autoplay="1800"
+        :transition="1400"
+        :autoplay="2400"
         :wrap-around="true"
         :breakpoints="breakPoints"
         :touch-drag="touchDrag"
@@ -51,11 +51,10 @@
             />
           </div>
         </Slide>
-        <template #addons="{ currentSlide, slidesCount }">
+        <template #addons>
           <Navigation v-if="showNavigation">
             <template #next>
               <nuxt-img
-                v-if="!currentSlide"
                 :src="url('right_arrow.svg', 'assets', 'icon')"
                 :width="10"
                 :height="18"
@@ -63,7 +62,6 @@
             </template>
             <template #prev>
               <nuxt-img
-                v-if="currentSlide >= slidesCount"
                 :src="url('left_arrow.svg', 'assets', 'icon')"
                 :width="10"
                 :height="18"
@@ -98,8 +96,8 @@ const props = withDefaults(
   }>(),
   {
     desktopShowItemCount: 4,
-    tabletShowItemCount: 3,
-    mobileShowItemCount: 2,
+    tabletShowItemCount: 2,
+    mobileShowItemCount: 1,
     touchDrag: true,
     mouseDrag: true,
     mainSliderTrigger: false,
