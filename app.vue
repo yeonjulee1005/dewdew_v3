@@ -21,18 +21,20 @@ const { loadMenuData, loadMainData } = useLoadComposable()
 const { loadStackData } = useStackStore()
 const { loadPortfolioData } = usePortfolioStore()
 const { loadLeaveColorData } = useLeaveColorStore()
+const { loadArchiveGroup } = useArchiveStore()
 
-loadMenuData('root')
-loadMenuData('sub')
-loadMenuData('sns')
+await loadMenuData('root')
+await loadMenuData('sub')
+await loadMenuData('sns')
 
-loadMainData('intro')
-loadMainData('resume')
-loadMainData('skills')
-loadMainData('reference')
+await loadMainData('intro')
+await loadMainData('resume')
+await loadMainData('skills')
+await loadMainData('reference')
 
 loadStackData()
 loadPortfolioData()
 loadLeaveColorData()
+loadArchiveGroup()
 
 </script>

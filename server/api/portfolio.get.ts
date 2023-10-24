@@ -5,7 +5,9 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await client
     .from('portfolio')
-    .select('index, title, desc, url, image, thumbnail, alt')
+    .select('orderIndex!inner(index), title, desc, url, image, thumbnail, alt, deleted')
+    .eq('deleted', false)
+    .order('orderIndex(index)', { ascending: true })
 
   if (error) {
     throw createError({ statusMessage: error.message })

@@ -1,0 +1,87 @@
+@use '../../variables' as *;
+
+/**
+* ! Archive Main Style !
+*a
+* ? Shared ?
+*/
+.main-archives-title {
+  position: relative;
+  max-width: $space-1000;
+  width: $space-90vw;
+  margin: 0 auto;
+}
+
+.prev-button {
+  margin: $space-160 0 0 $space-40;
+  z-index: 10;
+  &:focus, &:hover {
+    color: var(--d-text-color);
+    border: $space-1 solid var(--d-bg-main-color);
+    background-color: var(--d-footer-bg-color);
+  }
+}
+
+.main-slider-section {
+  position: relative;
+  margin-bottom: $space-100;
+  .carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .carousel__viewport {
+      margin-top: $space-60;
+      width: calc($space-100vw + $space-900);
+    }
+    .carousel__prev,
+    .carousel__next {
+      margin: $space-100 $space-40;
+      img {
+        width: $space-50;
+        height: $space-50;
+        cursor: pointer;
+      }
+      z-index: 60;
+    }
+    .carousel__pagination {
+      width: $space-30vw;
+      margin-top: $space-50;
+      padding: unset;
+      gap: $space-20;
+      .carousel__pagination-button::after {
+        height: $space-8;
+        width: $space-20;
+        background-color: var(--d-text-color);
+        cursor: pointer;
+      }
+      .carousel__pagination-button--active::after {
+        height: $space-8;
+        width: $space-20;
+        background-color: var(--d-red-color);
+        cursor: pointer;
+      }
+    }
+  }
+  .image-component {
+    cursor: pointer;
+    .thumbnail {
+      width: calc($space-400 + $space-60);
+      height: $space-400;
+      object-fit: cover;
+      border-radius: $space-36;
+    }
+    .text-group {
+      position: absolute;
+      bottom: $space-12;
+      right: calc($space-10vw - $space-60);
+      .title {
+        color: $d-bg-color-00;
+        margin: unset;
+      }
+      .subtitle {
+        color: $d-bg-color-00;
+        margin: unset;
+      }
+    }
+  }
+}
