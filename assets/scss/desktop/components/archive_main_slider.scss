@@ -1,0 +1,30 @@
+@use '../../variables' as *;
+
+/**
+* ! Archive Main Style !
+*a
+* ? Desktop ?
+*/
+.main-archives-title {
+  top: $space-160;
+  @include headline1;
+}
+
+.main-slider-section {
+  .carousel {
+    height: fit-content;
+    padding-top: $space-200;
+  }
+  .image-component {
+    .text-group {
+      .title {
+        @include headline1;
+        text-align: right;
+      }
+      .subtitle {
+        @include headline1;
+        text-align: right;
+      }
+    }
+  }
+}

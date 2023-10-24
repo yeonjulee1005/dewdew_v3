@@ -11,8 +11,10 @@ export const useLoadComposable = () => {
     const { data: menuData }:SerializeObject = await useAsyncData('menuData', async () => {
       const { data, error } = await client
         .from('pageMenu')
-        .select('title, menuType, url, imageUrl')
-
+        .select('orderIndex!inner(index), title, menuType, url, imageUrl, deleted')
+        .eq('deleted', false)
+        .order('orderIndex(index)', { ascending: true })
+      console.log(data)
       if (error) {
         throw createError({ statusMessage: error.message })
       }
@@ -30,8 +32,9 @@ export const useLoadComposable = () => {
     const { data: mainData }:SerializeObject = await useAsyncData('mainData', async () => {
       const { data, error } = await client
         .from('main')
-        .select('index, textType, category, textTitle(textKo, textEn), textDescription(textKo, textEn))')
-        .order('index', { ascending: true })
+        .select('orderIndex!inner(index), textType, category, textTitle(textKo, textEn), textDescription(textKo, textEn)), deleted')
+        .eq('deleted', false)
+        .order('orderIndex(index)', { ascending: true })
 
       if (error) {
         throw createError({ statusMessage: error.message })

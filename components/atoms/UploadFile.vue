@@ -23,7 +23,7 @@
       v-else
       class="el-icon--upload flex-column"
     >
-      <Upload-filled />
+      <Icon name="line-md:cloud-upload-outline-loop" />
       <el-text class="el-upload__text">
         {{ $t('colorsTranslate.uploadFile') }}
         <span class="accent">

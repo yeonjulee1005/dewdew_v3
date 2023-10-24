@@ -26,6 +26,7 @@
   @include meta.load-css('desktop/components/main_skills');
   @include meta.load-css('desktop/components/main_portfolio');
   @include meta.load-css('desktop/components/main_contact');
+  @include meta.load-css('desktop/components/archive_main_slider');
 
   /**
   * *  Page Style *
@@ -47,6 +48,8 @@
   @include meta.load-css('tablet/components/main_skills');
   @include meta.load-css('tablet/components/main_portfolio');
   @include meta.load-css('tablet/components/main_contact');
+  @include meta.load-css('tablet/components/archive_main_slider');
+
 
   /**
   * *  Page Style *
@@ -69,7 +72,8 @@
   @include meta.load-css('mobile/components/main_resume');
   @include meta.load-css('mobile/components/main_skills');
   @include meta.load-css('mobile/components/main_portfolio');
-  @include meta.load-css('tablet/components/main_contact');
+  @include meta.load-css('mobile/components/main_contact');
+  @include meta.load-css('mobile/components/archive_main_slider');
 
   /**
   * *  Page Style *

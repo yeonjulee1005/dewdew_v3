@@ -47,6 +47,11 @@ export default {
     dropperDesc: '그리고 스포이드로 컬러를',
     checkDropper: '확인해주세요.'
   },
+  archives: {
+    title: 'Dewdew History',
+    back: 'Back',
+    historyTitle: 'HISTORY OF'
+  },
   pwa: {
     readyPwa: 'PWA를 사용할 준비가 됬어요!',
     newContent: '새로운 컨첸츠가 있어요! 업데이트 해주세요!',

@@ -1,0 +1,43 @@
+@use '../../variables' as *;
+
+/**
+* ! Archive Main Style !
+*a
+* ? Mobile ?
+*/
+.main-archives-title {
+  top: $space-100;
+  left: $space-20;
+  @include headline2;
+}
+
+.main-slider-section {
+  margin-top: $space-100;
+  .carousel {
+    height: $space-percent-100;
+    .carousel__viewport {
+      width: $space-100vw;
+    }
+    .carousel__prev,
+    .carousel__next {
+      margin: $space-40 $space-40;
+    }
+  }
+  .image-component {
+    .thumbnail {
+      width: $space-80vw;
+      height: $space-80vw;
+    }
+    .text-group {
+      right: calc($space-20vw);
+      .title {
+        @include headline3;
+        text-align: right;
+      }
+      .subtitle {
+        @include headline3;
+        text-align: right;
+      }
+    }
+  }
+}

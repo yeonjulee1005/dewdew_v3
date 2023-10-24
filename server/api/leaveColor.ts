@@ -5,7 +5,8 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await client
     .from('leaveCounterColor')
-    .select('color, percent')
+    .select('color, percent, deleted')
+    .eq('deleted', false)
 
   if (error) {
     throw createError({ statusMessage: error.message })
