@@ -18,10 +18,10 @@
       <div class="resume-texts flex flex-column flex-justify-center gap-10">
         <div class="title-container flex flex-column gap-10">
           <el-text class="title">
-            {{ locale === 'ko' ? resumeTitle?.textTitle.textKo : resumeTitle?.textTitle.textEn }}
+            {{ locale === 'ko' ? resumeTitle?.textTitle.ko : resumeTitle?.textTitle.en }}
           </el-text>
           <el-text class="educate">
-            {{ locale === 'ko' ? educateText?.textTitle.textKo : educateText?.textTitle.textEn }}
+            {{ locale === 'ko' ? educateText?.textTitle.ko : educateText?.textTitle.en }}
           </el-text>
         </div>
         <div
@@ -30,10 +30,10 @@
           class="career-container flex flex-column"
         >
           <el-text class="career-title">
-            {{ locale === 'ko' ? career?.textTitle.textKo : career?.textTitle.textEn }}
+            {{ locale === 'ko' ? career?.textTitle.ko : career?.textTitle.en }}
           </el-text>
           <el-text class="career-desc">
-            {{ locale === 'ko' ? career.textDescription.textKo : career.textDescription.textEn }}
+            {{ locale === 'ko' ? career.textDescription.ko : career.textDescription.en }}
           </el-text>
         </div>
       </div>

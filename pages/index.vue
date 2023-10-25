@@ -47,48 +47,48 @@ useHead({
 
 const mainTitle = computed(() => {
   return mainIntroData.filter(
-    (item: SerializeObject) => item.textType === 'title'
+    (item: SerializeObject) => item.text_type === 'title'
   )[0]
 })
 const mainText = computed(() => {
   return mainIntroData.filter(
-    (item: SerializeObject) => item.textType === 'main'
+    (item: SerializeObject) => item.text_type === 'main'
   )
 })
 const mainScrollText = computed(() => {
   return mainIntroData.filter(
-    (item: SerializeObject) => item.textType === 'scroll'
+    (item: SerializeObject) => item.text_type === 'scroll'
   )[0]
 })
 
 const mainResumeTitle = computed(() => {
   return mainResumeData.filter(
-    (item: SerializeObject) => item.textType === 'title'
+    (item: SerializeObject) => item.text_type === 'title'
   )[0]
 })
 const mainEducateText = computed(() => {
   return mainResumeData.filter(
-    (item: SerializeObject) => item.textType === 'educate'
+    (item: SerializeObject) => item.text_type === 'educate'
   )[0]
 })
 const mainCareerData = computed(() => {
   return mainResumeData.filter(
-    (item: SerializeObject) => item.textType === 'career'
+    (item: SerializeObject) => item.text_type === 'career'
   )
 })
 const mainPortfolioTitle = computed(() => {
   return mainReferenceData.filter(
-    (item: SerializeObject) => item.textType === 'title'
+    (item: SerializeObject) => item.text_type === 'title'
   )[0]
 })
 const mainPortfolioText = computed(() => {
   return mainReferenceData.filter(
-    (item: SerializeObject) => item.textType === 'desc'
+    (item: SerializeObject) => item.text_type === 'desc'
   )[0]
 })
 const mainPortfolioBackground = computed(() => {
   return mainReferenceData.filter(
-    (item: SerializeObject) => item.textType === 'background'
+    (item: SerializeObject) => item.text_type === 'background'
   )[0]
 })
 

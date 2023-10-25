@@ -12,12 +12,13 @@ export const useAlarm = () => {
     })
   }
 
-  const message = (type:any, message:string, showClose:boolean, duration:number) => {
+  const message = (type:any, message:string, showClose:boolean, duration:number, grouping:boolean) => {
     ElMessage({
       type,
       message,
       showClose,
-      duration
+      duration,
+      grouping
     })
   }
 
