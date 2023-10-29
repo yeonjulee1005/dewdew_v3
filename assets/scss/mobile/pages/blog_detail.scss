@@ -1,0 +1,24 @@
+@use '../../variables' as *;
+
+/**
+* ! Blog Detail Page Style !
+*a
+* ? Mobile ?
+*/
+.blog-article {
+  .article-header {
+    flex-direction: column;
+    align-items: flex-start;
+    .time {
+      margin-top: $space-10;
+    }
+  }
+  .article-create-comment {
+    width: $space-80vw;
+    max-width: $space-1000;
+    height: fit-content;
+    .create-form .el-form-item__content .el-input--suffix {
+      width: $space-percent-100;
+    }
+  }
+}

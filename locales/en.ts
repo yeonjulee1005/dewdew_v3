@@ -92,12 +92,12 @@ export default {
     failed: 'Failed..TT',
     welcome: 'Welcome, Dewdew!',
     emptyArticle: 'Empty article..ㅜㅜ',
+    emptyComment: 'Empty comment..ㅜㅜ',
     writeArticle: 'Write article!',
     write: 'Write complete.',
     notAdmin: 'Not admin.',
     leavePage: 'You left the page.',
-    leavePageDesc: 'After 60 seconds, will be redirected to the main page.',
-    usePage: 'Please use the page:(',
+    leavePageDesc: 'After 60 seconds, will be closed this page.',
     moveToMain: 'Moved to the main page:)',
     emailRequire: 'Please enter your email.',
     emailFormat: 'The email format is incorrect.',
@@ -119,7 +119,11 @@ export default {
     imageUploadSmallSize: 'The size can\' exceed 5Mb.',
     youtubeRequire: 'Input youtube link.',
     youtubeFormat: 'Check youtube link format.',
-    unAuthorizedWrite: 'Unauthorized.'
+    unAuthorizedWrite: 'Unauthorized.',
+    alreadyPressLike: 'Already press like ❤️',
+    successPressLike: 'Press like success ❤️',
+    successCreateComment: 'Thank you for writing a comment ❤️',
+    deleteComment: 'Delete comment.'
   },
 
   tiptap: {

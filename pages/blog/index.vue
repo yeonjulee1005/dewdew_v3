@@ -2,6 +2,7 @@
   <div class="blog-lists flex flex-column flex-justify-center flex-align-center">
     <div class="write-button-container flex flex-justify-end">
       <el-button
+        v-if="adminData"
         class="write-blog"
         @click="openCreateArticleDialog"
       >
@@ -40,7 +41,7 @@
       :create-article-trigger="createArticleTrigger"
       :title="$t('messages.writeArticle')"
       @create-article="writeArticle"
-      @close-dialog="closeCreateArticleDialog"
+      @close-dialog="() => createArticleTrigger = false"
     />
   </div>
 </template>
@@ -52,7 +53,7 @@ const client = useSupabaseClient()
 
 const { t } = useLocale()
 
-const { loadBlogData } = useLoadComposable()
+const { loadAdminData, loadBlogData } = useLoadComposable()
 const { notify } = useAlarm()
 
 useHead({
@@ -66,23 +67,13 @@ useHead({
 })
 
 definePageMeta({
-  pageTransition: false,
-  layout: 'default'
+  pageTransition: false
 })
+
+const { data: blogData, refresh: blogRefresh } = await loadBlogData('')
+const { data: adminData } = await loadAdminData()
 
 const createArticleTrigger = ref(false)
-
-const { data: adminData }:SerializeObject = await useAsyncData('adminData', async () => {
-  const { data, error } = await client.from('profiles')
-    .select('*')
-    .eq('id', String(user.value?.id))
-    .single()
-
-  if (error) {
-    throw createError({ statusMessage: error.message })
-  }
-  return data
-})
 
 const openCreateArticleDialog = () => {
   adminData.value.admin
@@ -105,13 +96,5 @@ const writeArticle = async (recordData:Artice) => {
   notify('', 'success', t('messages.write'), true, 3000, 0)
   blogRefresh()
 }
-
-const closeCreateArticleDialog = () => {
-  createArticleTrigger.value = false
-}
-
-const { data: blogData, refresh: blogRefresh } = await loadBlogData('')
-
-console.log(blogData)
 
 </script>

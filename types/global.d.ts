@@ -36,10 +36,12 @@ interface ProgressData {
 }
 
 interface Artice {
-  title: string,
-  desc: string,
-  raw_artice: string,
+  title?: string,
+  desc?: string,
+  raw_artice?: string,
   like: number,
+  deleted?: boolean,
+  update_user_id?: string
 }
 
 interface CreateComment {

@@ -2,10 +2,29 @@ export const useLoadComposable = () => {
   /**
    * ! Load Data !
    */
+  const user = useSupabaseUser()
   const client = useSupabaseClient()
 
   const { updateMenuData } = useMenuStore()
   const { updateMainData } = useMainStore()
+
+  const loadAdminData = async () => {
+    const { data }:SerializeObject = await useAsyncData('AdminData', async () => {
+      const { data, error } = await client
+        .from('profiles')
+        .select('*')
+        .eq('id', String(user.value?.id))
+        .single()
+
+      if (error) {
+        throw createError({ statusMessage: error.message })
+      }
+
+      return data
+    })
+
+    return { data }
+  }
 
   const loadMenuData = async (menuType:string) => {
     const { data: menuData }:SerializeObject = await useAsyncData('menuData', async () => {
@@ -50,7 +69,7 @@ export const useLoadComposable = () => {
   }
 
   const loadBlogData = async (blogId:string) => {
-    const { data, refresh }:SerializeObject = await useAsyncData('mainData', async () => {
+    const { data, refresh }:SerializeObject = await useAsyncData('blogData', async () => {
       if (blogId) {
         const { data, error } = await client
           .from('blog')
@@ -81,9 +100,29 @@ export const useLoadComposable = () => {
     return { data, refresh }
   }
 
+  const loadBlogCommentData = async (blogId:string) => {
+    const { data, refresh }:SerializeObject = await useAsyncData('blogCommentData', async () => {
+      const { data, error } = await client
+        .from('blogComment')
+        .select('id, blog_id, message, name, password, deleted, created_at, updated_at')
+        .eq('blog_id', blogId)
+        .eq('deleted', false)
+        .order('created_at', { ascending: false })
+
+      if (error) {
+        throw createError({ statusMessage: error.message })
+      }
+
+      return data
+    })
+    return { data, refresh }
+  }
+
   return {
+    loadAdminData,
     loadMenuData,
     loadMainData,
-    loadBlogData
+    loadBlogData,
+    loadBlogCommentData
   }
 }

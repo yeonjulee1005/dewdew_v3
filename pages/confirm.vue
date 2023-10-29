@@ -9,10 +9,12 @@
 <script setup lang="ts">
 
 const user = useSupabaseUser()
-const supabase = useSupabaseClient()
+const client = useSupabaseClient()
 
 const { t } = useLocale()
 const { notify } = useAlarm()
+
+const { updateAccessWrite } = useBlogStore()
 
 definePageMeta({
   layout: 'login'
@@ -20,29 +22,33 @@ definePageMeta({
 
 const setUserCoreData = async (userId:string) => {
   const { data: userData }:SerializeObject = await useAsyncData('userData', async () => {
-    const { data } = await useFetch('/api/profiles', {
-      headers: useRequestHeaders(['cookie']),
-      method: 'GET',
-      query: {
-        userId
-      }
-    })
-    return data.value
+    const { data, error } = await client.from('profiles')
+      .select('*')
+      .eq('id', userId)
+      .eq('deleted', false)
+      .single()
+
+    if (error) {
+      throw createError({ statusMessage: error.message })
+    }
+
+    return data
   })
   if (userData.value.admin) {
+    updateAccessWrite(true)
     notify('', 'success', t('messages.welcome'), true, 3000, 0)
     navigateTo('/blog')
   } else {
-    await supabase.auth.signOut()
+    await client.auth.signOut()
     notify('', 'error', t('messages.notAdmin'), true, 3000, 0)
     navigateTo('/')
   }
 }
 
-watch(user, async () => {
+watchEffect(async () => {
   if (user.value) {
     await setUserCoreData(user.value?.id)
   }
-}, { immediate: true })
+})
 
 </script>

@@ -5,7 +5,7 @@
       :effect="activateLike ? 'light' : 'plain'"
       @click="$emit('update-count')"
     >
-      {{ data.like + ' ❤️' }}
+      {{ `${data.like} ❤️` }}
     </el-tag>
   </div>
 </template>

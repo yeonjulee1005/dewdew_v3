@@ -42,7 +42,9 @@ const { mainIntroData, mainResumeData, mainReferenceData } = useMainStore()
 const { portfolioData } = usePortfolioStore()
 
 useHead({
-  meta: [{ property: 'og:title', content: t('openGraph.dewdew', { text: 'dewdew' }) }]
+  meta: [
+    { property: 'og:title', content: t('openGraph.dewdew', { text: 'dewdew' }) }
+  ]
 })
 
 const mainTitle = computed(() => {
