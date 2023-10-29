@@ -19,7 +19,7 @@
         target="_blank"
       >
         <nuxt-img
-          :src="image.imageUrl"
+          :src="image.image_url"
           width="50"
           height="50"
           format="webp"
@@ -35,21 +35,48 @@
       <el-text>
         {{ $t('texts.designed') }}
       </el-text>
-      <el-text>
+      <el-text
+        @click="() => magicLinkDialogTrigger = true"
+      >
         {{ $t('texts.version', { version: config.public.serviceVersion.replaceAll('"', '') }) }}
       </el-text>
     </div>
+    <MagicLinkDialog
+      :visible="magicLinkDialogTrigger"
+      custom-class="magic-link-dialog"
+      :title="$t('dialog.magicLinkTitle')"
+      :double-first-text="$t('texts.send')"
+      :double-second-text="$t('texts.close')"
+      @submit-email="loginMagicLink"
+      @close-dialog="() => magicLinkDialogTrigger = false"
+    />
   </div>
 </template>
 
 <script setup type="ts">
 
+const supabase = useSupabaseClient()
 const config = useRuntimeConfig()
 
 const { mainMenuData, socialMenuData } = useMenuStore()
 
-defineProps({
-  coreData: { type: Object, default: () => null }
-})
+const magicLinkDialogTrigger = ref(false)
+
+const getUrl = () => {
+  let url = config.public.siteUrl ?? 'http://localhost:4500/'
+  url = url.includes('http') ? url : `https://${url}`
+  url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
+  return url.concat('confirm')
+}
+
+const loginMagicLink = async (email) => {
+  const { error } = await supabase.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: getUrl()
+    }
+  })
+  loginNotify(error, t('messages.magicLinkSuccess.title'), t('messages.magicLinkSuccess.description'))
+}
 
 </script>

@@ -1,0 +1,25 @@
+@use '../../variables' as *;
+
+/**
+* ! Blog List Page Style !
+*a
+* ? Mobile ?
+*/
+.blog-lists {
+  .write-button-container {
+    margin-left: unset;
+  }
+  .blog-timeline {
+    padding-left: unset;
+    .blog-card {
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        .like {
+          margin-top: $space-16;
+          margin-left: unset;
+        }
+      }
+    }
+  }
+}

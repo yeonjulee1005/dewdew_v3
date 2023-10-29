@@ -19,10 +19,10 @@ const { thumbImageData } = useArchiveStore()
 useHead({
   title: t('pageTitle.archives'),
   meta: [
-    { property: 'description', content: t('pageTitle.archives') },
+    { property: 'description', content: t('openGraph.archivesDesc') },
     { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.archives') }) },
     { property: 'og:url', content: 'https://www.dewdew.kr/archives/' },
-    { property: 'og:description', content: t('pageTitle.archives') }
+    { property: 'og:description', content: t('openGraph.archivesDesc') }
   ]
 })
 

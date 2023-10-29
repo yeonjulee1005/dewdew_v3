@@ -74,22 +74,22 @@ withDefaults(
 
 const mainSkillsTitle = computed(() => {
   return mainSkillData.filter(
-    (item: SerializeObject) => item.textType === 'title'
+    (item: SerializeObject) => item.text_type === 'title'
   )
 })
 const mainSkillsFirstText = computed(() => {
   return mainSkillData.filter(
-    (item: SerializeObject) => item.textType === 'first'
+    (item: SerializeObject) => item.text_type === 'first'
   )
 })
 const mainSkillsSecondText = computed(() => {
   return mainSkillData.filter(
-    (item: SerializeObject) => item.textType === 'second'
+    (item: SerializeObject) => item.text_type === 'second'
   )
 })
 const mainSkillsThirdText = computed(() => {
   return mainSkillData.filter(
-    (item: SerializeObject) => item.textType === 'third'
+    (item: SerializeObject) => item.text_type === 'third'
   )
 })
 

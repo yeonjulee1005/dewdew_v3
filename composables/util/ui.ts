@@ -1,3 +1,5 @@
+import nameLists from '~/data/commentName'
+
 export const useUi = () => {
   const dayjs = useDayjs()
 
@@ -72,6 +74,16 @@ export const useUi = () => {
     return new Date().toISOString().split('T')
   }
 
+  const generateCommentName = () => {
+    const frontName = nameLists.commentNames.frontName
+    const backName = nameLists.commentNames.backName
+
+    const randomFront = frontName[Math.floor(Math.random() * frontName.length)]
+    const randomBack = backName[Math.floor(Math.random() * backName.length)]
+
+    return randomFront.concat(' ', randomBack)
+  }
+
   return {
     comma,
     uncomma,
@@ -83,6 +95,7 @@ export const useUi = () => {
     removeHtmlTags,
     genUid,
     genFileDate,
-    currentDateIosFormat
+    currentDateIosFormat,
+    generateCommentName
   }
 }

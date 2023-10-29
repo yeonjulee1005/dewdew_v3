@@ -8,28 +8,28 @@
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
     </el-text>
     <el-text
       v-for="(item, index) in skillsFirstText"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
     </el-text>
     <el-text
       v-for="(item, index) in skillsSecondText"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
     </el-text>
     <el-text
       v-for="(item, index) in skillsThirdText"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item?.textTitle.textKo : item?.textTitle.textEn }}
+      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
     </el-text>
     <div class="skills-title-box" />
   </div>
