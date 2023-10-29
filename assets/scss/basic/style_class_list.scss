@@ -79,6 +79,8 @@
 .gap-20 { gap: $space-20; }
 .gap-40 { gap: $space-40; }
 
+.h-full { height: $space-100vh; }
+
 .abs-middle {
   position: absolute;
   top: $space-percent-50;

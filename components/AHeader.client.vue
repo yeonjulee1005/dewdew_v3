@@ -38,7 +38,7 @@
           target="_blank"
         >
           <nuxt-img
-            :src="socialMenuData[0].imageUrl"
+            :src="socialMenuData[0].image_url"
             width="50"
             height="50"
             format="webp"

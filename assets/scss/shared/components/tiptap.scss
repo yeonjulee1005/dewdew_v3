@@ -1,0 +1,181 @@
+@use '../../variables' as *;
+
+/**
+* ! Tiptap Style !
+*a
+* ? Shared ?
+*/
+.tiptap-editor {
+  display: flex;
+  flex-direction: column;
+  max-height: 40rem;
+  width: $space-percent-100;
+  color: var(--d-text-dark-color);
+  background-color: var(--d-bg-white-color);
+  border: $space-2 solid var(--d-text-dark-color);
+  border-radius: 0.75rem;
+  &__header {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    padding: 0.25rem;
+    border-bottom: $space-2 solid var(--d-text-dark-color);
+  }
+  &__content {
+    height: $space-20vh;
+    padding: 0 1rem;
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.floating-menu {
+  margin-bottom: $space-80;
+}
+
+.bubble-menu,
+.floating-menu {
+  display: flex;
+  width: fit-content;
+  background-color: var(--d-bg-white-color);
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  .edit-color-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: $space-24;
+    height: $space-24;
+    margin: 0 $space-12;
+    padding: 0;
+    background-color: transparent;
+    border: $space-2 solid var(--el-border-color);
+    border-radius: $space-4;
+    cursor: pointer;
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    &::-webkit-color-swatch {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+    }
+    &::-moz-color-swatch {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+    }
+  }
+  el-button {
+    width: $space-60;
+    border: none;
+    background: none;
+    color: var(--d-text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 0.2rem;
+    opacity: 0.6;
+    &:hover,
+    &.is-active {
+      opacity: 1;
+    }
+  }
+}
+
+.tiptap-menu-item {
+  width: $space-40;
+  height: $space-30;
+  margin: 0.15rem 0.15rem 0.15rem 0;
+}
+
+.tiptap-text-menu-item {
+  margin: 0.15rem 0.15rem 0.15rem 0;
+}
+
+.first-tiptap-menu-item {
+  width: $space-40;
+  height: $space-30;
+  margin: 0.15rem 0.15rem 0.15rem $space-12;
+}
+
+.ProseMirror {
+  width: $space-percent-100;
+  height: fit-content;
+  margin: $space-50 0 $space-8;
+  padding-top: $space-10;
+  > * + * {
+    margin-top: 0.75em;
+  }
+  @include tiptap-template;
+}
+
+.has-focus {
+  width: $space-percent-100;
+  border-radius: $space-2;
+}
+
+img.has-focus {
+  width: $space-percent-80;
+  padding: $space-20 $space-10
+}
+
+th.has-focus {
+  width: unset;
+}
+
+.character-count {
+  padding: $space-10;
+  .el-text {
+    margin: $space-4;
+    line-height: 1.2;
+    text-align: right;
+    color: var(--d-text-dark-color-deep);
+    align-self: flex-end;
+  }
+}
+
+
+/**
+* ?  Tiptap Menu Popper Style ?
+*/
+.tiptap-editor-group-menu {
+  display: flex;
+  align-items: center;
+  padding: $space-4 $space-8 !important;
+  border-radius: $space-8 !important;
+  .edit-color-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: $space-40;
+    height: $space-30;
+    margin: 0.15rem calc(0.15rem + $space-12) 0 $space-12;
+    padding: 0;
+    background-color: transparent;
+    border-radius: $space-4;
+    cursor: pointer;
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    &::-webkit-color-swatch {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+    }
+    &::-moz-color-swatch {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+.save-icon {
+  width: $space-60;
+  height: $space-60;
+  padding: $space-4;
+  cursor: pointer;
+}

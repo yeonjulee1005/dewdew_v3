@@ -17,7 +17,7 @@ interface IndexSignature {
 interface Menu {
   title: string,
   url: string,
-  menuType: string,
+  menu_type: string,
   icon?: string,
 }
 
@@ -33,4 +33,19 @@ interface ProgressData {
   percentText: string,
   style: string,
   title: string
+}
+
+interface Artice {
+  title?: string,
+  desc?: string,
+  raw_artice?: string,
+  like: number,
+  deleted?: boolean,
+  update_user_id?: string
+}
+
+interface CreateComment {
+  name: string,
+  message: string,
+  password: string
 }

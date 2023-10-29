@@ -4,13 +4,13 @@
     :class="{'activate': portfolioTrigger}"
   >
     <el-text class="section-title">
-      {{ locale === 'ko' ? portfolioTitle?.textTitle.textKo : portfolioTitle?.textTitle.textEn }}
+      {{ locale === 'ko' ? portfolioTitle?.textTitle.ko : portfolioTitle?.textTitle.en }}
     </el-text>
     <el-text class="section-text">
-      {{ locale === 'ko' ? portfolioDescription?.textTitle.textKo : portfolioDescription?.textTitle.textEn }}
+      {{ locale === 'ko' ? portfolioDescription?.textTitle.ko : portfolioDescription?.textTitle.en }}
     </el-text>
     <el-text class="section-bg-text">
-      {{ locale === 'ko' ? portfolioBackground?.textTitle.textKo : portfolioBackground?.textTitle.textEn }}
+      {{ locale === 'ko' ? portfolioBackground?.textTitle.ko : portfolioBackground?.textTitle.en }}
     </el-text>
     <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center mx-80">
       <div

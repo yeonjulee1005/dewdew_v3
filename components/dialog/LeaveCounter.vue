@@ -33,10 +33,6 @@
 
 <script setup lang="ts">
 
-const { t } = useLocale()
-const { path } = useRoute()
-const { notify } = useAlarm()
-
 const { leaveColorData } = useLeaveColorStore()
 
 const props = withDefaults(
@@ -78,10 +74,7 @@ const generateCountInterval = (count: number, delay: number, callback: (countDow
 const countDisplay = (index: number, _count: number): void => {
   if (!index) {
     closeLeaveDialog()
-    path === '/'
-      ? notify('', 'info', t('messages.usePage'), true, 3000, 0)
-      : notify('', 'info', t('messages.moveToMain'), true, 3000, 0)
-    navigateTo('/')
+    window.close()
   }
   count.value = index
 }

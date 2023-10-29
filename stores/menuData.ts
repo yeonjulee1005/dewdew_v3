@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 
 export const useMenuStore = defineStore('menuData', () => {
-  // const client = useSupabaseClient()
   /**
    * ! Pinia State !
    *

@@ -1,0 +1,39 @@
+@use '../../variables' as *;
+
+/**
+* ! Blog List Page Style !
+*a
+* ? Shared ?
+*/
+.blog-lists {
+  position: relative;
+  height: $space-80vh;
+  width: $space-100vw;
+  overflow-x: hidden;
+  .write-button-container {
+    width: $space-80vw;
+    margin-top: $space-100;
+    overflow-y: auto;
+  }
+  .blog-timeline {
+    height: $space-60vh;
+    width: $space-80vw;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .blog-card {
+      cursor: pointer;
+      .title {
+        @include headline4;
+      }
+      .desc {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        @include headline6;
+      }
+    }
+  }
+}

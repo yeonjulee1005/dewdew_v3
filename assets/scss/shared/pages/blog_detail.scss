@@ -1,0 +1,109 @@
+@use '../../variables' as *;
+
+/**
+* ! Blog Detail Page Style !
+*a
+* ? Shared ?
+*/
+.blog-article {
+  position: relative;
+  min-height: $space-80vh;
+  height: fit-content;
+  width: $space-100vw;
+  .article-header {
+    width: $space-80vw;
+    max-width: $space-1000;
+    margin-top: calc($space-100 + $space-20);
+    .route-back {
+      @include headline4;
+      text-decoration: none;
+    }
+    .title {
+      @include headline3;
+      align-self: flex-start;
+      padding-left: $space-10;
+      border-left: $space-4 solid var(--d-bg-blue-color);
+    }
+    .time {
+      @include headline7;
+    }
+  }
+  .article-add-on {
+    width: $space-80vw;
+    max-width: $space-1000;
+    .like {
+      cursor: pointer;
+    }
+  }
+  .article-body {
+    width: $space-80vw;
+    max-width: $space-1000;
+    height: fit-content;
+    padding: $space-30 $space-20;
+    background-color: var(--d-bg-main-color);
+    box-shadow: $space-1 $space-1 $space-2 var(--d-content-bg-color);
+    overflow-y: auto;
+    @include tiptap-template;
+  }
+  .article-comments {
+    width: $space-80vw;
+    max-width: $space-1000;
+    height: fit-content;
+    margin: $space-40 auto;
+    padding: $space-20 0;
+    border-top: $space-2 solid var(--d-text-dark-color);
+    border-bottom: $space-2 solid var(--d-text-dark-color);
+    .comments-title {
+      margin: $space-20 $space-10;
+      @include headline4;
+    }
+    .el-timeline {
+      margin-top: $space-20;
+      .el-timeline-item {
+        width: $space-percent-100;
+        .el-timeline-item__content {
+          @include tiptap-template;
+        }
+      }
+    }
+    .empty-comments {
+      height: $space-100;
+      .el-empty__image {
+        width: $space-80;
+      }
+    }
+  }
+  .article-create-comment {
+    width: $space-80vw;
+    max-width: $space-1000;
+    height: fit-content;
+    .create-form {
+      width: $space-percent-100;
+      .tiptap-editor {
+        &__content {
+          height: calc($space-20vh - $space-30);
+        }
+        .ProseMirror {
+          height: calc($space-percent-100 - $space-36);
+        }
+      }
+    }
+  }
+  .like-button {
+    position: fixed;
+    width: fit-content;
+    bottom: calc($space-20vh + $space-30);
+    right: $space-36;
+    z-index: 10;
+    .fixed-like {
+      opacity: 0;
+      transition: opacity .5s;
+      position: relative;
+      width: fit-content;
+      height: fit-content;
+    }
+    .fixed-like-on {
+      opacity: 1;
+    }
+  }
+}
