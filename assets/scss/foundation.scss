@@ -5,6 +5,7 @@
 */
 
 html {
+  max-width: $space-100vw;
   -webkit-text-size-adjust: $space-percent-100;
   overscroll-behavior: contain;
 }

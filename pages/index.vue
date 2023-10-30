@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <LazyMainIntroBanner
+    <MainIntroBanner
       :main-title="mainTitle"
       :main-text="mainText"
       :main-scroll-text="mainScrollText"
