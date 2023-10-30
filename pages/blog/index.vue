@@ -34,8 +34,8 @@
     />
     <el-backtop
       target=".blog-lists"
-      :bottom="120"
-      :right="30"
+      :bottom="150"
+      :right="36"
     />
     <CreateArticleDialog
       :create-article-trigger="createArticleTrigger"

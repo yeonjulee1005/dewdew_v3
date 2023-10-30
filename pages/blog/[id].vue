@@ -29,8 +29,8 @@
       @click-affix="updateLikeCount"
     />
     <el-backtop
-      :bottom="120"
-      :right="30"
+      :bottom="90"
+      :right="36"
     />
   </div>
 </template>

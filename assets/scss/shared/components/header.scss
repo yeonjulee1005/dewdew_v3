@@ -39,7 +39,7 @@
     .float-mobile-menu {
       position: fixed;
       align-items: center;
-      bottom: $space-20vh;
+      bottom: calc($space-20vh + $space-10vh);
       right: $space-30;
       opacity: .4;
       width: $space-50;
