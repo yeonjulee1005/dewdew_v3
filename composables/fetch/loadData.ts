@@ -27,7 +27,7 @@ export const useLoadComposable = () => {
   }
 
   const loadMenuData = async (menuType:string) => {
-    const { data: menuData }:SerializeObject = await useAsyncData('menuData', async () => {
+    const { data: menuData }:SerializeObject = await useAsyncData(`menuData${menuType}`, async () => {
       const { data, error } = await client
         .from('pageMenu')
         .select('orderIndex!inner(index), title, menu_type, url, image_url, deleted')
@@ -47,7 +47,7 @@ export const useLoadComposable = () => {
     updateMenuData(sortData, menuType)
   }
 
-  const loadMainData = async (category:string) => {
+  const loadMainData = async () => {
     const { data: mainData }:SerializeObject = await useAsyncData('mainData', async () => {
       const { data, error } = await client
         .from('main')
@@ -62,10 +62,7 @@ export const useLoadComposable = () => {
       return data
     })
 
-    const sortData = mainData.value.filter(
-      (item:SerializeObject) => item.category === category
-    )
-    updateMainData(sortData, category)
+    updateMainData(mainData)
   }
 
   const loadBlogData = async (blogId:string) => {
