@@ -27,11 +27,7 @@ await loadMenuData('root')
 await loadMenuData('sub')
 await loadMenuData('sns')
 
-await loadMainData('intro')
-await loadMainData('resume')
-await loadMainData('skills')
-await loadMainData('reference')
-
+loadMainData()
 loadStackData()
 loadPortfolioData()
 loadLeaveColorData()

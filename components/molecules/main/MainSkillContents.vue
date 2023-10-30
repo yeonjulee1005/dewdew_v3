@@ -1,13 +1,13 @@
 <template>
   <div class="main-skills flex flex-column">
-    <LazyMainSkillsDescriptions
+    <MainSkillsDescriptions
       :skills-title="mainSkillsTitle"
       :skills-first-text="mainSkillsFirstText"
       :skills-second-text="mainSkillsSecondText"
       :skills-third-text="mainSkillsThirdText"
       :skills-text-trigger="skillsTextTrigger"
     />
-    <LazyMainSkillsImage
+    <MainSkillsImage
       :skills-image="stackLogoData"
       :skills-bg-trigger="skillsBgTrigger"
     />

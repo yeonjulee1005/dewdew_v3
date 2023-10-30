@@ -20,21 +20,29 @@ export const useMainStore = defineStore('mainData', () => {
    * ! Pinia Actions !
    */
 
-  const updateMainData = (data: SerializeObject[], category:string) => {
-    switch (category) {
-      case 'intro' :
-        mainIntroData.value = data
-        break
-      case 'resume' :
-        mainResumeData.value = data
-        break
-      case 'skills' :
-        mainSkillData.value = data
-        break
-      case 'reference' :
-        mainReferenceData.value = data
-        break
-    }
+  const updateMainData = (data: SerializeObject) => {
+    mainIntroData.value = []
+    mainResumeData.value = []
+    mainSkillData.value = []
+    mainReferenceData.value = []
+
+    if (!data.value) { return }
+    data.value.forEach((item:SerializeObject) => {
+      switch (item.category) {
+        case 'intro' :
+          mainIntroData.value.push(item)
+          break
+        case 'resume' :
+          mainResumeData.value.push(item)
+          break
+        case 'skills' :
+          mainSkillData.value.push(item)
+          break
+        case 'reference' :
+          mainReferenceData.value.push(item)
+          break
+      }
+    })
   }
 
   return {
