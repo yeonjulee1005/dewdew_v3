@@ -92,7 +92,7 @@
   .like-button {
     position: fixed;
     width: fit-content;
-    bottom: calc($space-20vh + $space-30);
+    bottom: $space-20vh;
     right: $space-36;
     z-index: 10;
     .fixed-like {
