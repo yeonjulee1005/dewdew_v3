@@ -26,9 +26,13 @@ export default ({
         { property: 'og:url', content: 'https://www.dewdew.kr' },
         { property: 'og:image', content: 'https://tgtlrqqasaiavynmlxkc.supabase.co/storage/v1/object/public/assets/banner/main_banner.webp' },
         { property: 'og:description', content: '안녕하세요. FE 개발자 이연주입니다.' },
-        { property: 'Imagetoolbar', content: 'no' }
+        { property: 'Imagetoolbar', content: 'no' },
+        { name: 'naver-site-verification', content: '7c406de71b03c1e444a4fe2630a29bd7a8e17559' }
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+      link: [
+        { rel: 'canonical', href: 'https://www.dewdew.dev' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
     }
   },
   loadingIndicator: {

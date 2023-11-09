@@ -23,7 +23,7 @@
       fit="cover"
       :alt="selectPortfolio.alt"
       :img-attrs="{class: 'image'}"
-      @click="navigateTo(selectPortfolio.url, { external: true })"
+      @click="navigateTo(selectPortfolio.url, { open: { target: '_blank' } })"
     />
   </LazyADialog>
 </template>
