@@ -1,17 +1,17 @@
 <template>
   <div class="main">
     <MainIntroBanner
-      :main-title="mainTitle"
-      :main-text="mainText"
-      :main-scroll-text="mainScrollText"
+      :main-title="mainIntroTitle"
+      :main-text="mainIntroText"
+      :main-scroll-text="mainIntroScrollText"
       :main-title-trigger="mainTextTrigger"
       :main-text-trigger="mainTextTrigger"
       :scroll-down-trigger="scrollDownTrigger"
     />
     <MainResumeDesc
       :resume-title="mainResumeTitle"
-      :educate-text="mainEducateText"
-      :career-data="mainCareerData"
+      :educate-text="mainEducatedText"
+      :career-data="mainCareerText"
       :main-resume-trigger="mainResumeTrigger"
     />
     <MainSkillContents
@@ -38,60 +38,13 @@ const { t } = useLocale()
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
-const { mainIntroData, mainResumeData, mainReferenceData } = useMainStore()
+const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = useMainStore()
 const { portfolioData } = usePortfolioStore()
 
 useHead({
   meta: [
     { property: 'og:title', content: t('openGraph.dewdew', { text: 'dewdew' }) }
   ]
-})
-
-const mainTitle = computed(() => {
-  return mainIntroData.filter(
-    (item: SerializeObject) => item.text_type === 'title'
-  )[0]
-})
-const mainText = computed(() => {
-  return mainIntroData.filter(
-    (item: SerializeObject) => item.text_type === 'main'
-  )
-})
-const mainScrollText = computed(() => {
-  return mainIntroData.filter(
-    (item: SerializeObject) => item.text_type === 'scroll'
-  )[0]
-})
-
-const mainResumeTitle = computed(() => {
-  return mainResumeData.filter(
-    (item: SerializeObject) => item.text_type === 'title'
-  )[0]
-})
-const mainEducateText = computed(() => {
-  return mainResumeData.filter(
-    (item: SerializeObject) => item.text_type === 'educate'
-  )[0]
-})
-const mainCareerData = computed(() => {
-  return mainResumeData.filter(
-    (item: SerializeObject) => item.text_type === 'career'
-  )
-})
-const mainPortfolioTitle = computed(() => {
-  return mainReferenceData.filter(
-    (item: SerializeObject) => item.text_type === 'title'
-  )[0]
-})
-const mainPortfolioText = computed(() => {
-  return mainReferenceData.filter(
-    (item: SerializeObject) => item.text_type === 'desc'
-  )[0]
-})
-const mainPortfolioBackground = computed(() => {
-  return mainReferenceData.filter(
-    (item: SerializeObject) => item.text_type === 'background'
-  )[0]
 })
 
 const mainTitleTrigger = ref(true)

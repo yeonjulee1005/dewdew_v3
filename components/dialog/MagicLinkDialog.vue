@@ -4,7 +4,7 @@
     :custom-class="customClass"
     :draggable="false"
     :title="title"
-    :width="width < 420 ? '90dvw' : '400px'"
+    :width="mobileDevice ? '90dvw' : '400px'"
     hide-single-button
     :double-first-text="doubleFirstText"
     :double-second-text="doubleSecondText"
@@ -48,6 +48,7 @@ const { t } = useLocale()
 const { checkEmail } = useUi()
 const { notification } = useDeviceSeparator()
 
+const mobileDevice = computed(() => width.value < 420)
 const magicLinkForm = reactive({
   email: ''
 })

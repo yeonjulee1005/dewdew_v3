@@ -3,14 +3,12 @@
     :dialog-trigger="props.createArticleTrigger"
     :hide-double-button="true"
     :hide-single-button="true"
+    :title="props.title"
     custom-class="create-article-dialog"
     top="15vh"
     width="80vw"
     @close-dialog="emits('close-dialog')"
   >
-    <div class="title ml-40 mb-20">
-      {{ props.title }}
-    </div>
     <el-form
       ref="createArticleRef"
       :model="createArticleData"

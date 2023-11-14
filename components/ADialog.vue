@@ -20,7 +20,7 @@
       <template #header="{ close, titleId, titleClass}">
         <div
           v-if="!hideHeaderTrigger"
-          class="custom-header flex flex-row flex-align-center flex-space-between"
+          class="custom-header flex flex-row flex-align-center flex-space-between ml-20"
         >
           <p :id="titleId" :class="titleClass">
             {{ title }}
@@ -28,6 +28,8 @@
           <Icon
             v-if="!hideCloseButton"
             style="cursor: pointer;"
+            :width="30"
+            :height="30"
             name="ep:close-bold"
             @click="close"
           />
