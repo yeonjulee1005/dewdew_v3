@@ -63,7 +63,7 @@ const { mainMenuData, socialMenuData } = useMenuStore()
 const magicLinkDialogTrigger = ref(false)
 
 const getUrl = () => {
-  let url = config.public.siteUrl ?? 'http://localhost:4500/'
+  let url = config.public.siteUrl ?? 'https://www.dewdew.dev'
   url = url.includes('http') ? url : `https://${url}`
   url = url.charAt(url.length - 1) === '/' ? url : `${url}/`
   return url.concat('confirm')
