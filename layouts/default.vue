@@ -5,7 +5,7 @@
     <AFooter />
     <InstallPwa />
     <LazyLeaveCounter
-      :idle-trigger="idle"
+      :idle-trigger="idleTrigger"
       @dialog-close="(trigger:boolean) => idleTrigger = trigger"
     />
   </div>
