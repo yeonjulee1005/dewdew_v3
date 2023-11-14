@@ -18,7 +18,7 @@
         :class="{'float-mobile-menu flex flex-column': !desktopModeTrigger}"
       >
         <nuxt-link
-          v-for="(menu, index) in menuData"
+          v-for="(menu, index) in mainMenuData"
           :key="index"
           class="menu-links"
           :class="{'mobile-menu-links flex flex-justify-center': !desktopModeTrigger}"
@@ -57,7 +57,7 @@
           <el-option :label="$t('localeMenu.english')" value="en" />
         </el-select>
         <el-switch
-          v-model="darkModeTrigger"
+          v-model="darkSwitch"
           class="dark-mode-switch flex-end"
           inline-prompt
           :active-action-icon="Moon"
@@ -76,28 +76,18 @@ const { locale, setLocaleCookie } = useLocale()
 const { width } = useWindowSize()
 
 const { url } = useImageStorage()
+
 const darkModeTrigger = useDark()
 
 const { mainMenuData, socialMenuData } = useMenuStore()
 
-const menuData = ref<Menu[]>([])
-const desktopModeTrigger = computed(() => { return !(width.value < 1000) })
-const iconList = reactive<IndexSignature>({
-  Home: 'home-filled',
-  Blog: 'notebook',
-  Projects: 'opportunity',
-  Archives: 'picture-filled'
+const darkSwitch = ref(false)
+const desktopModeTrigger = computed(() => width.value > 999)
+
+watchEffect(() => {
+  darkSwitch.value
+    ? darkModeTrigger.value = true
+    : darkModeTrigger.value = false
 })
-
-const addMenuIcon = () => {
-  mainMenuData.map((menu:Menu) =>
-    menuData.value.push({
-      ...menu,
-      icon: iconList[menu.title]
-    })
-  )
-}
-
-addMenuIcon()
 
 </script>

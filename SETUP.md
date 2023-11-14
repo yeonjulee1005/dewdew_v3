@@ -108,7 +108,7 @@ https://supabase.com/dashboard/account/tokens
 ```
 Typescript 자동생성
 ```
-> `bun supabase gen types typescript --project-id "PROJECT Reference ID" --schema public > types/supabase.ts`
+> `bun run supabase gen types typescript --project-id "PROJECT Reference ID" --schema public > types/supabase.ts`
 
 
 

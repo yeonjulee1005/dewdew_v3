@@ -30,10 +30,10 @@ export const useLoadComposable = () => {
     const { data: menuData }:SerializeObject = await useAsyncData(`menuData${menuType}`, async () => {
       const { data, error } = await client
         .from('pageMenu')
-        .select('orderIndex!inner(index), title, menu_type, url, image_url, deleted')
+        .select('orderIndex!inner(index), title, icon, menu_type, url, image_url, deleted')
+        .eq('menu_type', menuType)
         .eq('deleted', false)
         .order('orderIndex(index)', { ascending: true })
-
       if (error) {
         throw createError({ statusMessage: error.message })
       }

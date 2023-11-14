@@ -1,10 +1,10 @@
 <template>
   <div class="main-skills flex flex-column">
     <MainSkillsDescriptions
-      :skills-title="mainSkillsTitle"
-      :skills-first-text="mainSkillsFirstText"
-      :skills-second-text="mainSkillsSecondText"
-      :skills-third-text="mainSkillsThirdText"
+      :skills-title="mainSkillTitle"
+      :skills-first-text="mainSkillFirstText"
+      :skills-second-text="mainSkillSecondText"
+      :skills-third-text="mainSkillThirdText"
       :skills-text-trigger="skillsTextTrigger"
     />
     <MainSkillsImage
@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 
-const { mainSkillData } = useMainStore()
+const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = useMainStore()
 const { stackLogoData } = useStackStore()
 
 withDefaults(
@@ -71,27 +71,6 @@ withDefaults(
     skillsListTrigger: false
   }
 )
-
-const mainSkillsTitle = computed(() => {
-  return mainSkillData.filter(
-    (item: SerializeObject) => item.text_type === 'title'
-  )
-})
-const mainSkillsFirstText = computed(() => {
-  return mainSkillData.filter(
-    (item: SerializeObject) => item.text_type === 'first'
-  )
-})
-const mainSkillsSecondText = computed(() => {
-  return mainSkillData.filter(
-    (item: SerializeObject) => item.text_type === 'second'
-  )
-})
-const mainSkillsThirdText = computed(() => {
-  return mainSkillData.filter(
-    (item: SerializeObject) => item.text_type === 'third'
-  )
-})
 
 const titleLists = {
   frontEndTitle: 'FE Skills',
