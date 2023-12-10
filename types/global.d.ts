@@ -35,10 +35,10 @@ interface ProgressData {
   title: string
 }
 
-interface Artice {
+interface Article {
   title?: string,
   desc?: string,
-  raw_artice?: string,
+  raw_article?: string,
   like: number,
   deleted?: boolean,
   update_user_id?: string

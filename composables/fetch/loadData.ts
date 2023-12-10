@@ -2,29 +2,12 @@ export const useLoadComposable = () => {
   /**
    * ! Load Data !
    */
-  const user = useSupabaseUser()
   const client = useSupabaseClient()
+
+  const { leaveColorData } = storeToRefs(useLeaveColorStore())
 
   const { updateMenuData } = useMenuStore()
   const { updateMainData } = useMainStore()
-
-  const loadAdminData = async () => {
-    const { data }:SerializeObject = await useAsyncData('AdminData', async () => {
-      const { data, error } = await client
-        .from('profiles')
-        .select('*')
-        .eq('id', String(user.value?.id))
-        .single()
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
-    })
-
-    return { data }
-  }
 
   const loadMenuData = async (menuType:string) => {
     const { data: menuData }:SerializeObject = await useAsyncData(`menuData${menuType}`, async () => {
@@ -44,6 +27,7 @@ export const useLoadComposable = () => {
     const sortData = menuData.value.filter(
       (item:SerializeObject) => item.menu_type === menuType
     )
+
     updateMenuData(sortData, menuType)
   }
 
@@ -65,44 +49,31 @@ export const useLoadComposable = () => {
     updateMainData(mainData)
   }
 
-  const loadBlogData = async (blogId:string) => {
-    const { data, refresh }:SerializeObject = await useAsyncData('blogData', async () => {
-      if (blogId) {
-        const { data, error } = await client
-          .from('blog')
-          .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
-          .eq('id', blogId)
-          .eq('deleted', false)
-          .single()
+  const loadTechBlogDetailData = async (techBlogId:string) => {
+    const { data, refresh }:SerializeObject = await useAsyncData('blogDetailData', async () => {
+      const { data, error } = await client
+        .from('tech')
+        .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
+        .eq('id', techBlogId)
+        .eq('deleted', false)
+        .single()
 
-        if (error) {
-          throw createError({ statusMessage: error.message })
-        }
-
-        return data
-      } else {
-        const { data, error } = await client
-          .from('blog')
-          .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
-          .eq('deleted', false)
-          .order('created_at', { ascending: false })
-
-        if (error) {
-          throw createError({ statusMessage: error.message })
-        }
-
-        return data
+      if (error) {
+        throw createError({ statusMessage: error.message })
       }
+
+      return data
     })
+
     return { data, refresh }
   }
 
-  const loadBlogCommentData = async (blogId:string) => {
+  const loadTechBlogCommentData = async (techBlogId:string) => {
     const { data, refresh }:SerializeObject = await useAsyncData('blogCommentData', async () => {
       const { data, error } = await client
-        .from('blogComment')
-        .select('id, blog_id, message, name, password, deleted, created_at, updated_at')
-        .eq('blog_id', blogId)
+        .from('techComment')
+        .select('id, tech_id, message, name, password, deleted, created_at, updated_at')
+        .eq('tech_id', techBlogId)
         .eq('deleted', false)
         .order('created_at', { ascending: false })
 
@@ -115,11 +86,27 @@ export const useLoadComposable = () => {
     return { data, refresh }
   }
 
+  const loadLeaveColorData = () => {
+    const { data } = useAsyncData('loadLeaveColorData', async () => {
+      const { data, error } = await client
+        .from('leaveCounterColor')
+        .select('color, percentage, deleted')
+        .eq('deleted', false)
+
+      if (error) {
+        throw createError({ statusMessage: error.message })
+      }
+      return data
+    })
+
+    leaveColorData.value = data.value
+  }
+
   return {
-    loadAdminData,
     loadMenuData,
     loadMainData,
-    loadBlogData,
-    loadBlogCommentData
+    loadTechBlogDetailData,
+    loadTechBlogCommentData,
+    loadLeaveColorData
   }
 }

@@ -48,14 +48,8 @@ const { t } = useLocale()
 const { checkEmail } = useUi()
 const { notification } = useDeviceSeparator()
 
-const mobileDevice = computed(() => width.value < 420)
-const magicLinkForm = reactive({
-  email: ''
-})
-const visibleSync = ref(false)
-
 const validateEmail = (_rule:any, value:any, callback:any) => {
-  if (value === '') {
+  if (!value) {
     callback(new Error(t('messages.emailRequire')))
   } else if (!checkEmail(value)) {
     return callback(new Error(t('messages.emailFormat')))
@@ -90,15 +84,26 @@ const emits = defineEmits([
   'submit-email'
 ])
 
-watchEffect(() => {
-  visibleSync.value = props.visible
+const magicLinkForm = ref({
+  email: ''
+})
+
+const mobileDevice = computed(() => width.value < 420)
+
+const visibleSync = computed({
+  get: () => props.visible,
+  set: (value) => {
+    if (value) {
+      emits('close-dialog')
+    }
+  }
 })
 
 const submitEmail = async (formEl:FormInstance | undefined) => {
   if (!formEl) { return }
   await formEl.validate((valid) => {
     if (valid) {
-      emits('submit-email', magicLinkForm.email)
+      emits('submit-email', magicLinkForm.value.email)
       closeDialog()
     } else {
       notification(width.value, t('placeholder.inputEmail'), '', 'error', false, true, 1500, 80)
@@ -107,7 +112,6 @@ const submitEmail = async (formEl:FormInstance | undefined) => {
 }
 
 const closeDialog = () => {
-  magicLinkForm.email = ''
   emits('close-dialog')
 }
 

@@ -4,6 +4,7 @@ export default {
     project: '프로젝트',
     colorsTranslate: '내 색상 찾아줘..',
     blog: '블로그',
+    tech: '테크 블로그',
     archives: '아카이브'
   },
   pageSubTitle: {
@@ -13,7 +14,8 @@ export default {
     dewdew: '개발자 이연주 | {text}',
     projectDesc: '토이 프로젝트 리스트 입니다.',
     colorsTranslateDesc: '잊고 지낸 색상코드를 찾아보세요.',
-    blogDesc: 'FE개발자 이연주의 개발 블로그 입니다.',
+    blogDesc: 'FE개발자 이연주의 블로그 입니다.',
+    techDesc: 'FE개발자 이연주의 개발 블로그 입니다.',
     archivesDesc: 'FE개발자 이연주의 사진기록 입니다.'
   },
   texts: {
@@ -22,6 +24,7 @@ export default {
     magicLink: '매직링크',
     noUse: '사용안함',
     write: '글쓰기',
+    edit: '수정하기',
     save: '저장',
     cancel: '취소',
     close: '닫기',
@@ -57,7 +60,7 @@ export default {
     back: 'Back',
     historyTitle: 'HISTORY OF'
   },
-  blog: {
+  tech: {
     write: '글쓰기',
     writeComment: '댓글쓰기',
     articleTitle: '글제목',
@@ -95,6 +98,7 @@ export default {
     emptyComment: '댓글이 없어요..ㅜㅜ',
     writeArticle: '글을 써보자!',
     write: '글쓰기 완료',
+    edit: '수정 완료',
     notAdmin: '관리자가 아니에요.',
     leavePage: '페이지를 이탈하셨네요.',
     leavePageDesc: '재사용 하지 않으면, 60초 후 화면이 닫혀요.',
@@ -123,7 +127,8 @@ export default {
     alreadyPressLike: '이미 좋아요를 눌렀어요 ❤️',
     successPressLike: '좋아요를 눌렀어요 ❤️',
     successCreateComment: '댓글을 작성해주셔서 감사해요 ❤️',
-    deleteComment: '댓글을 삭제하셨군요😢 다시 작성해주실거죠?'
+    deleteComment: '댓글을 삭제하셨군요😢 다시 작성해주실거죠?',
+    successAdmin: '어서와요! 듀듀'
   },
 
   tiptap: {

@@ -20,13 +20,13 @@
         <nuxt-link
           v-for="(menu, index) in mainMenuData"
           :key="index"
-          class="menu-links"
+          class="menu-links flex-align-center"
           :class="{'mobile-menu-links flex flex-justify-center': !desktopModeTrigger}"
           :to="menu.url"
         >
           <Icon
             v-if="!desktopModeTrigger"
-            :name="`ep:${menu.icon}`"
+            :name="`line-md:${menu.icon}`"
           />
           <span v-if="desktopModeTrigger">
             {{ menu.title }}
@@ -53,8 +53,14 @@
           size="small"
           @change="(locale:string) => setLocaleCookie(locale)"
         >
-          <el-option :label="$t('localeMenu.korean')" value="ko" />
-          <el-option :label="$t('localeMenu.english')" value="en" />
+          <el-option
+            :label="$t('localeMenu.korean')"
+            value="ko"
+          />
+          <el-option
+            :label="$t('localeMenu.english')"
+            value="en"
+          />
         </el-select>
         <el-switch
           v-model="darkSwitch"
@@ -82,12 +88,12 @@ const darkModeTrigger = useDark()
 const { mainMenuData, socialMenuData } = useMenuStore()
 
 const darkSwitch = ref(false)
-const desktopModeTrigger = computed(() => width.value > 999)
-
-watchEffect(() => {
-  darkSwitch.value
-    ? darkModeTrigger.value = true
-    : darkModeTrigger.value = false
+const desktopModeTrigger = computed(() => {
+  return width.value > 999
 })
+
+watch(() => darkSwitch.value, (value) => {
+  darkModeTrigger.value = value
+}, { immediate: true })
 
 </script>

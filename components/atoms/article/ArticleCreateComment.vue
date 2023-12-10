@@ -47,7 +47,7 @@
               class="submit-button mt-20"
               @click="submitArticle(createCommentRef)"
             >
-              {{ $t('blog.writeComment') }}
+              {{ $t('tech.writeComment') }}
             </el-button>
           </template>
         </el-input>

@@ -43,7 +43,7 @@
     <PortfolioDialog
       :select-portfolio="selectPortfolio"
       :portfolio-trigger="portfolioDialogTrigger"
-      @close-dialog="() => portfolioDialogTrigger = false"
+      @close:dialog="() => portfolioDialogTrigger = false"
     />
   </div>
 </template>

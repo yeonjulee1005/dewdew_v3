@@ -4,7 +4,7 @@
     :hide-double-button="true"
     :hide-single-button="true"
     custom-class="portfolio-dialog"
-    @close-dialog="() => $emit('close-dialog', false)"
+    @close-dialog="() => $emit('close:dialog', false)"
   >
     <div class="flex flex-column gap-10">
       <el-text class="title mb-default">
@@ -40,14 +40,17 @@ const props = withDefaults(
   }
 )
 
-defineEmits([
-  'close-dialog'
+const emits = defineEmits([
+  'close:dialog'
 ])
 
-const portfolioDialogTrigger = ref(false)
-
-onUpdated(() => {
-  portfolioDialogTrigger.value = props.portfolioTrigger
+const portfolioDialogTrigger = computed({
+  get: () => props.portfolioTrigger,
+  set: (value) => {
+    if (value) {
+      emits('close:dialog', value)
+    }
+  }
 })
 
 </script>

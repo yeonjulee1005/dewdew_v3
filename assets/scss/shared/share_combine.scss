@@ -21,6 +21,7 @@
 @forward './components/main_portfolio';
 @forward './components/main_contact';
 @forward './components/archive_main_slider';
+@forward './components//content_container';
 @forward './components/tiptap';
 
 // @forward './components/a_table';
@@ -32,5 +33,5 @@
 @forward './pages/main';
 @forward './pages/projects';
 @forward './pages/color_translate';
-@forward './pages/blog_list';
-@forward './pages/blog_detail';
+@forward './pages/tech_list';
+@forward './pages/tech_detail';

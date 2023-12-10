@@ -137,98 +137,13 @@ interface SupabaseDataBase {
           }
         ]
       }
-      blog: {
-        Row: {
-          created_at: string
-          deleted: boolean | null
-          desc: string | null
-          id: string
-          like: number | null
-          raw_article: string | null
-          title: string | null
-          update_user_id: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string
-          deleted?: boolean | null
-          desc?: string | null
-          id?: string
-          like?: number | null
-          raw_article?: string | null
-          title?: string | null
-          update_user_id?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string
-          deleted?: boolean | null
-          desc?: string | null
-          id?: string
-          like?: number | null
-          raw_article?: string | null
-          title?: string | null
-          update_user_id?: string | null
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "blog_update_user_id_fkey"
-            columns: ["update_user_id"]
-            isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
-      blogComment: {
-        Row: {
-          blog_id: string | null
-          created_at: string
-          deleted: boolean | null
-          id: string
-          message: string | null
-          name: string | null
-          password: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          blog_id?: string | null
-          created_at?: string
-          deleted?: boolean | null
-          id?: string
-          message?: string | null
-          name?: string | null
-          password?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          blog_id?: string | null
-          created_at?: string
-          deleted?: boolean | null
-          id?: string
-          message?: string | null
-          name?: string | null
-          password?: string | null
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "blogComment_blog_id_fkey"
-            columns: ["blog_id"]
-            isOneToOne: false
-            referencedRelation: "blog"
-            referencedColumns: ["id"]
-          }
-        ]
-      }
       leaveCounterColor: {
         Row: {
           color: string | null
           created_at: string
           deleted: boolean | null
           id: string
-          percent: number | null
+          percentage: number | null
           update_user_id: string | null
           updated_at: string | null
         }
@@ -237,7 +152,7 @@ interface SupabaseDataBase {
           created_at?: string
           deleted?: boolean | null
           id?: string
-          percent?: number | null
+          percentage?: number | null
           update_user_id?: string | null
           updated_at?: string | null
         }
@@ -246,7 +161,7 @@ interface SupabaseDataBase {
           created_at?: string
           deleted?: boolean | null
           id?: string
-          percent?: number | null
+          percentage?: number | null
           update_user_id?: string | null
           updated_at?: string | null
         }
@@ -581,6 +496,91 @@ interface SupabaseDataBase {
           }
         ]
       }
+      tech: {
+        Row: {
+          created_at: string
+          deleted: boolean | null
+          desc: string | null
+          id: string
+          like: number | null
+          raw_article: string | null
+          title: string | null
+          update_user_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          deleted?: boolean | null
+          desc?: string | null
+          id?: string
+          like?: number | null
+          raw_article?: string | null
+          title?: string | null
+          update_user_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          deleted?: boolean | null
+          desc?: string | null
+          id?: string
+          like?: number | null
+          raw_article?: string | null
+          title?: string | null
+          update_user_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tech_update_user_id_fkey"
+            columns: ["update_user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      techComment: {
+        Row: {
+          created_at: string
+          deleted: boolean | null
+          id: string
+          message: string | null
+          name: string | null
+          password: string | null
+          tech_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          deleted?: boolean | null
+          id?: string
+          message?: string | null
+          name?: string | null
+          password?: string | null
+          tech_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          deleted?: boolean | null
+          id?: string
+          message?: string | null
+          name?: string | null
+          password?: string | null
+          tech_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "techComment_tech_id_fkey"
+            columns: ["tech_id"]
+            isOneToOne: false
+            referencedRelation: "tech"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       textDescription: {
         Row: {
           category: string | null
@@ -690,3 +690,83 @@ interface SupabaseDataBase {
     }
   }
 }
+
+// export type Tables<
+//   PublicTableNameOrOptions extends
+//     | keyof (Database["public"]["Tables"] & Database["public"]["Views"])
+//     | { schema: keyof Database },
+//   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+//     ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+//         Database[PublicTableNameOrOptions["schema"]]["Views"])
+//     : never = never
+// > = PublicTableNameOrOptions extends { schema: keyof Database }
+//   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
+//       Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+//       Row: infer R
+//     }
+//     ? R
+//     : never
+//   : PublicTableNameOrOptions extends keyof (Database["public"]["Tables"] &
+//       Database["public"]["Views"])
+//   ? (Database["public"]["Tables"] &
+//       Database["public"]["Views"])[PublicTableNameOrOptions] extends {
+//       Row: infer R
+//     }
+//     ? R
+//     : never
+//   : never
+
+// export type TablesInsert<
+//   PublicTableNameOrOptions extends
+//     | keyof Database["public"]["Tables"]
+//     | { schema: keyof Database },
+//   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+//     ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+//     : never = never
+// > = PublicTableNameOrOptions extends { schema: keyof Database }
+//   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+//       Insert: infer I
+//     }
+//     ? I
+//     : never
+//   : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+//   ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+//       Insert: infer I
+//     }
+//     ? I
+//     : never
+//   : never
+
+// export type TablesUpdate<
+//   PublicTableNameOrOptions extends
+//     | keyof Database["public"]["Tables"]
+//     | { schema: keyof Database },
+//   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+//     ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
+//     : never = never
+// > = PublicTableNameOrOptions extends { schema: keyof Database }
+//   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+//       Update: infer U
+//     }
+//     ? U
+//     : never
+//   : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
+//   ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+//       Update: infer U
+//     }
+//     ? U
+//     : never
+//   : never
+
+// export type Enums<
+//   PublicEnumNameOrOptions extends
+//     | keyof Database["public"]["Enums"]
+//     | { schema: keyof Database },
+//   EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
+//     ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
+//     : never = never
+// > = PublicEnumNameOrOptions extends { schema: keyof Database }
+//   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
+//   : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
+//   ? Database["public"]["Enums"][PublicEnumNameOrOptions]
+//   : never

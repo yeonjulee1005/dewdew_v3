@@ -17,15 +17,13 @@
       @submit.prevent
     >
       <el-form-item
-        :label="$t('blog.articleTitle')"
+        :label="$t('tech.articleTitle')"
         prop="title"
       >
-        <el-input
-          v-model="createArticleData.title"
-        />
+        <el-input v-model="createArticleData.title" />
       </el-form-item>
-      <el-form-item :label="$t('blog.article')">
-        <LazyTextEditor
+      <el-form-item :label="$t('tech.article')">
+        <TextEditor
           :text-limit="300000"
           :full-option="true"
           @update:model-value="updateArticle"
@@ -37,7 +35,7 @@
           type="primary"
           @click="submitArticle(createArticleRef)"
         >
-          {{ $t('blog.write') }}
+          {{ $t('tech.write') }}
         </el-button>
       </el-form-item>
     </el-form>
@@ -50,6 +48,8 @@ import type { FormInstance, FormRules } from 'element-plus'
 const { t } = useLocale()
 
 const { notify } = useAlarm()
+
+const createArticleRef = ref<FormInstance>()
 
 const props = withDefaults(
   defineProps<{
@@ -71,7 +71,6 @@ const createArticleRules = reactive<FormRules>({
   title: [{ required: true, message: t('messages.articleRequire'), trigger: 'blur' }]
 })
 
-const createArticleRef = ref<FormInstance>()
 const createArticleData = reactive({
   title: '',
   desc: '',

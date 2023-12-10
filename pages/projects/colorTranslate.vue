@@ -25,9 +25,7 @@
       label-position="top"
     >
       <el-space fill>
-        <el-form-item
-          :label="$t('colorsTranslate.hexLabel')"
-        >
+        <el-form-item :label="$t('colorsTranslate.hexLabel')">
           <el-input
             v-model="hexColor"
             maxlength="7"
@@ -53,9 +51,7 @@
           </p>
         </el-alert>
       </el-space>
-      <el-form-item
-        :label="$t('colorsTranslate.rgbLabel')"
-      >
+      <el-form-item :label="$t('colorsTranslate.rgbLabel')">
         <el-input
           v-model="rgbColor"
           readonly
@@ -70,9 +66,7 @@
           </template>
         </el-input>
       </el-form-item>
-      <el-form-item
-        :label="$t('colorsTranslate.hslLabel')"
-      >
+      <el-form-item :label="$t('colorsTranslate.hslLabel')">
         <el-input
           v-model="hslColor"
           readonly
@@ -87,9 +81,7 @@
           </template>
         </el-input>
       </el-form-item>
-      <el-form-item
-        :label="$t('colorsTranslate.cmykLabel')"
-      >
+      <el-form-item :label="$t('colorsTranslate.cmykLabel')">
         <el-input
           v-model="cmykColor"
           readonly
@@ -133,13 +125,13 @@ const rgbColor = ref('')
 const hslColor = ref('')
 const cmykColor = ref('')
 
-watch(copied, () => {
+watch(() => copied.value, () => {
   if (copied.value) {
     notify('', 'success', t('message.copy'), true, 1000, 0)
   }
 })
 
-watch(hexColor, () => {
+watch(() => hexColor.value, () => {
   if (textInclude(hexColor.value, 'rgb') || textInclude(hexColor.value, 'hls') || textInclude(hexColor.value, 'cmyk')) {
     hexColor.value = ''
     return
@@ -152,7 +144,7 @@ watch(hexColor, () => {
     hexToRgb(hexColor.value)
     hexToHsl(hexColor.value)
   }
-})
+}, { immediate: true })
 
 const initColorData = () => {
   initColor.value = (Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0').toUpperCase())

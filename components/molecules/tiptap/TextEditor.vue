@@ -28,7 +28,7 @@
         :tiptap-editor="editor"
         :full-option="fullOption"
       />
-      <LazyEditNormalButtons
+      <EditNormalButtons
         v-if="!commentOption"
         :is-active="false"
         :action="() => editor ? imageUploadDialogTrigger = true : null"
@@ -58,42 +58,42 @@
       :tippy-options="{ duration: 100 }"
       :editor="editor"
     >
-      <LazyEditNormalButtons
+      <EditNormalButtons
         :is-active="editor.isActive('bold')"
         :action="() => editor ? editor.chain().focus().toggleBold().run() : null"
         icon-type="ri:bold"
         :tooltip-text="$t('tiptap.bold')"
         :tooltip-trigger="false"
       />
-      <LazyEditNormalButtons
+      <EditNormalButtons
         :is-active="editor.isActive('underline')"
         :action="() => editor ? editor.chain().focus().toggleUnderline().run() : null"
         icon-type="ri:underline"
         :tooltip-text="$t('tiptap.underline')"
         :tooltip-trigger="false"
       />
-      <LazyEditNormalButtons
+      <EditNormalButtons
         :is-active="editor.isActive('highlight')"
         :action="() => editor ? editor.chain().focus().toggleHighlight().run() : null"
         icon-type="ri:mark-pen-fill"
         :tooltip-text="$t('tiptap.marker1')"
         :tooltip-trigger="false"
       />
-      <LazyEditNormalButtons
+      <EditNormalButtons
         :is-active="editor.isActive('link')"
         :action="() => editor ? hyperLinkDialogTrigger = true : null"
         icon-type="ri:link"
         :tooltip-text="$t('tiptap.link')"
         :tooltip-trigger="false"
       />
-      <LazyEditNormalButtons
+      <EditNormalButtons
         :is-active="editor.isActive('link')"
         :action="() => editor ? editor.chain().focus().unsetLink().run() : null"
         icon-type="ri:link-unlink"
         :tooltip-text="$t('tiptap.unlink')"
         :tooltip-trigger="false"
       />
-      <LazyEditNormalButtons
+      <EditNormalButtons
         v-if="fullOption"
         :is-active="editor.isActive({ textAlign: 'center' })"
         :action="() => editor ? editor.chain().focus().setTextAlign('center').run() : null"
@@ -102,8 +102,11 @@
         :tooltip-trigger="false"
       />
     </bubble-menu>
-    <editor-content class="tiptap-editor__content" :editor="editor" />
-    <div v-if="editor" class="character-count flex flex-column">
+    <editor-content
+      class="tiptap-editor__content"
+      :editor="editor"
+    />
+    <div class="character-count flex flex-column">
       <el-text>
         {{ editor.storage.characterCount.characters() + ' / '.concat(String(textLimit), $t('tiptap.characters')) }}
       </el-text>
@@ -111,34 +114,34 @@
         {{ editor.storage.characterCount.words() + ' '.concat($t('tiptap.words')) }}
       </el-text>
     </div>
+    <HyperLinkDialog
+      :visible="hyperLinkDialogTrigger"
+      custom-class="tiptap-hyper-link-dialog"
+      :title="$t('tiptap.dialog.hyperLinkTitle')"
+      :double-first-text="$t('texts.save')"
+      :double-second-text="$t('texts.close')"
+      @submit-link="submitHyperLink"
+      @close="(trigger:boolean) => hyperLinkDialogTrigger = trigger"
+    />
+    <YoutubeLinkDialog
+      :visible="youtubeLinkDialogTrigger"
+      custom-class="tiptap-youtube-link-dialog"
+      :title="$t('tiptap.dialog.youtubeLinkTitle')"
+      :double-first-text="$t('texts.save')"
+      :double-second-text="$t('texts.close')"
+      @submit:link="submitYoutubeLink"
+      @close:dialog="(trigger:boolean) => youtubeLinkDialogTrigger = trigger"
+    />
+    <ImageUploadDialog
+      :visible="imageUploadDialogTrigger"
+      custom-class="tiptap-image-upload-dialog"
+      :title="$t('tiptap.dialog.imageUploadTitle')"
+      :double-first-text="$t('texts.save')"
+      :double-second-text="$t('texts.close')"
+      @submit:image="submitImage"
+      @close:dialog="(trigger:boolean) => imageUploadDialogTrigger = trigger"
+    />
   </div>
-  <HyperLinkDialog
-    :visible="hyperLinkDialogTrigger"
-    custom-class="tiptap-hyper-link-dialog"
-    :title="$t('tiptap.dialog.hyperLinkTitle')"
-    :double-first-text="$t('texts.save')"
-    :double-second-text="$t('texts.close')"
-    @submit-link="submitHyperLink"
-    @close="(trigger:boolean) => hyperLinkDialogTrigger = trigger"
-  />
-  <YoutubeLinkDialog
-    :visible="youtubeLinkDialogTrigger"
-    custom-class="tiptap-youtube-link-dialog"
-    :title="$t('tiptap.dialog.youtubeLinkTitle')"
-    :double-first-text="$t('texts.save')"
-    :double-second-text="$t('texts.close')"
-    @submit-link="submitYoutubeLink"
-    @close="(trigger:boolean) => youtubeLinkDialogTrigger = trigger"
-  />
-  <ImageUploadDialog
-    :visible="imageUploadDialogTrigger"
-    custom-class="tiptap-image-upload-dialog"
-    :title="$t('tiptap.dialog.imageUploadTitle')"
-    :double-first-text="$t('texts.save')"
-    :double-second-text="$t('texts.close')"
-    @submit-image="submitImage"
-    @close="(trigger:boolean) => imageUploadDialogTrigger = trigger"
-  />
 </template>
 
 <script setup lang="ts">
@@ -163,6 +166,7 @@ import tableRow from '@tiptap/extension-table-row'
 
 const { t } = useLocale()
 const { width: windowWidth } = useWindowSize()
+const { BaseCustomMediaNode } = useTiptapImage()
 
 const props = withDefaults(
   defineProps<{
@@ -188,6 +192,13 @@ const editor = ref()
 const hyperLinkDialogTrigger = ref(false)
 const youtubeLinkDialogTrigger = ref(false)
 const imageUploadDialogTrigger = ref(false)
+
+watch(() => props.textData, (value) => {
+  const isSame = editor.value.getHTML() === value
+  if (!isSame) {
+    editor.value.commands.setContent(value, false)
+  }
+})
 
 onMounted(() => {
   editor.value = new Editor({
@@ -235,7 +246,7 @@ onMounted(() => {
         width: 400,
         height: 280
       }),
-      useTiptapImage().BaseCustomMediaNode,
+      BaseCustomMediaNode,
       Color
     ],
     onUpdate: () => {
@@ -243,16 +254,6 @@ onMounted(() => {
     }
   })
 })
-
-watch(
-  () => props.textData,
-  (value) => {
-    const isSame = editor.value?.getHTML() === value
-    if (!isSame) {
-      editor.value?.commands.setContent(value, false)
-    }
-  }
-)
 
 onBeforeUnmount(() => {
   editor.value.destroy()
