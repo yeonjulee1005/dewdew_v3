@@ -1,11 +1,11 @@
 @use '../../variables' as *;
 
 /**
-* ! Blog List Page Style !
+* ! Tech Blog List Page Style !
 *a
 * ? Shared ?
 */
-.blog-lists {
+.tech-lists {
   position: relative;
   height: $space-80vh;
   width: $space-100vw;
@@ -15,14 +15,14 @@
     margin-top: $space-100;
     overflow-y: auto;
   }
-  .blog-timeline {
-    height: $space-60vh;
+  .tech-timeline {
+    max-height: $space-60vh;
     width: $space-80vw;
     scrollbar-width: none;
     ::-webkit-scrollbar {
       display: none;
     }
-    .blog-card {
+    .tech-card {
       cursor: pointer;
       .title {
         @include headline4;
@@ -34,6 +34,9 @@
         overflow: hidden;
         @include headline6;
       }
+    }
+    .tech-pagination {
+      height: $space-60;
     }
   }
 }

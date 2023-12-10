@@ -10,24 +10,8 @@ export const useLeaveColorStore = defineStore('leaveColorData', () => {
 
   const leaveColorData = ref<SerializeObject>()
 
-  /**
-   * ! Pinia Actions !
-   */
-
-  const loadLeaveColorData = async () => {
-    const { data: color }:SerializeObject = await useAsyncData('leaveColorData', async () => {
-      const { data } = await useFetch('/api/leaveColor', {
-        headers: useRequestHeaders(['cookie']),
-        method: 'GET'
-      })
-      return data
-    })
-    leaveColorData.value = color
-  }
-
   return {
-    leaveColorData,
-    loadLeaveColorData
+    leaveColorData
   }
 }, {
   persist: true

@@ -22,7 +22,10 @@
           v-if="!hideHeaderTrigger"
           class="custom-header flex flex-row flex-align-center flex-space-between ml-20"
         >
-          <p :id="titleId" :class="titleClass">
+          <p
+            :id="titleId"
+            :class="titleClass"
+          >
             {{ title }}
           </p>
           <Icon

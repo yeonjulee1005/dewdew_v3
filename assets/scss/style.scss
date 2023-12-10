@@ -33,8 +33,8 @@
   */
   @include meta.load-css('desktop/pages/projects');
   @include meta.load-css('desktop/pages/color_translate');
-  @include meta.load-css('desktop/pages/blog_list');
-  @include meta.load-css('desktop/pages/blog_detail');
+  @include meta.load-css('desktop/pages/tech_list');
+  @include meta.load-css('desktop/pages/tech_detail');
 }
 
 /**
@@ -59,8 +59,8 @@
   @include meta.load-css('tablet/pages/404');
   @include meta.load-css('tablet/pages/projects');
   @include meta.load-css('tablet/pages/color_translate');
-  @include meta.load-css('tablet/pages/blog_list');
-  @include meta.load-css('tablet/pages/blog_detail');
+  @include meta.load-css('tablet/pages/tech_list');
+  @include meta.load-css('tablet/pages/tech_detail');
 }
 
 /**
@@ -85,6 +85,6 @@
   @include meta.load-css('mobile/pages/404');
   @include meta.load-css('mobile/pages/projects');
   @include meta.load-css('mobile/pages/color_translate');
-  @include meta.load-css('mobile/pages/blog_list');
-  @include meta.load-css('mobile/pages/blog_detail');
+  @include meta.load-css('mobile/pages/tech_list');
+  @include meta.load-css('mobile/pages/tech_detail');
 }

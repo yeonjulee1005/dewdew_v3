@@ -26,9 +26,7 @@
       :portfolio-image-data="portfolioData"
       :portfolio-trigger="true"
     />
-    <MainContact
-      :contact-trigger="contactTrigger"
-    />
+    <MainContact :contact-trigger="contactTrigger" />
   </div>
 </template>
 

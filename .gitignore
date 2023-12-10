@@ -18,6 +18,7 @@ logs
 .DS_Store
 .fleet
 .idea
+.obsidian
 
 # Local env files
 .env

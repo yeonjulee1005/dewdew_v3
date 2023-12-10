@@ -1,0 +1,10 @@
+@use '../../variables' as *;
+
+/**
+* ! Tech Blog Detail Page Style !
+*a
+* ? Desktop ?
+*/
+.tech-article .article-create-comment .create-form .el-form-item__content .el-input--suffix {
+  width: $space-30vw;
+}

@@ -43,7 +43,11 @@
           </el-button>
         </div>
       </div>
-      <Icon :width="60" :height="60" name="ic:round-install-desktop" />
+      <Icon
+        :width="60"
+        :height="60"
+        name="ic:round-install-desktop"
+      />
     </div>
   </div>
 </template>

@@ -1,8 +1,12 @@
 <template>
   <div class="not-found">
     <div class="desc abs-middle">
-      <h1> {{ staticTexts.title }} </h1>
-      <p> {{ staticTexts.description }} </p>
+      <h1>
+        {{ staticTexts.title }}
+      </h1>
+      <p>
+        {{ staticTexts.description }}
+      </p>
       <nuxt-link to="/">
         {{ staticTexts.button }}
       </nuxt-link>

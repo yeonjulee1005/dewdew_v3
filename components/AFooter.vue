@@ -35,9 +35,7 @@
       <el-text>
         {{ $t('texts.designed') }}
       </el-text>
-      <el-text
-        @click="() => magicLinkDialogTrigger = true"
-      >
+      <el-text @click="() => magicLinkDialogTrigger = true">
         {{ $t('texts.version', { version: config.public.serviceVersion.replaceAll('"', '') }) }}
       </el-text>
     </div>
@@ -70,13 +68,17 @@ const getUrl = () => {
 }
 
 const loginMagicLink = async (email) => {
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo: getUrl()
-    }
-  })
-  loginNotify(error, t('messages.magicLinkSuccess.title'), t('messages.magicLinkSuccess.description'))
+  const { error } = await supabase.auth
+    .signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: getUrl()
+      }
+    })
+
+  if (error) {
+    throw createError({ statusMessage: error.message })
+  }
 }
 
 </script>

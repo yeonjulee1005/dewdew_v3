@@ -49,13 +49,12 @@ export const useUi = () => {
     }
   }
 
-  const copyClipBoard = (val:string) => {
-    const text = document.createElement('textarea')
-    document.body.appendChild(text)
-    text.value = val
-    text.select()
-    document.execCommand('copy')
-    document.body.removeChild(text)
+  const copyClipBoard = async (val:string) => {
+    try {
+      await navigator.clipboard.writeText(val)
+    } catch (err) {
+      console.error('클립보드 복사에 실패했습니다.', err)
+    }
   }
 
   const removeHtmlTags = (text:string) => {

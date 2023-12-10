@@ -2,7 +2,7 @@
 
 import packageJson from './package.json'
 
-export default ({
+export default defineNuxtConfig({
   devtools: {
     enabled: true
   },
@@ -22,26 +22,23 @@ export default ({
       ]
     }
   },
-  loadingIndicator: {
-    name: 'chasing-dots',
-    color: 'purple',
-    background: 'green'
-  },
   supabase: {
     redirect: false,
-    // redirectOptions: {
-    //   login: '/login',
-    //   callback: '/confirm',
-    //   exclude: [
-    //     '/',
-    //     '/blog',
-    //     '/blog/*',
-    //     '/projects',
-    //     '/projects/*',
-    //     '/archives',
-    //     '/archives/*'
-    //   ]
-    // },
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: [
+        '/',
+        '/tech',
+        '/tech/*',
+        '/blog',
+        '/blog/*',
+        '/projects',
+        '/projects/*',
+        '/archives',
+        '/archives/*'
+      ]
+    },
     clientOptions: {
       auth: {
         flowType: 'pkce',
@@ -53,17 +50,20 @@ export default ({
   },
   modules: [
     '@nuxt/devtools',
-    '@vite-pwa/nuxt',
-    '@vueuse/nuxt',
+    '@nuxt/content',
     '@nuxtjs/robots',
     '@nuxtjs/supabase',
+    '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/i18n',
     '@nuxt/image',
+    'nuxt-icon',
+    'nuxt-simple-sitemap',
+    '@vite-pwa/nuxt',
+    '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     '@element-plus/nuxt',
-    'nuxt-icon',
     'dayjs-nuxt'
   ],
   css: [
@@ -85,6 +85,15 @@ export default ({
       'stores',
       'stores/**'
     ]
+  },
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-light',
+        dark: 'github-dark',
+        sepia: 'dracula-soft'
+      }
+    }
   },
   pwa: {
     registerType: 'autoUpdate',
@@ -149,8 +158,15 @@ export default ({
     shim: false
   },
   robots: {
-    UserAgent: '*',
-    Allow: '/'
+    rules: [
+      {
+        UserAgent: '*',
+        Allow: '/'
+      }
+    ]
+  },
+  site: {
+    url: 'https://www.dewdew.dev'
   },
   elementPlus: {
     importStyle: 'scss',

@@ -13,9 +13,7 @@
         @mouseleave="visible = false"
         @click="clickAction"
       >
-        <el-text
-          :style="{ fontFamily: fontFamilyName }"
-        >
+        <el-text :style="{ fontFamily: fontFamilyName }">
           {{ text }}
         </el-text>
       </el-button>

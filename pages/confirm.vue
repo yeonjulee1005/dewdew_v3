@@ -14,41 +14,40 @@ const client = useSupabaseClient()
 const { t } = useLocale()
 const { notify } = useAlarm()
 
-const { updateAccessWrite } = useBlogStore()
+const { adminAccess } = storeToRefs(useTechStore())
 
 definePageMeta({
   layout: 'login'
 })
 
 const setUserCoreData = async (userId:string) => {
-  const { data: userData }:SerializeObject = await useAsyncData('userData', async () => {
-    const { data, error } = await client.from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .eq('deleted', false)
-      .single()
+  const { data, error } = await client
+    .from('profiles')
+    .select('admin')
+    .eq('id', userId)
+    .eq('deleted', false)
+    .single()
 
-    if (error) {
-      throw createError({ statusMessage: error.message })
-    }
+  if (error) {
+    throw createError({ statusMessage: error.message })
+  }
 
-    return data
-  })
-  if (userData.value.admin) {
-    updateAccessWrite(true)
+  if (data.admin) {
+    adminAccess.value = data.admin
     notify('', 'success', t('messages.welcome'), true, 3000, 0)
-    navigateTo('/blog')
+    navigateTo('/tech')
   } else {
     await client.auth.signOut()
     notify('', 'error', t('messages.notAdmin'), true, 3000, 0)
     navigateTo('/')
   }
+  return data
 }
 
-watchEffect(async () => {
+watch(() => user.value, async () => {
   if (user.value) {
     await setUserCoreData(user.value?.id)
   }
-})
+}, { immediate: true })
 
 </script>
