@@ -17,11 +17,21 @@
         v-for="item in techData.article"
         :key="item.id"
         center
-        :timestamp="dayjs(item.created_at).format('YYYY-MM-DD HH:mm:ss')"
         :color="item.like > 10 ? '#C74436' : '#D3E3D2'"
         placement="top"
         @click="() => navigateTo(`/tech/${item.id}`)"
       >
+        <NuxtTime
+          :datetime="item.created_at"
+          :locale="locale"
+          class="time flex mb-default"
+          year="numeric"
+          month="long"
+          day="numeric"
+          hour="numeric"
+          minute="numeric"
+          second="numeric"
+        />
         <LazyCardComponent :card-item="item" />
       </el-timeline-item>
       <el-pagination
@@ -62,7 +72,7 @@
 
 <script setup lang="ts">
 
-const dayjs = useDayjs()
+const { locale } = useLocale()
 
 const user = useSupabaseUser()
 const client = useSupabaseClient()

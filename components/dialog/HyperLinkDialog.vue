@@ -78,7 +78,7 @@ const props = withDefaults(
 
 const emits = defineEmits([
   'close:dialog',
-  'submit-link'
+  'submit:link'
 ])
 
 const hyperLinkForm = ref({
@@ -89,8 +89,7 @@ const visibleSync = computed({
   get: () => props.visible,
   set: (value) => {
     if (value) {
-      hyperLinkForm.value.link = ''
-      emits('close:dialog', value)
+      visibleSync.value = value
     }
   }
 })
@@ -99,7 +98,7 @@ const submitLink = async (formEl:FormInstance | undefined) => {
   if (!formEl) { return }
   await formEl.validate((valid) => {
     if (valid) {
-      emits('submit-link', hyperLinkForm.value.link)
+      emits('submit:link', hyperLinkForm.value.link)
       closeDialog(false)
       formEl.resetFields()
     } else {

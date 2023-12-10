@@ -28,6 +28,14 @@
 * ? Text Editor (Tiptap) Mixins ?
 */
 @mixin tiptap-template {
+  a {
+    text-decoration: none;
+    color: var(--d-yellow-color-deep);
+    &:hover {
+      text-decoration: underline;
+      color: var(--d-yellow-color);
+    }
+  }
   p {
     line-height: 1.7rem;
   }
@@ -59,11 +67,11 @@
     font-size: 0.9rem;
     padding: 0.25em;
     border-radius: 0.25em;
-    background-color: var(--el-bg-color);
+    background-color: var(--d-bg-green-color-deep);
     box-decoration-break: clone;
   }
   pre {
-    background-color: var(--el-bg-color);
+    background-color: var(--d-yellow-color);
     font-family: JetBrainsMono, monospace;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;

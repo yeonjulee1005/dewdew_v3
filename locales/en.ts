@@ -150,6 +150,7 @@ export default {
     link: 'Link',
     unlink: 'Unlink',
     code: 'Code',
+    codeBlock: 'Code block',
     youtube: 'Youtube',
     pretendard: 'Pretendard',
     dungGeunMo: 'DungGeunMo',

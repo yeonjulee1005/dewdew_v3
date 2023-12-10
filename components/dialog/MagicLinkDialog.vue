@@ -94,7 +94,7 @@ const visibleSync = computed({
   get: () => props.visible,
   set: (value) => {
     if (value) {
-      emits('close-dialog')
+      visibleSync.value = value
     }
   }
 })
