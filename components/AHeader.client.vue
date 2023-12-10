@@ -81,16 +81,14 @@ import { Sunny, Moon } from '@element-plus/icons-vue'
 const { locale, setLocaleCookie } = useLocale()
 const { width } = useWindowSize()
 
-const { url } = useImageStorage()
-
 const darkModeTrigger = useDark()
 
 const { mainMenuData, socialMenuData } = useMenuStore()
+const { url } = useImageStorage()
 
 const darkSwitch = ref(false)
-const desktopModeTrigger = computed(() => {
-  return width.value > 999
-})
+
+const desktopModeTrigger = computed(() => width.value > 999)
 
 watch(() => darkSwitch.value, (value) => {
   darkModeTrigger.value = value

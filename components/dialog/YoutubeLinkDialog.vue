@@ -8,8 +8,8 @@
     :double-second-text="doubleSecondText"
     width="360px"
     @click-first-button="submitLink(youtubeLinkFormRef)"
-    @click-second-button="closeDialog"
-    @close-dialog="closeDialog"
+    @click-second-button="closeDialog(false)"
+    @close-dialog="closeDialog(false)"
   >
     <el-form
       ref="youtubeLinkFormRef"
@@ -89,8 +89,7 @@ const visibleSync = computed({
   get: () => props.visible,
   set: (value) => {
     if (value) {
-      youtubeLinkForm.value.link = ''
-      emits('close:dialog', value)
+      visibleSync.value = value
     }
   }
 })
@@ -109,8 +108,8 @@ const submitLink = async (formEl:FormInstance | undefined) => {
 }
 
 const closeDialog = (trigger:boolean) => {
-  youtubeLinkForm.value.link = ''
   emits('close:dialog', trigger)
+  youtubeLinkForm.value.link = ''
 }
 
 </script>
