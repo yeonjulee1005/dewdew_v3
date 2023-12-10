@@ -1,9 +1,16 @@
 <template>
-  <NuxtLayout>
+  <div>
     <VitePwaManifest />
-    <NuxtLoadingIndicator :height="5" />
-    <NuxtPage />
-  </NuxtLayout>
+    <NuxtLayout>
+      <div>
+        <NuxtLoadingIndicator
+          :height="5"
+          color="repeating-linear-gradient(to right,#bdbdbd 0%,#cb8a80 100%)"
+        />
+        <NuxtPage />
+      </div>
+    </NuxtLayout>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -14,11 +21,10 @@ provide(ID_INJECTION_KEY, {
   current: 0
 })
 
-const { loadMenuData, loadMainData } = useLoadComposable()
+const { loadMenuData, loadMainData, loadLeaveColorData } = useLoadComposable()
 
 const { loadStackData } = useStackStore()
 const { loadPortfolioData } = usePortfolioStore()
-const { loadLeaveColorData } = useLeaveColorStore()
 const { loadArchiveGroup } = useArchiveStore()
 
 const seoTitle = 'Developer Dewdew | 개발자 이연주'

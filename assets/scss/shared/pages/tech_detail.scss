@@ -1,11 +1,11 @@
 @use '../../variables' as *;
 
 /**
-* ! Blog Detail Page Style !
+* ! Tech Blog Detail Page Style !
 *a
 * ? Shared ?
 */
-.blog-article {
+.tech-article {
   position: relative;
   min-height: $space-80vh;
   height: fit-content;
@@ -25,7 +25,15 @@
       border-left: $space-4 solid var(--d-bg-blue-color);
     }
     .time {
+      width: $space-percent-100;
       @include headline7;
+    }
+  }
+  .button-group {
+    width: $space-80vw;
+    max-width: $space-1000;
+    .edit-blog {
+      align-self: flex-end;
     }
   }
   .article-add-on {

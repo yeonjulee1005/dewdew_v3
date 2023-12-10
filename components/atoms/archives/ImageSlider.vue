@@ -39,7 +39,10 @@
               </p>
             </div>
           </nuxt-link>
-          <div v-else class="image-component">
+          <div
+            v-else
+            class="image-component"
+          >
             <nuxt-picture
               :src="image.url"
               width="360"

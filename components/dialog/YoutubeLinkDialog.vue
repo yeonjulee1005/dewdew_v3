@@ -45,11 +45,6 @@ const { t } = useLocale()
 const { checkYoutubeLink } = useUi()
 const { notify } = useAlarm()
 
-const youtubeLinkForm = reactive({
-  link: ''
-})
-const visibleSync = ref(false)
-
 const validateLink = (_rule:any, value:any, callback:any) => {
   if (!value) {
     callback(new Error(t('messages.youtubeRequire')))
@@ -82,19 +77,29 @@ const props = withDefaults(
 )
 
 const emits = defineEmits([
-  'close',
-  'submit-link'
+  'close:dialog',
+  'submit:link'
 ])
 
-watchEffect(() => {
-  visibleSync.value = props.visible
+const youtubeLinkForm = ref({
+  link: ''
+})
+
+const visibleSync = computed({
+  get: () => props.visible,
+  set: (value) => {
+    if (value) {
+      youtubeLinkForm.value.link = ''
+      emits('close:dialog', value)
+    }
+  }
 })
 
 const submitLink = async (formEl:FormInstance | undefined) => {
   if (!formEl) { return }
   await formEl.validate((valid) => {
     if (valid) {
-      emits('submit-link', youtubeLinkForm.link)
+      emits('submit:link', youtubeLinkForm.value.link)
       closeDialog(false)
       formEl.resetFields()
     } else {
@@ -104,8 +109,8 @@ const submitLink = async (formEl:FormInstance | undefined) => {
 }
 
 const closeDialog = (trigger:boolean) => {
-  youtubeLinkForm.link = ''
-  emits('close', trigger)
+  youtubeLinkForm.value.link = ''
+  emits('close:dialog', trigger)
 }
 
 </script>

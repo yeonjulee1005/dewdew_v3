@@ -8,23 +8,26 @@
     {
       "files": ["*.scss", "*.vue", "**/*.vue"],
       "rules": {
-        "no-invalid-position-at-import-rule": null,
-        "font-family-no-missing-generic-family-keyword": true,
-        "block-no-empty": null,
         "property-no-vendor-prefix": null,
-        "declaration-block-no-redundant-longhand-properties": null,
+        "no-invalid-position-at-import-rule": null,
+        "font-family-no-missing-generic-family-keyword": null,
+        "block-no-empty": null,
         "selector-class-pattern": null, 
         "color-no-invalid-hex": true,
         "color-function-notation": "modern",
         "font-family-no-duplicate-names": true,
         "declaration-block-no-duplicate-properties": true,
+        "declaration-block-no-redundant-longhand-properties": null,
         "declaration-block-no-duplicate-custom-properties": true,
         "no-duplicate-at-import-rules": true,
+        "value-no-vendor-prefix": null,
         "no-descending-specificity": null,
         "rule-empty-line-before": null,
         "declaration-empty-line-before": "never",
         "at-rule-empty-line-before": "never",
-        "scss/at-import-partial-extension": ["always", { "except": ["scss"] }]
+        "scss/at-import-partial-extension": [
+          "always", { "except": ["scss"] }
+        ]
       }
     }
   ]

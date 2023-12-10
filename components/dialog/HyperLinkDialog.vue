@@ -45,11 +45,6 @@ const { t } = useLocale()
 const { checkHyperLink } = useUi()
 const { notify } = useAlarm()
 
-const hyperLinkForm = reactive({
-  link: ''
-})
-const visibleSync = ref(false)
-
 const validateLink = (_rule:any, value:any, callback:any) => {
   if (!value) {
     callback(new Error(t('messages.linkRequire')))
@@ -82,19 +77,29 @@ const props = withDefaults(
 )
 
 const emits = defineEmits([
-  'close',
+  'close:dialog',
   'submit-link'
 ])
 
-watchEffect(() => {
-  visibleSync.value = props.visible
+const hyperLinkForm = ref({
+  link: ''
+})
+
+const visibleSync = computed({
+  get: () => props.visible,
+  set: (value) => {
+    if (value) {
+      hyperLinkForm.value.link = ''
+      emits('close:dialog', value)
+    }
+  }
 })
 
 const submitLink = async (formEl:FormInstance | undefined) => {
   if (!formEl) { return }
   await formEl.validate((valid) => {
     if (valid) {
-      emits('submit-link', hyperLinkForm.link)
+      emits('submit-link', hyperLinkForm.value.link)
       closeDialog(false)
       formEl.resetFields()
     } else {
@@ -104,8 +109,8 @@ const submitLink = async (formEl:FormInstance | undefined) => {
 }
 
 const closeDialog = (trigger:boolean) => {
-  emits('close', trigger)
-  hyperLinkForm.link = ''
+  emits('close:dialog', trigger)
+  hyperLinkForm.value.link = ''
 }
 
 </script>

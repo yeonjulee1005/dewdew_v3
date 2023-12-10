@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 
-const { leaveColorData } = useLeaveColorStore()
+const { leaveColorData } = storeToRefs(useLeaveColorStore())
 
 const props = withDefaults(
   defineProps<{
@@ -48,14 +48,15 @@ const emits = defineEmits([
   'dialog-close'
 ])
 
-const leaveDialogTrigger = ref(false)
+const leaveDialogTrigger = computed({
+  get: () => props.idleTrigger,
+  set: (value) => {
+    leaveDialogTrigger.value = value
+  }
+})
 const count = ref(60)
 
-onUpdated(() => {
-  leaveDialogTrigger.value = props.idleTrigger
-})
-
-watch(leaveDialogTrigger, () => {
+watch(() => leaveDialogTrigger.value, () => {
   if (leaveDialogTrigger.value) {
     generateCountInterval(0, 1000, countDisplay)
   }

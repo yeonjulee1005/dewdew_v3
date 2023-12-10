@@ -4,6 +4,7 @@ export default {
     project: 'Project',
     colorsTranslate: 'Find my color..',
     blog: 'Blog',
+    tech: 'Tech Blog',
     archives: 'Archives'
   },
   pageSubTitle: {
@@ -13,7 +14,8 @@ export default {
     dewdew: 'Developer Yeonju | {text}',
     projectDesc: '토이 프로젝트 리스트 입니다.',
     colorsTranslateDesc: '잊고 지낸 색상코드를 찾아보세요.',
-    blogDesc: 'FE개발자 이연주의 개발 블로그 입니다.',
+    blogDesc: 'FE개발자 이연주의 블로그 입니다.',
+    techDesc: 'FE개발자 이연주의 개발 블로그 입니다.',
     archivesDesc: 'FE개발자 이연주의 사진기록 입니다.'
   },
   texts: {
@@ -22,6 +24,7 @@ export default {
     magicLink: 'Magic link',
     noUse: 'No use',
     write: 'Write',
+    edit: 'Edit',
     save: 'Save',
     cancel: 'Cancel',
     close: 'Close',
@@ -56,7 +59,7 @@ export default {
     back: 'Back',
     historyTitle: 'HISTORY OF'
   },
-  blog: {
+  tech: {
     write: '글쓰기',
     writeComment: '댓글쓰기',
     articleTitle: '글제목',
@@ -95,6 +98,7 @@ export default {
     emptyComment: 'Empty comment..ㅜㅜ',
     writeArticle: 'Write article!',
     write: 'Write complete.',
+    edit: 'Edit complete.',
     notAdmin: 'Not admin.',
     leavePage: 'You left the page.',
     leavePageDesc: 'After 60 seconds, will be closed this page.',
@@ -123,7 +127,8 @@ export default {
     alreadyPressLike: 'Already press like ❤️',
     successPressLike: 'Press like success ❤️',
     successCreateComment: 'Thank you for writing a comment ❤️',
-    deleteComment: 'Delete comment.'
+    deleteComment: 'Delete comment.',
+    successAdmin: 'Welcome! Dewdew'
   },
 
   tiptap: {

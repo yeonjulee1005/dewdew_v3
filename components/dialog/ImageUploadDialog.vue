@@ -27,7 +27,10 @@
           :offset="8"
           placement="bottom"
         >
-          <Icon class="save-icon" name="ri:upload-cloud-2-line" />
+          <Icon
+            class="save-icon"
+            name="ri:upload-cloud-2-line"
+          />
         </el-tooltip>
       </template>
       <template #file="{ file }">
@@ -40,13 +43,17 @@
         </div>
       </template>
     </el-upload>
-    <el-radio-group
-      v-model="imageHyperLinkTrigger"
-    >
-      <el-radio :label="true" size="large">
+    <el-radio-group v-model="imageHyperLinkTrigger">
+      <el-radio
+        :label="true"
+        size="large"
+      >
         {{ $t('texts.insertLink') }}
       </el-radio>
-      <el-radio :label="false" size="large">
+      <el-radio
+        :label="false"
+        size="large"
+      >
         {{ $t('texts.noUse') }}
       </el-radio>
     </el-radio-group>
@@ -72,11 +79,6 @@ const { t } = useLocale()
 
 const { notify } = useAlarm()
 
-const exportUrl = ref('')
-const hyperLink = ref('')
-const imageHyperLinkTrigger = ref(false)
-const visibleSync = ref(false)
-
 const props = withDefaults(
   defineProps<{
     visible?: boolean,
@@ -95,43 +97,28 @@ const props = withDefaults(
 )
 
 const emits = defineEmits([
-  'close',
-  'submit-image'
+  'close:dialog',
+  'submit:image'
 ])
 
-watchEffect(() => {
-  visibleSync.value = props.visible
+const exportUrl = ref('')
+const hyperLink = ref('')
+const imageHyperLinkTrigger = ref(false)
+
+const visibleSync = computed({
+  get: () => props.visible,
+  set: (value) => {
+    if (value) {
+      exportUrl.value = ''
+      hyperLink.value = ''
+      emits('close:dialog', value)
+    }
+    visibleSync.value = value
+  }
 })
 
 const genUid = () => {
   return (new Date().getTime() + Math.random().toString(36).substring(2, 16))
-}
-
-const downloadImage = async (imageName:string) => {
-  if (!imageName) { return }
-  const { data } = await client.storage
-    .from('blog')
-    .getPublicUrl(imageName)
-  exportUrl.value = data?.publicUrl
-}
-
-const changeImage = async (evt:any) => {
-  if (!fileValidation(evt.file.size, evt.file.type)) {
-    imageUpload.value!.clearFiles()
-    return
-  }
-  const file = evt.file
-  const fileExt = file.name.split('.').pop()
-  const filePath = `${genUid()}.${fileExt}`
-  const { error: uploadError } = await client.storage.from('blog')
-    .upload(filePath, evt.file, {
-      cacheControl: '3600',
-      upsert: true
-    })
-  downloadImage(filePath)
-  if (uploadError) {
-    notify('', 'error', String(uploadError), true, 3000, 0)
-  }
 }
 
 const handleExceed: UploadProps['onExceed'] = (files) => {
@@ -140,6 +127,14 @@ const handleExceed: UploadProps['onExceed'] = (files) => {
   const file = files[0] as UploadRawFile
   file.uid = genFileId()
   imageUpload.value!.handleStart(file)
+}
+
+const changeImage = async (evt:any) => {
+  if (!fileValidation(evt.file.size, evt.file.type)) {
+    imageUpload.value!.clearFiles()
+    return
+  }
+  await uploadImage(evt.file)
 }
 
 const fileValidation = (size:number, type:string) => {
@@ -160,19 +155,45 @@ const fileFailedProcess = (message:string) => {
   return false
 }
 
+const uploadImage = async (file:File) => {
+  const fileExt = file.name.split('.').pop()
+  const filePath = `${genUid()}.${fileExt}`
+  const { error: uploadError } = await client.storage
+    .from('tech')
+    .upload(filePath, file, {
+      cacheControl: '3600',
+      upsert: true
+    })
+
+  if (uploadError) {
+    notify('', 'error', String(uploadError), true, 3000, 0)
+  }
+  notify('', 'success', t('messages.successImageUpload'), true, 3000, 0)
+  await downloadImage(filePath)
+}
+
+const downloadImage = async (imageName:string) => {
+  if (!imageName) { return }
+  const { data } = await client.storage
+    .from('tech')
+    .getPublicUrl(imageName)
+
+  exportUrl.value = data.publicUrl
+}
+
 const submitImage = () => {
   if (!exportUrl.value) {
     notify('', 'error', t('messages.imageRequire'), true, 3000, 0)
     return
   }
-  emits('submit-image', exportUrl.value, imageHyperLinkTrigger.value ? hyperLink.value : '')
+  emits('submit:image', exportUrl.value, imageHyperLinkTrigger.value ? hyperLink.value : '')
   notify('', 'success', t('messages.successImageUpload'), true, 3000, 0)
   closeDialog(false)
 }
 
 const closeDialog = (trigger:boolean) => {
   exportUrl.value = ''
-  emits('close', trigger)
+  emits('close:dialog', trigger)
 }
 
 </script>

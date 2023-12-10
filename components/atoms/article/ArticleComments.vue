@@ -16,9 +16,7 @@
             <el-text>
               {{ comment.name }}
             </el-text>
-            <div
-              v-dompurify-html="comment.message"
-            />
+            <div v-dompurify-html="comment.message" />
           </div>
           <el-button
             circle
@@ -36,7 +34,7 @@
       :description="emptyText"
     />
     <PasswordCheckDialog
-      :title="$t('blog.password')"
+      :title="$t('tech.password')"
       :password-dialog-trigger="passwordDialogTrigger"
       @confirm-password="(password:string) => confirmDeleteComment(password)"
       @close-dialog="() => passwordDialogTrigger = false"
@@ -46,7 +44,7 @@
 
 <script setup lang="ts">
 
-const { loadAdminData } = useLoadComposable()
+const { adminAccess } = storeToRefs(useTechStore())
 
 withDefaults(
   defineProps<{
@@ -64,13 +62,11 @@ const emits = defineEmits([
   'delete:comment'
 ])
 
-const { data: adminData } = await loadAdminData()
-
 const selectCommentData = ref<SerializeObject>()
 const passwordDialogTrigger = ref(false)
 
 const openPasswordDialog = (commentData: SerializeObject) => {
-  if (adminData) {
+  if (adminAccess.value) {
     emits('delete:admin-comment', commentData)
   } else {
     selectCommentData.value = commentData

@@ -1,5 +1,5 @@
 <template>
-  <el-card class="blog-card">
+  <el-card class="tech-card">
     <div class="card-header flex flex-row flex-align-center">
       <el-text class="title">
         {{ cardItem.title }}
