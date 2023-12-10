@@ -24,15 +24,23 @@
       class="title"
       @change="() => emits('update:title', copiedTitle)"
     />
-    <el-text class="time flex flex-justify-end gap-10">
-      {{ dayjs(createdAt).format('YYYY-MM-DD HH:mm:ss') }}
-    </el-text>
+    <NuxtTime
+      :datetime="createdAt"
+      :locale="locale"
+      class="time flex flex-justify-end"
+      year="numeric"
+      month="long"
+      day="numeric"
+      hour="numeric"
+      minute="numeric"
+      second="numeric"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 
-const dayjs = useDayjs()
+const { locale } = useLocale()
 
 const props = withDefaults(
   defineProps<{

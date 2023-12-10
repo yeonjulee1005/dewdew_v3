@@ -9,8 +9,8 @@
     :double-first-text="doubleFirstText"
     :double-second-text="doubleSecondText"
     @click-first-button="submitImage"
-    @click-second-button="closeDialog"
-    @close-dialog="closeDialog"
+    @click-second-button="closeDialog(false)"
+    @close-dialog="closeDialog(false)"
   >
     <el-upload
       ref="imageUpload"
@@ -109,11 +109,8 @@ const visibleSync = computed({
   get: () => props.visible,
   set: (value) => {
     if (value) {
-      exportUrl.value = ''
-      hyperLink.value = ''
-      emits('close:dialog', value)
+      visibleSync.value = value
     }
-    visibleSync.value = value
   }
 })
 
@@ -164,7 +161,7 @@ const uploadImage = async (file:File) => {
       cacheControl: '3600',
       upsert: true
     })
-
+  console.log(filePath)
   if (uploadError) {
     notify('', 'error', String(uploadError), true, 3000, 0)
   }
@@ -192,7 +189,6 @@ const submitImage = () => {
 }
 
 const closeDialog = (trigger:boolean) => {
-  exportUrl.value = ''
   emits('close:dialog', trigger)
 }
 

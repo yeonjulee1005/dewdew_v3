@@ -150,6 +150,7 @@ export default {
     link: '링크',
     unlink: '링크해제',
     code: '코드',
+    codeBlock: '코드블럭',
     youtube: '유튜브',
     pretendard: '프리텐다드',
     dungGeunMo: '둥근모꼴',

@@ -26,8 +26,14 @@
       <LazyEditNormalButtons
         :is-active="tiptapEditor.isActive('code')"
         :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleCode().run() : null"
-        icon-type="ri:code-box-line"
+        icon-type="ri:code-fill"
         :tooltip-text="$t('tiptap.code')"
+      />
+      <LazyEditNormalButtons
+        :is-active="tiptapEditor.isActive('codeBlock')"
+        :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleCodeBlock().run() : null"
+        icon-type="ri:code-box-line"
+        :tooltip-text="$t('tiptap.codeBlock')"
       />
       <LazyEditSpecialButtons
         v-if="fullOption"

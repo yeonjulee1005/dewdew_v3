@@ -120,8 +120,8 @@
       :title="$t('tiptap.dialog.hyperLinkTitle')"
       :double-first-text="$t('texts.save')"
       :double-second-text="$t('texts.close')"
-      @submit-link="submitHyperLink"
-      @close="(trigger:boolean) => hyperLinkDialogTrigger = trigger"
+      @submit:link="submitHyperLink"
+      @close:dialog="(trigger:boolean) => hyperLinkDialogTrigger = trigger"
     />
     <YoutubeLinkDialog
       :visible="youtubeLinkDialogTrigger"
@@ -146,6 +146,7 @@
 
 <script setup lang="ts">
 import { Editor, EditorContent, BubbleMenu } from '@tiptap/vue-3'
+import { CodeBlock } from '@tiptap/extension-code-block'
 import starterKit from '@tiptap/starter-kit'
 import textStyle from '@tiptap/extension-text-style'
 import { Youtube } from '@tiptap/extension-youtube'
@@ -211,6 +212,7 @@ onMounted(() => {
       characterCount.configure({
         limit: props.textLimit
       }),
+      CodeBlock,
       underline,
       textAlign.configure({
         types: ['heading', 'paragraph']

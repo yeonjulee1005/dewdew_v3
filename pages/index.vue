@@ -36,8 +36,8 @@ const { t } = useLocale()
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
-const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = useMainStore()
-const { portfolioData } = usePortfolioStore()
+const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
+const { portfolioData } = storeToRefs(usePortfolioStore())
 
 useHead({
   meta: [
@@ -55,9 +55,10 @@ const mainSkillsListTrigger = ref(false)
 const referenceListTrigger = ref(false)
 const contactTrigger = ref(false)
 
-watchEffect(() => {
-  if (!y.value) { return }
-  scrollDetect()
+watch(() => y.value, () => {
+  if (y.value) {
+    scrollDetect()
+  }
 })
 
 const scrollDetect = () => {
