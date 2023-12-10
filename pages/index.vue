@@ -36,8 +36,8 @@ const { t } = useLocale()
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
-const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
-const { portfolioData } = storeToRefs(usePortfolioStore())
+const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = useMainStore()
+const { portfolioData } = usePortfolioStore()
 
 useHead({
   meta: [
