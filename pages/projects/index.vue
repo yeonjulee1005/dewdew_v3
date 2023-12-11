@@ -16,7 +16,7 @@
 
 const { t } = useLocale()
 
-const { subMenuData } = useMenuStore()
+const { subMenuData } = storeToRefs(useMenuStore())
 
 useHead({
   title: t('pageTitle.project'),

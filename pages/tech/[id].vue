@@ -62,8 +62,8 @@ const { notify } = useAlarm()
 
 const techId = params.id as string
 
-const { data: techDetailData, refresh: techRefresh }:SerializeObject = await loadTechBlogDetailData(techId)
-const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = await loadTechBlogCommentData(techId)
+const { data: techDetailData, refresh: techRefresh }:SerializeObject = loadTechBlogDetailData(techId)
+const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = loadTechBlogCommentData(techId)
 
 const techBlogLikeTrigger = ref(false)
 const displayFloatButtonTrigger = ref(false)

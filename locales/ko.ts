@@ -99,6 +99,7 @@ export default {
     writeArticle: '글을 써보자!',
     write: '글쓰기 완료',
     edit: '수정 완료',
+    copy: '복사 완료',
     notAdmin: '관리자가 아니에요.',
     leavePage: '페이지를 이탈하셨네요.',
     leavePageDesc: '재사용 하지 않으면, 60초 후 화면이 닫혀요.',

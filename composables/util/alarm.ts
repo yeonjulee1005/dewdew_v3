@@ -31,7 +31,9 @@ export const useAlarm = () => {
       notify('', 'warning', messageData.data.message.concat(': ', String(messageData.data.statusCode)), true, 10000, 60)
       return
     }
+
     const errorMessage = messageData.data.error.message
+
     switch (messageData) {
       case true :
         notify('', 'warning', extraText, true, 10000, 60)

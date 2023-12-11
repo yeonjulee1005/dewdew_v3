@@ -1,5 +1,5 @@
-export default {
-  commentNames: {
+export const useCommentName = () => {
+  const commentName = {
     frontName: [
       '불안한',
       '무리한',
@@ -113,5 +113,9 @@ export default {
       '향수',
       '치즈'
     ]
+  }
+
+  return {
+    commentName
   }
 }

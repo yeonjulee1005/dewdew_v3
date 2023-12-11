@@ -5,7 +5,7 @@
     </div>
     <LazyImageSlider
       :image-data="thumbImageData"
-      :main-slider-trigger="true"
+      main-slider-trigger
     />
   </div>
 </template>
@@ -14,7 +14,7 @@
 
 const { t } = useLocale()
 
-const { thumbImageData } = useArchiveStore()
+const { thumbImageData } = storeToRefs(useArchiveStore())
 
 useHead({
   title: t('pageTitle.archives'),

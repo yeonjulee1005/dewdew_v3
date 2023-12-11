@@ -8,28 +8,13 @@ export const usePortfolioStore = defineStore('portfolioData', () => {
    *
    */
 
-  const portfolioData = ref<SerializeObject[]>([])
-
-  /**
-   * ! Pinia Actions !
-   */
-
-  const loadPortfolioData = async () => {
-    portfolioData.value = []
-    const { data: portfolio }:SerializeObject = await useAsyncData('portfolioData', async () => {
-      const { data } = await useFetch('/api/portfolio', {
-        headers: useRequestHeaders(['cookie']),
-        method: 'GET'
-      })
-      return data
-    })
-    portfolioData.value = portfolio
-  }
+  const portfolioData = ref<{ orderIndex: {index: number }, title: string, desc: string, url: string, image: string, thumbnail: string, alt: string, deleted: boolean }[] | null>()
 
   return {
-    portfolioData,
-    loadPortfolioData
+    portfolioData
   }
 }, {
-  persist: true
+  persist: {
+    storage: persistedState.localStorage
+  }
 })
