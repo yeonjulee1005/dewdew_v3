@@ -5,13 +5,15 @@
   >
     <div class="flex flex-column gap-20">
       <el-button
-        class="eye-dropper gap-10"
-        :icon="IconColorPicker"
+        class="eye-dropper"
         @click="colorPicker"
       >
-        {{ $t('colorsTranslate.dropper') }}
+        <Icon name="wpf:color-dropper" />
+        <el-text>
+          {{ $t('colorsTranslate.dropper') }}
+        </el-text>
       </el-button>
-      <LazyUploadFile
+      <UploadFile
         :file-size-alarm="$t('colorsTranslate.fileSize')"
         :file-type-alarm="$t('colorsTranslate.fileType')"
         :limit-type="['image/jpeg', 'image/png', 'image/gif']"
@@ -23,6 +25,7 @@
     <el-form
       class="color-translate-form gap-20"
       label-position="top"
+      @submit.prevent
     >
       <el-space fill>
         <el-form-item :label="$t('colorsTranslate.hexLabel')">
@@ -30,6 +33,7 @@
             v-model="hexColor"
             maxlength="7"
             clearable
+            label="hex"
           >
             <template #append>
               <el-button
@@ -46,15 +50,16 @@
           show-icon
           :cloasble="false"
         >
-          <p>
+          <el-text>
             {{ $t('colorsTranslate.dropperEnv') }}
-          </p>
+          </el-text>
         </el-alert>
       </el-space>
       <el-form-item :label="$t('colorsTranslate.rgbLabel')">
         <el-input
           v-model="rgbColor"
           readonly
+          label="rgb"
         >
           <template #append>
             <el-button
@@ -70,6 +75,7 @@
         <el-input
           v-model="hslColor"
           readonly
+          label="hsl"
         >
           <template #append>
             <el-button
@@ -85,6 +91,7 @@
         <el-input
           v-model="cmykColor"
           readonly
+          label="cmyk"
         >
           <template #append>
             <el-button
@@ -101,7 +108,6 @@
 </template>
 
 <script setup lang="ts">
-import { IconColorPicker } from '@tabler/icons-vue'
 
 const { t } = useLocale()
 const { open } = useEyeDropper()
@@ -125,9 +131,13 @@ const rgbColor = ref('')
 const hslColor = ref('')
 const cmykColor = ref('')
 
+const textInclude = (text:string, search:string) => {
+  return text.toLowerCase().includes(search)
+}
+
 watch(() => copied.value, () => {
   if (copied.value) {
-    notify('', 'success', t('message.copy'), true, 1000, 0)
+    notify('', 'success', t('messages.copy'), true, 1000, 0)
   }
 })
 
@@ -152,8 +162,8 @@ const initColorData = () => {
   hexColor.value = '#'.concat(String(initColor.value))
 }
 
-const colorPicker = () => {
-  open().then((res) => {
+const colorPicker = async () => {
+  await open().then((res) => {
     if (res) { hexColor.value = res.sRGBHex }
   })
 }
@@ -229,10 +239,6 @@ const rgbToCmyk = (red:number, green:number, blue:number) => {
   k = isNaN(k) ? 0 : k
 
   cmykColor.value = 'cmyk('.concat(String(c), ',', String(m), ',', String(y), ',', String(k), ')')
-}
-
-const textInclude = (text:string, search:string) => {
-  return text.toLowerCase().includes(search)
 }
 
 initColorData()
