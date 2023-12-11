@@ -46,7 +46,7 @@ useSeoMeta({
   twitterImage: seoImage
 })
 
-loadMainData()
+await loadMainData()
 loadMenuData('root')
 loadMenuData('sub')
 loadMenuData('sns')

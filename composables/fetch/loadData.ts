@@ -13,8 +13,8 @@ export const useLoadComposable = () => {
 
   const { generateThumbImage } = useArchiveStore()
 
-  const loadMenuData = (menuType:string) => {
-    const { data } = useAsyncData(`menuData${menuType}`, async () => {
+  const loadMenuData = async (menuType:string) => {
+    const { data } = await useAsyncData(`menuData${menuType}`, async () => {
       const { data, error } = await client
         .from('pageMenu')
         .select('orderIndex!inner(index), title, icon, menu_type, url, image_url, deleted')
@@ -32,8 +32,8 @@ export const useLoadComposable = () => {
     replaceMenuData(data.value, menuType)
   }
 
-  const loadMainData = () => {
-    const { data } = useAsyncData('mainData', async () => {
+  const loadMainData = async () => {
+    const { data } = await useAsyncData('mainData', async () => {
       const { data, error } = await client
         .from('main')
         .select('orderIndex!inner(index), text_type, category, textTitle(ko, en), textDescription(ko, en)), deleted')
