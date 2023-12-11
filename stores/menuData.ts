@@ -10,17 +10,34 @@ export const useMenuStore = defineStore('menuData', () => {
    *
    */
 
-  const mainMenuData = ref<Tables<'main'>[] | {orderIndex: {index: number | null} | null; title: string | null; icon: string | null; menu_type: string | null; url: string | null; image_url: string | null; deleted: boolean | null}[] | null>()
-  const subMenuData = ref<Tables<'main'>[] | {orderIndex: {index: number | null} | null; title: string | null; icon: string | null; menu_type: string | null; url: string | null; image_url: string | null; deleted: boolean | null}[] | null>()
-  const socialMenuData = ref<Tables<'main'>[] | {orderIndex: {index: number | null} | null; title: string | null; icon: string | null; menu_type: string | null; url: string | null; image_url: string | null; deleted: boolean | null}[] | null>()
+  const mainMenuData = ref<SerializeObject[]>([])
+  const subMenuData = ref<SerializeObject[]>([])
+  const socialMenuData = ref<SerializeObject[]>([])
+
+  /**
+   * ! Pinia Actions !
+   */
+
+  const updateMenuData = (data: SerializeObject[], menuType:string) => {
+    switch (menuType) {
+      case 'root' :
+        mainMenuData.value = data
+        break
+      case 'sub' :
+        subMenuData.value = data
+        break
+      case 'sns' :
+        socialMenuData.value = data
+        break
+    }
+  }
 
   return {
     mainMenuData,
     subMenuData,
-    socialMenuData
+    socialMenuData,
+    updateMenuData
   }
 }, {
-  persist: {
-    storage: persistedState.localStorage
-  }
+  persist: true
 })

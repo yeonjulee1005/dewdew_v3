@@ -28,7 +28,6 @@
           :placeholder="$t('placeholder.inputLink')"
           size="large"
           clearable
-          label="link"
           @keyup.enter="submitLink(hyperLinkFormRef)"
         />
       </el-form-item>
