@@ -4,22 +4,22 @@ export const useMainStore = defineStore('mainData', () => {
   /**
    * ! Pinia State !
    *
-   * @param mainIntroTitle 메인 인트로 타이틀
-   * @param mainIntroText 메인 인트로 텍스트
-   * @param mainIntroScrollText 메인 인트로 스크롤 텍스트
+   * @property {SerializeObject} mainIntroTitle 메인 인트로 타이틀
+   * @property {SerializeObject[]} mainIntroText 메인 인트로 텍스트
+   * @property {SerializeObject} mainIntroScrollText 메인 인트로 스크롤 텍스트
    *
-   * @param mainResumeTitle 메인 이력 타이틀
-   * @param mainEducatedText 메인 학력 텍스트
-   * @param mainCareerText 메인 경력 텍스트
+   * @property {SerializeObject} mainResumeTitle 메인 이력 타이틀
+   * @property {SerializeObject} mainEducatedText 메인 학력 텍스트
+   * @property {SerializeObject[]} mainCareerText 메인 경력 텍스트
    *
-   * @param mainSkillTitle 메인 스킬 타이틀
-   * @param mainSkillFirstText 메인 스킬 첫번째 설명
-   * @param mainSkillSecondText 메인 스킬 두번째 설명
-   * @param mainSkillThirdText 메인 스킬 세번째 설명
+   * @property {SerializeObject[]} mainSkillTitle 메인 스킬 타이틀
+   * @property {SerializeObject[]} mainSkillFirstText 메인 스킬 첫번째 설명
+   * @property {SerializeObject[]} mainSkillSecondText 메인 스킬 두번째 설명
+   * @property {SerializeObject[]} mainSkillThirdText 메인 스킬 세번째 설명
    *
-   * @param mainPortfolioTitle 메인 포트폴리오 타이틀
-   * @param mainPortfolioText 메인 포트폴리오 텍스트
-   * @param mainPortfolioBackground 메인 포트폴리오 배경텍스트
+   * @property {SerializeObject} mainPortfolioTitle 메인 포트폴리오 타이틀
+   * @property {SerializeObject} mainPortfolioText 메인 포트폴리오 텍스트
+   * @property {SerializeObject} mainPortfolioBackground 메인 포트폴리오 배경텍스트
    *
    */
 
@@ -40,6 +40,105 @@ export const useMainStore = defineStore('mainData', () => {
   const mainPortfolioText = ref<SerializeObject>()
   const mainPortfolioBackground = ref<SerializeObject>()
 
+  /**
+   * ! Pinia Actions !
+   */
+
+  const updateMainData = (data: SerializeObject) => {
+    mainIntroTitle.value = []
+    mainIntroText.value = []
+    mainIntroScrollText.value = []
+
+    mainResumeTitle.value = []
+    mainEducatedText.value = []
+    mainCareerText.value = []
+
+    mainSkillTitle.value = []
+    mainSkillFirstText.value = []
+    mainSkillSecondText.value = []
+    mainSkillThirdText.value = []
+
+    mainPortfolioTitle.value = []
+    mainPortfolioText.value = []
+    mainPortfolioBackground.value = []
+
+    if (!data.value) { return }
+    data.value.forEach((item:SerializeObject) => {
+      switch (item.category) {
+        case 'intro' :
+          computedIntroText(item)
+          break
+        case 'resume' :
+          computedResumeText(item)
+          break
+        case 'skills' :
+          computedSkillText(item)
+          break
+        case 'reference' :
+          computedPortfolioText(item)
+          break
+      }
+    })
+  }
+
+  const computedIntroText = (data: SerializeObject) => {
+    switch (data.text_type) {
+      case 'title' :
+        mainIntroTitle.value = data
+        break
+      case 'main' :
+        mainIntroText.value.push(data)
+        break
+      case 'scroll' :
+        mainIntroScrollText.value = data
+        break
+    }
+  }
+
+  const computedResumeText = (data: SerializeObject) => {
+    switch (data.text_type) {
+      case 'title' :
+        mainResumeTitle.value = data
+        break
+      case 'educate' :
+        mainEducatedText.value = data
+        break
+      case 'career' :
+        mainCareerText.value.push(data)
+        break
+    }
+  }
+
+  const computedSkillText = (data: SerializeObject) => {
+    switch (data.text_type) {
+      case 'title' :
+        mainSkillTitle.value.push(data)
+        break
+      case 'first' :
+        mainSkillFirstText.value.push(data)
+        break
+      case 'second' :
+        mainSkillSecondText.value.push(data)
+        break
+      case 'third' :
+        mainSkillThirdText.value.push(data)
+        break
+    }
+  }
+
+  const computedPortfolioText = (data: SerializeObject) => {
+    switch (data.text_type) {
+      case 'title' :
+        mainPortfolioTitle.value = data
+        break
+      case 'desc' :
+        mainPortfolioText.value = data
+        break
+      case 'background' :
+        mainPortfolioBackground.value = data
+        break
+    }
+  }
 
   return {
     mainIntroTitle,
@@ -54,10 +153,9 @@ export const useMainStore = defineStore('mainData', () => {
     mainSkillThirdText,
     mainPortfolioTitle,
     mainPortfolioText,
-    mainPortfolioBackground
+    mainPortfolioBackground,
+    updateMainData
   }
 }, {
-  persist: {
-    storage: persistedState.localStorage
-  }
+  persist: true
 })

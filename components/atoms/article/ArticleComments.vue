@@ -3,24 +3,14 @@
     <el-text class="comments-title">
       {{ commentTitle }}
     </el-text>
-    <el-timeline v-if="commentData?.length">
+    <el-timeline v-if="commentData.length">
       <el-timeline-item
         v-for="(comment, index) in commentData"
         :key="index"
         center
-        color="#D3E3D2"
+        :color="comment.timeAgo === 'just now' ? '#C74436' : '#D3E3D2'"
+        :timestamp="comment.timeAgo"
       >
-        <NuxtTime
-          :datetime="comment.created_at"
-          :locale="locale"
-          class="time flex mb-default"
-          year="numeric"
-          month="long"
-          day="numeric"
-          hour="numeric"
-          minute="numeric"
-          second="numeric"
-        />
         <div class="comments-item flex flex-row flex-space-between flex-align-center">
           <div class="message-component mr-40">
             <el-text>
@@ -54,14 +44,12 @@
 
 <script setup lang="ts">
 
-const { locale } = useLocale()
-
 const { adminAccess } = storeToRefs(useTechStore())
 
 withDefaults(
   defineProps<{
     commentTitle: string,
-    commentData: Tables<'techComment'>[] | null,
+    commentData: SerializeObject[],
     emptyText?: string
   }>(),
   {
