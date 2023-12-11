@@ -1,6 +1,5 @@
-import nameLists from '~/data/commentName'
-
 export const useUi = () => {
+  const { commentName } = useCommentName()
   const dayjs = useDayjs()
 
   const comma = (val:number) => {
@@ -57,6 +56,10 @@ export const useUi = () => {
     }
   }
 
+  const randomOrder = (dataValue:number) => {
+    return Math.floor(Math.random() * dataValue)
+  }
+
   const removeHtmlTags = (text:string) => {
     return text.replaceAll('<p>', '').replaceAll('</p>', '').replaceAll('<br>', '')
   }
@@ -74,8 +77,8 @@ export const useUi = () => {
   }
 
   const generateCommentName = () => {
-    const frontName = nameLists.commentNames.frontName
-    const backName = nameLists.commentNames.backName
+    const frontName = commentName.frontName
+    const backName = commentName.backName
 
     const randomFront = frontName[Math.floor(Math.random() * frontName.length)]
     const randomBack = backName[Math.floor(Math.random() * backName.length)]
@@ -91,6 +94,7 @@ export const useUi = () => {
     checkEmail,
     checkPassword,
     copyClipBoard,
+    randomOrder,
     removeHtmlTags,
     genUid,
     genFileDate,

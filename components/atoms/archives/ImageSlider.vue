@@ -20,23 +20,25 @@
           <nuxt-link
             v-if="props.mainSliderTrigger"
             class="image-component"
-            :to="`/archives/${image.title}`"
+            :to="`/archives/${image?.title ?? ''}`"
           >
             <nuxt-picture
+              v-if="image?.url"
               :src="image.url"
               width="360"
               height="300"
               format="webp"
+              loading="lazy"
               :img-attrs="{class: 'thumbnail'}"
-              :alt="image.title"
+              :alt="image?.title ?? 'title'"
             />
-            <div class="text-group">
-              <p class="title">
+            <div class="text-group flex flex-column">
+              <el-text class="title">
                 {{ $t('archives.historyTitle') }}
-              </p>
-              <p class="subtitle">
-                {{ image.title }}
-              </p>
+              </el-text>
+              <el-text class="subtitle">
+                {{ image?.title }}
+              </el-text>
             </div>
           </nuxt-link>
           <div
@@ -44,12 +46,14 @@
             class="image-component"
           >
             <nuxt-picture
+              v-if="image?.url"
               :src="image.url"
               width="360"
               height="300"
               format="webp"
+              loading="lazy"
               :img-attrs="{class: 'thumbnail'}"
-              :alt="image.title"
+              :alt="image?.title ?? 'title'"
               @click="$emit('open-dialog', image)"
             />
           </div>
@@ -86,7 +90,7 @@ const { url } = useImageStorage()
 
 const props = withDefaults(
   defineProps<{
-    imageData: SerializeObject[],
+    imageData:({ title: string, url: string, route: string } | null)[],
     desktopShowItemCount?: number,
     tabletShowItemCount?: number,
     mobileShowItemCount?: number,

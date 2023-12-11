@@ -10,34 +10,17 @@ export const useMenuStore = defineStore('menuData', () => {
    *
    */
 
-  const mainMenuData = ref<SerializeObject[]>([])
-  const subMenuData = ref<SerializeObject[]>([])
-  const socialMenuData = ref<SerializeObject[]>([])
-
-  /**
-   * ! Pinia Actions !
-   */
-
-  const updateMenuData = (data: SerializeObject[], menuType:string) => {
-    switch (menuType) {
-      case 'root' :
-        mainMenuData.value = data
-        break
-      case 'sub' :
-        subMenuData.value = data
-        break
-      case 'sns' :
-        socialMenuData.value = data
-        break
-    }
-  }
+  const mainMenuData = ref<{ orderIndex: { index: number }, title: string, icon: string, menu_type: string, url: string, image_url: string, deleted: boolean }[] | null>()
+  const subMenuData = ref<{ orderIndex: { index: number }, title: string, icon: string, menu_type: string, url: string, image_url: string, deleted: boolean }[] | null>()
+  const socialMenuData = ref<{ orderIndex: { index: number }, title: string, icon: string, menu_type: string, url: string, image_url: string, deleted: boolean }[] | null>()
 
   return {
     mainMenuData,
     subMenuData,
-    socialMenuData,
-    updateMenuData
+    socialMenuData
   }
 }, {
-  persist: true
+  persist: {
+    storage: persistedState.localStorage
+  }
 })

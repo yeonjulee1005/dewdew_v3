@@ -14,18 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { ID_INJECTION_KEY } from 'element-plus'
 
-provide(ID_INJECTION_KEY, {
-  prefix: 100,
-  current: 0
-})
-
-const { loadMenuData, loadMainData, loadLeaveColorData } = useLoadComposable()
-
-const { loadStackData } = useStackStore()
-const { loadPortfolioData } = usePortfolioStore()
-const { loadArchiveGroup } = useArchiveStore()
+const { loadMenuData, loadMainData, loadLeaveColorData, loadStackData, loadPortfolioData, loadArchiveGroup } = useLoadComposable()
 
 const seoTitle = 'Developer Dewdew | 개발자 이연주'
 const seoDescription = '안녕하세요. FE 개발자 이연주입니다.'
@@ -43,7 +33,6 @@ loadLeaveColorData()
 loadArchiveGroup()
 
 useSeoMeta({
-  charset: 'utf-16',
   viewport: 'width=device-width, initial-scale=1.0',
   formatDetection: 'telephone=no',
   themeColor: '#705757',

@@ -56,8 +56,8 @@
 
 <script setup lang="ts">
 
-const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = useMainStore()
-const { stackLogoData } = useStackStore()
+const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = storeToRefs(useMainStore())
+const { stackLogoData } = storeToRefs(useStackStore())
 
 withDefaults(
   defineProps<{

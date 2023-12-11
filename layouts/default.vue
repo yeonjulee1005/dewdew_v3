@@ -1,8 +1,8 @@
 <template>
   <div class="layout-container">
-    <AHeader />
+    <LazyAHeader />
     <slot />
-    <AFooter />
+    <LazyAFooter />
     <InstallPwa />
     <LazyLeaveCounter
       :idle-trigger="idleTrigger"

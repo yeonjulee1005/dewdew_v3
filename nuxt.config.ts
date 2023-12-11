@@ -4,7 +4,10 @@ import packageJson from './package.json'
 
 export default defineNuxtConfig({
   devtools: {
-    enabled: true
+    enabled: true,
+    timeline: {
+      enabled: true
+    }
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },

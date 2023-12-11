@@ -18,6 +18,7 @@
         <el-input
           v-model="contactRuleForm.name"
           :placeholder="$t('placeholder.inputName')"
+          label="name"
         />
       </el-form-item>
       <el-form-item
@@ -28,6 +29,7 @@
           v-model="contactRuleForm.email"
           :placeholder="$t('placeholder.inputEmail')"
           type="email"
+          label="email"
         />
       </el-form-item>
       <el-form-item
@@ -41,6 +43,7 @@
           :maxlength="2000"
           show-word-limit
           type="textarea"
+          label="message"
         />
       </el-form-item>
       <el-form-item>

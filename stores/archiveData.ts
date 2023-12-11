@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useArchiveStore = defineStore('archiveData', () => {
-  const client = useSupabaseClient()
+  const { randomOrder } = useUi()
   /**
    * ! Pinia State !
    *
@@ -10,42 +10,27 @@ export const useArchiveStore = defineStore('archiveData', () => {
    *
    */
 
-  const archiveData = ref<SerializeObject[]>([])
-  const thumbImageData = ref<SerializeObject[]>([])
+  const archiveData = ref<{ index: number, title: string, deleted: boolean, archiveImage: { title: string, years: string, url: string}[] }[] | null>()
+  const thumbImageData = ref<{ title: string, url: string, route: string }[]>([])
 
   /**
    * ! Pinia Actions !
    */
 
-  const loadArchiveGroup = async () => {
-    archiveData.value = []
-    const { data: archive }:SerializeObject = await useAsyncData('archiveData', async () => {
-      const { data, error } = await client
-        .from('archiveIndex')
-        .select('index, title, deleted, archiveImage(title, years, url)')
-        .eq('deleted', false)
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
-    })
-
-    archiveData.value = archive.value
-    generateThumbImage(archive.value)
-  }
-
-  const generateThumbImage = (archiveData:SerializeObject[]) => {
+  const generateThumbImage = () => {
     thumbImageData.value = []
-    archiveData.forEach((image:SerializeObject) => {
-      if (!image.archiveImage.length) { return }
-      const randomNumber = Math.floor(Math.random() * image.archiveImage.length)
-      const data:SerializeObject = {
+
+    if (!archiveData.value) { return }
+
+    archiveData.value.forEach((image:{ index: number, title: string, deleted: boolean, archiveImage: { title: string, years: string, url: string}[] }) => {
+      if (!image.archiveImage) { return }
+
+      const data:{ title: string, url: string, route: string } = {
         title: image.title,
-        url: image.archiveImage[randomNumber].url,
+        url: image.archiveImage[randomOrder(image.archiveImage.length)]?.url,
         route: `/archives/${image.title}`
       }
+
       thumbImageData.value.push(data)
     })
   }
@@ -53,8 +38,10 @@ export const useArchiveStore = defineStore('archiveData', () => {
   return {
     archiveData,
     thumbImageData,
-    loadArchiveGroup
+    generateThumbImage
   }
 }, {
-  persist: true
+  persist: {
+    storage: persistedState.localStorage
+  }
 })
