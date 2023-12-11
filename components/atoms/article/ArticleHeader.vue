@@ -22,6 +22,7 @@
       v-else
       v-model="copiedTitle"
       class="title"
+      label="title"
       @change="() => emits('update:title', copiedTitle)"
     />
     <NuxtTime

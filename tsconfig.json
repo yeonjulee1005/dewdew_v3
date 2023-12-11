@@ -3,6 +3,14 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "~/*": [
+        ".nuxt/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    },
     "types": [
       "element-plus/global"
     ]

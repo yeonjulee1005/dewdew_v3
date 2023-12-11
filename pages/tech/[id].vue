@@ -1,38 +1,38 @@
 <template>
   <div class="tech-article flex flex-column flex-align-center">
-    <ArticleHeader
+    <LazyArticleHeader
       :title="techDetailData.title"
       :created-at="techDetailData.created_at"
       :edit-trigger="editTrigger"
       @update:title="(title:string) => techDetailData.title = title"
     />
-    <ArticleAddOn
+    <LazyArticleAddOn
       :article-id="String(techId)"
       :data="techDetailData"
       :activate-like="techBlogLikeTrigger"
       @update-count="updateLikeCount"
     />
-    <ArticleControlButton
+    <LazyArticleControlButton
       :admin-access="adminAccess"
       :edit-trigger="editTrigger"
       @check:admin="clickEditArticle"
       @update:article="updateArticle"
       @edit:cancel="() => editTrigger = false"
     />
-    <ArticleContent
+    <LazyArticleContent
       :tech-blog-detail-data="techDetailData"
       :edit-trigger="editTrigger"
       @update:article-content="editArticle"
     />
-    <ArticleComments
+    <LazyArticleComments
       :comment-title="$t('tech.commentTitle')"
       :comment-data="techCommentData"
       :empty-text="$t('messages.emptyComment')"
       @delete:admin-comment="deleteAdminComment"
       @delete:comment="deleteComment"
     />
-    <ArticleCreateComment @create-comment="createComment" />
-    <ArticleLikeButton
+    <LazyArticleCreateComment @create-comment="createComment" />
+    <LazyArticleLikeButton
       :trigger="displayFloatButtonTrigger"
       :activate-like="techBlogLikeTrigger"
       @click-affix="updateLikeCount"
@@ -63,7 +63,7 @@ const { notify } = useAlarm()
 const techId = params.id as string
 
 const { data: techDetailData, refresh: techRefresh }:SerializeObject = await loadTechBlogDetailData(techId)
-const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = await loadTechBlogCommentData(techId)
+const { data: techCommentData, refresh: techCommentRefresh } = loadTechBlogCommentData(techId)
 
 const techBlogLikeTrigger = ref(false)
 const displayFloatButtonTrigger = ref(false)

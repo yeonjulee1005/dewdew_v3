@@ -4,24 +4,25 @@
     :class="{'activate': skillsBgTrigger}"
   >
     <nuxt-img
-      v-for="image in skillsImage"
-      :key="image.index"
+      v-for="image in stackLogoData"
+      :key="image?.url ?? ''"
       :class="image.title"
-      :src="image.url"
+      :src="image.url ?? ''"
       height="400"
       width="400"
       loading="lazy"
       format="webp"
-      :alt="image.title"
+      :alt="image.title ?? 'title'"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 
+const { stackLogoData } = storeToRefs(useStackStore())
+
 withDefaults(
   defineProps<{
-    skillsImage: SerializeObject[],
     skillsBgTrigger?: boolean
   }>(),
   {

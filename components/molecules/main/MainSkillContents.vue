@@ -1,16 +1,13 @@
 <template>
   <div class="main-skills flex flex-column">
-    <MainSkillsDescriptions
+    <LazyMainSkillsDescriptions
       :skills-title="mainSkillTitle"
       :skills-first-text="mainSkillFirstText"
       :skills-second-text="mainSkillSecondText"
       :skills-third-text="mainSkillThirdText"
       :skills-text-trigger="skillsTextTrigger"
     />
-    <MainSkillsImage
-      :skills-image="stackLogoData"
-      :skills-bg-trigger="skillsBgTrigger"
-    />
+    <LazyMainSkillsImage :skills-bg-trigger="skillsBgTrigger" />
     <div
       class="skill-list flex flex-row flex-space-evenly flex-align-center"
       :class="{'activate': skillsListTrigger}"
@@ -56,8 +53,7 @@
 
 <script setup lang="ts">
 
-const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = useMainStore()
-const { stackLogoData } = useStackStore()
+const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = storeToRefs(useMainStore())
 
 withDefaults(
   defineProps<{
