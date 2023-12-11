@@ -14,5 +14,7 @@ export const useLeaveColorStore = defineStore('leaveColorData', () => {
     leaveColorData
   }
 }, {
-  persist: true
+  persist: {
+    storage: persistedState.localStorage
+  }
 })

@@ -15,7 +15,7 @@
     <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center mx-80">
       <div
         v-for="item in portfolioImageData"
-        :key="item.index"
+        :key="item.url"
         class="portfolio-item flex flex-column"
       >
         <div
@@ -57,7 +57,7 @@ withDefaults(
     portfolioTitle: SerializeObject,
     portfolioDescription: SerializeObject,
     portfolioBackground: SerializeObject,
-    portfolioImageData: SerializeObject[],
+    portfolioImageData: { orderIndex: {index: number }, title: string, desc: string, url: string, image: string, thumbnail: string, alt: string, deleted: boolean }[] | null | undefined,
     portfolioTrigger?: boolean
   }>(),
   {

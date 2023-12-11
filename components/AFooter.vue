@@ -56,7 +56,7 @@
 const supabase = useSupabaseClient()
 const config = useRuntimeConfig()
 
-const { mainMenuData, socialMenuData } = useMenuStore()
+const { mainMenuData, socialMenuData } = storeToRefs(useMenuStore())
 
 const magicLinkDialogTrigger = ref(false)
 

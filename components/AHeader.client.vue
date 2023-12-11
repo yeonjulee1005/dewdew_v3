@@ -8,6 +8,7 @@
           height="46"
           width="160"
           legacy-format="webp"
+          loading="lazy"
           :img-attrs="{class: 'dewdew-logo'}"
           alt="logo"
         />
@@ -33,6 +34,7 @@
           </span>
         </nuxt-link>
         <nuxt-link
+          v-if="socialMenuData"
           class="github"
           :to="socialMenuData[0].url"
           target="_blank"
@@ -42,6 +44,7 @@
             width="50"
             height="50"
             format="webp"
+            loading="lazy"
             :alt="socialMenuData[0].title"
           />
         </nuxt-link>
@@ -69,6 +72,7 @@
           :active-action-icon="Moon"
           :inactive-action-icon="Sunny"
           name="theme-mode"
+          label="color-mode"
         />
       </client-only>
     </div>
@@ -83,12 +87,14 @@ const { width } = useWindowSize()
 
 const darkModeTrigger = useDark()
 
-const { mainMenuData, socialMenuData } = useMenuStore()
+const { mainMenuData, socialMenuData } = storeToRefs(useMenuStore())
 const { url } = useImageStorage()
 
 const darkSwitch = ref(false)
 
-const desktopModeTrigger = computed(() => width.value > 999)
+const desktopModeTrigger = computed(() => {
+  return width.value > 999
+})
 
 watch(() => darkSwitch.value, (value) => {
   darkModeTrigger.value = value

@@ -99,6 +99,7 @@ export default {
     writeArticle: 'Write article!',
     write: 'Write complete.',
     edit: 'Edit complete.',
+    copy: 'Copy complete.',
     notAdmin: 'Not admin.',
     leavePage: 'You left the page.',
     leavePageDesc: 'After 60 seconds, will be closed this page.',
