@@ -10,7 +10,6 @@
         class="edit-color-input"
         type="color"
         :value="colorValue"
-        label="color"
         @input="tiptapEditor.chain().focus().setColor(imageColor($event)).run()"
       >
     </el-tooltip>

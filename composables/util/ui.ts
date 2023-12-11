@@ -57,9 +57,6 @@ export const useUi = () => {
     }
   }
 
-  const randomOrder = (dataValue:number) => {
-    return Math.floor(Math.random() * dataValue)
-  }
   const removeHtmlTags = (text:string) => {
     return text.replaceAll('<p>', '').replaceAll('</p>', '').replaceAll('<br>', '')
   }
@@ -94,7 +91,6 @@ export const useUi = () => {
     checkEmail,
     checkPassword,
     copyClipBoard,
-    randomOrder,
     removeHtmlTags,
     genUid,
     genFileDate,

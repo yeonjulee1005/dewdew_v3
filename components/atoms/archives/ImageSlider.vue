@@ -5,7 +5,6 @@
   >
     <client-only>
       <Carousel
-        v-if="props.imageData"
         warap-around
         :transition="1400"
         :autoplay="2400"
@@ -21,23 +20,23 @@
           <nuxt-link
             v-if="props.mainSliderTrigger"
             class="image-component"
-            :to="`/archives/${image?.title ?? ''}`"
+            :to="`/archives/${image.title}`"
           >
             <nuxt-picture
-              :src="image?.url ?? ''"
+              :src="image.url"
               width="360"
               height="300"
               format="webp"
               :img-attrs="{class: 'thumbnail'}"
-              :alt="image?.title ?? 'image'"
+              :alt="image.title"
             />
-            <div class="text-group flex flex-column">
-              <el-text class="title">
+            <div class="text-group">
+              <p class="title">
                 {{ $t('archives.historyTitle') }}
-              </el-text>
-              <el-text class="subtitle">
-                {{ image?.title }}
-              </el-text>
+              </p>
+              <p class="subtitle">
+                {{ image.title }}
+              </p>
             </div>
           </nuxt-link>
           <div
@@ -45,12 +44,12 @@
             class="image-component"
           >
             <nuxt-picture
-              :src="image?.url ?? ''"
+              :src="image.url"
               width="360"
               height="300"
               format="webp"
               :img-attrs="{class: 'thumbnail'}"
-              :alt="image?.title ?? 'image'"
+              :alt="image.title"
               @click="$emit('open-dialog', image)"
             />
           </div>
@@ -87,7 +86,7 @@ const { url } = useImageStorage()
 
 const props = withDefaults(
   defineProps<{
-    imageData:({ title: string | null; url: string | null; route: string | null; } | null)[],
+    imageData: SerializeObject[],
     desktopShowItemCount?: number,
     tabletShowItemCount?: number,
     mobileShowItemCount?: number,

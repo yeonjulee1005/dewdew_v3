@@ -4,17 +4,15 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "1.5.0",
+  "version": "1.4.1",
   "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port 4500",
-    "dev:host": "nuxt dev --port 4500 --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "cleanup": "nuxt cleanup",
-    "analyze": "nuxt build --analyze",
     "lint": "eslint --ext .ts,.js,.vue",
     "test": "vitest",
     "upgrade:force": "nuxt upgrade --force",
@@ -40,6 +38,7 @@
     "@pinia-plugin-persistedstate/nuxt": "1.2.0",
     "@pinia/nuxt": "^0.5.1",
     "@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.6",
+    "@tabler/icons-vue": "2.40.0",
     "@tiptap/core": "^2.1.12",
     "@tiptap/extension-character-count": "^2.1.12",
     "@tiptap/extension-code-block": "^2.1.13",
@@ -95,8 +94,5 @@
   "dependencies": {
     "vue": "^3.3.6",
     "vue-router": "^4.2.5"
-  },
-  "overrides": {
-    "@polka/url": "1.0.0-next.23"
   }
 }

@@ -8,13 +8,27 @@ export const useStackStore = defineStore('stackData', () => {
    *
    */
 
-  const stackLogoData = ref<Tables<'stackLogo'>[] | { orderIndex: {index: number | null} | null; title: string | null; url: string | null; deleted: boolean | null; }[] | null>()
+  const stackLogoData = ref<SerializeObject>()
+
+  /**
+   * ! Pinia Actions !
+   */
+
+  const loadStackData = async () => {
+    const { data: stack }:SerializeObject = await useAsyncData('stackLogoData', async () => {
+      const { data } = await useFetch('/api/stack', {
+        headers: useRequestHeaders(['cookie']),
+        method: 'GET'
+      })
+      return data
+    })
+    stackLogoData.value = stack
+  }
 
   return {
-    stackLogoData
+    stackLogoData,
+    loadStackData
   }
 }, {
-  persist: {
-    storage: persistedState.localStorage
-  }
+  persist: true
 })

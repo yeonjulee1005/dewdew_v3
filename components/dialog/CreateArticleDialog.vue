@@ -20,10 +20,7 @@
         :label="$t('tech.articleTitle')"
         prop="title"
       >
-        <el-input
-          v-model="createArticleData.title"
-          label="title"
-        />
+        <el-input v-model="createArticleData.title" />
       </el-form-item>
       <el-form-item :label="$t('tech.article')">
         <TextEditor

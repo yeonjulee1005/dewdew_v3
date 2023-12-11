@@ -18,7 +18,6 @@
           :maxlength="16"
           show-word-limit
           clearable
-          label="name"
         >
           <template #append>
             <el-button @click="() => createCommentData.name = generateCommentName()">
@@ -42,7 +41,6 @@
           type="password"
           show-password
           clearable
-          label="password"
         >
           <template #append>
             <el-button

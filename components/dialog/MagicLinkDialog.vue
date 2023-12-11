@@ -30,7 +30,6 @@
           type="email"
           size="large"
           clearable
-          label="email"
           @keyup.enter="submitEmail(magicLinkFormRef)"
         />
       </el-form-item>
