@@ -28,6 +28,7 @@
           :placeholder="$t('placeholder.inputYoutube')"
           size="large"
           clearable
+          label="link"
           @keyup.enter="submitLink(youtubeLinkFormRef)"
         />
       </el-form-item>

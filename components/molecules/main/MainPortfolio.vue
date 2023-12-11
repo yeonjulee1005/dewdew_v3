@@ -12,10 +12,13 @@
     <el-text class="section-bg-text">
       {{ locale === 'ko' ? portfolioBackground?.textTitle.ko : portfolioBackground?.textTitle.en }}
     </el-text>
-    <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center mx-80">
+    <div
+      v-if="portfolioData"
+      class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center mx-80"
+    >
       <div
-        v-for="item in portfolioImageData"
-        :key="item.index"
+        v-for="item in portfolioData"
+        :key="item.url ?? ''"
         class="portfolio-item flex flex-column"
       >
         <div
@@ -24,13 +27,13 @@
         >
           <nuxt-img
             class="portfolio-thumb"
-            :src="item.image"
+            :src="item.image ?? ''"
             width="200"
             height="200"
             format="webp"
             loading="lazy"
             fit="cover"
-            :alt="item.alt"
+            :alt="item.alt ?? 'image'"
           />
           <el-text class="portfolio-text mt-default">
             {{ item.title }}
@@ -52,12 +55,13 @@
 
 const { locale } = useLocale()
 
+const { portfolioData } = storeToRefs(usePortfolioStore())
+
 withDefaults(
   defineProps<{
     portfolioTitle: SerializeObject,
     portfolioDescription: SerializeObject,
     portfolioBackground: SerializeObject,
-    portfolioImageData: SerializeObject[],
     portfolioTrigger?: boolean
   }>(),
   {
@@ -65,10 +69,10 @@ withDefaults(
   }
 )
 
-const selectPortfolio = ref<SerializeObject>()
+const selectPortfolio = ref<Tables<'portfolio'> | { orderIndex: {index: number | null} | null; title: string | null; desc: string | null; url: string | null; image: string | null; thumbnail: string | null; alt: string | null; deleted: boolean | null; }>()
 const portfolioDialogTrigger = ref(false)
 
-const clickReference = (data:SerializeObject) => {
+const clickReference = (data:Tables<'portfolio'> | { orderIndex: {index: number | null} | null; title: string | null; desc: string | null; url: string | null; image: string | null; thumbnail: string | null; alt: string | null; deleted: boolean | null; }) => {
   selectPortfolio.value = data
   portfolioDialogTrigger.value = true
 }

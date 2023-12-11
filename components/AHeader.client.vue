@@ -23,6 +23,7 @@
           class="menu-links flex-align-center"
           :class="{'mobile-menu-links flex flex-justify-center': !desktopModeTrigger}"
           :to="menu.url"
+          :aria-label="menu.title"
         >
           <Icon
             v-if="!desktopModeTrigger"
@@ -69,6 +70,7 @@
           :active-action-icon="Moon"
           :inactive-action-icon="Sunny"
           name="theme-mode"
+          label="theme-mode"
         />
       </client-only>
     </div>

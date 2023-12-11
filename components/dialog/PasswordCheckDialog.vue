@@ -26,6 +26,7 @@
           show-password
           clearable
           class="mb-20"
+          label="password"
           @keyup.enter="checkPassword(passwordRef)"
         >
           <template #append>
