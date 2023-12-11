@@ -7,7 +7,10 @@
       :skills-third-text="mainSkillThirdText"
       :skills-text-trigger="skillsTextTrigger"
     />
-    <MainSkillsImage :skills-bg-trigger="skillsBgTrigger" />
+    <MainSkillsImage
+      :skills-image="stackLogoData"
+      :skills-bg-trigger="skillsBgTrigger"
+    />
     <div
       class="skill-list flex flex-row flex-space-evenly flex-align-center"
       :class="{'activate': skillsListTrigger}"
@@ -53,7 +56,8 @@
 
 <script setup lang="ts">
 
-const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = storeToRefs(useMainStore())
+const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = useMainStore()
+const { stackLogoData } = useStackStore()
 
 withDefaults(
   defineProps<{

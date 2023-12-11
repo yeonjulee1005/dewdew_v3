@@ -14,16 +14,36 @@
 </template>
 
 <script setup lang="ts">
+import { ID_INJECTION_KEY } from 'element-plus'
 
-const { loadMenuData, loadMainData, loadLeaveColorData, loadStackData, loadPortfolioData, loadArchiveGroup } = useLoadComposable()
+provide(ID_INJECTION_KEY, {
+  prefix: 100,
+  current: 0
+})
+
+const { loadMenuData, loadMainData, loadLeaveColorData } = useLoadComposable()
+
+const { loadStackData } = useStackStore()
+const { loadPortfolioData } = usePortfolioStore()
+const { loadArchiveGroup } = useArchiveStore()
 
 const seoTitle = 'Developer Dewdew | 개발자 이연주'
 const seoDescription = '안녕하세요. FE 개발자 이연주입니다.'
 const seoUrl = 'https://www.dewdew.dev'
 const seoImage = 'https://tgtlrqqasaiavynmlxkc.supabase.co/storage/v1/object/public/assets/banner/main_banner.webp'
 
+loadMenuData('root')
+loadMenuData('sub')
+loadMenuData('sns')
+
+loadMainData()
+loadStackData()
+loadPortfolioData()
+loadLeaveColorData()
+loadArchiveGroup()
+
 useSeoMeta({
-  charset: 'utf-8',
+  charset: 'utf-16',
   viewport: 'width=device-width, initial-scale=1.0',
   formatDetection: 'telephone=no',
   themeColor: '#705757',
@@ -45,15 +65,5 @@ useSeoMeta({
   twitterDescription: seoDescription,
   twitterImage: seoImage
 })
-
-await loadMainData()
-loadMenuData('root')
-loadMenuData('sub')
-loadMenuData('sns')
-
-loadStackData()
-loadPortfolioData()
-loadLeaveColorData()
-loadArchiveGroup()
 
 </script>

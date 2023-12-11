@@ -62,7 +62,6 @@
       v-model="hyperLink"
       :placeholder="$t('placeholder.inputLink')"
       size="large"
-      label="link"
       clearable
     />
   </ADialog>

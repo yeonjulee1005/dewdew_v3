@@ -12,13 +12,10 @@
     <el-text class="section-bg-text">
       {{ locale === 'ko' ? portfolioBackground?.textTitle.ko : portfolioBackground?.textTitle.en }}
     </el-text>
-    <div
-      v-if="portfolioData"
-      class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center mx-80"
-    >
+    <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center mx-80">
       <div
-        v-for="item in portfolioData"
-        :key="item.url ?? ''"
+        v-for="item in portfolioImageData"
+        :key="item.index"
         class="portfolio-item flex flex-column"
       >
         <div
@@ -27,13 +24,13 @@
         >
           <nuxt-img
             class="portfolio-thumb"
-            :src="item.image ?? ''"
+            :src="item.image"
             width="200"
             height="200"
             format="webp"
             loading="lazy"
             fit="cover"
-            :alt="item.alt ?? 'image'"
+            :alt="item.alt"
           />
           <el-text class="portfolio-text mt-default">
             {{ item.title }}
@@ -55,13 +52,12 @@
 
 const { locale } = useLocale()
 
-const { portfolioData } = storeToRefs(usePortfolioStore())
-
 withDefaults(
   defineProps<{
     portfolioTitle: SerializeObject,
     portfolioDescription: SerializeObject,
     portfolioBackground: SerializeObject,
+    portfolioImageData: SerializeObject[],
     portfolioTrigger?: boolean
   }>(),
   {
@@ -69,10 +65,10 @@ withDefaults(
   }
 )
 
-const selectPortfolio = ref<Tables<'portfolio'> | { orderIndex: {index: number | null} | null; title: string | null; desc: string | null; url: string | null; image: string | null; thumbnail: string | null; alt: string | null; deleted: boolean | null; }>()
+const selectPortfolio = ref<SerializeObject>()
 const portfolioDialogTrigger = ref(false)
 
-const clickReference = (data:Tables<'portfolio'> | { orderIndex: {index: number | null} | null; title: string | null; desc: string | null; url: string | null; image: string | null; thumbnail: string | null; alt: string | null; deleted: boolean | null; }) => {
+const clickReference = (data:SerializeObject) => {
   selectPortfolio.value = data
   portfolioDialogTrigger.value = true
 }

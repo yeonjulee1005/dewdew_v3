@@ -14,7 +14,7 @@
 
 const { t } = useLocale()
 
-const { thumbImageData } = storeToRefs(useArchiveStore())
+const { thumbImageData } = useArchiveStore()
 
 useHead({
   title: t('pageTitle.archives'),

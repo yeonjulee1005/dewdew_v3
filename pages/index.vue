@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <LazyMainIntroBanner
+    <MainIntroBanner
       :main-title="mainIntroTitle"
       :main-text="mainIntroText"
       :main-scroll-text="mainIntroScrollText"
@@ -8,24 +8,25 @@
       :main-text-trigger="mainTextTrigger"
       :scroll-down-trigger="scrollDownTrigger"
     />
-    <LazyMainResumeDesc
+    <MainResumeDesc
       :resume-title="mainResumeTitle"
       :educate-text="mainEducatedText"
       :career-data="mainCareerText"
       :main-resume-trigger="mainResumeTrigger"
     />
-    <LazyMainSkillContents
+    <MainSkillContents
       :skills-text-trigger="mainSkillsTextTrigger"
       :skills-bg-trigger="mainSkillsBgTrigger"
       :skills-list-trigger="mainSkillsListTrigger"
     />
-    <LazyMainPortfolio
+    <MainPortfolio
       :portfolio-title="mainPortfolioTitle"
       :portfolio-description="mainPortfolioText"
       :portfolio-background="mainPortfolioBackground"
+      :portfolio-image-data="portfolioData"
       :portfolio-trigger="true"
     />
-    <LazyMainContact :contact-trigger="contactTrigger" />
+    <MainContact :contact-trigger="contactTrigger" />
   </div>
 </template>
 
@@ -36,6 +37,7 @@ const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
 const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = useMainStore()
+const { portfolioData } = usePortfolioStore()
 
 useHead({
   meta: [

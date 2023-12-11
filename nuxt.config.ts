@@ -4,10 +4,7 @@ import packageJson from './package.json'
 
 export default defineNuxtConfig({
   devtools: {
-    enabled: true,
-    timeline: {
-      enabled: true
-    }
+    enabled: true
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -15,7 +12,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'ko'
       },
-      title: 'Developer Dewdew | 개발자 이연주',
       meta: [
         { property: 'Imagetoolbar', content: 'no' },
         { name: 'naver-site-verification', content: '7c406de71b03c1e444a4fe2630a29bd7a8e17559' }
