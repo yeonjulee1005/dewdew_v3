@@ -17,9 +17,9 @@
     >
       <div class="main-skill-list flex flex-column">
         <div class="frontend-list flex flex-column flex-justify-center mb-40">
-          <div class="skill-title-text flex flex-column">
+          <span class="skill-title-text flex flex-column">
             {{ titleLists.frontEndTitle }}
-          </div>
+          </span>
           <div
             v-for="item in frontEndData"
             :key="item.title"
@@ -28,9 +28,9 @@
           </div>
         </div>
         <div class="backend-list flex flex-column flex-justify-center mb-40">
-          <div class="skill-title-text flex flex-column">
+          <span class="skill-title-text flex flex-column">
             {{ titleLists.backEndTitle }}
-          </div>
+          </span>
           <div
             v-for="item in backEndData"
             :key="item.title"
@@ -40,9 +40,9 @@
         </div>
       </div>
       <div class="tools-list flex flex-column flex-justify-center mb-40">
-        <div class="skill-title-text flex flex-column">
+        <span class="skill-title-text flex flex-column">
           {{ titleLists.toolsTitle }}
-        </div>
+        </span>
         <div
           v-for="item in toolsData"
           :key="item.title"
@@ -79,41 +79,52 @@ const titleLists = {
 }
 
 const frontEndData = [
-  { title: 'Nuxt3', duration: 8, percent: 90, percentText: '⚙️ 90%', color: 'hsla(0, 93.1%, 71.8%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Nuxt2', duration: 8, percent: 90, percentText: '⚙️ 90%', color: 'hsla(10.1, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Vue2/3', duration: 11, percent: 85, percentText: '⚙️ 85%', color: 'hsla(30, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'TypeScript', duration: 5, percent: 65, percentText: '⚙️ 65%', color: 'hsla(44.8, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'JavaScript', duration: 8, percent: 80, percentText: '⚙️ 80%', color: 'hsla(60, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'SASS/SCSS', duration: 7, percent: 90, percentText: '⚙️ 90%', color: 'hsla(79.9, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'HTML5', duration: 6, percent: 100, percentText: '⚙️ 100%', color: 'hsla(109.9, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'CSS3', duration: 10, percent: 100, percentText: '⚙️ 100%', color: 'hsla(140.2, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Swift', duration: 4, percent: 30, percentText: '⚙️ 30%', color: 'hsla(30, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Flutter', duration: 6, percent: 40, percentText: '⚙️ 40%', color: 'hsla(160.1, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' }
+  { title: 'Nuxt3', percent: 90, emoji: '🚀' },
+  { title: 'Nuxt2', percent: 90, emoji: '🚀' },
+  { title: 'Vue2/3', percent: 85, emoji: '🚀' },
+  { title: 'Astro', percent: 25, emoji: '📖' },
+  { title: 'React', percent: 25, emoji: '📖' },
+  { title: 'Next.js', percent: 20, emoji: '📖' },
+  { title: 'TypeScript', percent: 65, emoji: '💻' },
+  { title: 'JavaScript', percent: 80, emoji: '🚀' },
+  { title: 'SASS/SCSS', percent: 90, emoji: '🚀' },
+  { title: 'element-plus', percent: 90, emoji: '🚀' },
+  { title: 'Tailwind CSS', percent: 60, emoji: '🚀' },
+  { title: 'HTML5', percent: 90, emoji: '🚀' },
+  { title: 'CSS3', percent: 80, emoji: '🚀' },
+  { title: 'bun', percent: 50, emoji: '💻' },
+  { title: 'Swift', percent: 20, emoji: '📖' },
+  { title: 'Flutter', percent: 25, emoji: '📖' }
 ]
 
 const backEndData = [
-  { title: 'Supabase', duration: 6, percent: 80, percentText: '⚙️ 80%', color: 'hsla(240, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Node.js', duration: 7, percent: 60, percentText: '⚙️ 60%', color: 'hsla(180, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'PostgreSQL', duration: 8, percent: 70, percentText: '⚙️ 70%', color: 'hsla(199.9, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Python', duration: 10, percent: 60, percentText: '⚙️ 60%', color: 'hsla(219.8, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' }
+  { title: 'Supabase', percent: 80, emoji: '🚀' },
+  { title: 'Deno', percent: 10, emoji: '📖' },
+  { title: 'Docker', percent: 10, emoji: '💻' },
+  { title: 'Kubernetes', percent: 5, emoji: '📖' },
+  { title: 'Express', percent: 60, emoji: '💻' },
+  { title: 'Node.js', percent: 60, emoji: '💻' },
+  { title: 'PostgreSQL', percent: 50, emoji: '💻' },
+  { title: 'Python', percent: 15, emoji: '📖' }
 ]
 
 const toolsData = [
-  { title: 'Vercel', duration: 10, percent: 100, percentText: '⚙️ 100%', color: 'hsla(140.2, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Amplitude', duration: 4, percent: 50, percentText: '⚙️ 50%', color: 'hsla(30, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Azure', duration: 6, percent: 85, percentText: '⚙️ 85%', color: 'hsla(240, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Firebase', duration: 11, percent: 80, percentText: '⚙️ 80%', color: 'hsla(260.2, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'VS Code', duration: 7, percent: 100, percentText: '⚙️ 100%', color: 'hsla(280.1, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Vim', duration: 10, percent: 95, percentText: '⚙️ 95%', color: 'hsla(300, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'GitHub', duration: 5, percent: 100, percentText: '⚙️ 100%', color: 'hsla(319.9, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Figma', duration: 6, percent: 60, percentText: '⚙️ 60%', color: 'hsla(109.9, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Jira', duration: 11, percent: 90, percentText: '⚙️ 100%', color: 'hsla(339.8, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Slack', duration: 6, percent: 100, percentText: '⚙️ 100%', color: 'hsla(109.9, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Teams', duration: 8, percent: 90, percentText: '⚙️ 90%', color: 'hsla(0, 93.1%, 71.8%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Postman', duration: 5, percent: 90, percentText: '⚙️ 90%', color: 'hsla(0, 91.2%, 64.3%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Illustration', duration: 7, percent: 100, percentText: '⚙️ 100%', color: 'hsla(338, 16%, 23%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'XD', duration: 10, percent: 100, percentText: '⚙️ 100%', color: 'hsla(154, 13%, 24%)', style: 'font-size: 20px; margin-right: 120px;' },
-  { title: 'Zeplin', duration: 6, percent: 100, percentText: '⚙️ 100%', color: 'hsla(358, 11%, 55%)', style: 'font-size: 20px; margin-right: 120px;' }
+  { title: 'Vercel', percent: 100, emoji: '🚀' },
+  { title: 'Amplitude', percent: 50, emoji: '💻' },
+  { title: 'Azure', percent: 85, emoji: '🚀' },
+  { title: 'Firebase', percent: 80, emoji: '🚀' },
+  { title: 'VS Code', percent: 100, emoji: '🚀' },
+  { title: 'Cursor', percent: 87, emoji: '🚀' },
+  { title: 'Vim', percent: 75, emoji: '💻' },
+  { title: 'GitHub', percent: 90, emoji: '🚀' },
+  { title: 'Figma', percent: 80, emoji: '💻' },
+  { title: 'Jira', percent: 90, emoji: '🚀' },
+  { title: 'Slack', percent: 100, emoji: '🚀' },
+  { title: 'Teams', percent: 90, emoji: '🚀' },
+  { title: 'Postman', percent: 90, emoji: '🚀' },
+  { title: 'Illustration', percent: 70, emoji: '💻' },
+  { title: 'XD', percent: 80, emoji: '💻' },
+  { title: 'Zeplin', percent: 65, emoji: '💻' }
 ]
 
 </script>

@@ -129,7 +129,7 @@ th.has-focus {
 
 .character-count {
   padding: $space-10;
-  .el-text {
+  span {
     margin: $space-4;
     line-height: 1.2;
     text-align: right;

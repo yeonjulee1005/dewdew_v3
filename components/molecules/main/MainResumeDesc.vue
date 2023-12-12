@@ -17,24 +17,24 @@
       />
       <div class="resume-texts flex flex-column flex-justify-center gap-10">
         <div class="title-container flex flex-column gap-10">
-          <el-text class="title">
+          <span class="title">
             {{ locale === 'ko' ? resumeTitle?.textTitle.ko : resumeTitle?.textTitle.en }}
-          </el-text>
-          <el-text class="educate">
+          </span>
+          <span class="educate">
             {{ locale === 'ko' ? educateText?.textTitle.ko : educateText?.textTitle.en }}
-          </el-text>
+          </span>
         </div>
         <div
           v-for="career in careerData"
           :key="career.index"
           class="career-container flex flex-column"
         >
-          <el-text class="career-title">
+          <span class="career-title">
             {{ locale === 'ko' ? career?.textTitle.ko : career?.textTitle.en }}
-          </el-text>
-          <el-text class="career-desc">
+          </span>
+          <span class="career-desc">
             {{ locale === 'ko' ? career.textDescription.ko : career.textDescription.en }}
-          </el-text>
+          </span>
         </div>
       </div>
     </div>

@@ -14,7 +14,6 @@
   .main-text-group {
     top: calc($space-60vw + $space-80 );
     width: fit-content;
-    height: $space-80;
     .text {
       @include headline5;
       &:last-child {

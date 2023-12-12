@@ -292,7 +292,7 @@
     opacity: 0;
     z-index: 10;
     .skill-title-text {
-      width: $space-200;
+      width: calc($space-300 + $space-60);
       margin-bottom: $space-30;
       @include headline2;
       text-align: left;

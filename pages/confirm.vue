@@ -1,8 +1,8 @@
 <template>
   <div class="h-full flex flex-justify-center">
-    <el-text size="large">
+    <span>
       {{ $t('login.process') }}
-    </el-text>
+    </span>
   </div>
 </template>
 

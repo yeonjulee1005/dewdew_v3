@@ -14,14 +14,10 @@
         :mouse-drag="mouseDrag"
       >
         <Slide
-          v-for="(image, index) in props.imageData"
+          v-for="(image, index) in imageData"
           :key="index"
         >
-          <nuxt-link
-            v-if="props.mainSliderTrigger"
-            class="image-component"
-            :to="`/archives/${image?.title ?? ''}`"
-          >
+          <div class="image-component">
             <nuxt-picture
               v-if="image?.url"
               :src="image.url"
@@ -30,49 +26,29 @@
               format="webp"
               loading="lazy"
               :img-attrs="{class: 'thumbnail'}"
-              :alt="image?.title ?? 'title'"
+              :alt="image?.title ?? 'image'"
+              @click="mainSliderTrigger ? navigateTo(`/archives/${image?.title ?? ''}`) : $emit('open-dialog', image)"
             />
-            <div class="text-group flex flex-column">
-              <el-text class="title">
+            <div
+              v-if="mainSliderTrigger"
+              class="text-group flex flex-column"
+            >
+              <span class="title">
                 {{ $t('archives.historyTitle') }}
-              </el-text>
-              <el-text class="subtitle">
+              </span>
+              <span class="subtitle">
                 {{ image?.title }}
-              </el-text>
+              </span>
             </div>
-          </nuxt-link>
-          <div
-            v-else
-            class="image-component"
-          >
-            <nuxt-picture
-              v-if="image?.url"
-              :src="image.url"
-              width="360"
-              height="300"
-              format="webp"
-              loading="lazy"
-              :img-attrs="{class: 'thumbnail'}"
-              :alt="image?.title ?? 'title'"
-              @click="$emit('open-dialog', image)"
-            />
           </div>
         </Slide>
         <template #addons>
           <Navigation v-if="showNavigation">
             <template #next>
-              <nuxt-img
-                :src="url('right_arrow.svg', 'assets', 'icon')"
-                :width="10"
-                :height="18"
-              />
+              <nuxt-img :src="url('right_arrow.svg', 'assets', 'icon')" />
             </template>
             <template #prev>
-              <nuxt-img
-                :src="url('left_arrow.svg', 'assets', 'icon')"
-                :width="10"
-                :height="18"
-              />
+              <nuxt-img :src="url('left_arrow.svg', 'assets', 'icon')" />
             </template>
           </Navigation>
           <Pagination v-if="showPagination" />
@@ -90,7 +66,7 @@ const { url } = useImageStorage()
 
 const props = withDefaults(
   defineProps<{
-    imageData:({ title: string, url: string, route: string } | null)[],
+    imageData: { title: string, url: string, route: string }[] | null | undefined,
     desktopShowItemCount?: number,
     tabletShowItemCount?: number,
     mobileShowItemCount?: number,

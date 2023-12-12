@@ -3,9 +3,11 @@
     <LazyMainIntroBanner
       :main-title="mainIntroTitle"
       :main-text="mainIntroText"
-      :main-scroll-text="mainIntroScrollText"
-      :main-title-trigger="mainTextTrigger"
+      :main-title-trigger="mainTitleTrigger"
       :main-text-trigger="mainTextTrigger"
+    />
+    <LazyMainScrollDown
+      :main-scroll-text="mainIntroScrollText"
       :scroll-down-trigger="scrollDownTrigger"
     />
     <LazyMainResumeDesc
@@ -24,7 +26,7 @@
       :portfolio-description="mainPortfolioText"
       :portfolio-background="mainPortfolioBackground"
       :portfolio-image-data="portfolioData"
-      :portfolio-trigger="true"
+      :portfolio-trigger="referenceListTrigger"
     />
     <LazyMainContact :contact-trigger="contactTrigger" />
   </div>
@@ -38,6 +40,8 @@ const { y } = useWindowScroll()
 
 const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
 const { portfolioData } = storeToRefs(usePortfolioStore())
+
+const { loadMainData, loadStackData, loadPortfolioData } = useLoadComposable()
 
 useHead({
   meta: [
@@ -78,25 +82,25 @@ const scrollDetect = () => {
 const mobile = (scrollY:number) => {
   mainTitleTrigger.value = scrollY < 200
   mainTextTrigger.value = scrollY < 350
-  scrollDownTrigger.value = scrollY < 440
+  scrollDownTrigger.value = scrollY < 160
   mainResumeTrigger.value = scrollY > 200 && scrollY < 1400
   mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
   mainSkillsBgTrigger.value = scrollY > 1300 && scrollY < 2900
-  mainSkillsListTrigger.value = scrollY > 2600 && scrollY < 5000
-  referenceListTrigger.value = scrollY > 5000 && scrollY < 8900
-  contactTrigger.value = scrollY > 8800
+  mainSkillsListTrigger.value = scrollY > 3000 && scrollY < 7700
+  referenceListTrigger.value = scrollY > 7700 && scrollY < 12800
+  contactTrigger.value = scrollY > 12900
 }
 
 const tablet = (scrollY:number) => {
   mainTitleTrigger.value = scrollY < 300
   mainTextTrigger.value = scrollY < 500
-  scrollDownTrigger.value = scrollY < 500
+  scrollDownTrigger.value = scrollY < 200
   mainResumeTrigger.value = scrollY > 300 && scrollY < 1600
   mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
   mainSkillsBgTrigger.value = scrollY > 1200 && scrollY < 4000
-  mainSkillsListTrigger.value = scrollY > 2700 && scrollY < 5100
-  referenceListTrigger.value = scrollY > 5000 && scrollY < 7300
-  contactTrigger.value = scrollY > 7200
+  mainSkillsListTrigger.value = scrollY > 2700 && scrollY < 7700
+  referenceListTrigger.value = scrollY > 7700 && scrollY < 10000
+  contactTrigger.value = scrollY > 10100
 }
 
 const desktop = (scrollY:number) => {
@@ -106,9 +110,13 @@ const desktop = (scrollY:number) => {
   mainResumeTrigger.value = scrollY > 150 && scrollY < 1250
   mainSkillsTextTrigger.value = scrollY > 1300 && scrollY < 2200
   mainSkillsBgTrigger.value = scrollY > 900 && scrollY < 3000
-  mainSkillsListTrigger.value = scrollY > 2300 && scrollY < 3800
-  referenceListTrigger.value = scrollY > 4000 && scrollY < 5800
-  contactTrigger.value = scrollY > 5500
+  mainSkillsListTrigger.value = scrollY > 2300 && scrollY < 5500
+  referenceListTrigger.value = scrollY > 5800 && scrollY < 7300
+  contactTrigger.value = scrollY > 7400
 }
+
+loadMainData()
+loadStackData()
+loadPortfolioData()
 
 </script>

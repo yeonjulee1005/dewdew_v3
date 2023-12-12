@@ -9,12 +9,12 @@
     @close-dialog="closeLeaveDialog"
   >
     <div class="leave-dialog flex flex-column flex-justify-center flex-align-center gap-10">
-      <el-text class="leave-texts">
+      <span class="leave-texts">
         {{ $t('messages.leavePage') }}
-      </el-text>
-      <el-text class="leave-texts">
+      </span>
+      <span class="leave-texts">
         {{ $t('messages.leavePageDesc') }}
-      </el-text>
+      </span>
       <el-progress
         type="dashboard"
         class="mt-20"

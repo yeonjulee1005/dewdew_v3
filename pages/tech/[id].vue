@@ -132,9 +132,9 @@ const updateLikeCount = () => {
   if (!alreadyLike) {
     updateTechBlogLikeCount()
     clickedTechArticle.value.push(techDetailData.value?.id ?? '')
-    notify('', 'error', t('messages.successPressLike'), true, 1000, 0)
+    notify('', 'success', t('messages.successPressLike'), true, 1000, 0)
   } else {
-    notify('', 'error', t('messages.alreadyPressLike'), true, 1000, 0)
+    notify('', 'warning', t('messages.alreadyPressLike'), true, 1000, 0)
   }
 }
 

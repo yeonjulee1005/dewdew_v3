@@ -12,9 +12,11 @@
 
 <script setup lang="ts">
 
+const client = useSupabaseClient()
+
 const { t } = useLocale()
 
-const { thumbImageData } = storeToRefs(useArchiveStore())
+const { randomOrder } = useUi()
 
 useHead({
   title: t('pageTitle.archives'),
@@ -25,5 +27,41 @@ useHead({
     { property: 'og:description', content: t('openGraph.archivesDesc') }
   ]
 })
+
+
+const { data: thumbImageData } = useAsyncData('archiveData', async () => {
+  const { data, error } = await client
+    .from('archiveIndex')
+    .select('index, title, deleted, archiveImage(title, years, url)')
+    .eq('deleted', false)
+
+  if (error) {
+    throw createError({ statusMessage: error.message })
+  }
+
+  if (!data) { return }
+
+  return generateThumbImageData(data)
+}, {
+  immediate: true
+})
+
+const generateThumbImageData = (imageData:SerializeObject) => {
+  const thumbImageData:{ title: string, url: string, route: string }[] = []
+
+  imageData.forEach((image:{ index: number, title: string, deleted: boolean, archiveImage: { title: string, years: string, url: string}[] }) => {
+    if (!image.archiveImage) { return }
+
+    const result:{ title: string, url: string, route: string } = {
+      title: image.title,
+      url: image.archiveImage[randomOrder(image.archiveImage.length)]?.url,
+      route: `/archives/${image.title}`
+    }
+
+    thumbImageData.push(result)
+  })
+
+  return thumbImageData
+}
 
 </script>

@@ -1,30 +1,23 @@
 <template>
   <div class="main-intro flex flex-justify-center">
-    <el-text
+    <span
       class="main-title"
       :class="{'activate': mainTitleTrigger}"
     >
       {{ locale === 'ko' ? mainTitle?.textTitle.ko : mainTitle?.textTitle.en }}
-    </el-text>
+    </span>
     <div
       class="main-text-group flex flex-column"
       :class="{'activate': mainTextTrigger}"
     >
-      <el-text
+      <span
         v-for="item in mainText"
         :key="item.index"
         class="text"
       >
         {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-      </el-text>
+      </span>
     </div>
-    <el-text
-      ref="scrollDown"
-      class="scroll-down"
-      :class="{'activate': scrollDownTrigger}"
-    >
-      {{ locale === 'ko' ? mainScrollText?.textTitle.ko : mainScrollText?.textTitle.en }}
-    </el-text>
     <nuxt-picture
       :src="url('main_banner.webp', 'assets', 'banner')"
       class="main-banner"
@@ -48,15 +41,12 @@ withDefaults(
   defineProps<{
     mainTitle: SerializeObject,
     mainText: SerializeObject[],
-    mainScrollText: SerializeObject,
     mainTitleTrigger?: boolean,
-    mainTextTrigger?: boolean,
-    scrollDownTrigger?: boolean
+    mainTextTrigger?: boolean
   }>(),
   {
     mainTitleTrigger: false,
-    mainTextTrigger: false,
-    scrollDownTrigger: false
+    mainTextTrigger: false
   }
 )
 

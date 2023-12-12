@@ -16,7 +16,6 @@
     top: calc($space-500 + $space-50);
     left: $space-percent-5;
     width: fit-content;
-    height: $space-100;
     background-color: var(--d-content-bg-color);
     .text {
       @include headline4;
