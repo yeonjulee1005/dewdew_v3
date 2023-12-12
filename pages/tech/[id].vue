@@ -7,7 +7,7 @@
       @update:title="(title:string) => updateData.title = title"
     />
     <ArticleAddOn
-      :article-id="String(techId)"
+      :article-id="techId"
       :data="techDetailData"
       :activate-like="techBlogLikeTrigger"
       @update-count="updateLikeCount"
@@ -59,9 +59,11 @@ const { clickedTechArticle, adminAccess } = storeToRefs(useTechStore())
 const { path, params } = useRoute()
 const { notify } = useAlarm()
 
-const techId = params.id as string
+const techId = computed(() => {
+  return params.id as string
+})
 
-const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = loadTechBlogCommentData(techId)
+const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = loadTechBlogCommentData(techId.value)
 
 const techBlogLikeTrigger = ref(false)
 const displayFloatButtonTrigger = ref(false)
@@ -71,7 +73,7 @@ const { data: techDetailData, refresh: techRefresh } = useAsyncData('blogDetailD
   const { data, error } = await client
     .from('tech')
     .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
-    .eq('id', techId)
+    .eq('id', techId.value)
     .eq('deleted', false)
     .single()
 
@@ -80,6 +82,8 @@ const { data: techDetailData, refresh: techRefresh } = useAsyncData('blogDetailD
   }
 
   return data
+}, {
+  immediate: true
 })
 
 const updateData = ref<SerializeObject>({
@@ -136,7 +140,7 @@ const updateLikeCount = () => {
 
 const updateTechBlogLikeCount = async () => {
   const countData:SerializeObject = {
-    id: techId,
+    id: techId.value,
     like: parseInt(techDetailData.value?.like ?? '') + 1
   }
   const { error } = await client
@@ -151,7 +155,7 @@ const updateTechBlogLikeCount = async () => {
 const createComment = async (commentData:CreateComment) => {
   const createCommentData:SerializeObject = {
     ...commentData,
-    tech_id: techId
+    tech_id: techId.value
   }
   const { error } = await client
     .from('techComment')
@@ -168,7 +172,7 @@ const deleteAdminComment = async (comment:SerializeObject) => {
     .from('techComment')
     .delete()
     .eq('id', comment.id)
-    .eq('tech_id', techId)
+    .eq('tech_id', techId.value)
 
   if (!error) {
     notify('', 'error', t('messages.deleteComment'), true, 1000, 0)
@@ -181,7 +185,7 @@ const deleteComment = async (comment:SerializeObject, password:string) => {
     .from('techComment')
     .delete()
     .eq('id', comment.id)
-    .eq('tech_id', techId)
+    .eq('tech_id', techId.value)
     .eq('password', password)
 
   if (!error) {
