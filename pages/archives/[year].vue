@@ -1,13 +1,22 @@
 <template>
-  <div>
-    <el-button
+  <div class="archive-detail">
+    <DDButton
       class="prev-button"
-      round
-      size="large"
+      color="violet"
+      variant="ghost"
+      size="lg"
+      aria-label="back"
       @click="navigateTo('/archives')"
     >
-      {{ $t('archives.back') }}
-    </el-button>
+      <template #leading>
+        <Icon
+          name="line-md:arrow-small-left"
+          :width="24"
+          :height="24"
+        />
+        {{ $t('archives.back') }}
+      </template>
+    </DDButton>
     <ImageSlider
       :image-data="yearData"
       :inner-archive-trigger="true"
@@ -56,7 +65,7 @@ definePageMeta({
 const selectImageData = ref<SerializeObject>()
 const imageDialogTrigger = ref(false)
 
-const { data: yearData }:SerializeObject = await useAsyncData('yearData', async () => {
+const { data: yearData }:SerializeObject = await useAsyncData('archiveDetailData', async () => {
   const { data, error } = await client
     .from('archiveImage')
     .select('title, years, url, deleted')

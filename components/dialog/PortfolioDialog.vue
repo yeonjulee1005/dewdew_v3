@@ -7,12 +7,12 @@
     @close-dialog="() => $emit('close:dialog', false)"
   >
     <div class="flex flex-column gap-10">
-      <el-text class="title mb-default">
+      <span class="title mb-default">
         {{ selectPortfolio.title }}
-      </el-text>
-      <el-text class="description mb-default">
+      </span>
+      <span class="description mb-default">
         {{ selectPortfolio.desc }}
-      </el-text>
+      </span>
     </div>
     <nuxt-picture
       class="detail-image"

@@ -24,18 +24,18 @@
       class="el-icon--upload flex-column"
     >
       <Icon name="line-md:cloud-upload-outline-loop" />
-      <el-text class="el-upload__text">
+      <span class="el-upload__text">
         {{ $t('colorsTranslate.uploadFile') }}
         <span class="accent">
           {{ $t('colorsTranslate.dropperDesc') }}
         </span>
         {{ $t('colorsTranslate.checkDropper') }}
-      </el-text>
+      </span>
     </el-icon>
     <template #tip>
-      <el-text class="el-upload__tip">
+      <span class="el-upload__tip">
         {{ props.fileTypeAlarm.concat(', ', props.fileSizeAlarm) }}
-      </el-text>
+      </span>
     </template>
   </el-upload>
 </template>

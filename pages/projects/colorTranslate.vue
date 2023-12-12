@@ -5,13 +5,13 @@
   >
     <div class="flex flex-column gap-20">
       <el-button
-        class="eye-dropper gap-10"
+        class="eye-dropper"
         @click="colorPicker"
       >
         <Icon name="wpf:color-dropper" />
-        <el-text>
+        <span>
           {{ $t('colorsTranslate.dropper') }}
-        </el-text>
+        </span>
       </el-button>
       <LazyUploadFile
         :file-size-alarm="$t('colorsTranslate.fileSize')"

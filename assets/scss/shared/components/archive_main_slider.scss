@@ -13,13 +13,10 @@
 }
 
 .prev-button {
-  margin: $space-160 0 0 $space-40;
+  position: relative;
+  top: calc($space-100 + $space-20);
+  left: $space-10vw;
   z-index: 10;
-  &:focus, &:hover {
-    color: var(--d-text-color);
-    border: $space-1 solid var(--d-bg-main-color);
-    background-color: var(--d-footer-bg-color);
-  }
 }
 
 .main-slider-section {

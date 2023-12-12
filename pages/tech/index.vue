@@ -49,11 +49,6 @@
       class="tech-timeline"
       :description="$t('messages.emptyArticle')"
     />
-    <el-backtop
-      target=".tech-lists"
-      :bottom="150"
-      :right="36"
-    />
     <CreateArticleDialog
       :create-article-trigger="createArticleTrigger"
       :title="$t('messages.writeArticle')"
@@ -81,10 +76,6 @@ useHead({
     { property: 'og:url', content: 'https://www.dewdew.kr/tech/' },
     { property: 'og:description', content: t('openGraph.techDesc') }
   ]
-})
-
-definePageMeta({
-  pageTransition: false
 })
 
 const currentPage = ref(1)

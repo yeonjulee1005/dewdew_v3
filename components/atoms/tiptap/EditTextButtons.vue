@@ -13,9 +13,9 @@
         @mouseleave="visible = false"
         @click="clickAction"
       >
-        <el-text :style="{ fontFamily: fontFamilyName }">
+        <span :style="{ fontFamily: fontFamilyName }">
           {{ text }}
-        </el-text>
+        </span>
       </el-button>
     </el-tooltip>
   </client-only>

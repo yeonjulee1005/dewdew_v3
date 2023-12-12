@@ -1,8 +1,8 @@
 <template>
   <div class="article-comments">
-    <el-text class="comments-title">
+    <span class="comments-title">
       {{ commentTitle }}
-    </el-text>
+    </span>
     <el-timeline v-if="commentData.length">
       <el-timeline-item
         v-for="(comment, index) in commentData"
@@ -13,9 +13,9 @@
         <ANuxtTime :date-time="comment.created_at" />
         <div class="comments-item flex flex-row flex-space-between flex-align-center">
           <div class="message-component mr-40">
-            <el-text>
+            <span class="name">
               {{ comment.name }}
-            </el-text>
+            </span>
             <div v-dompurify-html="comment.message" />
           </div>
           <el-button

@@ -5,19 +5,16 @@
       to="/tech"
     >
       <Icon name="line-md:arrow-small-left" />
-      <el-text
-        class="ml-8"
-        size="large"
-      >
+      <span class="ml-8">
         {{ $t('archives.back') }}
-      </el-text>
+      </span>
     </nuxt-link>
-    <el-text
+    <span
       v-if="!editTrigger"
       class="title"
     >
       {{ title }}
-    </el-text>
+    </span>
     <el-input
       v-else
       v-model="copiedTitle"

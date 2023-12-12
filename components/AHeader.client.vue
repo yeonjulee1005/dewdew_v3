@@ -24,6 +24,7 @@
           class="menu-links flex-align-center"
           :class="{'mobile-menu-links flex flex-justify-center': !desktopModeTrigger}"
           :to="menu.url"
+          alt="menu"
         >
           <Icon
             v-if="!desktopModeTrigger"
@@ -38,6 +39,7 @@
           class="github"
           :to="socialMenuData[0].url"
           target="_blank"
+          alt="github"
         >
           <nuxt-img
             :src="socialMenuData[0].image_url"
@@ -49,55 +51,79 @@
           />
         </nuxt-link>
       </div>
-      <client-only>
-        <el-select
-          v-model="locale"
-          class="select-language w-80"
-          size="small"
-          @change="(locale:string) => setLocaleCookie(locale)"
-        >
-          <el-option
-            :label="$t('localeMenu.korean')"
-            value="ko"
+      <DDSelectMenu
+        v-model="selectLocale"
+        color="violet"
+        size="sm"
+        variant="outline"
+        :options="locales"
+        value-attribute="value"
+        option-attribute="label"
+      >
+        <template #label>
+          <Icon
+            :name="selectLocale === 'ko' ? 'circle-flags:kr' : 'circle-flags:us'"
+            :width="24"
+            :height="24"
           />
-          <el-option
-            :label="$t('localeMenu.english')"
-            value="en"
+          {{ selectLocale }}
+        </template>
+      </DDSelectMenu>
+      <DDButton
+        class="mr-20"
+        color="violet"
+        variant="ghost"
+        aria-label="Theme"
+        @click="isDark = !isDark"
+      >
+        <template #leading>
+          <Icon
+            :name="isDark ? 'line-md:moon-filled-loop' : 'line-md:moon-filled-alt-to-sunny-filled-loop-transition'"
+            :width="24"
+            :height="24"
           />
-        </el-select>
-        <el-switch
-          v-model="darkSwitch"
-          class="dark-mode-switch flex-end"
-          inline-prompt
-          :active-action-icon="Moon"
-          :inactive-action-icon="Sunny"
-          name="theme-mode"
-          label="color-mode"
-        />
-      </client-only>
+        </template>
+      </DDButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Sunny, Moon } from '@element-plus/icons-vue'
 
-const { locale, setLocaleCookie } = useLocale()
+const colorMode = useColorMode()
+
+const { t, locale, setLocale } = useLocale()
 const { width } = useWindowSize()
-
-const darkModeTrigger = useDark()
 
 const { mainMenuData, socialMenuData } = storeToRefs(useMenuStore())
 const { url } = useImageStorage()
-
-const darkSwitch = ref(false)
 
 const desktopModeTrigger = computed(() => {
   return width.value > 999
 })
 
-watch(() => darkSwitch.value, (value) => {
-  darkModeTrigger.value = value
-}, { immediate: true })
+const locales = [
+  { label: t('localeMenu.korean'), value: 'ko' },
+  { label: t('localeMenu.english'), value: 'en' }
+]
+
+const selectLocale = computed({
+  get () {
+    return locale.value
+  },
+  set (value) {
+    setLocale(value)
+  }
+})
+
+const isDark = computed({
+  get () {
+    return colorMode.value === 'dark'
+  },
+  set () {
+    useFavicon(colorMode.value === 'dark' ? 'favicon_black.png' : 'favicon_white.png')
+    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+  }
+})
 
 </script>

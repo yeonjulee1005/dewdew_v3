@@ -1,8 +1,8 @@
 <template>
   <div class="h-full flex flex-justify-center">
-    <el-text size="large">
+    <span>
       {{ $t('login.process') }}
-    </el-text>
+    </span>
   </div>
 </template>
 
@@ -37,7 +37,8 @@ const setUserCoreData = async (userId:string) => {
     notify('', 'success', t('messages.welcome'), true, 3000, 0)
     navigateTo('/tech')
   } else {
-    await client.auth.signOut()
+    await client.auth
+      .signOut()
     notify('', 'error', t('messages.notAdmin'), true, 3000, 0)
     navigateTo('/')
   }

@@ -1,9 +1,9 @@
 <template>
   <el-card class="tech-card">
     <div class="card-header flex flex-row flex-align-center">
-      <el-text class="title">
+      <span class="title">
         {{ cardItem.title }}
-      </el-text>
+      </span>
       <el-tag
         class="like ml-default"
         type="success"
@@ -12,12 +12,9 @@
         {{ cardItem.like + ' ❤️' }}
       </el-tag>
     </div>
-    <el-text
-      class="desc"
-      line-clamp="3"
-    >
+    <div class="desc mt-default">
       {{ cardItem.raw_article }}
-    </el-text>
+    </div>
   </el-card>
 </template>
 

@@ -27,11 +27,8 @@ interface Colors {
 }
 
 interface ProgressData {
-  color: string,
-  duration: number,
+  emoji: string,
   percent: number,
-  percentText: string,
-  style: string,
   title: string
 }
 
