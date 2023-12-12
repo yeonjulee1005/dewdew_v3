@@ -1,19 +1,19 @@
 <template>
   <div class="tech-article flex flex-column flex-align-center">
     <ArticleHeader
-      :title="techDetailData.title"
-      :created-at="techDetailData.created_at"
+      :title="techDetailData?.title"
+      :created-at="techDetailData?.created_at"
       :edit-trigger="editTrigger"
-      @update:title="(title:string) => techDetailData.title = title"
+      @update:title="(title:string) => updateData.title = title"
     />
     <ArticleAddOn
-      :article-id="String(techId)"
+      :article-id="techId"
       :data="techDetailData"
       :activate-like="techBlogLikeTrigger"
       @update-count="updateLikeCount"
     />
     <ArticleControlButton
-      :admin-access="adminAccess"
+      v-if="adminAccess"
       :edit-trigger="editTrigger"
       @check:admin="clickEditArticle"
       @update:article="updateArticle"
@@ -31,7 +31,7 @@
       @delete:admin-comment="deleteAdminComment"
       @delete:comment="deleteComment"
     />
-    <ArticleCreateComment @create-comment="createComment" />
+    <LazyArticleCreateComment @create-comment="createComment" />
     <ArticleLikeButton
       :trigger="displayFloatButtonTrigger"
       :activate-like="techBlogLikeTrigger"
@@ -52,30 +52,51 @@ const { y } = useWindowScroll()
 
 const { t } = useLocale()
 
-const { adminAccess } = storeToRefs(useTechStore())
-const { loadTechBlogDetailData, loadTechBlogCommentData } = useLoadComposable()
+const { loadTechBlogCommentData } = useLoadComposable()
 
-const { clickedTechArticle } = storeToRefs(useTechStore())
+const { clickedTechArticle, adminAccess } = storeToRefs(useTechStore())
 
 const { path, params } = useRoute()
 const { notify } = useAlarm()
 
-const techId = params.id as string
+const techId = computed(() => {
+  return params.id as string
+})
 
-const { data: techDetailData, refresh: techRefresh }:SerializeObject = loadTechBlogDetailData(techId)
-const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = loadTechBlogCommentData(techId)
+const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = loadTechBlogCommentData(techId.value)
 
 const techBlogLikeTrigger = ref(false)
 const displayFloatButtonTrigger = ref(false)
 const editTrigger = ref(false)
 
+const { data: techDetailData, refresh: techRefresh } = useAsyncData('blogDetailData', async () => {
+  const { data, error } = await client
+    .from('tech')
+    .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
+    .eq('id', techId.value)
+    .eq('deleted', false)
+    .single()
+
+  if (error) {
+    throw createError({ statusMessage: error.message })
+  }
+
+  return data
+}, {
+  immediate: true
+})
+
+const updateData = ref<SerializeObject>({
+  ...techDetailData.value
+})
+
 useHead({
   title: t('pageTitle.tech'),
   meta: [
-    { property: 'description', content: techDetailData.value.desc },
-    { property: 'og:title', content: techDetailData.value.title },
+    { property: 'description', content: techDetailData.value?.desc },
+    { property: 'og:title', content: techDetailData.value?.title },
     { property: 'og:url', content: `https://www.dewdew.kr${path}` },
-    { property: 'og:description', content: techDetailData.value.desc }
+    { property: 'og:description', content: techDetailData.value?.desc }
   ]
 })
 
@@ -90,15 +111,15 @@ watch(() => y.value, () => {
 })
 
 const editArticle = (text:string, rawText:string) => {
-  techDetailData.value.desc = text
-  techDetailData.value.raw_article = rawText
-  techDetailData.value.update_user_id = user.value?.id ?? ''
+  updateData.value.desc = text
+  updateData.value.raw_article = rawText
+  updateData.value.update_user_id = user.value?.id ?? ''
 }
 
 const updateArticle = async () => {
   await client
     .from('tech')
-    .upsert(techDetailData.value)
+    .upsert(updateData.value)
 
   editTrigger.value = false
   notify('', 'success', t('messages.edit'), true, 3000, 0)
@@ -106,10 +127,11 @@ const updateArticle = async () => {
 }
 
 const updateLikeCount = () => {
-  const alreadyLike = clickedTechArticle.value.includes(techDetailData.value.id)
+  console.log(clickedTechArticle.value)
+  const alreadyLike = clickedTechArticle.value.includes(techDetailData.value?.id ?? '')
   if (!alreadyLike) {
     updateTechBlogLikeCount()
-    clickedTechArticle.value.push(techDetailData.value.id)
+    clickedTechArticle.value.push(techDetailData.value?.id ?? '')
     notify('', 'error', t('messages.successPressLike'), true, 1000, 0)
   } else {
     notify('', 'error', t('messages.alreadyPressLike'), true, 1000, 0)
@@ -118,8 +140,8 @@ const updateLikeCount = () => {
 
 const updateTechBlogLikeCount = async () => {
   const countData:SerializeObject = {
-    id: techId,
-    like: parseInt(techDetailData.value.like) + 1
+    id: techId.value,
+    like: parseInt(techDetailData.value?.like ?? '') + 1
   }
   const { error } = await client
     .from('tech')
@@ -133,7 +155,7 @@ const updateTechBlogLikeCount = async () => {
 const createComment = async (commentData:CreateComment) => {
   const createCommentData:SerializeObject = {
     ...commentData,
-    tech_id: techId
+    tech_id: techId.value
   }
   const { error } = await client
     .from('techComment')
@@ -150,7 +172,7 @@ const deleteAdminComment = async (comment:SerializeObject) => {
     .from('techComment')
     .delete()
     .eq('id', comment.id)
-    .eq('tech_id', techId)
+    .eq('tech_id', techId.value)
 
   if (!error) {
     notify('', 'error', t('messages.deleteComment'), true, 1000, 0)
@@ -163,7 +185,7 @@ const deleteComment = async (comment:SerializeObject, password:string) => {
     .from('techComment')
     .delete()
     .eq('id', comment.id)
-    .eq('tech_id', techId)
+    .eq('tech_id', techId.value)
     .eq('password', password)
 
   if (!error) {

@@ -18,7 +18,7 @@
 
 withDefaults(
   defineProps<{
-    techBlogDetailData: SupabaseDataBase['public']['Tables']['tech']['Row'],
+    techBlogDetailData: SerializeObject,
     editTrigger?: boolean
   }>(),
   {
