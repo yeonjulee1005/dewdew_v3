@@ -10,17 +10,7 @@
         center
         color="#D3E3D2"
       >
-        <NuxtTime
-          :datetime="comment.created_at"
-          :locale="locale"
-          class="time flex mb-default"
-          year="numeric"
-          month="long"
-          day="numeric"
-          hour="numeric"
-          minute="numeric"
-          second="numeric"
-        />
+        <ANuxtTime :date-time="comment.created_at" />
         <div class="comments-item flex flex-row flex-space-between flex-align-center">
           <div class="message-component mr-40">
             <el-text>
@@ -53,8 +43,6 @@
 </template>
 
 <script setup lang="ts">
-
-const { locale } = useLocale()
 
 const { adminAccess } = storeToRefs(useTechStore())
 

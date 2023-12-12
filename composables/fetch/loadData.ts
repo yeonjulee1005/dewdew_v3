@@ -73,25 +73,6 @@ export const useLoadComposable = () => {
     mainPortfolioBackground.value = referenceData.filter((item: SerializeObject) => item.text_type === 'background')[0]
   }
 
-  const loadTechBlogDetailData = (techBlogId:string) => {
-    const { data, refresh }:SerializeObject = useAsyncData('blogDetailData', async () => {
-      const { data, error } = await client
-        .from('tech')
-        .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
-        .eq('id', techBlogId)
-        .eq('deleted', false)
-        .single()
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
-    })
-
-    return { data, refresh }
-  }
-
   const loadTechBlogCommentData = (techBlogId:string) => {
     const { data, refresh }:SerializeObject = useAsyncData('blogCommentData', async () => {
       const { data, error } = await client
@@ -198,7 +179,6 @@ export const useLoadComposable = () => {
   return {
     loadMenuData,
     loadMainData,
-    loadTechBlogDetailData,
     loadTechBlogCommentData,
     loadLeaveColorData,
     loadStackData,

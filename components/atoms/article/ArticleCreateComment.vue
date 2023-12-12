@@ -61,6 +61,8 @@
 <script setup lang="ts">
 import type { FormInstance, FormRules } from 'element-plus'
 
+const createCommentRef = ref<FormInstance>()
+
 const { t } = useLocale()
 
 const { notify } = useAlarm()
@@ -83,9 +85,7 @@ const emits = defineEmits([
   'create-comment'
 ])
 
-const createCommentRef = ref<FormInstance>()
-
-const createCommentData = ref<CreateComment>({
+const createCommentData = reactive<CreateComment>({
   name: generateCommentName(),
   message: '',
   password: ''
@@ -123,8 +123,8 @@ const createArticleRules = reactive<FormRules>({
 const submitArticle = async (formEl:FormInstance|undefined) => {
   if (!formEl) { return }
   await formEl.validate((valid, _fields) => {
-    if (valid && createCommentData.value.message) {
-      emits('create-comment', createCommentData.value)
+    if (valid && createCommentData.message) {
+      emits('create-comment', createCommentData)
       setTimeout(() => {
         formEl.resetFields()
       }, 1000)

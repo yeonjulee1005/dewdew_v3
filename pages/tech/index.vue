@@ -21,16 +21,9 @@
         placement="top"
         @click="() => navigateTo(`/tech/${item.id}`)"
       >
-        <NuxtTime
-          :datetime="item.created_at"
-          :locale="locale"
-          class="time flex mb-default"
-          year="numeric"
-          month="long"
-          day="numeric"
-          hour="numeric"
-          minute="numeric"
-          second="numeric"
+        <ANuxtTime
+          :date-time="item.created_at"
+          :full-date-time="false"
         />
         <LazyCardComponent :card-item="item" />
       </el-timeline-item>
@@ -71,8 +64,6 @@
 </template>
 
 <script setup lang="ts">
-
-const { locale } = useLocale()
 
 const user = useSupabaseUser()
 const client = useSupabaseClient()
