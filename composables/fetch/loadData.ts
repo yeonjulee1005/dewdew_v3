@@ -7,12 +7,8 @@ export const useLoadComposable = () => {
   const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
   const { mainMenuData, subMenuData, socialMenuData } = storeToRefs(useMenuStore())
 
-  const { leaveColorData } = storeToRefs(useLeaveColorStore())
   const { stackLogoData } = storeToRefs(useStackStore())
   const { portfolioData } = storeToRefs(usePortfolioStore())
-  const { archiveData } = storeToRefs(useArchiveStore())
-
-  const { generateThumbImage } = useArchiveStore()
 
   const loadMenuData = (menuType:string) => {
     const { data } = useAsyncData(`menuData${menuType}`, async () => {
@@ -91,23 +87,6 @@ export const useLoadComposable = () => {
     return { data, refresh }
   }
 
-  const loadLeaveColorData = () => {
-    const { data } = useAsyncData('leaveColorData', async () => {
-      const { data, error } = await client
-        .from('leaveCounterColor')
-        .select('color, percentage, deleted')
-        .eq('deleted', false)
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
-    })
-
-    leaveColorData.value = data.value
-  }
-
   const loadStackData = () => {
     const { data } = useAsyncData('loadStackData', async () => {
       const { data, error } = await client
@@ -144,24 +123,6 @@ export const useLoadComposable = () => {
     portfolioData.value = data.value
   }
 
-  const loadArchiveGroup = () => {
-    const { data } = useAsyncData('archiveData', async () => {
-      const { data, error } = await client
-        .from('archiveIndex')
-        .select('index, title, deleted, archiveImage(title, years, url)')
-        .eq('deleted', false)
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
-    })
-
-    archiveData.value = data.value
-    generateThumbImage()
-  }
-
   const replaceMenuData = (menuData:{ orderIndex: { index: number }, title: string, icon: string, menu_type: string, url: string, image_url: string, deleted: boolean }[] | null, menuType:string) => {
     switch (menuType) {
       case 'root' :
@@ -180,9 +141,7 @@ export const useLoadComposable = () => {
     loadMenuData,
     loadMainData,
     loadTechBlogCommentData,
-    loadLeaveColorData,
     loadStackData,
-    loadPortfolioData,
-    loadArchiveGroup
+    loadPortfolioData
   }
 }

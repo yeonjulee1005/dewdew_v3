@@ -28,7 +28,7 @@
   }
   .main-text-group {
     position: absolute;
-    height: $space-80;
+    height: calc($space-100 + $space-30);
     padding: $space-20;
     gap: $space-4;
     background-color: var(--d-content-bg-color);
@@ -41,20 +41,6 @@
       align-self: flex-start;
     }
   }
-  .scroll-down {
-    position: absolute;
-    width: fit-content;
-    top: $space-percent-100;
-    @include headline6;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity .75s;
-    animation: motion .5s ease-in .5s infinite alternate;
-    @keyframes motion {
-      0% { margin-top: 0; }
-      100% { margin-top: $space-10; }
-    }
-  }
   .main-banner {
     max-height: $space-80vh;
     overflow: hidden;
@@ -62,6 +48,7 @@
     .banner {
       width: $space-100vw;
       height: auto;
+      object-fit: cover;
     }
   }
 }

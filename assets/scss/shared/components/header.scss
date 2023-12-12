@@ -43,7 +43,7 @@
       right: $space-30;
       opacity: .4;
       width: $space-50;
-      height: calc($space-200 + $space-50);
+      height: calc($space-200 + $space-60);
       padding: $space-4 0;
       gap: $space-8;
       border-radius: $space-12;
@@ -62,24 +62,6 @@
         width: $space-30;
         height: auto;
       }
-    }
-    .select-language {
-      width: $space-80;
-      border-radius: $space-8;
-      background-color: var(--d-footer-bg-color);
-      
-      --el-select-border-color-hover: var(--d-footer-bg-color-deep);
-      .select-trigger {
-        .el-input {
-          .el-input__wrapper {
-            border-radius: $space-8;
-          }
-        }
-      }
-    }
-    .dark-mode-switch {
-      --el-switch-on-color: var(--d-footer-bg-color);
-      --el-switch-off-color: var(--d-footer-bg-color);
     }
   }
 }

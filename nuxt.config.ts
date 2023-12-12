@@ -52,6 +52,8 @@ export default defineNuxtConfig({
     }
   },
   modules: [
+    '@nuxt/ui',
+    '@nuxt/image',
     '@nuxt/devtools',
     '@nuxt/content',
     '@nuxtjs/device',
@@ -62,9 +64,8 @@ export default defineNuxtConfig({
     '@nuxtjs/html-validator',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/i18n',
-    '@nuxt/image',
-    'nuxt-icon',
     'nuxt-time',
+    'nuxt-icon',
     'nuxt-simple-sitemap',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
@@ -76,6 +77,10 @@ export default defineNuxtConfig({
   css: [
     '~/assets/scss/style.scss'
   ],
+  ui: {
+    prefix: 'DD',
+    global: true
+  },
   stylelint: {
     lintOnStart: true
   },

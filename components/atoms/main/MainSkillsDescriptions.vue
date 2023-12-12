@@ -3,34 +3,34 @@
     class="skills-descriptions flex flex-column"
     :class="{'activate': skillsTextTrigger}"
   >
-    <el-text
+    <span
       v-for="(item, index) in skillsTitle"
       :key="index"
       class="skills-text"
     >
       {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </el-text>
-    <el-text
+    </span>
+    <span
       v-for="(item, index) in skillsFirstText"
       :key="index"
       class="skills-text"
     >
       {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </el-text>
-    <el-text
+    </span>
+    <span
       v-for="(item, index) in skillsSecondText"
       :key="index"
       class="skills-text"
     >
       {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </el-text>
-    <el-text
+    </span>
+    <span
       v-for="(item, index) in skillsThirdText"
       :key="index"
       class="skills-text"
     >
       {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </el-text>
+    </span>
     <div class="skills-title-box" />
   </div>
 </template>

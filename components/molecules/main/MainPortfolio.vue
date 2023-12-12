@@ -3,16 +3,16 @@
     class="main-portfolio flex flex-column flex-justify-center gap-10"
     :class="{'activate': portfolioTrigger}"
   >
-    <el-text class="section-title">
+    <span class="section-title">
       {{ locale === 'ko' ? portfolioTitle?.textTitle.ko : portfolioTitle?.textTitle.en }}
-    </el-text>
-    <el-text class="section-text">
+    </span>
+    <span class="section-text">
       {{ locale === 'ko' ? portfolioDescription?.textTitle.ko : portfolioDescription?.textTitle.en }}
-    </el-text>
-    <el-text class="section-bg-text">
+    </span>
+    <span class="section-bg-text">
       {{ locale === 'ko' ? portfolioBackground?.textTitle.ko : portfolioBackground?.textTitle.en }}
-    </el-text>
-    <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center mx-80">
+    </span>
+    <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center">
       <div
         v-for="item in portfolioImageData"
         :key="item.url"
@@ -32,9 +32,9 @@
             fit="cover"
             :alt="item.alt"
           />
-          <el-text class="portfolio-text mt-default">
+          <span class="portfolio-text mt-default">
             {{ item.title }}
-          </el-text>
+          </span>
         </div>
       </div>
     </div>

@@ -9,65 +9,52 @@
     @close-dialog="closeLeaveDialog"
   >
     <div class="leave-dialog flex flex-column flex-justify-center flex-align-center gap-10">
-      <el-text class="leave-texts">
+      <span class="leave-texts">
         {{ $t('messages.leavePage') }}
-      </el-text>
-      <el-text class="leave-texts">
+      </span>
+      <span class="leave-texts">
         {{ $t('messages.leavePageDesc') }}
-      </el-text>
-      <el-progress
-        type="dashboard"
-        class="mt-20"
-        :stroke-width="20"
-        :percentage="displayCount(count)"
-        :color="leaveColorData"
-        alt="leave"
-      >
-        <template #default>
-          <span class="percentage-value">{{ count + ' S' }}</span>
-        </template>
-      </el-progress>
+      </span>
+      <AProgressBar
+        :max-size="60"
+        :count="count"
+        custom-class="mt-20"
+        :use-emoji="false"
+      />
     </div>
   </LazyADialog>
 </template>
 
 <script setup lang="ts">
 
-const { leaveColorData } = storeToRefs(useLeaveColorStore())
+const { idle } = useIdle(10 * 60 * 1000)
 
-const props = withDefaults(
-  defineProps<{
-    idleTrigger?: boolean
-  }>(),
-  {
-    idleTrigger: false
-  }
-)
+let countInterval: ReturnType<typeof setInterval> | null = null
 
-const emits = defineEmits([
-  'dialog-close'
-])
-
-const leaveDialogTrigger = computed({
-  get: () => props.idleTrigger,
-  set: (value) => {
-    leaveDialogTrigger.value = value
-  }
-})
 const count = ref(60)
 
-watch(() => leaveDialogTrigger.value, () => {
-  if (leaveDialogTrigger.value) {
+const idleTrigger = computed(() => { return idle.value })
+const leaveDialogTrigger = ref(false)
+
+watch(() => idleTrigger.value, () => {
+  if (idleTrigger.value) {
+    leaveDialogTrigger.value = true
     generateCountInterval(0, 1000, countDisplay)
+  } else if (countInterval !== null) {
+    clearInterval(countInterval)
   }
-})
+}, { immediate: true }
+)
 
 const generateCountInterval = (count: number, delay: number, callback: (countDown: number, count: number) => void): void => {
   let countDown = 60
-  const countInterval = setInterval(() => {
+
+  countInterval = setInterval(() => {
     callback(countDown, count)
     if (countDown-- === count || !leaveDialogTrigger.value) {
-      clearInterval(countInterval)
+      if (countInterval !== null) {
+        clearInterval(countInterval)
+      }
     }
   }, delay)
 }
@@ -80,13 +67,8 @@ const countDisplay = (index: number, _count: number): void => {
   count.value = index
 }
 
-const displayCount = (value:number) => {
-  return ((value / 60) * 100)
-}
-
 const closeLeaveDialog = () => {
   leaveDialogTrigger.value = false
-  emits('dialog-close', false)
 }
 
 </script>

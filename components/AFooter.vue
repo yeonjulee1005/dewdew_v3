@@ -29,15 +29,15 @@
       </nuxt-link>
     </div>
     <div class="footer-information flex flex-column">
-      <el-text>
+      <span>
         {{ $t('texts.copyright') }}
-      </el-text>
-      <el-text>
+      </span>
+      <span>
         {{ $t('texts.designed') }}
-      </el-text>
-      <el-text @click="() => magicLinkDialogTrigger = true">
+      </span>
+      <span @click="() => magicLinkDialogTrigger = true">
         {{ $t('texts.version', { version: config.public.serviceVersion.replaceAll('"', '') }) }}
-      </el-text>
+      </span>
     </div>
     <MagicLinkDialog
       :visible="magicLinkDialogTrigger"

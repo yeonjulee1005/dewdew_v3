@@ -74,6 +74,11 @@
         }
       }
     }
+    .message-component {
+      .name {
+        @include headline6;
+      }
+    }
     .empty-comments {
       height: $space-100;
       .el-empty__image {

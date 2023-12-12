@@ -107,12 +107,12 @@
       :editor="editor"
     />
     <div class="character-count flex flex-column">
-      <el-text>
+      <span>
         {{ editor.storage.characterCount.characters() + ' / '.concat(String(textLimit), $t('tiptap.characters')) }}
-      </el-text>
-      <el-text>
+      </span>
+      <span>
         {{ editor.storage.characterCount.words() + ' '.concat($t('tiptap.words')) }}
-      </el-text>
+      </span>
     </div>
     <HyperLinkDialog
       :visible="hyperLinkDialogTrigger"

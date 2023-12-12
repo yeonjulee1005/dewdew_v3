@@ -37,10 +37,6 @@
       :activate-like="techBlogLikeTrigger"
       @click-affix="updateLikeCount"
     />
-    <el-backtop
-      :bottom="90"
-      :right="36"
-    />
   </div>
 </template>
 
@@ -100,10 +96,6 @@ useHead({
   ]
 })
 
-definePageMeta({
-  pageTransition: false
-})
-
 watch(() => y.value, () => {
   y.value
     ? displayFloatButtonTrigger.value = true
@@ -132,9 +124,9 @@ const updateLikeCount = () => {
   if (!alreadyLike) {
     updateTechBlogLikeCount()
     clickedTechArticle.value.push(techDetailData.value?.id ?? '')
-    notify('', 'error', t('messages.successPressLike'), true, 1000, 0)
+    notify('', 'success', t('messages.successPressLike'), true, 1000, 0)
   } else {
-    notify('', 'error', t('messages.alreadyPressLike'), true, 1000, 0)
+    notify('', 'warning', t('messages.alreadyPressLike'), true, 1000, 0)
   }
 }
 
