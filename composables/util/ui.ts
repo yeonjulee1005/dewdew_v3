@@ -86,6 +86,13 @@ export const useUi = () => {
     return randomFront.concat(' ', randomBack)
   }
 
+
+  const progressColor = (percent: number) => {
+    const colors = ['rose', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'red', 'rose']
+    const index = Math.min(Math.floor(percent / 5), colors.length - 1)
+    return colors[index]
+  }
+
   return {
     comma,
     uncomma,
@@ -99,6 +106,7 @@ export const useUi = () => {
     genUid,
     genFileDate,
     currentDateIosFormat,
-    generateCommentName
+    generateCommentName,
+    progressColor
   }
 }

@@ -37,10 +37,6 @@
       :activate-like="techBlogLikeTrigger"
       @click-affix="updateLikeCount"
     />
-    <el-backtop
-      :bottom="90"
-      :right="36"
-    />
   </div>
 </template>
 
@@ -98,10 +94,6 @@ useHead({
     { property: 'og:url', content: `https://www.dewdew.kr${path}` },
     { property: 'og:description', content: techDetailData.value?.desc }
   ]
-})
-
-definePageMeta({
-  pageTransition: false
 })
 
 watch(() => y.value, () => {

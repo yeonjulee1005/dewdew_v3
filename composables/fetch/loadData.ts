@@ -7,7 +7,6 @@ export const useLoadComposable = () => {
   const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
   const { mainMenuData, subMenuData, socialMenuData } = storeToRefs(useMenuStore())
 
-  const { leaveColorData } = storeToRefs(useLeaveColorStore())
   const { stackLogoData } = storeToRefs(useStackStore())
   const { portfolioData } = storeToRefs(usePortfolioStore())
 
@@ -88,23 +87,6 @@ export const useLoadComposable = () => {
     return { data, refresh }
   }
 
-  const loadLeaveColorData = () => {
-    const { data } = useAsyncData('leaveColorData', async () => {
-      const { data, error } = await client
-        .from('leaveCounterColor')
-        .select('color, percentage, deleted')
-        .eq('deleted', false)
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
-    })
-
-    leaveColorData.value = data.value
-  }
-
   const loadStackData = () => {
     const { data } = useAsyncData('loadStackData', async () => {
       const { data, error } = await client
@@ -159,7 +141,6 @@ export const useLoadComposable = () => {
     loadMenuData,
     loadMainData,
     loadTechBlogCommentData,
-    loadLeaveColorData,
     loadStackData,
     loadPortfolioData
   }

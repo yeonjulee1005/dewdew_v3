@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 
-const { loadMenuData, loadLeaveColorData } = useLoadComposable()
+const { loadMenuData } = useLoadComposable()
 
 const seoTitle = 'Developer Dewdew | 개발자 이연주'
 const seoDescription = '안녕하세요. FE 개발자 이연주입니다.'
@@ -25,8 +25,6 @@ const seoImage = 'https://tgtlrqqasaiavynmlxkc.supabase.co/storage/v1/object/pub
 loadMenuData('root')
 loadMenuData('sub')
 loadMenuData('sns')
-
-loadLeaveColorData()
 
 useSeoMeta({
   viewport: 'width=device-width, initial-scale=1.0',

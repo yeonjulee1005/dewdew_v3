@@ -24,6 +24,7 @@
           class="menu-links flex-align-center"
           :class="{'mobile-menu-links flex flex-justify-center': !desktopModeTrigger}"
           :to="menu.url"
+          alt="menu"
         >
           <Icon
             v-if="!desktopModeTrigger"
@@ -38,6 +39,7 @@
           class="github"
           :to="socialMenuData[0].url"
           target="_blank"
+          alt="github"
         >
           <nuxt-img
             :src="socialMenuData[0].image_url"
