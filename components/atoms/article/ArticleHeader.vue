@@ -45,11 +45,13 @@ const { locale } = useLocale()
 
 const props = withDefaults(
   defineProps<{
-    title: string,
-    createdAt: string,
+    title?: string,
+    createdAt?: string,
     editTrigger?: boolean
   }>(),
   {
+    title: '',
+    createdAt: '',
     editTrigger: false
   }
 )

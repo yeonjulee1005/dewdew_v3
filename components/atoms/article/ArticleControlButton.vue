@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="adminAccess"
-    class="button-group flex flex-justify-end mb-20"
-  >
+  <div class="button-group flex flex-justify-end mb-20">
     <el-button
       v-if="!editTrigger"
       class="edit-blog"
@@ -31,7 +28,6 @@
 
 withDefaults(
   defineProps<{
-    adminAccess: boolean,
     editTrigger?: boolean
   }>(),
   {
