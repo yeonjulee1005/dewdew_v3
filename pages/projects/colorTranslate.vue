@@ -4,15 +4,13 @@
     :style="backgroundColor"
   >
     <div class="flex flex-column gap-20">
-      <el-button
-        class="eye-dropper"
-        @click="colorPicker"
-      >
-        <Icon name="wpf:color-dropper" />
-        <span>
-          {{ $t('colorsTranslate.dropper') }}
-        </span>
-      </el-button>
+      <AButton
+        custom-class="eye-dropper flex-justify-center"
+        use-icon
+        icon-name="wpf:color-dropper"
+        :button-text="$t('colorsTranslate.dropper')"
+        @click:button="colorPicker"
+      />
       <LazyUploadFile
         :file-size-alarm="$t('colorsTranslate.fileSize')"
         :file-type-alarm="$t('colorsTranslate.fileType')"
@@ -35,12 +33,13 @@
             label="hex"
           >
             <template #append>
-              <el-button
+              <AButton
                 v-if="isSupported"
-                @click="copy(hexColor)"
-              >
-                <Icon name="line-md:document-add" />
-              </el-button>
+                use-icon
+                icon-name="line-md:document-add"
+                :icon-size="10"
+                @click:button="copy(hexColor)"
+              />
             </template>
           </el-input>
         </el-form-item>
@@ -61,12 +60,13 @@
           label="rgb"
         >
           <template #append>
-            <el-button
+            <AButton
               v-if="isSupported"
-              @click="copy(rgbColor)"
-            >
-              <Icon name="line-md:document-add" />
-            </el-button>
+              use-icon
+              icon-name="line-md:document-add"
+              :icon-size="10"
+              @click:button="copy(rgbColor)"
+            />
           </template>
         </el-input>
       </el-form-item>
@@ -77,12 +77,13 @@
           label="hsl"
         >
           <template #append>
-            <el-button
+            <AButton
               v-if="isSupported"
-              @click="copy(hslColor)"
-            >
-              <Icon name="line-md:document-add" />
-            </el-button>
+              use-icon
+              icon-name="line-md:document-add"
+              :icon-size="10"
+              @click:button="copy(hslColor)"
+            />
           </template>
         </el-input>
       </el-form-item>
@@ -93,12 +94,13 @@
           label="cmyk"
         >
           <template #append>
-            <el-button
+            <AButton
               v-if="isSupported"
-              @click="copy(cmykColor)"
-            >
-              <Icon name="line-md:document-add" />
-            </el-button>
+              use-icon
+              icon-name="line-md:document-add"
+              :icon-size="10"
+              @click:button="copy(cmykColor)"
+            />
           </template>
         </el-input>
       </el-form-item>

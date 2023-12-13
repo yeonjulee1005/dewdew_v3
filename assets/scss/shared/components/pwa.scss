@@ -16,13 +16,6 @@
   z-index: 30;
   text-align: left;
   box-shadow: calc($space-2) $space-4 calc($space-4) 0 $pwa-border;
-  .el-button {
-    border: $space-1 solid $pwa-border;
-    outline: none;
-    margin-right: calc($space-4);
-    border-radius: $space-2;
-    padding: calc($space-2) $space-10;
-  }
   .message {
     margin-bottom: $space-8;
   }

@@ -1,15 +1,13 @@
 <template>
   <div class="like-button flex flex-justify-end flex-align-center">
-    <el-button
-      class="fixed-like"
-      :class="{'fixed-like-on': trigger}"
-      circle
-      size="large"
-      :type="activateLike ? 'danger' : ''"
-      @click="$emit('click-affix')"
-    >
-      {{ buttonText }}
-    </el-button>
+    <AButton
+      :custom-class="`fixed-like ${trigger ? 'fixed-like-on' : ''}`"
+      round-button
+      button-size="lg"
+      :button-color="activateLike ? 'rose' : 'violet'"
+      :button-text="buttonText"
+      @click:button="$emit('click-affix')"
+    />
   </div>
 </template>
 

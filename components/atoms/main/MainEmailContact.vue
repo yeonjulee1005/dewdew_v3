@@ -47,13 +47,12 @@
         />
       </el-form-item>
       <el-form-item>
-        <el-button
-          class="submit-button"
-          type="primary"
-          @click="submitForm(contactRuleFormRef)"
-        >
-          {{ $t('texts.send') }}
-        </el-button>
+        <AButton
+          custom-class="submit-button"
+          button-size="lg"
+          :button-text="$t('texts.send')"
+          @click:button="submitForm(contactRuleFormRef)"
+        />
       </el-form-item>
     </el-form>
   </div>
