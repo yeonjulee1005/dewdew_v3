@@ -2,11 +2,9 @@
   <div class="header flex flex-justify-center flex-align-center">
     <div class="header-container flex flex-align-center gap-20">
       <nuxt-link to="/">
-        <nuxt-picture
+        <nuxt-img
           class="logo flex-fixed"
           :src="url('dewdew_logo.webp', 'assets', 'logo')"
-          height="46"
-          width="160"
           legacy-format="webp"
           loading="lazy"
           :img-attrs="{class: 'dewdew-logo'}"
@@ -24,7 +22,7 @@
           class="menu-links flex-align-center"
           :class="{'mobile-menu-links flex flex-justify-center': !desktopModeTrigger}"
           :to="menu.url"
-          alt="menu"
+          :aria-label="menu.title"
         >
           <Icon
             v-if="!desktopModeTrigger"
@@ -39,7 +37,7 @@
           class="github"
           :to="socialMenuData[0].url"
           target="_blank"
-          alt="github"
+          aria-label="github"
         >
           <nuxt-img
             :src="socialMenuData[0].image_url"

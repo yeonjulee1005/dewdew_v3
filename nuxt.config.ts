@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
 import packageJson from './package.json'
 
 export default defineNuxtConfig({
@@ -71,8 +70,10 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@element-plus/nuxt',
     'dayjs-nuxt'
+  ],
+  plugins: [
+    '~/plugins/elementPlus.ts'
   ],
   css: [
     '~/assets/scss/style.scss'
@@ -179,10 +180,6 @@ export default defineNuxtConfig({
   },
   site: {
     url: 'https://www.dewdew.dev'
-  },
-  elementPlus: {
-    importStyle: 'scss',
-    themes: ['dark']
   },
   dayjs: {
     locales: ['ko'],
