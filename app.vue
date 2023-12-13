@@ -15,6 +15,13 @@
 
 <script setup lang="ts">
 
+import { ID_INJECTION_KEY } from 'element-plus'
+
+provide(ID_INJECTION_KEY, {
+  prefix: 100,
+  current: 0
+})
+
 const { loadMenuData } = useLoadComposable()
 
 const seoTitle = 'Developer Dewdew | 개발자 이연주'
