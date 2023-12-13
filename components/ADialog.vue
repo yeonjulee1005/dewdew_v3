@@ -42,41 +42,32 @@
       <template #footer>
         <div
           v-if="!hideDoubleButton"
-          class="A-dialog-double-button"
+          class="A-dialog-double-button flex flex-justify-end gap-16 "
         >
-          <el-button
+          <AButton
             v-if="!hideFirstButton"
-            class="A-double-first-button"
-            :class="{'activate-first-button': activeFirstButton}"
-            :disabled="activeFirstButton"
-            size="large"
-            @click="emits('click-first-button')"
-          >
-            {{ doubleFirstText }}
-          </el-button>
-          <el-button
+            :custom-class="`A-double-first-button ${activeFirstButton ? 'activate-first-button' : ''}`"
+            :button-disabled="activeFirstButton"
+            button-size="lg"
+            :button-text="doubleFirstText"
+            @click:button="emits('click-first-button')"
+          />
+          <AButton
             v-if="!hideSecondButton"
-            class="A-double-second-button"
-            size="large"
-            @click="emits('click-second-button')"
-          >
-            {{ doubleSecondText }}
-          </el-button>
+            custom-class="A-double-second-button"
+            button-size="lg"
+            :button-text="doubleSecondText"
+            @click:button="emits('click-second-button')"
+          />
         </div>
-        <div
+        <AButton
           v-if="!hideSingleButton"
-          class="A-dialog-single-button"
-        >
-          <el-button
-            v-if="!hideSingleButton"
-            class="A-single-button"
-            type="primary"
-            size="large"
-            @click="emits('click-single-button')"
-          >
-            {{ singleText }}
-          </el-button>
-        </div>
+          custom-class="A-single-button"
+          button-variant="soft"
+          button-size="lg"
+          :button-text="singleText"
+          @click:button="emits('click-single-button')"
+        />
       </template>
     </el-dialog>
   </client-only>

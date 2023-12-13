@@ -42,7 +42,7 @@ export const useLoadComposable = () => {
       }
 
       return data
-    })
+    }, { immediate: true })
 
     if (!data.value) { return }
 

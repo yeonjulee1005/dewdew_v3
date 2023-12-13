@@ -1,26 +1,26 @@
 <template>
-  <div class="button-group flex flex-justify-end mb-20">
-    <el-button
+  <div class="button-group flex flex-justify-end gap-16 mb-20">
+    <AButton
       v-if="!editTrigger"
-      class="edit-blog"
-      @click="() => $emit('check:admin')"
-    >
-      {{ $t('texts.edit') }}
-    </el-button>
-    <el-button
+      button-class="edit-blog"
+      button-size="lg"
+      :button-text="$t('texts.edit')"
+      @click:button="() => $emit('check:admin')"
+    />
+    <AButton
       v-if="editTrigger"
-      class="write-tech-blog"
-      @click="() => $emit('update:article')"
-    >
-      {{ $t('texts.save') }}
-    </el-button>
-    <el-button
+      button-class="write-tech-blog"
+      button-size="lg"
+      :button-text="$t('texts.save')"
+      @click:button="() => $emit('update:article')"
+    />
+    <AButton
       v-if="editTrigger"
-      class="write-tech-blog"
-      @click="() => $emit('edit:cancel')"
-    >
-      {{ $t('texts.cancel') }}
-    </el-button>
+      button-class="write-tech-blog"
+      button-size="lg"
+      :button-text="$t('texts.cancel')"
+      @click:button="() => $emit('edit:cancel')"
+    />
   </div>
 </template>
 

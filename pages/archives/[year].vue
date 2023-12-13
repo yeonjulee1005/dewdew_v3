@@ -1,22 +1,14 @@
 <template>
   <div class="archive-detail">
-    <DDButton
-      class="prev-button"
-      color="violet"
-      variant="ghost"
-      size="lg"
-      aria-label="back"
-      @click="navigateTo('/archives')"
-    >
-      <template #leading>
-        <Icon
-          name="line-md:arrow-small-left"
-          :width="24"
-          :height="24"
-        />
-        {{ $t('archives.back') }}
-      </template>
-    </DDButton>
+    <AButton
+      custom-class="prev-button"
+      button-size="lg"
+      button-variant="ghost"
+      button-label="back"
+      use-icon
+      icon-name="line-md:arrow-small-left"
+      @click:button="navigateTo('/archives')"
+    />
     <ImageSlider
       :image-data="yearData"
       :inner-archive-trigger="true"

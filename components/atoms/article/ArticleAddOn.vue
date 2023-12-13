@@ -1,13 +1,14 @@
 <template>
   <div class="article-add-on flex flex-justify-end mt-default mb-default">
-    <el-tag
+    <DDBadge
       class="like"
-      :size="tagSize"
-      :effect="activateLike ? 'light' : 'plain'"
+      color="violet"
+      variant="soft"
+      size="lg"
       @click="$emit('update-count')"
     >
       {{ `${data.like} ❤️` }}
-    </el-tag>
+    </DDBadge>
   </div>
 </template>
 

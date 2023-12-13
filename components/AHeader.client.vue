@@ -69,21 +69,15 @@
           {{ selectLocale }}
         </template>
       </DDSelectMenu>
-      <DDButton
-        class="mr-20"
-        color="violet"
-        variant="ghost"
-        aria-label="Theme"
-        @click="isDark = !isDark"
-      >
-        <template #leading>
-          <Icon
-            :name="isDark ? 'line-md:moon-filled-loop' : 'line-md:moon-filled-alt-to-sunny-filled-loop-transition'"
-            :width="24"
-            :height="24"
-          />
-        </template>
-      </DDButton>
+      <AButton
+        custom-class="mr-20"
+        aria-label="theme"
+        button-variant="ghost"
+        use-icon
+        :icon-name="isDark ? 'line-md:moon-filled-loop' : 'line-md:moon-filled-alt-to-sunny-filled-loop-transition'"
+        :icon-size="24"
+        @click:button="isDark = !isDark"
+      />
     </div>
   </div>
 </template>

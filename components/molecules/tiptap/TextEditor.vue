@@ -3,7 +3,7 @@
     v-if="editor"
     class="tiptap-editor"
   >
-    <div class="tiptap-editor__header">
+    <div class="tiptap-editor__header gap-2">
       <TiptapHeadingGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
@@ -54,7 +54,7 @@
       />
     </div>
     <bubble-menu
-      class="bubble-menu"
+      class="bubble-menu flex gap-2"
       :tippy-options="{ duration: 100 }"
       :editor="editor"
     >

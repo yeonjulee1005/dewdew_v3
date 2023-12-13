@@ -13,34 +13,36 @@
           {{ $t('pwa.newContent') }}
         </span>
       </div>
-      <el-button
-        v-if="$pwa.needRefresh"
-        @click="$pwa.updateServiceWorker()"
-      >
-        {{ $t('pwa.reload') }}
-      </el-button>
-      <el-button @click="$pwa.cancelPrompt()">
-        {{ $t('pwa.close') }}
-      </el-button>
+      <div class="flex gap-4">
+        <AButton
+          v-if="$pwa.needRefresh"
+          :button-text="$t('pwa.reload')"
+          @click:button="$pwa.updateServiceWorker()"
+        />
+        <AButton
+          :button-text="$t('pwa.close')"
+          @click:button="$pwa.cancelPrompt()"
+        />
+      </div>
     </div>
     <div
       v-if="$pwa?.showInstallPrompt && !$pwa?.offlineReady && !$pwa?.needRefresh"
-      class="pwa-toast flex"
+      class="pwa-toast flex gap-4"
       role="alert"
     >
       <div class="flex flex-column flex-align-center">
-        <div class="message">
-          <span>
-            {{ $t('pwa.installPwa') }}
-          </span>
-        </div>
-        <div>
-          <el-button @click="$pwa.install()">
-            {{ $t('pwa.install') }}
-          </el-button>
-          <el-button @click="$pwa.cancelInstall()">
-            {{ $t('pwa.cancel') }}
-          </el-button>
+        <span class="message">
+          {{ $t('pwa.installPwa') }}
+        </span>
+        <div class="flex gap-4">
+          <AButton
+            :button-text="$t('pwa.install')"
+            @click:button="$pwa.install()"
+          />
+          <AButton
+            :button-text="$t('pwa.cancel')"
+            @click:button="$pwa.cancelInstall()"
+          />
         </div>
       </div>
       <Icon

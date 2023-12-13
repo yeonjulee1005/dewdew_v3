@@ -1,20 +1,13 @@
 <template>
-  <client-only>
-    <el-tooltip
-      :disabled="tooltipTrigger"
-      effect="dark"
-      placement="bottom"
-      :content="tooltipText"
+  <DDTooltip :text="tooltipText">
+    <input
+      class="edit-color-input"
+      type="color"
+      :value="colorValue"
+      label="color"
+      @input="tiptapEditor.chain().focus().setColor(imageColor($event)).run()"
     >
-      <input
-        class="edit-color-input"
-        type="color"
-        :value="colorValue"
-        label="color"
-        @input="tiptapEditor.chain().focus().setColor(imageColor($event)).run()"
-      >
-    </el-tooltip>
-  </client-only>
+  </DDTooltip>
 </template>
 
 <script setup lang="ts">
@@ -25,13 +18,11 @@ withDefaults(
   defineProps<{
     colorValue?: string,
     tiptapEditor: Editor,
-    tooltipText?: string,
-    tooltipTrigger?: boolean
+    tooltipText?: string
   }>(),
   {
     colorValue: '#ffffff',
-    tooltipText: '',
-    tooltipTrigger: false
+    tooltipText: ''
   }
 )
 

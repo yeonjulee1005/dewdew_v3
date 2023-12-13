@@ -33,13 +33,13 @@
         />
       </el-form-item>
       <el-form-item class="submit-form-item">
-        <el-button
-          class="submit-button"
-          type="primary"
-          @click="submitArticle(createArticleRef)"
-        >
-          {{ $t('tech.write') }}
-        </el-button>
+        <AButton
+          custom-class="submit-button"
+          button-variant="soft"
+          button-size="lg"
+          :button-text="$t('tech.write')"
+          @click:button="submitArticle(createArticleRef)"
+        />
       </el-form-item>
     </el-form>
   </LazyADialog>

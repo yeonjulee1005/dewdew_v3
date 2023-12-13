@@ -1,13 +1,14 @@
 <template>
   <div class="tech-lists flex flex-column flex-justify-center flex-align-center">
     <div class="write-button-container flex flex-justify-end">
-      <el-button
+      <AButton
         v-if="adminAccess"
-        class="write-tech-blog"
-        @click="openCreateArticleDialog"
-      >
-        {{ $t('texts.write') }}
-      </el-button>
+        custom-class="write-tech-blog"
+        button-size="lg"
+        button-label="write-article"
+        :button-text="$t('texts.write')"
+        @click:button="openCreateArticleDialog"
+      />
     </div>
     <el-timeline
       v-if="techData?.count"

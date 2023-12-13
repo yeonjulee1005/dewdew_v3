@@ -5,7 +5,7 @@
   >
     <nuxt-img
       v-for="image in skillsImage"
-      :key="image.index"
+      :key="image.url"
       :class="image.title"
       :src="image.url"
       height="400"
@@ -21,7 +21,7 @@
 
 withDefaults(
   defineProps<{
-    skillsImage: SerializeObject[],
+    skillsImage: { orderIndex: { index: number }, title: string, url: string, deleted: boolean }[] | null | undefined,
     skillsBgTrigger?: boolean
   }>(),
   {

@@ -1,22 +1,13 @@
 <template>
-  <client-only>
-    <el-tooltip
-      :visible="visible"
-      effect="dark"
-      placement="bottom"
-      :content="tooltipText"
-    >
-      <el-button
-        class="menu-item"
-        :class="{'is-active': isActive}"
-        @mouseenter="!tooltipTrigger ? visible = false : visible = true"
-        @mouseleave="visible = false"
-        @click="clickAction"
-      >
-        <Icon :name="iconType" />
-      </el-button>
-    </el-tooltip>
-  </client-only>
+  <DDTooltip :text="tooltipText">
+    <AButton
+      :custom-class="`menu-item ${isActive ? 'is-active' : ''}}`"
+      use-icon
+      button-size="xs"
+      :icon-name="iconType"
+      @click:button="clickAction"
+    />
+  </DDTooltip>
 </template>
 
 <script setup lang="ts">
@@ -39,8 +30,6 @@ const props = withDefaults(
 const emits = defineEmits([
   'select-button'
 ])
-
-const visible = ref(false)
 
 const clickAction = () => {
   props.action()
