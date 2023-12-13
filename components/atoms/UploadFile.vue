@@ -19,7 +19,7 @@
         alt="image-prev"
       />
     </div>
-    <el-icon
+    <div
       v-else
       class="el-icon--upload flex-column"
     >
@@ -31,7 +31,7 @@
         </span>
         {{ $t('colorsTranslate.checkDropper') }}
       </span>
-    </el-icon>
+    </div>
     <template #tip>
       <span class="el-upload__tip">
         {{ props.fileTypeAlarm.concat(', ', props.fileSizeAlarm) }}

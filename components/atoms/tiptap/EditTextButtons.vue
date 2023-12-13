@@ -1,24 +1,13 @@
 <template>
-  <client-only>
-    <el-tooltip
-      :visible="visible"
-      effect="dark"
-      placement="bottom"
-      :content="text"
-    >
-      <el-button
-        class="tiptap-text-menu-item"
-        :class="{'is-active': isActive}"
-        @mouseenter="!tooltipTrigger ? visible = false : visible = true"
-        @mouseleave="visible = false"
-        @click="clickAction"
-      >
-        <span :style="{ fontFamily: fontFamilyName }">
-          {{ text }}
-        </span>
-      </el-button>
-    </el-tooltip>
-  </client-only>
+  <DDTooltip :text="tooltipText">
+    <AButton
+      :custom-class="`tiptap-text-menu-item ${isActive ? 'is-active' : ''}`"
+      :button-text-style="`{ fontFamily: ${fontFamilyName} }`"
+      button-size="xs"
+      :button-text="tooltipText"
+      @click:button="clickAction"
+    />
+  </DDTooltip>
 </template>
 
 <script setup lang="ts">
@@ -28,21 +17,17 @@ const props = withDefaults(
     isActive: boolean,
     action: Function,
     fontFamilyName?: string,
-    tooltipTrigger?: boolean,
-    text?: string
+    tooltipText?: string
   }>(),
   {
-    tooltipTrigger: true,
     fontFamilyName: '',
-    text: ''
+    tooltipText: ''
   }
 )
 
 const emits = defineEmits([
   'select-button'
 ])
-
-const visible = ref(false)
 
 const clickAction = () => {
   props.action()

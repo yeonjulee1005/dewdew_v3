@@ -40,16 +40,6 @@
         .el-form-item {
           .el-form-item__content {
             justify-content: flex-end;
-            .el-button {
-              color: var(--d-text-color);
-              background-color: var(--d-footer-bg-color);
-              border-color: var(--d-footer-bg-color);
-              &:hover,
-              &:focus {
-              background-color: var(--d-footer-bg-color-deep);
-              border-color: var(--d-footer-bg-color-deep);
-              }
-            }
           }
         }
       }

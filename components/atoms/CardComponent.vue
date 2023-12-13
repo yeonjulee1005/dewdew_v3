@@ -1,16 +1,15 @@
 <template>
   <el-card class="tech-card">
-    <div class="card-header flex flex-row flex-align-center">
+    <div class="card-header flex flex-row flex-align-center gap-2">
       <span class="title">
         {{ cardItem.title }}
       </span>
-      <el-tag
-        class="like ml-default"
-        type="success"
-        effect="light"
+      <DDBadge
+        color="violet"
+        variant="soft"
       >
         {{ cardItem.like + ' ❤️' }}
-      </el-tag>
+      </DDBadge>
     </div>
     <div class="desc mt-default">
       {{ cardItem.raw_article }}

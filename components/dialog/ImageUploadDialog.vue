@@ -22,16 +22,12 @@
       :http-request="changeImage"
     >
       <template #trigger>
-        <el-tooltip
-          :content="$t('texts.upload')"
-          :offset="8"
-          placement="bottom"
-        >
+        <DDTooltip :text="$t('texts.upload')">
           <Icon
             class="save-icon"
             name="ri:upload-cloud-2-line"
           />
-        </el-tooltip>
+        </DDTooltip>
       </template>
       <template #file="{ file }">
         <div class="upload-file-information">
@@ -43,20 +39,6 @@
         </div>
       </template>
     </el-upload>
-    <el-radio-group v-model="imageHyperLinkTrigger">
-      <el-radio
-        :label="true"
-        size="large"
-      >
-        {{ $t('texts.insertLink') }}
-      </el-radio>
-      <el-radio
-        :label="false"
-        size="large"
-      >
-        {{ $t('texts.noUse') }}
-      </el-radio>
-    </el-radio-group>
     <el-input
       v-if="imageHyperLinkTrigger"
       v-model="hyperLink"
@@ -64,6 +46,11 @@
       size="large"
       label="link"
       clearable
+    />
+    <DDCheckbox
+      v-model="imageHyperLinkTrigger"
+      color="violet"
+      :label="imageHyperLinkTrigger ? $t('texts.noUse') : $t('texts.insertLink')"
     />
   </ADialog>
 </template>

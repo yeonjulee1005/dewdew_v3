@@ -21,9 +21,12 @@
           label="name"
         >
           <template #append>
-            <el-button @click="() => createCommentData.name = generateCommentName()">
-              <Icon name="charm:refresh" />
-            </el-button>
+            <AButton
+              use-icon
+              icon-name="charm:refresh"
+              :icon-size="10"
+              @click:button="createCommentData.name = generateCommentName()"
+            />
           </template>
         </el-input>
       </el-form-item>
@@ -43,14 +46,13 @@
           show-password
           clearable
           label="password"
+          @keyup.enter="submitArticle(createCommentRef)"
         >
           <template #append>
-            <el-button
-              class="submit-button mt-20"
-              @click="submitArticle(createCommentRef)"
-            >
-              {{ $t('tech.writeComment') }}
-            </el-button>
+            <AButton
+              :button-text="$t('tech.writeComment')"
+              @click:button="submitArticle(createCommentRef)"
+            />
           </template>
         </el-input>
       </el-form-item>

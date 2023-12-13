@@ -18,13 +18,12 @@
             </span>
             <div v-dompurify-html="comment.message" />
           </div>
-          <el-button
-            circle
-            size="small"
-            @click="openPasswordDialog(comment)"
-          >
-            <Icon name="line-md:close-small" />
-          </el-button>
+          <AButton
+            round-button
+            use-icon
+            icon-name="line-md:close-small"
+            @click:button="openPasswordDialog(comment)"
+          />
         </div>
       </el-timeline-item>
     </el-timeline>

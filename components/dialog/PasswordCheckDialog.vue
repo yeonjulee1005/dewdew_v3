@@ -30,9 +30,12 @@
           @keyup.enter="checkPassword(passwordRef)"
         >
           <template #append>
-            <el-button @click="checkPassword(passwordRef)">
-              <Icon name="line-md:coffee-filled" />
-            </el-button>
+            <AButton
+              use-icon
+              icon-name="line-md:coffee-filled"
+              :icon-size="10"
+              @click:button="checkPassword(passwordRef)"
+            />
           </template>
         </el-input>
       </el-form-item>
