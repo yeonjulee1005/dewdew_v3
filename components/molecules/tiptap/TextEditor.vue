@@ -115,29 +115,17 @@
       </span>
     </div>
     <HyperLinkDialog
-      :visible="hyperLinkDialogTrigger"
-      custom-class="tiptap-hyper-link-dialog"
-      :title="$t('tiptap.dialog.hyperLinkTitle')"
-      :double-first-text="$t('texts.save')"
-      :double-second-text="$t('texts.close')"
+      :dialog-trigger="hyperLinkDialogTrigger"
       @submit:link="submitHyperLink"
       @close:dialog="(trigger:boolean) => hyperLinkDialogTrigger = trigger"
     />
     <YoutubeLinkDialog
-      :visible="youtubeLinkDialogTrigger"
-      custom-class="tiptap-youtube-link-dialog"
-      :title="$t('tiptap.dialog.youtubeLinkTitle')"
-      :double-first-text="$t('texts.save')"
-      :double-second-text="$t('texts.close')"
+      :dialog-trigger="youtubeLinkDialogTrigger"
       @submit:link="submitYoutubeLink"
       @close:dialog="(trigger:boolean) => youtubeLinkDialogTrigger = trigger"
     />
     <ImageUploadDialog
-      :visible="imageUploadDialogTrigger"
-      custom-class="tiptap-image-upload-dialog"
-      :title="$t('tiptap.dialog.imageUploadTitle')"
-      :double-first-text="$t('texts.save')"
-      :double-second-text="$t('texts.close')"
+      :dialog-trigger="imageUploadDialogTrigger"
       @submit:image="submitImage"
       @close:dialog="(trigger:boolean) => imageUploadDialogTrigger = trigger"
     />

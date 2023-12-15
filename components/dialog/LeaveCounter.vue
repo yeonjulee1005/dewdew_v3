@@ -1,11 +1,7 @@
 <template>
-  <LazyADialog
+  <ADialog
     :dialog-trigger="leaveDialogTrigger"
-    hide-header-trigger
     hide-double-button
-    hide-single-button
-    top="30vh"
-    width="300px"
     @close-dialog="closeLeaveDialog"
   >
     <div class="leave-dialog flex flex-column flex-justify-center flex-align-center gap-10">
@@ -22,7 +18,7 @@
         :use-emoji="false"
       />
     </div>
-  </LazyADialog>
+  </ADialog>
 </template>
 
 <script setup lang="ts">

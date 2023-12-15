@@ -1,5 +1,5 @@
 <template>
-  <DDPopover mode="hover">
+  <DDPopover :mode="isDesktop ? 'click' : 'hover'">
     <AButton
       use-icon
       button-size="xs"
@@ -32,6 +32,8 @@
 
 <script setup lang="ts">
 import { Editor } from '@tiptap/vue-3'
+
+const { isDesktop } = useDevice()
 
 withDefaults(
   defineProps<{

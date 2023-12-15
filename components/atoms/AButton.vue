@@ -1,7 +1,7 @@
 <template>
   <DDButton
     :class="customClass"
-    :ui="roundButton ? { rounded: 'rounded-full' } : ''"
+    :ui="roundButton ? { rounded: 'rounded-full' } : {}"
     :disabled="buttonDisabled"
     :padding="buttonPadding"
     :color="buttonColor"

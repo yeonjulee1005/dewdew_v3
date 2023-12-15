@@ -2,50 +2,39 @@ export const useUi = () => {
   const { commentName } = useCommentName()
   const dayjs = useDayjs()
 
+  const uncommaRegex = /(\d)(?=(?:\d{3})+(?!\d))/g
+  const commaRegex = /[^\d]+/g
+  const hyperLinkRegex = /(mailto:[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)|(((?:https?)|(?:ftp)):\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gm
+  const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|playlist\?|watch\?v=|watch\?.+(?:&|&#38;);v=))([a-zA-Z0-9\-_]{11})?(?:(?:\?|&|&#38;)index=((?:\d){1,3}))?(?:(?:\?|&|&#38;)?list=([a-zA-Z\-_0-9]{34}))?(?:\S+)?/g
+  const emailRegex = /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
+
   const comma = (val:number) => {
-    return String(val).replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,')
+    return String(val).replace(uncommaRegex, '$1,')
   }
 
   const uncomma = (val:number) => {
-    return String(val).replace(/[^\d]+/g, '')
+    return String(val).replace(commaRegex, '')
   }
 
   const checkHyperLink = (link:string) => {
-    const regLink = /(mailto:[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)|(((?:https?)|(?:ftp)):\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gm
-    let returnValue = false
-
-    !regLink.test(link)
-      ? returnValue = false
-      : returnValue = true
-    return returnValue
+    return !!hyperLinkRegex.test(link)
   }
 
   const checkYoutubeLink = (link:string) => {
-    const regLink = /(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|playlist\?|watch\?v=|watch\?.+(?:&|&#38;);v=))([a-zA-Z0-9\-_]{11})?(?:(?:\?|&|&#38;)index=((?:\d){1,3}))?(?:(?:\?|&|&#38;)?list=([a-zA-Z\-_0-9]{34}))?(?:\S+)?/g
-    let returnValue = false
-
-    !regLink.test(link)
-      ? returnValue = false
-      : returnValue = true
-    return returnValue
+    return !!youtubeRegex.test(link)
   }
 
   const checkEmail = (val:string) => {
-    const regEmail = /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
-    if (!regEmail.test(val)) {
-      return false
-    } else {
-      return true
-    }
+    return !!emailRegex.test(val)
   }
 
   const checkPassword = (val:string) => {
-    const regPassword = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
-    if (!regPassword.test(val)) {
-      return false
-    } else {
-      return true
-    }
+    return !!passwordRegex.test(val)
+  }
+
+  const textInclude = (text:string, search:string) => {
+    return text.toLowerCase().includes(search.toLowerCase())
   }
 
   const copyClipBoard = async (val:string) => {
@@ -94,12 +83,16 @@ export const useUi = () => {
   }
 
   return {
+    hyperLinkRegex,
+    youtubeRegex,
+    passwordRegex,
     comma,
     uncomma,
     checkHyperLink,
     checkYoutubeLink,
     checkEmail,
     checkPassword,
+    textInclude,
     copyClipBoard,
     randomOrder,
     removeHtmlTags,

@@ -39,10 +39,9 @@
       </div>
     </div>
     <div class="portfolio-background" />
-    <div class="portfolio-background" />
     <PortfolioDialog
+      :dialog-trigger="portfolioDialogTrigger"
       :select-portfolio="selectPortfolio"
-      :portfolio-trigger="portfolioDialogTrigger"
       @close:dialog="() => portfolioDialogTrigger = false"
     />
   </div>

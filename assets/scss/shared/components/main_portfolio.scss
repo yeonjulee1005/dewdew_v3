@@ -74,28 +74,3 @@
     }
   }
 }
-
-/**
-* ! Portfolio Dialog Style !
-* *  Shared *
-*/
-.portfolio-dialog {
-  .title {
-    width: fit-content;
-    @include headline3;
-    align-self: flex-start;
-    border-bottom: $space-1 solid var(--d-text-color);
-  }
-  .description {
-    @include headline6;
-    align-self: flex-start;
-    margin-bottom: $space-10;
-  }
-  .detail-image {
-    cursor: pointer;
-    .image {
-      width: $space-percent-100;
-      height: auto;
-    }
-  }
-}

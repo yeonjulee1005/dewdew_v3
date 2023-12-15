@@ -1,64 +1,53 @@
 <template>
   <ADialog
-    :dialog-trigger="passwordDialogTrigger"
-    :hide-double-button="true"
-    :hide-single-button="true"
-    custom-class="auth-check-dialog"
-    :title="title"
-    top="30vh"
-    width="360px"
+    :dialog-trigger="dialogTrigger"
+    :title="$t('tech.password')"
+    hide-double-button
     @close-dialog="closeDialog"
   >
-    <el-form
-      ref="passwordRef"
-      :model="passwordData"
-      :rules="passwordRules"
-      :label-width="80"
-      @submit.prevent
+    <DDForm
+      :schema="schema"
+      :state="formData"
+      class="space-y-2"
+      @submit="onSubmit"
     >
-      <el-form-item
+      <DDFormGroup
         :label="$t('tech.password')"
-        prop="password"
+        name="password"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="passwordData.password"
-          type="password"
-          show-password
-          clearable
-          class="mb-20"
-          label="password"
-          @keyup.enter="checkPassword(passwordRef)"
-        >
-          <template #append>
-            <AButton
-              use-icon
-              icon-name="line-md:coffee-filled"
-              :icon-size="10"
-              @click:button="checkPassword(passwordRef)"
-            />
-          </template>
-        </el-input>
-      </el-form-item>
-    </el-form>
+        <DDInput
+          v-model="formData.password"
+          color="violet"
+          :placeholder="$t('placeholder.inputPassword')"
+          aria-label="email"
+        />
+      </DDFormGroup>
+      <AButton
+        custom-class="submit-button"
+        button-size="lg"
+        :button-text="$t('texts.send')"
+        type="submit"
+      />
+    </DDForm>
   </ADialog>
 </template>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
+import { object, string, type InferType } from 'yup'
+import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
-const { notify } = useAlarm()
 
-const passwordRef = ref<FormInstance>()
+const { passwordRegex } = useUi()
 
 withDefaults(
   defineProps<{
-    title?: string,
-    passwordDialogTrigger?: boolean
+    dialogTrigger?: boolean
   }>(),
   {
-    title: '',
-    passwordDialogTrigger: false
+    dialogTrigger: false
   }
 )
 
@@ -67,40 +56,26 @@ const emits = defineEmits([
   'close-dialog'
 ])
 
-const validatePassword = (_rule:any, value:any, callback:any) => {
-  const number = value.search(/[0-9]/g)
-  const english = value.search(/[a-z]/g)
-  const special = value.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi)
-  if (value === '') {
-    callback(new Error(t('messages.passwordRequire')))
-  } else if (number < 0 || english < 0 || special < 0) {
-    return callback(new Error(t('messages.passwordFormat')))
-  } else {
-    callback()
-  }
-}
-
-const passwordRules = reactive<FormRules>({
-  password: [{ required: true, validator: validatePassword, trigger: 'blur' }]
+const schema = object({
+  password: string()
+    .required(t('messages.passwordRequire'))
+    .matches(passwordRegex, t('messages.passwordFormat'))
 })
 
-const passwordData = ref({
+type Schema = InferType<typeof schema>
+
+const formData = reactive({
   password: ''
 })
 
-const checkPassword = async (formEl:FormInstance|undefined) => {
-  if (!formEl) { return }
-  await formEl.validate((valid, _fields) => {
-    if (valid) {
-      emits('confirm-password', passwordData.value.password)
-    } else {
-      notify('', 'warning', t('messages.passwordFormat'), true, 3000, 0)
-    }
-  })
+const onSubmit = (event: FormSubmitEvent<Schema>) => {
+  if (!event.isTrusted) { return }
+  emits('confirm-password', formData.password)
+  closeDialog()
 }
 
 const closeDialog = () => {
-  passwordData.value.password = ''
+  formData.password = ''
   emits('close-dialog')
 }
 
