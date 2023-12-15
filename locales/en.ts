@@ -22,12 +22,16 @@ export default {
     upload: 'Upload',
     insertLink: 'Insert link',
     magicLink: 'Magic link',
+    portfolio: 'Portfolio',
+    archives: 'Archives',
     noUse: 'No use',
     write: 'Write',
     edit: 'Edit',
     save: 'Save',
     cancel: 'Cancel',
     close: 'Close',
+    send: '보내기',
+    regenerate: 'Regenerate',
     version: 'Version {version}',
     copyright: 'Copyright © Yeonju Lee All Rights Reserved.',
     designed: 'Designed by Yeonju Lee.'
@@ -89,6 +93,8 @@ export default {
     inputLink: 'Input link.',
     inputName: 'Input name.',
     inputEmail: 'Input email.',
+    inputPassword: 'Input password.',
+    inputTitle: 'Input title.',
     inputContent: 'Input content.'
   },
   messages: {

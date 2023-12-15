@@ -3,67 +3,70 @@
     <div class="email-title">
       {{ props.formTitle }}
     </div>
-    <el-form
-      ref="contactRuleFormRef"
-      :model="contactRuleForm"
-      :rules="rules"
-      label-width="120px"
-      class="email-form mt-20"
-      label-position="top"
+    <DDForm
+      :schema="schema"
+      :state="formData"
+      class="email-form mt-20 space-y-2"
+      @submit="onSubmit"
     >
-      <el-form-item
+      <DDFormGroup
         label="Name"
-        prop="name"
+        name="name"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="contactRuleForm.name"
+        <DDInput
+          v-model="formData.name"
+          color="violet"
           :placeholder="$t('placeholder.inputName')"
-          label="name"
+          aria-label="name"
         />
-      </el-form-item>
-      <el-form-item
+      </DDFormGroup>
+      <DDFormGroup
         label="E-mail"
-        prop="email"
+        name="email"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="contactRuleForm.email"
+        <DDInput
+          v-model="formData.email"
+          color="violet"
           :placeholder="$t('placeholder.inputEmail')"
-          type="email"
-          label="email"
+          aria-label="email"
         />
-      </el-form-item>
-      <el-form-item
+      </DDFormGroup>
+      <DDFormGroup
         label="Message"
-        prop="message"
+        name="message"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="contactRuleForm.message"
-          :placeholder="$t('placeholder.inputContent')"
+        <DDTextarea
+          v-model="formData.message"
+          color="violet"
           :rows="5"
-          :maxlength="2000"
-          show-word-limit
-          type="textarea"
-          label="message"
+          variant="outline"
+          resize
+          padded
+          :placeholder="$t('placeholder.inputContent')"
         />
-      </el-form-item>
-      <el-form-item>
-        <AButton
-          custom-class="submit-button"
-          button-size="lg"
-          :button-text="$t('texts.send')"
-          @click:button="submitForm(contactRuleFormRef)"
-        />
-      </el-form-item>
-    </el-form>
+      </DDFormGroup>
+      <AButton
+        custom-class="submit-button"
+        button-size="lg"
+        :button-text="$t('texts.send')"
+        type="submit"
+      />
+    </DDForm>
   </div>
 </template>
 
 <script setup lang="ts">
+import { object, string, type InferType } from 'yup'
 import { send } from '@emailjs/browser'
-import type { FormInstance, FormRules } from 'element-plus'
+import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
-const { checkEmail } = useUi()
 const { notify } = useAlarm()
 
 const props = withDefaults(
@@ -79,50 +82,34 @@ const props = withDefaults(
   }
 )
 
-const contactRuleFormRef = ref<FormInstance>()
+const schema = object({
+  name: string()
+    .min(2, t('messages.nameFormat'))
+    .max(20, t('messages.nameFormat'))
+    .required(t('messages.nameRequire')),
+  email: string()
+    .email(t('messages.emailFormat'))
+    .required(t('messages.emailRequire')),
+  message: string()
+    .min(20, t('messages.contentFormat'))
+    .required(t('messages.contentRequire'))
+})
 
-const contactRuleForm = reactive({
+type Schema = InferType<typeof schema>
+
+const formData = reactive({
   name: '',
   email: '',
   message: ''
 })
 
-const validateEmail = (_rule:any, value:any, callback:any) => {
-  if (value === '') {
-    callback(new Error(t('messages.emailRequire')))
-  } else if (!checkEmail(value)) {
-    return callback(new Error(t('messages.emailFormat')))
-  } else {
-    callback()
-  }
-}
+const onSubmit = async (event: FormSubmitEvent<Schema>) => {
+  if (!event.isTrusted) { return }
 
-const rules = reactive<FormRules>({
-  name: [
-    { required: true, message: t('messages.nameRequire'), trigger: 'blur' },
-    { min: 2, max: 20, message: t('messages.nameFormat'), trigger: 'blur' }
-  ],
-  email: [
-    { required: true, validator: validateEmail, trigger: 'blur' }
-  ],
-  message: [
-    { required: true, message: t('messages.contentRequire'), trigger: 'blur' },
-    { min: 20, message: t('messages.contentFormat'), trigger: 'blur' }
-  ]
-})
-
-const submitForm = async (formEl:FormInstance|undefined) => {
-  if (!formEl) { return }
-  await formEl.validate((valid) => {
-    if (valid) {
-      send('dewdew', props.emailTemplate, contactRuleForm, props.emailKey).then(() => {
-        notify('', 'success', t('messages.successEmailSend'), true, 3000, 0)
-      }).catch(() => {
-        notify('', 'error', t('messages.failEmailSend'), true, 3000, 0)
-      })
-    } else {
-      notify('', 'error', t('messages.failEmailSend'), true, 3000, 0)
-    }
+  await send('dewdew', props.emailTemplate, event.data, props.emailKey).then(() => {
+    notify('', 'success', t('messages.successEmailSend'), true, 3000, 0)
+  }).catch(() => {
+    notify('', 'error', t('messages.failEmailSend'), true, 3000, 0)
   })
 }
 

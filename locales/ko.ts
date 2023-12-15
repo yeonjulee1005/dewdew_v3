@@ -22,6 +22,8 @@ export default {
     upload: '업로드',
     insertLink: '링크사용',
     magicLink: '매직링크',
+    portfolio: '포트폴리오',
+    archives: '아카이브',
     noUse: '사용안함',
     write: '글쓰기',
     edit: '수정하기',
@@ -29,6 +31,7 @@ export default {
     cancel: '취소',
     close: '닫기',
     send: '보내기',
+    regenerate: '재생성',
     version: '버전 {version}',
     copyright: 'Copyright © Yeonju Lee All Rights Reserved.',
     designed: 'Designed by Yeonju Lee.'
@@ -68,9 +71,6 @@ export default {
     commentTitle: '댓글',
     password: '비밀번호'
   },
-  dialog: {
-    magicLinkTitle: '이메일을 적어주세요!'
-  },
   pwa: {
     readyPwa: 'PWA를 사용할 준비가 됬어요!',
     newContent: '새로운 컨첸츠가 있어요! 업데이트 해주세요!',
@@ -88,7 +88,9 @@ export default {
     inputYoutube: '유튜브 링크를 입력해주세요.',
     inputLink: '링크를 입력해주세요.',
     inputName: '성함을 입력해주세요.',
-    inputEmail: '이메일을 입력해주세요.',
+    inputEmail: '이메일을 적어주세요!',
+    inputPassword: '비밀번호를 입력해주세요.',
+    inputTitle: '제목을 입력해주세요.',
     inputContent: '내용을 입력해주세요.'
   },
   messages: {

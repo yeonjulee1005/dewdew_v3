@@ -27,7 +27,6 @@
     <ArticleComments
       :comment-title="$t('tech.commentTitle')"
       :comment-data="techCommentData"
-      :empty-text="$t('messages.emptyComment')"
       @delete:admin-comment="deleteAdminComment"
       @delete:comment="deleteComment"
     />

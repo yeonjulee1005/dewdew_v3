@@ -40,13 +40,10 @@
       </span>
     </div>
     <MagicLinkDialog
-      :visible="magicLinkDialogTrigger"
-      custom-class="magic-link-dialog"
-      :title="$t('dialog.magicLinkTitle')"
-      :double-first-text="$t('texts.send')"
-      :double-second-text="$t('texts.close')"
-      @submit-email="loginMagicLink"
-      @close-dialog="() => magicLinkDialogTrigger = false"
+      :dialog-trigger="magicLinkDialogTrigger"
+      :title="$t('placeholder.inputEmail')"
+      @submit:email="loginMagicLink"
+      @close:dialog="() => magicLinkDialogTrigger = false"
     />
   </div>
 </template>

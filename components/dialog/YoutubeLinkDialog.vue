@@ -1,79 +1,55 @@
 <template>
   <ADialog
-    :dialog-trigger="visibleSync"
-    :hide-single-button="true"
-    :custom-class="customClass"
-    :title="title"
-    :double-first-text="doubleFirstText"
-    :double-second-text="doubleSecondText"
-    width="360px"
-    @click-first-button="submitLink(youtubeLinkFormRef)"
+    :dialog-trigger="dialogTrigger"
+    :title="$t('tiptap.dialog.youtubeLinkTitle')"
+    :double-second-text="$t('texts.close')"
+    hide-first-button
     @click-second-button="closeDialog(false)"
     @close-dialog="closeDialog(false)"
   >
-    <el-form
-      ref="youtubeLinkFormRef"
-      :model="youtubeLinkForm"
-      :rules="youtubeLinkRules"
-      class="youtube-link-form mt-20"
-      label-position="top"
-      @submit.prevent
+    <DDForm
+      :schema="schema"
+      :state="formData"
+      class="youtube-link-form mt-20 space-y-2"
+      @submit="onSubmit"
     >
-      <el-form-item
+      <DDFormGroup
         :label="$t('tiptap.youtube')"
-        prop="link"
+        name="youtube"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="youtubeLinkForm.link"
+        <DDInput
+          v-model="formData.youtube"
+          color="violet"
           :placeholder="$t('placeholder.inputYoutube')"
-          size="large"
-          clearable
-          label="link"
-          @keyup.enter="submitLink(youtubeLinkFormRef)"
+          aria-label="youtube"
         />
-      </el-form-item>
-    </el-form>
+      </DDFormGroup>
+      <AButton
+        custom-class="submit-button"
+        button-size="lg"
+        :button-text="$t('texts.save')"
+        type="submit"
+      />
+    </DDForm>
   </ADialog>
 </template>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
-
-const youtubeLinkFormRef = ref<FormInstance>()
+import { object, string, type InferType } from 'yup'
+import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
 
-const { checkYoutubeLink } = useUi()
-const { notify } = useAlarm()
+const { youtubeRegex } = useUi()
 
-const validateLink = (_rule:any, value:any, callback:any) => {
-  if (!value) {
-    callback(new Error(t('messages.youtubeRequire')))
-  } else if (!checkYoutubeLink(value)) {
-    callback(new Error(t('messages.youtubeFormat')))
-  } else {
-    callback()
-  }
-}
-
-const youtubeLinkRules = reactive<FormRules>({
-  link: [{ required: true, validator: validateLink, trigger: 'blur' }]
-})
-
-const props = withDefaults(
+withDefaults(
   defineProps<{
-    visible?: boolean,
-    customClass?: string,
-    title?: string,
-    doubleFirstText?: string,
-    doubleSecondText?: string
+    dialogTrigger?: boolean,
   }>(),
   {
-    visible: false,
-    customClass: '',
-    title: '',
-    doubleFirstText: '',
-    doubleSecondText: ''
+    dialogTrigger: false
   }
 )
 
@@ -82,35 +58,27 @@ const emits = defineEmits([
   'submit:link'
 ])
 
-const youtubeLinkForm = ref({
-  link: ''
+const schema = object({
+  youtube: string()
+    .required(t('messages.youtubeRequire'))
+    .matches(youtubeRegex, t('messages.youtubeFormat'))
 })
 
-const visibleSync = computed({
-  get: () => props.visible,
-  set: (value) => {
-    if (value) {
-      visibleSync.value = value
-    }
-  }
+type Schema = InferType<typeof schema>
+
+const formData = reactive({
+  youtube: ''
 })
 
-const submitLink = async (formEl:FormInstance | undefined) => {
-  if (!formEl) { return }
-  await formEl.validate((valid) => {
-    if (valid) {
-      emits('submit:link', youtubeLinkForm.value.link)
-      closeDialog(false)
-      formEl.resetFields()
-    } else {
-      notify('', 'error', t('messages.failed'), true, 3000, 0)
-    }
-  })
+const onSubmit = (event: FormSubmitEvent<Schema>) => {
+  if (!event.isTrusted) { return }
+  emits('submit:link', formData.youtube)
+  closeDialog(false)
 }
 
 const closeDialog = (trigger:boolean) => {
   emits('close:dialog', trigger)
-  youtubeLinkForm.value.link = ''
+  formData.youtube = ''
 }
 
 </script>

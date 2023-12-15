@@ -1,13 +1,9 @@
 <template>
   <ADialog
-    :dialog-trigger="visibleSync"
-    :custom-class="customClass"
-    :draggable="false"
-    :title="title"
-    width="'360px'"
-    hide-single-button
-    :double-first-text="doubleFirstText"
-    :double-second-text="doubleSecondText"
+    :dialog-trigger="dialogTrigger"
+    :title="$t('tiptap.dialog.imageUploadTitle')"
+    :double-first-text="$t('texts.save')"
+    :double-second-text="$t('texts.close')"
     @click-first-button="submitImage"
     @click-second-button="closeDialog(false)"
     @close-dialog="closeDialog(false)"
@@ -31,22 +27,35 @@
       </template>
       <template #file="{ file }">
         <div class="upload-file-information">
-          <el-image
+          <nuxt-img
             class="upload-thumbnail"
             :src="file.url"
+            loading="lazy"
             alt="avatar"
           />
         </div>
       </template>
     </el-upload>
-    <el-input
+    <DDInput
       v-if="imageHyperLinkTrigger"
       v-model="hyperLink"
       :placeholder="$t('placeholder.inputLink')"
-      size="large"
-      label="link"
-      clearable
-    />
+      color="violet"
+      size="xl"
+      aria-label="link"
+      :ui="{ icon: { trailing: { pointer: '' } } }"
+    >
+      <template #trailing>
+        <AButton
+          v-show="hyperLink !== ''"
+          button-variant="ghost"
+          use-icon
+          icon-name="line-md:remove"
+          :icon-size="18"
+          @click:button="() => hyperLink = ''"
+        />
+      </template>
+    </DDInput>
     <DDCheckbox
       v-model="imageHyperLinkTrigger"
       color="violet"
@@ -67,20 +76,12 @@ const { t } = useLocale()
 
 const { notify } = useAlarm()
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
-    visible?: boolean,
-    customClass?: string,
-    title?: string,
-    doubleFirstText?: string,
-    doubleSecondText?: string
+    dialogTrigger?: boolean
   }>(),
   {
-    visible: false,
-    customClass: '',
-    title: '',
-    doubleFirstText: '',
-    doubleSecondText: ''
+    dialogTrigger: false
   }
 )
 
@@ -92,15 +93,6 @@ const emits = defineEmits([
 const exportUrl = ref('')
 const hyperLink = ref('')
 const imageHyperLinkTrigger = ref(false)
-
-const visibleSync = computed({
-  get: () => props.visible,
-  set: (value) => {
-    if (value) {
-      visibleSync.value = value
-    }
-  }
-})
 
 const genUid = () => {
   return (new Date().getTime() + Math.random().toString(36).substring(2, 16))

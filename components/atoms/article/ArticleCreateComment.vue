@@ -1,74 +1,101 @@
 <template>
   <div class="article-create-comment flex flex-column flex-align-end mb-40">
-    <el-form
-      ref="createCommentRef"
-      class="create-form"
-      :model="createCommentData"
-      :rules="createArticleRules"
-      :label-width="80"
-      label-position="top"
-      @submit.prevent
+    <DDForm
+      :schema="schema"
+      :state="formData"
+      class="create-form space-y-2"
+      @submit="onSubmit"
     >
-      <el-form-item
+      <DDFormGroup
         :label="nameLabel"
-        prop="name"
+        name="name"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="createCommentData.name"
-          :maxlength="16"
-          show-word-limit
-          clearable
-          label="name"
+        <DDInput
+          v-model="formData.name"
+          :placeholder="$t('placeholder.inputName')"
+          color="violet"
+          size="lg"
+          aria-label="name"
+          :ui="{ icon: { trailing: { pointer: '' } } }"
         >
-          <template #append>
+          <template #trailing>
             <AButton
+              button-variant="ghost"
               use-icon
               icon-name="charm:refresh"
-              :icon-size="10"
-              @click:button="createCommentData.name = generateCommentName()"
+              :icon-size="18"
+              @click:button="formData.name = generateCommentName()"
             />
           </template>
-        </el-input>
-      </el-form-item>
-      <el-form-item :label="contentLabel">
+        </DDInput>
+      </DDFormGroup>
+      <DDFormGroup
+        :label="contentLabel"
+        name="message"
+        size="xl"
+        required
+      >
         <LazyTextEditor
           :comment-option="true"
-          @update:model-value="(article:string, _rawArticle:string) => createCommentData.message = article"
+          @update:model-value="(article:string, _rawArticle:string) => formData.message = article"
         />
-      </el-form-item>
-      <el-form-item
+      </DDFormGroup>
+      <DDFormGroup
         :label="passwordLabel"
-        prop="password"
+        name="password"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="createCommentData.password"
+        <DDInput
+          v-model="formData.password"
+          :placeholder="passwordLabel"
+          color="violet"
+          size="lg"
           type="password"
-          show-password
           clearable
-          label="password"
-          @keyup.enter="submitArticle(createCommentRef)"
+          aria-label="password"
+          :ui="{ icon: { trailing: { pointer: '' } } }"
+          @keyup.enter="onSubmit"
         >
-          <template #append>
-            <AButton
-              :button-text="$t('tech.writeComment')"
-              @click:button="submitArticle(createCommentRef)"
-            />
+          <template #trailing>
+            <div class="flex flex-justify-center space-x-1">
+              <AButton
+                v-show="formData.password !== ''"
+                button-variant="ghost"
+                use-icon
+                icon-name="line-md:remove"
+                :icon-size="18"
+                @click:button="() => formData.password = ''"
+              />
+              <AButton
+                :button-text="$t('tech.writeComment')"
+                button-variant="ghost"
+                type="submit"
+              />
+            </div>
           </template>
-        </el-input>
-      </el-form-item>
-    </el-form>
+        </DDInput>
+      </DDFormGroup>
+      <AButton
+        custom-class="submit-button"
+        button-variant="soft"
+        button-size="lg"
+        :button-text="$t('tech.write')"
+        type="submit"
+      />
+    </DDForm>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
-
-const createCommentRef = ref<FormInstance>()
+import { object, string, type InferType } from 'yup'
+import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
 
-const { notify } = useAlarm()
-const { generateCommentName } = useUi()
+const { passwordRegex, generateCommentName } = useUi()
 
 withDefaults(
   defineProps<{
@@ -87,53 +114,28 @@ const emits = defineEmits([
   'create-comment'
 ])
 
-const createCommentData = reactive<CreateComment>({
+const schema = object({
+  name: string()
+    .required(t('messages.titleRequire'))
+    .min(2, t('messages.nameFormat')),
+  password: string()
+    .required(t('messages.passwordRequire'))
+    .matches(passwordRegex, t('messages.passwordFormat')),
+  message: string()
+    .required(t('messages.contentRequire'))
+})
+
+type Schema = InferType<typeof schema>
+
+const formData = reactive({
   name: generateCommentName(),
   message: '',
   password: ''
 })
 
-const validateName = (_rule:any, value:any, callback:any) => {
-  if (value === '') {
-    callback(new Error(t('messages.nameRequire')))
-  } else {
-    if (value < 2) {
-      return callback(new Error(t('messages.nameFormat')))
-    }
-    callback()
-  }
-}
-
-const validatePassword = (_rule:any, value:any, callback:any) => {
-  const number = value.search(/[0-9]/g)
-  const english = value.search(/[a-z]/g)
-  const special = value.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi)
-  if (value === '') {
-    callback(new Error(t('messages.passwordRequire')))
-  } else if (number < 0 || english < 0 || special < 0) {
-    return callback(new Error(t('messages.passwordFormat')))
-  } else {
-    callback()
-  }
-}
-
-const createArticleRules = reactive<FormRules>({
-  name: [{ required: true, validator: validateName, trigger: 'blur' }],
-  password: [{ required: true, validator: validatePassword, trigger: 'blur' }]
-})
-
-const submitArticle = async (formEl:FormInstance|undefined) => {
-  if (!formEl) { return }
-  await formEl.validate((valid, _fields) => {
-    if (valid && createCommentData.message) {
-      emits('create-comment', createCommentData)
-      setTimeout(() => {
-        formEl.resetFields()
-      }, 1000)
-    } else {
-      notify('', 'warning', t('messages.contentRequire'), true, 3000, 0)
-    }
-  })
+const onSubmit = (event: FormSubmitEvent<Schema>) => {
+  if (!event.isTrusted) { return }
+  emits('create-comment', formData)
 }
 
 </script>

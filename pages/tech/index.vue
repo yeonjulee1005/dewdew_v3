@@ -28,33 +28,26 @@
         />
         <LazyCardComponent :card-item="item" />
       </el-timeline-item>
-      <el-pagination
-        v-if="techData.count"
-        v-model:current-page="currentPage"
-        v-model:page-size="currentPageSize"
-        class="tech-pagination mt-20"
-        :page-count="pageCount"
+      <DDPagination
+        v-model="currentPage"
+        class="flex flex-justify-center m-4 pb-8"
+        :active-button="{ variant: 'outline', color: 'violet' }"
+        :inactive-button="{ color: 'gray' }"
+        :page-count="currentPageSize"
         :total="techData.count"
-        :pager-count="5"
-        :page-sizes="[10, 20]"
-        small
-        :layout="'total, ->, prev, pager, next, sizes'"
-        @update:current-page="(changed:number) => currentPage = changed"
-        @update:page-size="(changed:number) => currentPageSize = changed"
-        @current-change="(page:number) => currentPage = page"
-        @size-change="(size:number) => currentPageSize = size"
+        show-first
+        show-last
       />
     </el-timeline>
-    <el-empty
+    <DDSkeleton
       v-else
       class="tech-timeline"
-      :description="$t('messages.emptyArticle')"
+      :ui="{ rounded: 'rounded-fill'}"
     />
     <CreateArticleDialog
       :create-article-trigger="createArticleTrigger"
-      :title="$t('messages.writeArticle')"
-      @create-article="writeArticle"
-      @close-dialog="() => createArticleTrigger = false"
+      @create:article="writeArticle"
+      @close:dialog="() => createArticleTrigger = false"
     />
   </div>
 </template>
@@ -80,12 +73,7 @@ useHead({
 })
 
 const currentPage = ref(1)
-const currentPageSize = ref(10)
-
-const pageCount = computed(() => {
-  if (!techData.value?.count) { return 0 }
-  return Math.ceil(techData.value.count / currentPageSize.value)
-})
+const currentPageSize = ref(2)
 
 const createArticleTrigger = ref(false)
 

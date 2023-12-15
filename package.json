@@ -91,5 +91,8 @@
   },
   "overrides": {
     "@polka/url": "1.0.0-next.23"
+  },
+  "dependencies": {
+    "yup": "^1.3.2"
   }
 }

@@ -15,11 +15,12 @@
     >
       {{ title }}
     </span>
-    <el-input
+    <DDInput
       v-else
       v-model="copiedTitle"
-      class="title"
-      label="title"
+      color="violet"
+      size="xl"
+      aria-label="title"
       @change="() => $emit('update:title', copiedTitle)"
     />
     <ANuxtTime :date-time="createdAt" />

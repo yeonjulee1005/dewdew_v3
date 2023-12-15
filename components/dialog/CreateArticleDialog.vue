@@ -1,100 +1,96 @@
 <template>
-  <LazyADialog
-    :dialog-trigger="props.createArticleTrigger"
-    :hide-double-button="true"
-    :hide-single-button="true"
-    :title="props.title"
-    custom-class="create-article-dialog"
-    top="15vh"
-    width="80vw"
-    @close-dialog="emits('close-dialog')"
+  <ADialog
+    :dialog-trigger="createArticleTrigger"
+    :title="$t('messages.writeArticle')"
+    hide-double-button
+    @close-dialog="emits('close:dialog')"
   >
-    <el-form
-      ref="createArticleRef"
-      :model="createArticleData"
-      :rules="createArticleRules"
-      :label-width="80"
-      @submit.prevent
+    <DDForm
+      :schema="schema"
+      :state="formData"
+      class="space-y-2"
+      @submit="onSubmit"
     >
-      <el-form-item
+      <DDFormGroup
         :label="$t('tech.articleTitle')"
-        prop="title"
+        name="title"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="createArticleData.title"
-          label="title"
+        <DDInput
+          v-model="formData.title"
+          color="violet"
+          :placeholder="$t('placeholder.inputTitle')"
+          aria-label="title"
         />
-      </el-form-item>
-      <el-form-item :label="$t('tech.article')">
+      </DDFormGroup>
+      <DDFormGroup
+        :label="$t('tech.article')"
+        name="desc"
+        size="xl"
+        required
+      >
         <TextEditor
           :text-limit="300000"
           :full-option="true"
           @update:model-value="updateArticle"
         />
-      </el-form-item>
-      <el-form-item class="submit-form-item">
-        <AButton
-          custom-class="submit-button"
-          button-variant="soft"
-          button-size="lg"
-          :button-text="$t('tech.write')"
-          @click:button="submitArticle(createArticleRef)"
-        />
-      </el-form-item>
-    </el-form>
-  </LazyADialog>
+      </DDFormGroup>
+      <AButton
+        custom-class="submit-button"
+        button-variant="soft"
+        button-size="lg"
+        :button-text="$t('tech.write')"
+        type="submit"
+      />
+    </DDForm>
+  </ADialog>
 </template>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
+import { object, string, type InferType } from 'yup'
+import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
 
-const { notify } = useAlarm()
-
-const createArticleRef = ref<FormInstance>()
-
-const props = withDefaults(
+withDefaults(
   defineProps<{
-    createArticleTrigger?: boolean,
-    title?: string
+    createArticleTrigger?: boolean
   }>(),
   {
-    createArticleTrigger: false,
-    title: ''
+    createArticleTrigger: false
   }
 )
 
 const emits = defineEmits([
-  'create-article',
-  'close-dialog'
+  'create:article',
+  'close:dialog'
 ])
 
-const createArticleRules = reactive<FormRules>({
-  title: [{ required: true, message: t('messages.articleRequire'), trigger: 'blur' }]
+const schema = object({
+  title: string()
+    .required(t('messages.titleRequire')),
+  desc: string()
+    .required(t('messages.articleRequire'))
 })
 
-const createArticleData = reactive({
+type Schema = InferType<typeof schema>
+
+const formData = reactive({
   title: '',
   desc: '',
   raw_article: '',
   like: 0
 })
 
-const updateArticle = (article:string, rawArticle:string) => {
-  createArticleData.desc = article
-  createArticleData.raw_article = rawArticle
+const onSubmit = (event: FormSubmitEvent<Schema>) => {
+  if (!event.isTrusted) { return }
+  emits('create:article', formData)
 }
 
-const submitArticle = async (formEl:FormInstance|undefined) => {
-  if (!formEl) { return }
-  await formEl.validate((valid, _fields) => {
-    if (valid) {
-      emits('create-article', createArticleData)
-    } else {
-      notify('', 'warning', t('messages.titleRequire'), true, 3000, 0)
-    }
-  })
+const updateArticle = (article:string, rawArticle:string) => {
+  formData.desc = article
+  formData.raw_article = rawArticle
 }
 
 </script>
