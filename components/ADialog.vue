@@ -1,40 +1,25 @@
 <template>
-  <client-only>
-    <el-dialog
-      :model-value="dialogTrigger"
-      :show-close="false"
-      :align-center="alignCenter"
-      :draggable="draggable"
-      :class="customClass"
-      :top="top"
-      :width="width"
-      :open-delay="openDelay"
-      :close-delay="closeDelay"
-      close-on-click-modal
-      close-on-press-escape
-      destroy-on-close
-      :center="center"
-      :fullscreen="fullScreen"
-      @close="emits('close-dialog', false)"
-    >
-      <template #header="{ close, titleId, titleClass}">
+  <DDModal
+    v-model="modalTrigger"
+    :fullscreen="fullScreen"
+    overlay
+    :prevent-close="preventClose"
+  >
+    <DDCard>
+      <template #header>
         <div
-          v-if="!hideHeaderTrigger"
-          class="custom-header flex flex-row flex-align-center flex-space-between ml-20"
+          v-if="title"
+          class="flex flex-align-center flex-space-between"
         >
-          <p
-            :id="titleId"
-            :class="titleClass"
-          >
+          <span>
             {{ title }}
-          </p>
-          <Icon
-            v-if="!hideCloseButton"
-            style="cursor: pointer;"
-            :width="30"
-            :height="30"
-            name="ep:close-bold"
-            @click="close"
+          </span>
+          <AButton
+            color="violet"
+            button-variant="ghost"
+            use-icon
+            icon-name="line-md:menu-to-close-alt-transition"
+            @click="modalTrigger = false"
           />
         </div>
       </template>
@@ -46,91 +31,68 @@
         >
           <AButton
             v-if="!hideFirstButton"
-            :custom-class="`A-double-first-button ${activeFirstButton ? 'activate-first-button' : ''}`"
-            :button-disabled="activeFirstButton"
+            :button-disabled="disableFirstButton"
             button-size="lg"
             :button-text="doubleFirstText"
             @click:button="emits('click-first-button')"
           />
           <AButton
             v-if="!hideSecondButton"
-            custom-class="A-double-second-button"
             button-size="lg"
             :button-text="doubleSecondText"
             @click:button="emits('click-second-button')"
           />
         </div>
-        <AButton
-          v-if="!hideSingleButton"
-          custom-class="A-single-button"
-          button-variant="soft"
-          button-size="lg"
-          :button-text="singleText"
-          @click:button="emits('click-single-button')"
-        />
       </template>
-    </el-dialog>
-  </client-only>
+    </DDCard>
+  </DDModal>
 </template>
 
 <script setup lang="ts">
 
-withDefaults(
+const modalTrigger = ref(false)
+
+const props = withDefaults(
   defineProps<{
     dialogTrigger?: boolean,
-    visible?: boolean,
-    draggable?: boolean,
-    alignCenter?: boolean,
-    center?: boolean,
     fullScreen?: boolean,
-    customClass?: string,
-    top?: string,
-    width?: string,
-    openDelay?: number,
-    closeDelay?: number,
-    hideHeaderTrigger?: boolean,
-    hideCloseButton?: boolean,
+    preventClose?: boolean,
+    title?: string,
+    doubleFirstText?: string,
+    doubleSecondText?: string,
     hideDoubleButton?: boolean,
     hideFirstButton?: boolean,
     hideSecondButton?: boolean,
-    hideSingleButton?: boolean,
-    activeFirstButton?: boolean,
-    doubleFirstText?: string,
-    doubleSecondText?: string,
-    singleText?: string,
-    title?: string
+    disableFirstButton?: boolean
   }>(),
   {
     dialogTrigger: false,
-    visible: true,
-    draggable: true,
-    alignCenter: true,
-    center: true,
     fullScreen: false,
-    customClass: '',
-    top: '10dvh',
-    width: '90dvw',
-    openDelay: 350,
-    closeDelay: 200,
-    hideHeaderTrigger: false,
-    hideCloseButton: false,
+    preventClose: false,
+    title: '',
+    doubleFirstText: '',
+    doubleSecondText: '',
     hideDoubleButton: false,
     hideFirstButton: false,
     hideSecondButton: false,
-    hideSingleButton: false,
-    activeFirstButton: false,
-    doubleFirstText: '',
-    doubleSecondText: '',
-    singleText: '',
-    title: ''
+    disableFirstButton: false
   }
 )
 
 const emits = defineEmits([
   'close-dialog',
   'click-first-button',
-  'click-second-button',
-  'click-single-button'
+  'click-second-button'
 ])
+
+watch(() => props.dialogTrigger, (value) => {
+  modalTrigger.value = value
+}, { immediate: true })
+
+watch(() => modalTrigger.value, (value) => {
+  if (!value) {
+    emits('close-dialog')
+  }
+}, { immediate: true })
 
 </script>

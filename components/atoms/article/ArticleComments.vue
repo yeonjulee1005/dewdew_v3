@@ -27,14 +27,13 @@
         </div>
       </el-timeline-item>
     </el-timeline>
-    <el-empty
+    <DDSkeleton
       v-else
-      class="empty-comments"
-      :description="emptyText"
+      class="empty-comments mt-4 mb-4"
+      :ui="{ rounded: 'rounded-fill'}"
     />
     <PasswordCheckDialog
-      :title="$t('tech.password')"
-      :password-dialog-trigger="passwordDialogTrigger"
+      :dialog-trigger="passwordDialogTrigger"
       @confirm-password="(password:string) => confirmDeleteComment(password)"
       @close-dialog="() => passwordDialogTrigger = false"
     />
@@ -45,16 +44,10 @@
 
 const { adminAccess } = storeToRefs(useTechStore())
 
-withDefaults(
-  defineProps<{
-    commentTitle: string,
-    commentData: SerializeObject[],
-    emptyText?: string
-  }>(),
-  {
-    emptyText: ''
-  }
-)
+defineProps<{
+  commentTitle: string,
+  commentData: SerializeObject[]
+}>()
 
 const emits = defineEmits([
   'delete:admin-comment',

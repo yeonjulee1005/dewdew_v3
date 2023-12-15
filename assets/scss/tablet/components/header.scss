@@ -15,12 +15,10 @@
       height: auto;
     }
     .github {
-      img {
-        width: $space-24;
-        height: auto;
-        transition: all .1s ease-in-out;
-      }
-      img:hover {
+      width: $space-24;
+      height: auto;
+      transition: all .1s ease-in-out;
+      &:hover {
         scale: 1.1;
       }
     }

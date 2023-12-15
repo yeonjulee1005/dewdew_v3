@@ -1,119 +1,86 @@
 <template>
   <ADialog
-    :dialog-trigger="visibleSync"
-    :custom-class="customClass"
-    :draggable="false"
-    :title="title"
-    :width="mobileDevice ? '90dvw' : '400px'"
-    hide-single-button
-    :double-first-text="doubleFirstText"
-    :double-second-text="doubleSecondText"
-    @click-first-button="submitEmail(magicLinkFormRef)"
+    :dialog-trigger="dialogTrigger"
+    :title="$t('placeholder.inputEmail')"
+    :double-second-text="$t('texts.close')"
+    hide-first-button
     @click-second-button="closeDialog"
     @close-dialog="closeDialog"
   >
-    <el-form
-      ref="magicLinkFormRef"
-      :model="magicLinkForm"
-      :rules="magicLinkRules"
-      class="email-form mt-20"
-      label-position="top"
-      @submit.prevent
+    <DDForm
+      :schema="schema"
+      :state="formData"
+      class="email-form mt-20 space-y-2"
+      @submit="onSubmit"
     >
-      <el-form-item
+      <DDFormGroup
         :label="$t('texts.magicLink')"
-        prop="email"
+        name="email"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="magicLinkForm.email"
+        <DDInput
+          v-model="formData.email"
+          color="violet"
           :placeholder="$t('placeholder.inputEmail')"
-          type="email"
-          size="large"
-          clearable
-          label="email"
-          @keyup.enter="submitEmail(magicLinkFormRef)"
+          aria-label="email"
         />
-      </el-form-item>
-    </el-form>
+      </DDFormGroup>
+      <AButton
+        custom-class="submit-button"
+        button-size="lg"
+        :button-text="$t('texts.send')"
+        type="submit"
+      />
+    </DDForm>
   </ADialog>
 </template>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
+import { object, string, type InferType } from 'yup'
+import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
-const magicLinkFormRef = ref<FormInstance>()
-
-const { width } = useWindowSize()
 const { t } = useLocale()
+const { width } = useWindowSize()
 
-const { checkEmail } = useUi()
 const { notification } = useDeviceSeparator()
 
-const validateEmail = (_rule:any, value:any, callback:any) => {
-  if (!value) {
-    callback(new Error(t('messages.emailRequire')))
-  } else if (!checkEmail(value)) {
-    return callback(new Error(t('messages.emailFormat')))
-  } else {
-    callback()
-  }
-}
-
-const magicLinkRules = reactive<FormRules>({
-  email: [{ required: true, validator: validateEmail, trigger: 'blur' }]
-})
-
-const props = withDefaults(
+withDefaults(
   defineProps<{
-    visible?: boolean,
-    customClass?: string,
-    title?: string,
-    doubleFirstText?: string,
-    doubleSecondText?: string
+    dialogTrigger?: boolean
   }>(),
   {
-    visible: false,
-    customClass: '',
-    title: '',
-    doubleFirstText: '',
-    doubleSecondText: ''
+    dialogTrigger: false
   }
 )
 
 const emits = defineEmits([
-  'close-dialog',
-  'submit-email'
+  'close:dialog',
+  'submit:email'
 ])
 
-const magicLinkForm = ref({
+
+const schema = object({
+  email: string()
+    .email(t('messages.emailFormat'))
+    .required(t('messages.emailRequire'))
+})
+
+type Schema = InferType<typeof schema>
+
+const formData = reactive({
   email: ''
 })
 
-const mobileDevice = computed(() => width.value < 420)
-
-const visibleSync = computed({
-  get: () => props.visible,
-  set: (value) => {
-    if (value) {
-      visibleSync.value = value
-    }
-  }
-})
-
-const submitEmail = async (formEl:FormInstance | undefined) => {
-  if (!formEl) { return }
-  await formEl.validate((valid) => {
-    if (valid) {
-      emits('submit-email', magicLinkForm.value.email)
-      closeDialog()
-    } else {
-      notification(width.value, t('placeholder.inputEmail'), '', 'error', false, true, 1500, 80)
-    }
-  })
+const onSubmit = (event: FormSubmitEvent<Schema>) => {
+  if (!event.isTrusted) { return }
+  notification(width.value, t('messages.successEmailSend'), '', 'success', false, true, 1500, 80)
+  emits('submit:email', formData.email)
+  closeDialog()
 }
 
 const closeDialog = () => {
-  emits('close-dialog')
+  emits('close:dialog')
 }
 
 </script>

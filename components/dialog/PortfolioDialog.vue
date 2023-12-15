@@ -1,10 +1,9 @@
 <template>
-  <LazyADialog
-    :dialog-trigger="portfolioDialogTrigger"
-    :hide-double-button="true"
-    :hide-single-button="true"
-    custom-class="portfolio-dialog"
-    @close-dialog="() => $emit('close:dialog', false)"
+  <ADialog
+    :dialog-trigger="dialogTrigger"
+    :title="$t('texts.portfolio')"
+    hide-double-button
+    @close-dialog="() => $emit('close:dialog')"
   >
     <div class="flex flex-column gap-10">
       <span class="title mb-default">
@@ -25,32 +24,23 @@
       :img-attrs="{class: 'image'}"
       @click="navigateTo(selectPortfolio.url, { open: { target: '_blank' } })"
     />
-  </LazyADialog>
+  </ADialog>
 </template>
 
 <script setup lang="ts">
 
-const props = withDefaults(
+withDefaults(
   defineProps<{
     selectPortfolio: SerializeObject
-    portfolioTrigger?: boolean
+    dialogTrigger?: boolean
   }>(),
   {
-    portfolioTrigger: false
+    dialogTrigger: false
   }
 )
 
-const emits = defineEmits([
+defineEmits([
   'close:dialog'
 ])
-
-const portfolioDialogTrigger = computed({
-  get: () => props.portfolioTrigger,
-  set: (value) => {
-    if (value) {
-      emits('close:dialog', value)
-    }
-  }
-})
 
 </script>

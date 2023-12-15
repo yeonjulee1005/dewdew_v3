@@ -1,79 +1,55 @@
 <template>
   <ADialog
-    :dialog-trigger="visibleSync"
-    :hide-single-button="true"
-    :custom-class="customClass"
-    :title="title"
-    :double-first-text="doubleFirstText"
-    :double-second-text="doubleSecondText"
-    width="360px"
-    @click-first-button="submitLink(hyperLinkFormRef)"
+    :dialog-trigger="dialogTrigger"
+    :title="$t('tiptap.dialog.hyperLinkTitle')"
+    :double-second-text="$t('texts.close')"
+    hide-first-button
     @click-second-button="closeDialog"
     @close-dialog="closeDialog"
   >
-    <el-form
-      ref="hyperLinkFormRef"
-      :model="hyperLinkForm"
-      :rules="hyperLinkRules"
-      class="hyper-link-form mt-20"
-      label-position="top"
-      @submit.prevent
+    <DDForm
+      :schema="schema"
+      :state="formData"
+      class="hyper-link-form mt-20 space-y-2"
+      @submit="onSubmit"
     >
-      <el-form-item
+      <DDFormGroup
         :label="$t('tiptap.link')"
-        prop="link"
+        name="hyperLink"
+        size="xl"
+        required
       >
-        <el-input
-          v-model="hyperLinkForm.link"
+        <DDInput
+          v-model="formData.hyperLink"
+          color="violet"
           :placeholder="$t('placeholder.inputLink')"
-          size="large"
-          clearable
-          label="link"
-          @keyup.enter="submitLink(hyperLinkFormRef)"
+          aria-label="hyperLink"
         />
-      </el-form-item>
-    </el-form>
+      </DDFormGroup>
+      <AButton
+        custom-class="submit-button"
+        button-size="lg"
+        :button-text="$t('texts.save')"
+        type="submit"
+      />
+    </DDForm>
   </ADialog>
 </template>
 
 <script setup lang="ts">
-import type { FormInstance, FormRules } from 'element-plus'
-
-const hyperLinkFormRef = ref<FormInstance>()
+import { object, string, type InferType } from 'yup'
+import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
 
-const { checkHyperLink } = useUi()
-const { notify } = useAlarm()
+const { hyperLinkRegex } = useUi()
 
-const validateLink = (_rule:any, value:any, callback:any) => {
-  if (!value) {
-    callback(new Error(t('messages.linkRequire')))
-  } else if (!checkHyperLink(value)) {
-    callback(new Error(t('messages.linkFormat')))
-  } else {
-    callback()
-  }
-}
-
-const hyperLinkRules = reactive<FormRules>({
-  link: [{ required: true, validator: validateLink, trigger: 'blur' }]
-})
-
-const props = withDefaults(
+withDefaults(
   defineProps<{
-    visible?: boolean,
-    customClass?: string,
-    title?: string,
-    doubleFirstText?: string,
-    doubleSecondText?: string
+    dialogTrigger?: boolean
   }>(),
   {
-    visible: false,
-    customClass: '',
-    title: '',
-    doubleFirstText: '',
-    doubleSecondText: ''
+    dialogTrigger: false
   }
 )
 
@@ -82,35 +58,27 @@ const emits = defineEmits([
   'submit:link'
 ])
 
-const hyperLinkForm = ref({
-  link: ''
+const schema = object({
+  hyperLink: string()
+    .required(t('messages.linkRequire'))
+    .matches(hyperLinkRegex, t('messages.linkFormat'))
 })
 
-const visibleSync = computed({
-  get: () => props.visible,
-  set: (value) => {
-    if (value) {
-      visibleSync.value = value
-    }
-  }
+type Schema = InferType<typeof schema>
+
+const formData = reactive({
+  hyperLink: ''
 })
 
-const submitLink = async (formEl:FormInstance | undefined) => {
-  if (!formEl) { return }
-  await formEl.validate((valid) => {
-    if (valid) {
-      emits('submit:link', hyperLinkForm.value.link)
-      closeDialog(false)
-      formEl.resetFields()
-    } else {
-      notify('', 'error', t('messages.failed'), true, 3000, 0)
-    }
-  })
+const onSubmit = (event: FormSubmitEvent<Schema>) => {
+  if (!event.isTrusted) { return }
+  emits('submit:link', formData.hyperLink)
+  closeDialog(false)
 }
 
 const closeDialog = (trigger:boolean) => {
   emits('close:dialog', trigger)
-  hyperLinkForm.value.link = ''
+  formData.hyperLink = ''
 }
 
 </script>

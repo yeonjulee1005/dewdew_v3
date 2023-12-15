@@ -15,20 +15,11 @@
       :show-pagination="false"
       @open-dialog="openImageDialog"
     />
-    <ADialog
+    <ArchiveDialog
       :dialog-trigger="imageDialogTrigger"
-      :hide-double-button="true"
-      :hide-single-button="true"
-      @close-dialog="() => imageDialogTrigger = false"
-    >
-      <nuxt-picture
-        :src="selectImageData?.url"
-        format="webp"
-        fit="cover"
-        :img-attrs="{style: 'width: 100%'}"
-        :alt="selectImageData?.title"
-      />
-    </ADialog>
+      :select-image-data="selectImageData"
+      @close:dialog="() => imageDialogTrigger = false"
+    />
   </div>
 </template>
 
