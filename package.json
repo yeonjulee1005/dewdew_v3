@@ -4,7 +4,7 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "1.12.0",
+  "version": "1.13.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -12,6 +12,7 @@
     "dev:host": "nuxt dev --port 4500 --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "analyze": "nuxt analyze",
     "postinstall": "nuxt prepare",
     "cleanup": "nuxt cleanup",
     "lint": "eslint --ext .ts,.js,.vue",
