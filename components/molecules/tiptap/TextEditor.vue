@@ -4,50 +4,50 @@
     class="tiptap-editor"
   >
     <div class="tiptap-editor__header gap-2">
-      <LazyTiptapHeadingGroup
+      <TiptapHeadingGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
         :full-option="fullOption"
       />
-      <LazyTiptapTextStyleGroup
+      <TiptapTextStyleGroup
         :tiptap-editor="editor"
         :full-option="fullOption"
       />
-      <LazyTiptapStrokeGroup
+      <TiptapStrokeGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
         :full-option="fullOption"
       />
-      <LazyTiptapTextAlignGroup
+      <TiptapTextAlignGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
         :full-option="fullOption"
       />
-      <LazyTiptapTextListGroup
+      <TiptapTextListGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
         :full-option="fullOption"
       />
-      <LazyEditNormalButtons
+      <EditNormalButtons
         v-if="!commentOption"
         :is-active="false"
         :action="() => editor ? imageUploadDialogTrigger = true : null"
         icon-type="ri:image-2-line"
         :tooltip-text="$t('tiptap.image')"
       />
-      <LazyTiptapLinkGroup
+      <TiptapLinkGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
         :full-option="fullOption"
         @open-hyper-link="() => hyperLinkDialogTrigger = true"
         @open-youtube-link="() => youtubeLinkDialogTrigger = true"
       />
-      <LazyTiptapTableGroup
+      <TiptapTableGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
         :full-option="fullOption"
       />
-      <LazyTiptapExtraGroup
+      <TiptapExtraGroup
         v-if="!commentOption"
         :tiptap-editor="editor"
         :full-option="fullOption"
