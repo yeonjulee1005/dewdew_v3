@@ -1,16 +1,16 @@
-import { serverSupabaseClient } from '#supabase/server'
+import { serverSupabaseUser, serverSupabaseClient } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
+  const user = await serverSupabaseUser(event)
   const client = await serverSupabaseClient<SupabaseDataBase>(event)
-
   const query = getQuery(event)
 
   const { data, error } = await client
-    .from('techComment')
-    .select('id, tech_id, message, name, password, deleted, created_at, updated_at')
-    .eq('tech_id', query.techBlogId)
+    .from('profiles')
+    .select('admin')
+    .eq('id', query.userId ?? String(user?.id))
     .eq('deleted', false)
-    .order('created_at', { ascending: false })
+    .single()
 
   if (error) {
     throw createError({ statusMessage: error.message })

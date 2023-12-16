@@ -1,9 +1,9 @@
 <template>
   <div class="layout-container">
-    <LazyAHeader />
+    <AHeader />
     <slot />
-    <LazyAFooter />
+    <AFooter />
     <InstallPwa />
-    <LazyLeaveCounter />
+    <LeaveCounter />
   </div>
 </template>

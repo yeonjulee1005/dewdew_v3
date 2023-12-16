@@ -7,38 +7,38 @@
     />
     <template #panel>
       <div class="flex gap-2">
-        <LazyEditSpecialButtons
+        <EditSpecialButtons
           v-if="fullOption"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().setHorizontalRule().run() : null"
           icon-type="ri:separator"
           :tooltip-text="$t('tiptap.separator')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="false"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().setHardBreak().run() : null"
           icon-type="ri:corner-down-left-line"
           :tooltip-text="$t('tiptap.moreLine')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('code')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleCode().run() : null"
           icon-type="ri:code-fill"
           :tooltip-text="$t('tiptap.code')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('codeBlock')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleCodeBlock().run() : null"
           icon-type="ri:code-box-line"
           :tooltip-text="$t('tiptap.codeBlock')"
         />
-        <LazyEditSpecialButtons
+        <EditSpecialButtons
           v-if="fullOption"
           :disabled="!tiptapEditor.can().chain().focus().undo().run()"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().undo().run() : null"
           icon-type="ri:arrow-go-back-line"
           :tooltip-text="$t('tiptap.goBack')"
         />
-        <LazyEditSpecialButtons
+        <EditSpecialButtons
           v-if="fullOption"
           :disabled="!tiptapEditor.can().chain().focus().redo().run()"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().redo().run() : null"

@@ -22,7 +22,7 @@ provide(ID_INJECTION_KEY, {
   current: 0
 })
 
-const { loadMenuData } = useLoadComposable()
+const { loadMenuData } = useFetchComposable()
 
 const seoTitle = 'Developer Dewdew | 개발자 이연주'
 const seoDescription = '안녕하세요. FE 개발자 이연주입니다.'

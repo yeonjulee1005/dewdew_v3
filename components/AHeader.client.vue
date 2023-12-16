@@ -13,14 +13,13 @@
       </nuxt-link>
       <div class="flex-auto" />
       <div
+        v-if="desktopModeTrigger"
         class="desktop-menu flex flex-fixed gap-40"
-        :class="{'float-mobile-menu flex flex-column': !desktopModeTrigger}"
       >
         <nuxt-link
           v-for="(menu, index) in mainMenuData"
           :key="index"
           class="menu-links flex-align-center"
-          :class="{'mobile-menu-links flex flex-justify-center': !desktopModeTrigger}"
           :to="menu.url"
           :aria-label="menu.title"
         >
@@ -68,7 +67,6 @@
         </template>
       </DDSelectMenu>
       <AButton
-        custom-class="mr-20"
         aria-label="theme"
         button-variant="ghost"
         use-icon
@@ -76,6 +74,52 @@
         :icon-size="24"
         @click:button="isDark = !isDark"
       />
+      <AButton
+        v-if="!desktopModeTrigger"
+        aria-label="mobile-menu"
+        button-variant="ghost"
+        use-icon
+        icon-name="line-md:close-to-menu-transition"
+        :icon-size="24"
+        @click:button="() => sideMenuTrigger = true"
+      />
+      <DDSlideover
+        v-model="sideMenuTrigger"
+        class="mobile-menu"
+        label="side-menu"
+      >
+        <div class="flex flex-align-center flex-space-between p-5">
+          <nuxt-img
+            class="mobile-logo flex-fixed"
+            :src="url('dewdew_logo.webp', 'assets', 'logo')"
+            legacy-format="webp"
+            loading="lazy"
+            :img-attrs="{class: 'dewdew-logo'}"
+            alt="logo"
+            @click="clickLogo"
+          />
+          <AButton
+            color="violet"
+            button-variant="ghost"
+            use-icon
+            icon-name="line-md:menu-to-close-alt-transition"
+            @click="sideMenuTrigger = false"
+          />
+        </div>
+        <nuxt-link
+          v-for="(menu, index) in mainMenuData"
+          :key="index"
+          class="mobile-menu-links flex-align-center p-5"
+          :to="menu.url"
+          :aria-label="menu.title"
+          @click="() => sideMenuTrigger = false"
+        >
+          <Icon :name="`line-md:${menu.icon}`" />
+          <span class="ml-2">
+            {{ menu.title }}
+          </span>
+        </nuxt-link>
+      </DDSlideover>
     </div>
   </div>
 </template>
@@ -93,6 +137,7 @@ const { url } = useImageStorage()
 const desktopModeTrigger = computed(() => {
   return width.value > 999
 })
+const sideMenuTrigger = ref(false)
 
 const locales = [
   { label: t('localeMenu.korean'), value: 'ko' },
@@ -117,5 +162,10 @@ const isDark = computed({
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
   }
 })
+
+const clickLogo = () => {
+  navigateTo('/')
+  sideMenuTrigger.value = false
+}
 
 </script>

@@ -1,4 +1,6 @@
-export const useLoadComposable = () => {
+export const useFetchComposable = () => {
+  const client = useSupabaseClient()
+
   /**
    * ! Load Data !
    */
@@ -56,6 +58,93 @@ export const useLoadComposable = () => {
     portfolioData.value = data.value
   }
 
+  const loadArchiveData = async () => {
+    const { data }: SerializeObject = await useFetch('/api/archive', {
+      headers: useRequestHeaders(['cookie']),
+      immediate: true
+    })
+
+    return data.value
+  }
+
+  const countData = async (table: string) => {
+    const { count } = await client
+      .from(table)
+      .select('*', { count: 'exact' })
+
+    return { count }
+  }
+
+  const insertData = async (insertData: SerializeObject, table: string) => {
+    const { error } = await client
+      .from(table)
+      .insert(insertData)
+
+    if (error) {
+      return error
+    }
+  }
+
+  const upsertData = async (upsertData: SerializeObject, table: string) => {
+    const { error } = await client
+      .from(table)
+      .upsert(upsertData)
+
+    if (error) {
+      return error
+    }
+  }
+
+  const loadStorage = async (storage: string, imageName: string) => {
+    const { data } = await client
+      .storage
+      .from(storage)
+      .getPublicUrl(imageName)
+
+    return data.publicUrl
+  }
+
+  const uploadStorage = async (storage: string, path: string, file: File) => {
+    const { error } = await client
+      .storage
+      .from(storage)
+      .upload(path, file, {
+        cacheControl: '3600',
+        upsert: true
+      })
+
+    return error
+  }
+
+  const deleteData = async (deleteId: string, table: string, admin: boolean, matOpt: string, matOptVal: string, subMatOpt: string, subMatOptVal: string) => {
+    if (admin) {
+      const { error } = await client
+        .from(table)
+        .delete()
+        .eq('id', deleteId)
+        .eq(matOpt, matOptVal)
+
+      if (error) {
+        return error
+      }
+    } else {
+      const { error } = await client
+        .from(table)
+        .delete()
+        .eq('id', deleteId)
+        .eq(matOpt, matOptVal)
+        .eq(subMatOpt, subMatOptVal)
+
+      if (error) {
+        return error
+      }
+    }
+  }
+
+  const logout = async () => {
+    await client.auth.signOut()
+  }
+
   const replaceMenuData = (menuData:{ orderIndex: { index: number }, title: string, icon: string, menu_type: string, url: string, image_url: string, deleted: boolean }[] | null, menuType:string) => {
     switch (menuType) {
       case 'root' :
@@ -109,6 +198,14 @@ export const useLoadComposable = () => {
     loadMenuData,
     loadMainData,
     loadStackData,
-    loadPortfolioData
+    loadPortfolioData,
+    loadArchiveData,
+    countData,
+    insertData,
+    upsertData,
+    loadStorage,
+    uploadStorage,
+    deleteData,
+    logout
   }
 }

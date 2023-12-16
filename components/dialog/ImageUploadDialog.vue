@@ -70,9 +70,9 @@ import { genFileId } from 'element-plus'
 
 const imageUpload = ref<UploadInstance>()
 
-const client = useSupabaseClient<SupabaseDataBase>()
-
 const { t } = useLocale()
+
+const { loadStorage, uploadStorage } = useFetchComposable()
 
 const { notify } = useAlarm()
 
@@ -135,13 +135,9 @@ const fileFailedProcess = (message:string) => {
 const uploadImage = async (file:File) => {
   const fileExt = file.name.split('.').pop()
   const filePath = `${genUid()}.${fileExt}`
-  const { error: uploadError } = await client.storage
-    .from('tech')
-    .upload(filePath, file, {
-      cacheControl: '3600',
-      upsert: true
-    })
-  console.log(filePath)
+
+  const uploadError = await uploadStorage('tech', filePath, file)
+
   if (uploadError) {
     notify('', 'error', String(uploadError), true, 3000, 0)
   }
@@ -151,11 +147,8 @@ const uploadImage = async (file:File) => {
 
 const downloadImage = async (imageName:string) => {
   if (!imageName) { return }
-  const { data } = await client.storage
-    .from('tech')
-    .getPublicUrl(imageName)
 
-  exportUrl.value = data.publicUrl
+  exportUrl.value = await loadStorage('tech', imageName)
 }
 
 const submitImage = () => {

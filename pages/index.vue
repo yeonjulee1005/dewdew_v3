@@ -41,7 +41,7 @@ const { y } = useWindowScroll()
 const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
 const { portfolioData } = storeToRefs(usePortfolioStore())
 
-const { loadMainData, loadStackData, loadPortfolioData } = useLoadComposable()
+const { loadMainData, loadStackData, loadPortfolioData } = useFetchComposable()
 
 useHead({
   meta: [

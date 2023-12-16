@@ -25,10 +25,10 @@
 
 <script setup lang="ts">
 
-const client = useSupabaseClient()
-
 const { t } = useLocale()
 const { path } = useRoute()
+
+// const { loadArchiveDetailData } = useFetchComposable()
 
 useHead({
   title: t('pageTitle.archives'),
@@ -47,18 +47,12 @@ definePageMeta({
 const selectImageData = ref<SerializeObject>()
 const imageDialogTrigger = ref(false)
 
-const { data: yearData }:SerializeObject = await useAsyncData('archiveDetailData', async () => {
-  const { data, error } = await client
-    .from('archiveImage')
-    .select('title, years, url, deleted')
-    .eq('years', path.split('/archives/')[1])
-    .eq('deleted', false)
-
-  if (error) {
-    throw createError({ statusMessage: error.message })
-  }
-
-  return data
+const { data: yearData }: SerializeObject = await useFetch('/api/archive/detail', {
+  headers: useRequestHeaders(['cookie']),
+  params: {
+    years: path.split('/archives/')[1]
+  },
+  immediate: true
 })
 
 const openImageDialog = (imageData:SerializeObject) => {

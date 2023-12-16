@@ -12,9 +12,9 @@
 
 <script setup lang="ts">
 
-const client = useSupabaseClient()
-
 const { t } = useLocale()
+
+const { loadArchiveData } = useFetchComposable()
 
 const { randomOrder } = useUi()
 
@@ -30,16 +30,7 @@ useHead({
 
 
 const { data: thumbImageData } = useAsyncData('archiveData', async () => {
-  const { data, error } = await client
-    .from('archiveIndex')
-    .select('index, title, deleted, archiveImage(title, years, url)')
-    .eq('deleted', false)
-
-  if (error) {
-    throw createError({ statusMessage: error.message })
-  }
-
-  if (!data) { return }
+  const data = await loadArchiveData()
 
   return generateThumbImageData(data)
 }, {
