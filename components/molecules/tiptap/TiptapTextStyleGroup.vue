@@ -7,18 +7,18 @@
     />
     <template #panel>
       <div class="flex gap-2">
-        <LazyEditColorInput
+        <EditColorInput
           :color-value="tiptapEditor ? selectColor(tiptapEditor) : null"
           :tiptap-editor="tiptapEditor"
           :tooltip-text="$t('tiptap.colors')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('bold')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleBold().run() : null"
           icon-type="ri:bold"
           :tooltip-text="$t('tiptap.bold')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           v-if="fullOption"
           :is-active="tiptapEditor.isActive('italic')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleItalic().run() : null"

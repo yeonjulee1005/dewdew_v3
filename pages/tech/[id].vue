@@ -42,12 +42,11 @@
 <script setup lang="ts">
 
 const user = useSupabaseUser()
-const client = useSupabaseClient()
 const { y } = useWindowScroll()
 
 const { t } = useLocale()
 
-// const { loadTechBlogCommentData } = useLoadComposable()
+const { insertData, upsertData, deleteData } = useFetchComposable()
 
 const { clickedTechArticle, adminAccess } = storeToRefs(useTechStore())
 
@@ -62,20 +61,11 @@ const techBlogLikeTrigger = ref(false)
 const displayFloatButtonTrigger = ref(false)
 const editTrigger = ref(false)
 
-const { data: techDetailData, refresh: techRefresh } = useAsyncData('blogDetailData', async () => {
-  const { data, error } = await client
-    .from('tech')
-    .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
-    .eq('id', techId.value)
-    .eq('deleted', false)
-    .single()
-
-  if (error) {
-    throw createError({ statusMessage: error.message })
-  }
-
-  return data
-}, {
+const { data: techDetailData, refresh: techRefresh }: SerializeObject = await useFetch('/api/tech/detail', {
+  headers: useRequestHeaders(['cookie']),
+  query: {
+    techBlogId: techId.value
+  },
   immediate: true
 })
 
@@ -113,26 +103,34 @@ const editArticle = (text:string, rawText:string) => {
   updateData.value.update_user_id = user.value?.id ?? ''
 }
 
-const updateArticle = async () => {
-  await client
-    .from('tech')
-    .upsert(updateData.value)
+const updateViewCount = async () => {
+  const countData:SerializeObject = {
+    id: techId.value,
+    view_count: (techDetailData.value?.view_count ?? 0) + 1
+  }
 
-  editTrigger.value = false
-  notify('', 'success', t('messages.edit'), true, 3000, 0)
-  techRefresh()
+  const error = await upsertData(countData, 'tech')
+
+  if (!error) {
+    techRefresh()
+  }
+}
+
+const updateArticle = async () => {
+  const error = await upsertData(updateData.value, 'tech')
+
+  if (!error) {
+    notify('', 'success', t('messages.edit'), true, 3000, 0)
+    editTrigger.value = false
+    techRefresh()
+  }
 }
 
 const updateLikeCount = () => {
-  console.log(clickedTechArticle.value)
   const alreadyLike = clickedTechArticle.value.includes(techDetailData.value?.id ?? '')
-  if (!alreadyLike) {
-    updateTechBlogLikeCount()
-    clickedTechArticle.value.push(techDetailData.value?.id ?? '')
-    notify('', 'success', t('messages.successPressLike'), true, 1000, 0)
-  } else {
-    notify('', 'warning', t('messages.alreadyPressLike'), true, 1000, 0)
-  }
+  !alreadyLike
+    ? updateTechBlogLikeCount()
+    : notify('', 'warning', t('messages.alreadyPressLike'), true, 1000, 0)
 }
 
 const updateTechBlogLikeCount = async () => {
@@ -140,11 +138,12 @@ const updateTechBlogLikeCount = async () => {
     id: techId.value,
     like: parseInt(techDetailData.value?.like ?? '') + 1
   }
-  const { error } = await client
-    .from('tech')
-    .upsert(countData)
+
+  const error = await upsertData(countData, 'tech')
 
   if (!error) {
+    notify('', 'success', t('messages.successPressLike'), true, 1000, 0)
+    clickedTechArticle.value.push(techDetailData.value?.id ?? '')
     techRefresh()
   }
 }
@@ -154,9 +153,8 @@ const createComment = async (commentData:CreateComment) => {
     ...commentData,
     tech_id: techId.value
   }
-  const { error } = await client
-    .from('techComment')
-    .insert(createCommentData)
+
+  const error = await insertData(createCommentData, 'techComment')
 
   if (!error) {
     notify('', 'error', t('messages.successCreateComment'), true, 1000, 0)
@@ -165,11 +163,7 @@ const createComment = async (commentData:CreateComment) => {
 }
 
 const deleteAdminComment = async (comment:SerializeObject) => {
-  const { error } = await client
-    .from('techComment')
-    .delete()
-    .eq('id', comment.id)
-    .eq('tech_id', techId.value)
+  const error = await deleteData(comment.id, 'techComment', true, 'tech_id', techId.value, '', '')
 
   if (!error) {
     notify('', 'error', t('messages.deleteComment'), true, 1000, 0)
@@ -178,12 +172,7 @@ const deleteAdminComment = async (comment:SerializeObject) => {
 }
 
 const deleteComment = async (comment:SerializeObject, password:string) => {
-  const { error } = await client
-    .from('techComment')
-    .delete()
-    .eq('id', comment.id)
-    .eq('tech_id', techId.value)
-    .eq('password', password)
+  const error = await deleteData(comment.id, 'techComment', false, 'tech_id', techId.value, 'password', password)
 
   if (!error) {
     notify('', 'error', t('messages.deleteComment'), true, 1000, 0)
@@ -196,5 +185,7 @@ const clickEditArticle = () => {
     ? editTrigger.value = true
     : notify('', 'error', t('messages.unAuthorizedWrite'), true, 3000, 0)
 }
+
+updateViewCount()
 
 </script>

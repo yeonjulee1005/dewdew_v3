@@ -65,15 +65,7 @@
       margin: $space-20 $space-10;
       @include headline4;
     }
-    .el-timeline {
-      margin-top: $space-20;
-      .el-timeline-item {
-        width: $space-percent-100;
-        .el-timeline-item__content {
-          @include tiptap-template;
-        }
-      }
-    }
+    @include tiptap-template;
     .message-component {
       .name {
         @include headline6;

@@ -3,32 +3,29 @@
     <span class="comments-title">
       {{ commentTitle }}
     </span>
-    <el-timeline v-if="commentData.length">
-      <el-timeline-item
-        v-for="(comment, index) in commentData"
-        :key="index"
-        center
-        color="#D3E3D2"
-      >
-        <ANuxtTime :date-time="comment.created_at" />
-        <div class="comments-item flex flex-row flex-space-between flex-align-center">
-          <div class="message-component mr-40">
-            <span class="name">
-              {{ comment.name }}
-            </span>
-            <div v-dompurify-html="comment.message" />
-          </div>
-          <AButton
-            round-button
-            use-icon
-            icon-name="line-md:close-small"
-            @click:button="openPasswordDialog(comment)"
-          />
+    <DDCard
+      v-for="(comment, index) in commentData"
+      v-show="commentData.length"
+      :key="index"
+      class="mt-4 mb-4"
+    >
+      <div class="flex flex-row flex-space-between flex-align-center">
+        <div class="message-component">
+          <span class="name">
+            {{ comment.name }}
+          </span>
+          <div v-dompurify-html="comment.message" />
         </div>
-      </el-timeline-item>
-    </el-timeline>
+        <AButton
+          round-button
+          use-icon
+          icon-name="line-md:close-small"
+          @click:button="openPasswordDialog(comment)"
+        />
+      </div>
+    </DDCard>
     <DDSkeleton
-      v-else
+      v-show="!commentData.length"
       class="empty-comments mt-4 mb-4"
       :ui="{ rounded: 'rounded-fill'}"
     />

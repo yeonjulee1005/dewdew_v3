@@ -1,13 +1,13 @@
 <template>
   <div class="main-skills flex flex-column">
-    <LazyMainSkillsDescriptions
+    <MainSkillsDescriptions
       :skills-title="mainSkillTitle"
       :skills-first-text="mainSkillFirstText"
       :skills-second-text="mainSkillSecondText"
       :skills-third-text="mainSkillThirdText"
       :skills-text-trigger="skillsTextTrigger"
     />
-    <LazyMainSkillsImage
+    <MainSkillsImage
       :skills-image="stackLogoData"
       :skills-bg-trigger="skillsBgTrigger"
     />
@@ -24,7 +24,7 @@
             v-for="item in frontEnd"
             :key="item.title"
           >
-            <LazyMainSkillProgress :progress-data="item" />
+            <MainSkillProgress :progress-data="item" />
           </div>
         </div>
         <div class="backend-list flex flex-column flex-justify-center mb-40">
@@ -35,7 +35,7 @@
             v-for="item in backEnd"
             :key="item.title"
           >
-            <LazyMainSkillProgress :progress-data="item" />
+            <MainSkillProgress :progress-data="item" />
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
           v-for="item in devOps"
           :key="item.title"
         >
-          <LazyMainSkillProgress :progress-data="item" />
+          <MainSkillProgress :progress-data="item" />
         </div>
       </div>
     </div>

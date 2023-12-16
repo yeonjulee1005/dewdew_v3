@@ -57,7 +57,6 @@
           clearable
           aria-label="password"
           :ui="{ icon: { trailing: { pointer: '' } } }"
-          @keyup.enter="onSubmit"
         >
           <template #trailing>
             <div class="flex flex-justify-center space-x-1">

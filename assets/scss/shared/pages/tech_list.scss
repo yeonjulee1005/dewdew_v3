@@ -7,7 +7,6 @@
 */
 .tech-lists {
   position: relative;
-  height: $space-80vh;
   width: $space-100vw;
   overflow-x: hidden;
   .write-button-container {
@@ -15,13 +14,9 @@
     margin-top: $space-100;
     overflow-y: auto;
   }
-  .tech-timeline {
+  .articles {
     max-height: $space-60vh;
     width: $space-80vw;
-    scrollbar-width: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
     .tech-card {
       cursor: pointer;
       .title {

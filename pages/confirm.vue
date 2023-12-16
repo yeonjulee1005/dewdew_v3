@@ -9,45 +9,38 @@
 <script setup lang="ts">
 
 const user = useSupabaseUser()
-const client = useSupabaseClient()
 
 const { t } = useLocale()
 const { notify } = useAlarm()
 
 const { adminAccess } = storeToRefs(useTechStore())
 
+const { logout } = useFetchComposable()
+
 definePageMeta({
   layout: 'login'
 })
 
 const setUserCoreData = async (userId:string) => {
-  const { data, error } = await client
-    .from('profiles')
-    .select('admin')
-    .eq('id', userId)
-    .eq('deleted', false)
-    .single()
+  const { data }: SerializeObject = await useFetch('/api/admin', {
+    headers: useRequestHeaders(['cookie']),
+    query: {
+      userId
+    },
+    immediate: true
+  })
 
-  if (error) {
-    throw createError({ statusMessage: error.message })
-  }
+  data.value.admin
+    ? adminAccess.value = data.value.admin
+    : logout()
 
-  if (data.admin) {
-    adminAccess.value = data.admin
-    notify('', 'success', t('messages.welcome'), true, 3000, 0)
-    navigateTo('/tech')
-  } else {
-    await client.auth
-      .signOut()
-    notify('', 'error', t('messages.notAdmin'), true, 3000, 0)
-    navigateTo('/')
-  }
-  return data
+  notify('', data.value.admin ? 'success' : 'warning', data.value.admin ? t('messages.welcome') : t('messages.notAdmin'), true, 3000, 0)
+  navigateTo(data.value.admin ? '/tech' : '/')
 }
 
-watch(() => user.value, async () => {
+watch(() => user.value, () => {
   if (user.value) {
-    await setUserCoreData(user.value?.id)
+    setUserCoreData(user.value?.id)
   }
 }, { immediate: true })
 

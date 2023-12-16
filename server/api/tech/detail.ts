@@ -6,11 +6,11 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
   const { data, error } = await client
-    .from('techComment')
-    .select('id, tech_id, message, name, password, deleted, created_at, updated_at')
-    .eq('tech_id', query.techBlogId)
+    .from('tech')
+    .select('id, title, desc, raw_article, view_count, like, update_user_id, created_at, updated_at, deleted')
     .eq('deleted', false)
-    .order('created_at', { ascending: false })
+    .eq('id', query.techBlogId)
+    .single()
 
   if (error) {
     throw createError({ statusMessage: error.message })
