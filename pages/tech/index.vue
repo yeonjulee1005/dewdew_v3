@@ -77,23 +77,16 @@ const currentPageSize = ref(2)
 
 const createArticleTrigger = ref(false)
 
-const supabasePageCalc = (page:number, pageCount:number, firstRange:boolean): number => {
-  return firstRange
-    ? (page - 1) * pageCount
-    : (page * pageCount) - 1
-}
-
 const { data: techData, refresh: techRefresh } = useAsyncData('techData', async () => {
-  const { data, error } = await client
-    .from('tech')
-    .select('id, title, desc, raw_article, like, update_user_id, created_at, updated_at, deleted')
-    .eq('deleted', false)
-    .order('created_at', { ascending: false })
-    .range(supabasePageCalc(currentPage.value, currentPageSize.value, true), supabasePageCalc(currentPage.value, currentPageSize.value, false))
-
-  if (error) {
-    throw createError({ statusMessage: error.message })
-  }
+  const { data }: SerializeObject = await useFetch('/api/tech', {
+    headers: useRequestHeaders(['cookie']),
+    query: {
+      page: currentPage.value,
+      pageCount: currentPageSize.value
+    },
+    immediate: true,
+    watch: [currentPage, currentPageSize]
+  })
 
   const { count, error: countError } = await client
     .from('tech')
@@ -103,7 +96,7 @@ const { data: techData, refresh: techRefresh } = useAsyncData('techData', async 
     throw createError({ statusMessage: countError.message })
   }
 
-  return { article: data, count }
+  return { article: data.value, count }
 }, {
   watch: [currentPage, currentPageSize]
 })

@@ -47,7 +47,7 @@ const { y } = useWindowScroll()
 
 const { t } = useLocale()
 
-const { loadTechBlogCommentData } = useLoadComposable()
+// const { loadTechBlogCommentData } = useLoadComposable()
 
 const { clickedTechArticle, adminAccess } = storeToRefs(useTechStore())
 
@@ -57,8 +57,6 @@ const { notify } = useAlarm()
 const techId = computed(() => {
   return params.id as string
 })
-
-const { data: techCommentData, refresh: techCommentRefresh }:SerializeObject = loadTechBlogCommentData(techId.value)
 
 const techBlogLikeTrigger = ref(false)
 const displayFloatButtonTrigger = ref(false)
@@ -78,6 +76,14 @@ const { data: techDetailData, refresh: techRefresh } = useAsyncData('blogDetailD
 
   return data
 }, {
+  immediate: true
+})
+
+const { data: techCommentData, refresh: techCommentRefresh }: SerializeObject = await useFetch('/api/tech/comment', {
+  headers: useRequestHeaders(['cookie']),
+  query: {
+    techBlogId: techId.value
+  },
   immediate: true
 })
 
