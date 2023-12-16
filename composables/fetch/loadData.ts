@@ -2,7 +2,6 @@ export const useLoadComposable = () => {
   /**
    * ! Load Data !
    */
-  const client = useSupabaseClient()
 
   const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
   const { mainMenuData, subMenuData, socialMenuData } = storeToRefs(useMenuStore())
@@ -10,114 +9,48 @@ export const useLoadComposable = () => {
   const { stackLogoData } = storeToRefs(useStackStore())
   const { portfolioData } = storeToRefs(usePortfolioStore())
 
-  const loadMenuData = (menuType:string) => {
-    const { data } = useAsyncData(`menuData${menuType}`, async () => {
-      const { data, error } = await client
-        .from('pageMenu')
-        .select('orderIndex!inner(index), title, icon, menu_type, url, image_url, deleted')
-        .eq('menu_type', menuType)
-        .eq('deleted', false)
-        .order('orderIndex(index)', { ascending: true })
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
+  const loadMenuData = async (menuType:string) => {
+    const { data }: SerializeObject = await useFetch('/api/menu', {
+      headers: useRequestHeaders(['cookie']),
+      params: {
+        menuType
+      },
+      immediate: true
     })
 
     replaceMenuData(data.value, menuType)
   }
 
-  const loadMainData = () => {
-    const { data } = useAsyncData('mainData', async () => {
-      const { data, error } = await client
-        .from('main')
-        .select('orderIndex!inner(index), text_type, category, textTitle(ko, en), textDescription(ko, en)), deleted')
-        .eq('deleted', false)
-        .order('orderIndex(index)', { ascending: true })
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
-    }, { immediate: true })
-
-    if (!data.value) { return }
-
-    const introData = data.value.filter((item: SerializeObject) => item.category === 'intro')
-    const resumeData = data.value.filter((item: SerializeObject) => item.category === 'resume')
-    const skillData = data.value.filter((item: SerializeObject) => item.category === 'skills')
-    const referenceData = data.value.filter((item: SerializeObject) => item.category === 'reference')
-
-    mainIntroTitle.value = introData.filter((item: SerializeObject) => item.text_type === 'title')[0]
-    mainIntroText.value = introData.filter((item: SerializeObject) => item.text_type === 'main')
-    mainIntroScrollText.value = introData.filter((item: SerializeObject) => item.text_type === 'scroll')[0]
-
-    mainResumeTitle.value = resumeData.filter((item: SerializeObject) => item.text_type === 'title')[0]
-    mainEducatedText.value = resumeData.filter((item: SerializeObject) => item.text_type === 'educate')[0]
-    mainCareerText.value = resumeData.filter((item: SerializeObject) => item.text_type === 'career')
-
-    mainSkillTitle.value = skillData.filter((item: SerializeObject) => item.text_type === 'title')
-    mainSkillFirstText.value = skillData.filter((item: SerializeObject) => item.text_type === 'first')
-    mainSkillSecondText.value = skillData.filter((item: SerializeObject) => item.text_type === 'second')
-    mainSkillThirdText.value = skillData.filter((item: SerializeObject) => item.text_type === 'third')
-
-    mainPortfolioTitle.value = referenceData.filter((item: SerializeObject) => item.text_type === 'title')[0]
-    mainPortfolioText.value = referenceData.filter((item: SerializeObject) => item.text_type === 'desc')[0]
-    mainPortfolioBackground.value = referenceData.filter((item: SerializeObject) => item.text_type === 'background')[0]
-  }
-
-  const loadTechBlogCommentData = (techBlogId:string) => {
-    const { data, refresh }:SerializeObject = useAsyncData('blogCommentData', async () => {
-      const { data, error } = await client
-        .from('techComment')
-        .select('id, tech_id, message, name, password, deleted, created_at, updated_at')
-        .eq('tech_id', techBlogId)
-        .eq('deleted', false)
-        .order('created_at', { ascending: false })
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
+  const loadMainData = async () => {
+    const { data }: SerializeObject = await useFetch('/api/main', {
+      headers: useRequestHeaders(['cookie']),
+      immediate: true
     })
-    return { data, refresh }
+
+    const introData = mainResponse(data.value, 'intro')
+    const resumeData = mainResponse(data.value, 'resume')
+    const skillData = mainResponse(data.value, 'skills')
+    const referenceData = mainResponse(data.value, 'reference')
+
+    mainIntro(introData)
+    mainResume(resumeData)
+    mainSkill(skillData)
+    mainPortfolio(referenceData)
   }
 
-  const loadStackData = () => {
-    const { data } = useAsyncData('loadStackData', async () => {
-      const { data, error } = await client
-        .from('stackLogo')
-        .select('orderIndex!inner(index), title, url, deleted')
-        .eq('deleted', false)
-        .order('orderIndex(index)', { ascending: true })
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
+  const loadStackData = async () => {
+    const { data }: SerializeObject = await useFetch('/api/stack', {
+      headers: useRequestHeaders(['cookie']),
+      immediate: true
     })
 
     stackLogoData.value = data.value
   }
 
-  const loadPortfolioData = () => {
-    const { data } = useAsyncData('loadPortfolioData', async () => {
-      const { data, error } = await client
-        .from('portfolio')
-        .select('orderIndex!inner(index), title, desc, url, image, thumbnail, alt, deleted')
-        .eq('deleted', false)
-        .order('orderIndex(index)', { ascending: true })
-
-      if (error) {
-        throw createError({ statusMessage: error.message })
-      }
-
-      return data
+  const loadPortfolioData = async () => {
+    const { data }: SerializeObject = await useFetch('/api/portfolio', {
+      headers: useRequestHeaders(['cookie']),
+      immediate: true
     })
 
     portfolioData.value = data.value
@@ -137,10 +70,44 @@ export const useLoadComposable = () => {
     }
   }
 
+  const mainResponse = (rawData: SerializeObject, category: string) => {
+    return rawData.filter((item: SerializeObject) => item.category === category)
+  }
+
+  const mainSubResponse = (rawData: SerializeObject, subCategory: string, single: boolean) => {
+    return single
+      ? rawData.filter((item: SerializeObject) => item.text_type === subCategory)[0]
+      : rawData.filter((item: SerializeObject) => item.text_type === subCategory)
+  }
+
+  const mainIntro = (introData: SerializeObject) => {
+    mainIntroTitle.value = mainSubResponse(introData, 'title', true)
+    mainIntroText.value = mainSubResponse(introData, 'main', false)
+    mainIntroScrollText.value = mainSubResponse(introData, 'scroll', true)
+  }
+
+  const mainResume = (resumeData: SerializeObject) => {
+    mainResumeTitle.value = mainSubResponse(resumeData, 'title', true)
+    mainEducatedText.value = mainSubResponse(resumeData, 'educate', true)
+    mainCareerText.value = mainSubResponse(resumeData, 'career', false)
+  }
+
+  const mainSkill = (skillData: SerializeObject) => {
+    mainSkillTitle.value = mainSubResponse(skillData, 'title', false)
+    mainSkillFirstText.value = mainSubResponse(skillData, 'first', false)
+    mainSkillSecondText.value = mainSubResponse(skillData, 'second', false)
+    mainSkillThirdText.value = mainSubResponse(skillData, 'third', false)
+  }
+
+  const mainPortfolio = (referenceData: SerializeObject) => {
+    mainPortfolioTitle.value = mainSubResponse(referenceData, 'title', true)
+    mainPortfolioText.value = mainSubResponse(referenceData, 'desc', true)
+    mainPortfolioBackground.value = mainSubResponse(referenceData, 'background', true)
+  }
+
   return {
     loadMenuData,
     loadMainData,
-    loadTechBlogCommentData,
     loadStackData,
     loadPortfolioData
   }

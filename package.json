@@ -12,6 +12,7 @@
     "dev:host": "nuxt dev --port 4500 --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "analyze": "nuxt analyze",
     "postinstall": "nuxt prepare",
     "cleanup": "nuxt cleanup",
     "lint": "eslint --ext .ts,.js,.vue",

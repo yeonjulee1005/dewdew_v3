@@ -38,7 +38,11 @@
         </div>
       </div>
     </div>
-    <div class="portfolio-background" />
+    <div
+      v-for="item in 2"
+      :key="item"
+      class="portfolio-background"
+    />
     <PortfolioDialog
       :dialog-trigger="portfolioDialogTrigger"
       :select-portfolio="selectPortfolio"
