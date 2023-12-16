@@ -9,12 +9,15 @@
   .write-button-container {
     margin-left: unset;
   }
-  .tech-timeline {
+  .articles {
     padding-left: unset;
     .tech-card {
-      .card-header {
+      .card-card-title {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .card-sub-head {
+        width: $space-percent-100;
       }
     }
   }

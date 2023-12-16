@@ -7,26 +7,26 @@
     />
     <template #panel>
       <div class="flex gap-2">
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('underline')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleUnderline().run() : null"
           icon-type="ri:underline"
           :tooltip-text="$t('tiptap.underline')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('strike')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleStrike().run() : null"
           icon-type="ri:strikethrough-2"
           :tooltip-text="$t('tiptap.strikethrough')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           v-if="fullOption"
           :is-active="tiptapEditor.isActive('highlight')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleHighlight().run() : null"
           icon-type="ri:mark-pen-fill"
           :tooltip-text="$t('tiptap.marker1')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('highlight', { color: '#ffc078' })"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().toggleHighlight({ color: '#ffc078' }).run() : null"
           icon-type="ri:mark-pen-line"

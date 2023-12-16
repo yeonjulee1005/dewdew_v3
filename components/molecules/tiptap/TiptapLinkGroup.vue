@@ -7,19 +7,19 @@
     />
     <template #panel>
       <div class="flex gap-2">
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('link')"
           :action="() => tiptapEditor ? tiptapLinkGroupEmits('open-hyper-link') : null"
           icon-type="ri:link"
           :tooltip-text="$t('tiptap.link')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="tiptapEditor.isActive('link')"
           :action="() => tiptapEditor ? tiptapEditor.chain().focus().unsetLink().run() : null"
           icon-type="ri:link-unlink"
           :tooltip-text="$t('tiptap.unlink')"
         />
-        <LazyEditNormalButtons
+        <EditNormalButtons
           :is-active="false"
           :action="() => tiptapEditor ? tiptapLinkGroupEmits('open-youtube-link') : null"
           icon-type="ri:youtube-line"

@@ -186,7 +186,6 @@ watch(() => formData.hexColor, () => {
     formData.hexColor = ''
     return
   }
-  console.log(formData.hexColor)
   if (!formData.hexColor.startsWith('#')) {
     formData.hexColor = '#'.concat(formData.hexColor)
   }

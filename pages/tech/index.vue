@@ -1,47 +1,43 @@
 <template>
   <div class="tech-lists flex flex-column flex-justify-center flex-align-center">
     <div class="write-button-container flex flex-justify-end">
-      <AButton
-        v-if="adminAccess"
-        custom-class="write-tech-blog"
-        button-size="lg"
-        button-label="write-article"
-        :button-text="$t('texts.write')"
-        @click:button="openCreateArticleDialog"
-      />
-    </div>
-    <el-timeline
-      v-if="techData?.count"
-      class="tech-timeline"
-    >
-      <el-timeline-item
-        v-for="item in techData.article"
-        :key="item.id"
-        center
-        :color="item.like > 10 ? '#C74436' : '#D3E3D2'"
-        placement="top"
-        @click="() => navigateTo(`/tech/${item.id}`)"
-      >
-        <ANuxtTime
-          :date-time="item.created_at"
-          :full-date-time="false"
+      <client-only>
+        <AButton
+          v-if="adminAccess"
+          custom-class="write-tech-blog"
+          button-size="lg"
+          button-label="write-article"
+          :button-text="$t('texts.write')"
+          @click:button="openCreateArticleDialog"
         />
-        <LazyCardComponent :card-item="item" />
-      </el-timeline-item>
-      <DDPagination
-        v-model="currentPage"
-        class="flex flex-justify-center m-4 pb-8"
-        :active-button="{ variant: 'outline', color: 'violet' }"
-        :inactive-button="{ color: 'gray' }"
-        :page-count="currentPageSize"
-        :total="techData.count"
-        show-first
-        show-last
+      </client-only>
+    </div>
+    <div
+      v-for="(item, index) in techData"
+      v-show="count"
+      :key="index"
+      class="articles mt-6 mb-4"
+      @click="() => navigateTo(`/tech/${item.id}`)"
+    >
+      <ANuxtTime
+        :date-time="item.created_at"
+        :full-date-time="false"
       />
-    </el-timeline>
+      <LazyCardComponent :card-item="item" />
+    </div>
+    <DDPagination
+      v-model="currentPage"
+      class="flex flex-justify-center m-4 pb-8"
+      :active-button="{ variant: 'outline', color: 'violet' }"
+      :inactive-button="{ color: 'gray' }"
+      :page-count="currentPageSize"
+      :total="count ?? 0"
+      show-first
+      show-last
+    />
     <DDSkeleton
-      v-else
-      class="tech-timeline"
+      v-show="!count"
+      class="articles"
       :ui="{ rounded: 'rounded-fill'}"
     />
     <CreateArticleDialog
@@ -55,11 +51,12 @@
 <script setup lang="ts">
 
 const user = useSupabaseUser()
-const client = useSupabaseClient()
 
 const { t } = useLocale()
 
-const { adminAccess } = storeToRefs(useTechStore())
+const { countData, upsertData } = useFetchComposable()
+
+const { currentPage, currentPageSize, adminAccess } = storeToRefs(useTechStore())
 const { notify } = useAlarm()
 
 useHead({
@@ -71,9 +68,6 @@ useHead({
     { property: 'og:description', content: t('openGraph.techDesc') }
   ]
 })
-
-const currentPage = ref(1)
-const currentPageSize = ref(2)
 
 const createArticleTrigger = ref(false)
 
@@ -88,17 +82,15 @@ const { data: techData, refresh: techRefresh } = useAsyncData('techData', async 
     watch: [currentPage, currentPageSize]
   })
 
-  const { count, error: countError } = await client
-    .from('tech')
-    .select('*', { count: 'exact' })
-
-  if (countError) {
-    throw createError({ statusMessage: countError.message })
-  }
-
-  return { article: data.value, count }
+  return data.value
 }, {
   watch: [currentPage, currentPageSize]
+})
+
+const { data: count } = useAsyncData('techCount', async () => {
+  const data = await countData('tech')
+
+  return data.count
 })
 
 const openCreateArticleDialog = () => {
@@ -112,13 +104,14 @@ const writeArticle = async (recordData:Article) => {
     update_user_id: user.value?.id,
     ...recordData
   }
-  await client
-    .from('tech')
-    .upsert(articleData)
 
-  createArticleTrigger.value = false
-  notify('', 'success', t('messages.write'), true, 3000, 0)
-  techRefresh()
+  const error = await upsertData(articleData, 'tech')
+
+  if (!error) {
+    createArticleTrigger.value = false
+    notify('', 'success', t('messages.write'), true, 3000, 0)
+    techRefresh()
+  }
 }
 
 </script>

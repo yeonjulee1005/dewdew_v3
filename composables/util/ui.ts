@@ -75,6 +75,25 @@ export const useUi = () => {
     return randomFront.concat(' ', randomBack)
   }
 
+  const badgeColor = (likeCount:number) => {
+    if (likeCount === 0) {
+      return 'orange'
+    } else if (likeCount > 0 && likeCount < 20) {
+      return 'yellow'
+    } else if (likeCount >= 20 && likeCount < 50) {
+      return 'emerald'
+    } else if (likeCount >= 50 && likeCount < 100) {
+      return 'teal'
+    } else if (likeCount >= 100 && likeCount < 250) {
+      return 'sky'
+    } else if (likeCount >= 250 && likeCount < 500) {
+      return 'cyan'
+    } else if (likeCount >= 500 && likeCount < 1000) {
+      return 'violet'
+    } else if (likeCount >= 1000) {
+      return 'rose'
+    }
+  }
 
   const progressColor = (percent: number) => {
     const colors = ['rose', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'red', 'rose']
@@ -100,6 +119,7 @@ export const useUi = () => {
     genFileDate,
     currentDateIosFormat,
     generateCommentName,
+    badgeColor,
     progressColor
   }
 }
