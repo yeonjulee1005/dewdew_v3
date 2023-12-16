@@ -37,7 +37,7 @@
         size="xl"
         required
       >
-        <LazyTextEditor
+        <TextEditor
           :comment-option="true"
           @update:model-value="(article:string, _rawArticle:string) => formData.message = article"
         />
