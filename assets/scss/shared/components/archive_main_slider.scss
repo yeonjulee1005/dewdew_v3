@@ -41,6 +41,16 @@
   .flicking-arrow-next {
     background-image: url('https://api.dewdew.dev/storage/v1/object/public/assets/icon/right_arrow.svg');
   }
+  .flicking-pagination {
+    position: relative;
+    margin-top: $space-60;
+    .flicking-pagination-bullet {
+      background-color: var(--d-bg-yellow-color) !important;
+    }
+    .flicking-pagination-bullet-active {
+      background-color: var(--d-bg-green-color-deep) !important;
+    }
+  }
   .image-component {
     cursor: pointer;
     .thumbnail {
