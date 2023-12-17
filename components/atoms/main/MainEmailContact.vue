@@ -48,6 +48,7 @@
           variant="outline"
           resize
           padded
+          aria-label="message"
           :placeholder="$t('placeholder.inputContent')"
         />
       </DDFormGroup>

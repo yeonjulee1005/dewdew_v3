@@ -11,7 +11,6 @@
     />
     <ImageSlider
       :image-data="yearData"
-      :inner-archive-trigger="true"
       :show-pagination="false"
       @open-dialog="openImageDialog"
     />
@@ -27,8 +26,6 @@
 
 const { t } = useLocale()
 const { path } = useRoute()
-
-// const { loadArchiveDetailData } = useFetchComposable()
 
 useHead({
   title: t('pageTitle.archives'),
