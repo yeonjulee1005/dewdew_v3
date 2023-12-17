@@ -7,6 +7,8 @@
           :src="url('dewdew_logo.webp', 'assets', 'logo')"
           legacy-format="webp"
           loading="lazy"
+          :width="isDesktop ? 160 : 100"
+          :height="isDesktop ? 46 : 28"
           :img-attrs="{class: 'dewdew-logo'}"
           alt="logo"
         />
@@ -23,11 +25,7 @@
           :to="menu.url"
           :aria-label="menu.title"
         >
-          <Icon
-            v-if="!desktopModeTrigger"
-            :name="`line-md:${menu.icon}`"
-          />
-          <span v-if="desktopModeTrigger">
+          <span>
             {{ menu.title }}
           </span>
         </nuxt-link>
@@ -130,14 +128,10 @@ const { isDesktop } = useDevice()
 const colorMode = useColorMode()
 
 const { t, locale, setLocale } = useLocale()
-const { width } = useWindowSize()
 
-const { mainMenuData, socialMenuData } = storeToRefs(useMenuStore())
+const { mainMenuData, socialMenuData } = useMenuStore()
 const { url } = useImageStorage()
 
-const desktopModeTrigger = computed(() => {
-  return width.value > 999
-})
 const sideMenuTrigger = ref(false)
 
 const locales = [
