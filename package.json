@@ -4,7 +4,7 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "1.14.0",
+  "version": "1.15.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -22,6 +22,8 @@
     "supabase:type": "supabase gen types typescript --project-id yybbiabxysjnmjpjgvql --schema public > types/supabase.ts"
   },
   "devDependencies": {
+    "@egjs/flicking-plugins": "^4.7.1",
+    "@egjs/vue3-flicking": "^4.11.2",
     "@emailjs/browser": "^3.11.0",
     "@nuxt/content": "^2.9.0",
     "@nuxt/devtools": "^1.0.5",
@@ -87,8 +89,7 @@
     "stylelint-config-standard-scss": "12.0.0",
     "supabase": "1.122.0",
     "typescript": "5.3.3",
-    "vue-dompurify-html": "^4.1.4",
-    "vue3-carousel": "^0.3.1"
+    "vue-dompurify-html": "^4.1.4"
   },
   "overrides": {
     "@polka/url": "1.0.0-next.23"

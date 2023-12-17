@@ -12,21 +12,9 @@
 }
 
 .main-slider-section {
-  .carousel {
-    height: $space-percent-100;
-    .carousel__viewport {
-      margin-top: $space-160;
-      width: calc($space-100vw + $space-400);
-    }
-  }
   .image-component {
-    .thumbnail {
-      width: $space-60vw;
-      height: $space-60vw;
-    }
     .text-group {
-      right: calc($space-20vw);
-      bottom: $space-30;
+      right: calc($space-10vw);
       .title {
         @include headline4;
         text-align: right;

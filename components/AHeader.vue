@@ -13,7 +13,7 @@
       </nuxt-link>
       <div class="flex-auto" />
       <div
-        v-if="desktopModeTrigger"
+        v-if="isDesktop"
         class="desktop-menu flex flex-fixed gap-40"
       >
         <nuxt-link
@@ -75,7 +75,7 @@
         @click:button="isDark = !isDark"
       />
       <AButton
-        v-if="!desktopModeTrigger"
+        v-if="!isDesktop"
         aria-label="mobile-menu"
         button-variant="ghost"
         use-icon
@@ -126,6 +126,7 @@
 
 <script setup lang="ts">
 
+const { isDesktop } = useDevice()
 const colorMode = useColorMode()
 
 const { t, locale, setLocale } = useLocale()
@@ -158,7 +159,7 @@ const isDark = computed({
     return colorMode.value === 'dark'
   },
   set () {
-    useFavicon(colorMode.value === 'dark' ? 'favicon_black.png' : 'favicon_white.png')
+    useFavicon(colorMode.value !== 'dark' ? 'favicon-32x32.png' : 'favicon-light-32x32.png')
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
   }
 })
