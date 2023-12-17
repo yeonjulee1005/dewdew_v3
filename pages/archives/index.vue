@@ -29,7 +29,7 @@ useHead({
 })
 
 
-const { data: thumbImageData } = useAsyncData('archiveData', async () => {
+const { data: thumbImageData }: SerializeObject = useAsyncData('archiveData', async () => {
   const data = await loadArchiveData()
 
   return generateThumbImageData(data)

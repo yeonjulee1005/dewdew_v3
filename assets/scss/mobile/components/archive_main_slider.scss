@@ -12,17 +12,7 @@
 }
 
 .main-slider-section {
-  margin-top: $space-100;
-  .carousel {
-    height: $space-percent-100;
-    .carousel__viewport {
-      width: $space-100vw;
-    }
-    .carousel__prev,
-    .carousel__next {
-      margin: $space-40 $space-40;
-    }
-  }
+
   .image-component {
     .thumbnail {
       width: $space-80vw;
