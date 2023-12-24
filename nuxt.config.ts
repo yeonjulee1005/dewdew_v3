@@ -27,6 +27,9 @@ export default defineNuxtConfig({
       ]
     }
   },
+  experimental: {
+    componentIslands: true
+  },
   supabase: {
     redirect: false,
     redirectOptions: {
