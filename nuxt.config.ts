@@ -76,8 +76,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    'dayjs-nuxt',
-    '@tresjs/nuxt'
+    'dayjs-nuxt'
   ],
   css: [
     '~/assets/scss/style.scss'
@@ -167,11 +166,6 @@ export default defineNuxtConfig({
   },
   vueuse: {
     ssrHandlers: false
-  },
-  tres: {
-    modules: ['@tresjs/cientos'],
-    devtools: true,
-    glsl: true
   },
   typescript: {
     shim: false
