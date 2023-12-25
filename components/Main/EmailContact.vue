@@ -68,6 +68,7 @@ import { send } from '@emailjs/browser'
 import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
+
 const toast = useToast()
 
 const props = withDefaults(
