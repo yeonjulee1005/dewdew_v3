@@ -29,7 +29,7 @@ head:
 # 개발자 이연주 블로그
 
 ::content-card{class="content-card"}
-이연주의 일상 블로그 입니다! <br>
+이연주의 일상 블로그 입니다!!! <br>
 본 컨탠츠는 `Nuxt Content`를 활용했습니다~
 ::
 

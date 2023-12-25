@@ -1,47 +1,61 @@
 <template>
-  <div class="main">
-    <LazyMainIntroBanner
-      :main-title="mainIntroTitle"
-      :main-text="mainIntroText"
-      :main-title-trigger="mainTitleTrigger"
-      :main-text-trigger="mainTextTrigger"
-    />
-    <LazyMainScrollDown
-      :main-scroll-text="mainIntroScrollText"
-      :scroll-down-trigger="scrollDownTrigger"
-    />
-    <LazyMainResumeDesc
-      :resume-title="mainResumeTitle"
-      :educate-text="mainEducatedText"
-      :career-data="mainCareerText"
-      :main-resume-trigger="mainResumeTrigger"
-    />
-    <LazyMainSkillContents
-      :skills-text-trigger="mainSkillsTextTrigger"
-      :skills-bg-trigger="mainSkillsBgTrigger"
-      :skills-list-trigger="mainSkillsListTrigger"
-    />
-    <LazyMainPortfolio
-      :portfolio-title="mainPortfolioTitle"
-      :portfolio-description="mainPortfolioText"
-      :portfolio-background="mainPortfolioBackground"
-      :portfolio-image-data="portfolioData"
-      :portfolio-trigger="referenceListTrigger"
-    />
-    <LazyMainContact :contact-trigger="contactTrigger" />
+  <div class="intro">
+    <!-- <TresCanvas :clear-color="'white'">
+      <OrbitControls />
+      <TresPerspectiveCamera />
+      <TresMesh>
+        <TresCylinderGeometry
+          ref="geometry"
+          :args="[1, 1, 3, 6]"
+          :color="color"
+        />
+        <TresMeshStandardMaterial :color="color" />
+      </TresMesh>
+      <TresDirectionalLight
+        :color="color"
+        :intensity="1.0"
+        :position="{ x: 0, y: 0, z: 1 }"
+      />
+      <TresGridHelper />
+    </TresCanvas> -->
+    <div class="intro-component abs-middle flex flex-column flex-align-center gap-8">
+      <Transition
+        name="intro"
+        mode="out-in"
+      >
+        <span
+          :key="state.currentHelloIndex"
+          class="hello"
+        >
+          {{ $rt(state.currentHello) }}
+        </span>
+      </Transition>
+      <div class="title flex flex-column flex-align-center">
+        <span id="hello-intro-title" />
+      </div>
+      <div class="flex flex-justify-center flex-align-center gap-3">
+        <DDButton
+          color="violet"
+          size="md"
+          variant="solid"
+          @click="navigateTo('/main')"
+        >
+          {{ $t('texts.enter') }}
+        </DDButton>
+        <AThemeChange />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+// import { Color } from 'three'
+
+import TypeIt from 'typeit'
+
+const { helloList, typeHello } = useHelloData()
 
 const { t } = useLocale()
-const { width } = useWindowSize()
-const { y } = useWindowScroll()
-
-const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
-const { portfolioData } = storeToRefs(usePortfolioStore())
-
-const { loadMainData, loadStackData, loadPortfolioData } = useFetchComposable()
 
 useHead({
   meta: [
@@ -49,74 +63,47 @@ useHead({
   ]
 })
 
-const mainTitleTrigger = ref(true)
-const mainTextTrigger = ref(true)
-const scrollDownTrigger = ref(true)
-const mainResumeTrigger = ref(false)
-const mainSkillsTextTrigger = ref(false)
-const mainSkillsBgTrigger = ref(false)
-const mainSkillsListTrigger = ref(false)
-const referenceListTrigger = ref(false)
-const contactTrigger = ref(false)
+definePageMeta({
+  layout: 'raw'
+})
 
-watch(() => y.value, () => {
-  if (y.value) {
-    scrollDetect()
+if (process.client) {
+  new TypeIt('#hello-intro-title', {
+    strings: typeHello,
+    lifeLike: true,
+    deleteSpeed: 100,
+    loop: true
+  }).go()
+}
+
+const state = reactive({
+  currentHelloIndex: 0,
+  currentHello: helloList[0]
+})
+
+let timeoutId: number | undefined
+
+const updateHello = () => {
+  state.currentHelloIndex = (state.currentHelloIndex + 1) % helloList.length
+  timeoutId = window.setTimeout(updateHello, 5000)
+}
+
+onMounted(() => {
+  updateHello()
+})
+
+onUnmounted(() => {
+  if (timeoutId) {
+    clearTimeout(timeoutId)
   }
 })
 
-const scrollDetect = () => {
-  switch (Math.min(Math.ceil(width.value / 500), 3) - 1) {
-    case 0 :
-      mobile(y.value)
-      break
-    case 1 :
-      tablet(y.value)
-      break
-    case 2 :
-      desktop(y.value)
-      break
-  }
-}
+watch(() => state.currentHelloIndex, (newIndex) => {
+  state.currentHello = helloList[newIndex]
+})
 
-const mobile = (scrollY:number) => {
-  mainTitleTrigger.value = scrollY < 200
-  mainTextTrigger.value = scrollY < 350
-  scrollDownTrigger.value = scrollY < 160
-  mainResumeTrigger.value = scrollY > 200 && scrollY < 1400
-  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
-  mainSkillsBgTrigger.value = scrollY > 1300 && scrollY < 2900
-  mainSkillsListTrigger.value = scrollY > 3000 && scrollY < 7700
-  referenceListTrigger.value = scrollY > 7700 && scrollY < 12800
-  contactTrigger.value = scrollY > 12900
-}
-
-const tablet = (scrollY:number) => {
-  mainTitleTrigger.value = scrollY < 300
-  mainTextTrigger.value = scrollY < 500
-  scrollDownTrigger.value = scrollY < 200
-  mainResumeTrigger.value = scrollY > 300 && scrollY < 1600
-  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
-  mainSkillsBgTrigger.value = scrollY > 1200 && scrollY < 4000
-  mainSkillsListTrigger.value = scrollY > 2700 && scrollY < 7700
-  referenceListTrigger.value = scrollY > 7700 && scrollY < 10000
-  contactTrigger.value = scrollY > 10100
-}
-
-const desktop = (scrollY:number) => {
-  mainTitleTrigger.value = scrollY < 500
-  mainTextTrigger.value = scrollY < 450
-  scrollDownTrigger.value = scrollY < 650
-  mainResumeTrigger.value = scrollY > 150 && scrollY < 1250
-  mainSkillsTextTrigger.value = scrollY > 1300 && scrollY < 2200
-  mainSkillsBgTrigger.value = scrollY > 900 && scrollY < 3000
-  mainSkillsListTrigger.value = scrollY > 2300 && scrollY < 5500
-  referenceListTrigger.value = scrollY > 5800 && scrollY < 7300
-  contactTrigger.value = scrollY > 7400
-}
-
-loadMainData()
-loadStackData()
-loadPortfolioData()
+// const color = ref(new Color('#50C878')) // 에메랄드 색상
+// const geometry = ref(new CylinderGeometry(1, 1, 1, 6)) // 육각 자수정 모양
+// const material = ref(new MeshStandardMaterial({ color: color.value }))
 
 </script>

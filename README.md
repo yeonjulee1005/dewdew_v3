@@ -11,18 +11,21 @@
 [![My Skills](https://skillicons.dev/icons?i=nuxtjs,vue,supabase,vercel,vite,ts,js,postgres,html,sass,vscode,vim,github)](https://skillicons.dev)
 
 1. Nuxt3
-2. Element-Plus
-3. Supabase
-4. Pinia
-5. VueUse
-6. Nuxt/image
-7. Nuxt/color-mode
-8. Nuxt/i18n
-9. Nuxt/robots
-10. Nuxt/supabase
-11. Stylelint
-12. Tabler icons
-13. Tiptap
+2. Nuxt-UI
+3. Element-Plus
+4. Supabase
+5. Pinia
+6. VueUse
+7. Nuxt/image
+8. Nuxt/color-mode
+9. Nuxt/i18n
+10. Nuxt/robots
+11. Nuxt/supabase
+12. Stylelint
+13. Tabler icons
+14. Tiptap
+15. TypeIt
+16. TresJs
 
 ## Package manager
 
