@@ -45,7 +45,7 @@ bun install 진행
 
 ```zsh
 rm -rf node_modules
-rm -rf yarn.lock
+rm -rf bun.lockb
 rm -rf .nuxt
 bun pm cache rm
 bun install

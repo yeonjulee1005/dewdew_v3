@@ -11,7 +11,7 @@
         :button-text="$t('colorsTranslate.dropper')"
         @click:button="colorPicker"
       />
-      <LazyUploadFile
+      <UploadFile
         :file-size-alarm="$t('colorsTranslate.fileSize')"
         :file-type-alarm="$t('colorsTranslate.fileType')"
         :limit-type="['image/jpeg', 'image/png', 'image/gif']"
@@ -50,12 +50,11 @@
                 @click:button="() => formData.hexColor = ''"
               />
               <AButton
-                v-if="isSupported"
                 button-variant="ghost"
                 use-icon
                 icon-name="line-md:document-add"
                 :icon-size="18"
-                @click:button="copy(formData.hexColor)"
+                @click:button="copyColor(formData.hexColor)"
               />
             </div>
           </template>
@@ -76,12 +75,11 @@
         >
           <template #trailing>
             <AButton
-              v-if="isSupported"
               button-variant="ghost"
               use-icon
               icon-name="line-md:document-add"
               :icon-size="18"
-              @click:button="copy(formData.rgbColor)"
+              @click:button="copyColor(formData.rgbColor)"
             />
           </template>
         </DDInput>
@@ -101,12 +99,11 @@
         >
           <template #trailing>
             <AButton
-              v-if="isSupported"
               button-variant="ghost"
               use-icon
               icon-name="line-md:document-add"
               :icon-size="18"
-              @click:button="copy(formData.hslColor)"
+              @click:button="copyColor(formData.hslColor)"
             />
           </template>
         </DDInput>
@@ -126,12 +123,11 @@
         >
           <template #trailing>
             <AButton
-              v-if="isSupported"
               button-variant="ghost"
               use-icon
               icon-name="line-md:document-add"
               :icon-size="18"
-              @click:button="copy(formData.cmykColor)"
+              @click:button="copyColor(formData.cmykColor)"
             />
           </template>
         </DDInput>
@@ -149,12 +145,11 @@
 <script setup lang="ts">
 
 const { t } = useLocale()
-const { width } = useWindowSize()
 
 const { textInclude } = useUi()
 const { open } = useEyeDropper()
-const { copy, copied, isSupported } = useClipboard()
-const { notification } = useDeviceSeparator()
+const { copy } = useClipboard()
+const toast = useToast()
 
 useHead({
   title: t('pageTitle.colorsTranslate'),
@@ -175,12 +170,6 @@ const formData = reactive({
   cmykColor: ''
 })
 
-watch(() => copied.value, () => {
-  if (copied.value) {
-    notification(width.value, t('messages.copy'), '', 'success', false, true, 1500, 80)
-  }
-})
-
 watch(() => formData.hexColor, () => {
   if (['rgb', 'hls', 'cmyk'].some(colorFormat => textInclude(formData.hexColor, colorFormat))) {
     formData.hexColor = ''
@@ -195,6 +184,11 @@ watch(() => formData.hexColor, () => {
     hexToHsl(formData.hexColor)
   }
 }, { immediate: true })
+
+const copyColor = (color:string) => {
+  copy(color)
+  toast.add({ title: t('messages.copy'), color: 'emerald', timeout: 3000 })
+}
 
 const initColorData = () => {
   formData.initColor = (Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0').toUpperCase())

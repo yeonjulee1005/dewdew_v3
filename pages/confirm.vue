@@ -11,14 +11,14 @@
 const user = useSupabaseUser()
 
 const { t } = useLocale()
-const { notify } = useAlarm()
 
 const { adminAccess } = storeToRefs(useTechStore())
-
 const { logout } = useFetchComposable()
 
+const toast = useToast()
+
 definePageMeta({
-  layout: 'login'
+  layout: 'raw'
 })
 
 const setUserCoreData = async (userId:string) => {
@@ -34,7 +34,11 @@ const setUserCoreData = async (userId:string) => {
     ? adminAccess.value = data.value.admin
     : logout()
 
-  notify('', data.value.admin ? 'success' : 'warning', data.value.admin ? t('messages.welcome') : t('messages.notAdmin'), true, 3000, 0)
+  toast.add({
+    title: data.value.admin ? t('messages.welcome') : t('messages.notAdmin'),
+    color: data.value.admin ? 'rose' : 'fuchsia',
+    timeout: 3000
+  })
   navigateTo(data.value.admin ? '/tech' : '/')
 }
 

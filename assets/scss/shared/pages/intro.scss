@@ -1,0 +1,41 @@
+@use '../../variables' as *;
+
+/**
+* ! Intro Page Style !
+*a
+* ? Shared ?
+*/
+
+.intro {
+  height: $space-100vh;
+  width: $space-percent-100;
+  .intro-component {
+    width: $space-90vw;
+    .hello {
+      @include headline1;
+      font-size: $space-60;
+    }
+    .title {
+      height: $space-60;
+      @include headline4;
+    }
+  }
+}
+
+.intro-enter-active {
+  transition: opacity 2.5s ease-in-out;
+}
+
+.intro-leave-active {
+  transition: opacity 1.5s ease-in-out;
+}
+
+.intro-enter-from,
+.intro-leave-to {
+  opacity: 0;
+}
+
+.intro-enter-to,
+.intro-leave-from {
+  opacity: 1;
+}

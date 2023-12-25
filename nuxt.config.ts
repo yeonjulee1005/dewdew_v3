@@ -27,6 +27,9 @@ export default defineNuxtConfig({
       ]
     }
   },
+  experimental: {
+    componentIslands: true
+  },
   supabase: {
     redirect: false,
     redirectOptions: {
@@ -73,17 +76,14 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    'dayjs-nuxt'
-  ],
-  plugins: [
-    '~/plugins/elementPlus.ts'
+    'dayjs-nuxt',
+    '@tresjs/nuxt'
   ],
   css: [
     '~/assets/scss/style.scss'
   ],
   ui: {
-    prefix: 'DD',
-    global: true
+    prefix: 'DD'
   },
   stylelint: {
     lintOnStart: true
@@ -91,14 +91,12 @@ export default defineNuxtConfig({
   components: [
     {
       path: '~/components',
-      pathPrefix: false
+      pathPrefix: true
     }
   ],
   imports: {
     dirs: [
-      'composables',
       'composables/**',
-      'stores',
       'stores/**'
     ]
   },
@@ -170,6 +168,11 @@ export default defineNuxtConfig({
   vueuse: {
     ssrHandlers: false
   },
+  tres: {
+    modules: ['@tresjs/cientos'],
+    devtools: true,
+    glsl: true
+  },
   typescript: {
     shim: false
   },
@@ -189,15 +192,6 @@ export default defineNuxtConfig({
     plugins: ['relativeTime', 'utc', 'timezone'],
     defaultLocale: 'ko',
     defaultTimezone: 'Asia/Seoul'
-  },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/scss/element-theme.scss" as element;'
-        }
-      }
-    }
   },
   runtimeConfig: {
     public: {

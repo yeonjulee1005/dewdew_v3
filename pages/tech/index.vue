@@ -23,7 +23,7 @@
         :date-time="item.created_at"
         :full-date-time="false"
       />
-      <LazyCardComponent :card-item="item" />
+      <LazyTechCardComponent :card-item="item" />
     </div>
     <DDPagination
       v-model="currentPage"
@@ -40,7 +40,7 @@
       class="articles"
       :ui="{ rounded: 'rounded-fill'}"
     />
-    <CreateArticleDialog
+    <DialogCreateArticle
       :create-article-trigger="createArticleTrigger"
       @create:article="writeArticle"
       @close:dialog="() => createArticleTrigger = false"
@@ -57,7 +57,7 @@ const { t } = useLocale()
 const { countData, upsertData } = useFetchComposable()
 
 const { currentPage, currentPageSize, adminAccess } = storeToRefs(useTechStore())
-const { notify } = useAlarm()
+const toast = useToast()
 
 useHead({
   title: t('pageTitle.tech'),
@@ -96,7 +96,7 @@ const { data: count } = useAsyncData('techCount', async () => {
 const openCreateArticleDialog = () => {
   adminAccess.value
     ? createArticleTrigger.value = true
-    : notify('', 'error', t('messages.unAuthorizedWrite'), true, 3000, 0)
+    : toast.add({ title: t('messages.unAuthorizedWrite'), color: 'rose', timeout: 3000 })
 }
 
 const writeArticle = async (recordData:Article) => {
@@ -109,7 +109,7 @@ const writeArticle = async (recordData:Article) => {
 
   if (!error) {
     createArticleTrigger.value = false
-    notify('', 'success', t('messages.write'), true, 3000, 0)
+    toast.add({ title: t('messages.write'), color: 'emerald', timeout: 3000 })
     techRefresh()
   }
 }

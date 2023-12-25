@@ -267,7 +267,7 @@
   .skills-descriptions {
     position: relative;
     height: fit-content;
-    z-index: 10;
+    z-index: 9;
     transition: opacity .9s;
     opacity: 0;
     .skills-text {
@@ -290,7 +290,7 @@
     margin-top: calc($space-600 + $space-50);
     transition: opacity .9s;
     opacity: 0;
-    z-index: 10;
+    z-index: 9;
     .skill-title-text {
       width: calc($space-300 + $space-60);
       margin-bottom: $space-30;

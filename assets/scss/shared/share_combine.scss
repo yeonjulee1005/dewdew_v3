@@ -1,13 +1,6 @@
 /**
 * ! Combine Lists !
 *
-* *  Foundation Style *
-*/
-// @forward 'custom_element_ui';
-// @forward 'a_text_editor';
-// @forward 'layouts';
-
-/**
 * *  Component Style *
 */
 @forward './components/layout';
@@ -29,6 +22,7 @@
 * *  Page Style *
 */
 @forward './pages/404';
+@forward './pages/intro';
 @forward './pages/main';
 @forward './pages/projects';
 @forward './pages/color_translate';

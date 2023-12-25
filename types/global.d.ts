@@ -1,3 +1,4 @@
+declare module 'typeit'
 
 /**
 *  ? Global Interfaces ?
