@@ -43,19 +43,26 @@
   }
 }
 
-.mobile-logo {
-  cursor: pointer;
-}
-
-.mobile-menu-links {
-  @include headline4;
-  text-decoration: none;
-  transition: all .1s ease-in-out;
-  cursor: pointer;
-  &:hover {
-    scale: 1.1;
-  }
-  &:hover, &:focus {
+.mobile-menu {
+  .mobile-logo {
     cursor: pointer;
+  }
+  .mobile-menu-links {
+    @include headline4;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      scale: 1.1;
+    }
+    &:hover, &:focus {
+      cursor: pointer;
+    }
+  }
+  .github {
+    padding: $space-20;
+    &:hover, &:focus {
+      cursor: pointer;
+    }
   }
 }
