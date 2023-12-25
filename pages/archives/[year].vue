@@ -9,12 +9,12 @@
       icon-name="line-md:arrow-small-left"
       @click:button="navigateTo('/archives')"
     />
-    <ImageSlider
+    <ArchiveImageSlider
       :image-data="yearData"
       :show-pagination="false"
       @open-dialog="openImageDialog"
     />
-    <ArchiveDialog
+    <DialogArchive
       :dialog-trigger="imageDialogTrigger"
       :select-image-data="selectImageData"
       @close:dialog="() => imageDialogTrigger = false"

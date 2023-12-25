@@ -19,6 +19,7 @@ export default {
     archivesDesc: 'FE개발자 이연주의 사진기록 입니다.'
   },
   texts: {
+    enter: '들어가기',
     upload: '업로드',
     insertLink: '링크사용',
     magicLink: '매직링크',
@@ -40,6 +41,14 @@ export default {
     process: '로그인 중입니다!'
   },
   main: {
+    intro: {
+      largeTitle: 'FRONT-END DEVELOPER',
+      title: [
+        '노력하는 사람은 즐기는 사람을 이길 수 없습니다.',
+        '개발과 취미를 즐기며 살아가는 개발자 이연주입니다.'
+      ],
+      subTitle: '본 페이지는 \'Nuxt3, Supabase\' 로 제작되었습니다.'
+    },
     contact: 'CONTACT',
     kakao: 'Kakao Talk',
     email: 'Email',
@@ -133,7 +142,6 @@ export default {
     deleteComment: '댓글을 삭제하셨군요😢 다시 작성해주실거죠?',
     successAdmin: '어서와요! 듀듀'
   },
-
   tiptap: {
     placeholder: '내용을 입력해주시지요!🤨',
     characters: '자',

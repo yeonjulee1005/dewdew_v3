@@ -8,19 +8,13 @@
           color="repeating-linear-gradient(to right,#bdbdbd 0%,#cb8a80 100%)"
         />
         <NuxtPage />
+        <DDNotifications />
       </div>
     </NuxtLayout>
   </div>
 </template>
 
 <script setup lang="ts">
-
-import { ID_INJECTION_KEY } from 'element-plus'
-
-provide(ID_INJECTION_KEY, {
-  prefix: 100,
-  current: 0
-})
 
 const { loadMenuData } = useFetchComposable()
 

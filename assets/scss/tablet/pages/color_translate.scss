@@ -20,14 +20,5 @@
       width: $space-percent-80;
       height: calc($space-100 + $space-20);
     }
-    .el-icon--upload {
-      width: $space-percent-100;
-      height: calc($space-100 + $space-20);
-      .el-upload__text {
-        display: flex;
-        flex-direction: column;
-        width: $space-percent-90;
-      }
-    }
   }
 }

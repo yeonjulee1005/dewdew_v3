@@ -3,7 +3,7 @@
     <div class="main-archives-title">
       {{ $t('archives.title') }}
     </div>
-    <LazyImageSlider
+    <LazyArchiveImageSlider
       :image-data="thumbImageData"
       main-slider-trigger
     />

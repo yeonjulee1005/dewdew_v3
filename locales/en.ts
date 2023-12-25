@@ -19,6 +19,7 @@ export default {
     archivesDesc: 'FE개발자 이연주의 사진기록 입니다.'
   },
   texts: {
+    enter: 'Enter',
     upload: 'Upload',
     insertLink: 'Insert link',
     magicLink: 'Magic link',
@@ -40,6 +41,14 @@ export default {
     process: 'Processing login!'
   },
   main: {
+    intro: {
+      largeTitle: 'FRONT-END DEVELOPER',
+      title: [
+        'A person who tries hard cannot beat a person who enjoys.',
+        'I am Yeonju Lee, a developer who enjoys both development and hobbies.'
+      ],
+      subTitle: 'This page was created with \'Nuxt3, Supabase\'.'
+    },
     contact: 'CONTACT',
     kakao: 'Kakao Talk',
     email: 'Email',
@@ -137,7 +146,6 @@ export default {
     deleteComment: 'Delete comment.',
     successAdmin: 'Welcome! Dewdew'
   },
-
   tiptap: {
     placeholder: 'Input content!🤨',
     characters: 'Char',

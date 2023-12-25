@@ -4,7 +4,7 @@
     <slot />
     <AFooter />
     <InstallPwa />
-    <LeaveCounter />
+    <DialogLeaveCounter />
     <SpeedInsights />
   </div>
 </template>

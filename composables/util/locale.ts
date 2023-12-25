@@ -1,4 +1,4 @@
 export const useLocale = () => {
-  const { t, locale, setLocale } = useI18n()
-  return { t, locale, setLocale }
+  const { t, tm, rt, locale, setLocale } = useI18n()
+  return { t, tm, rt, locale, setLocale }
 }

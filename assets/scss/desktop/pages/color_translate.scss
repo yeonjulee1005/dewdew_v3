@@ -16,11 +16,5 @@
       width: $space-300;
       height: $space-200;
     }
-    .el-icon--upload {
-      height: calc($space-100 + $space-20);
-      .el-upload__text {
-        width: $space-400;
-      }
-    }
   }
 }

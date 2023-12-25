@@ -9,7 +9,7 @@
   height: fit-content;
   .main-title, .main-text, .sub-text, .scroll-down {
     position: absolute;
-    z-index: 10;
+    z-index: 9;
   }
   .main-title {
     position: absolute;
@@ -22,7 +22,7 @@
     transform: rotateZ(90deg);
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
-    z-index: 10;
+    z-index: 9;
     opacity: 0;
     transition: opacity .75s;
   }
@@ -32,7 +32,7 @@
     padding: $space-20;
     gap: $space-4;
     background-color: var(--d-content-bg-color);
-    z-index: 10;
+    z-index: 9;
     opacity: 0;
     transition: opacity .75s;
     .text {

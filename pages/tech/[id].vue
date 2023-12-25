@@ -1,37 +1,37 @@
 <template>
   <div class="tech-article flex flex-column flex-align-center">
-    <ArticleHeader
+    <TechHeader
       :title="techDetailData?.title"
       :created-at="techDetailData?.created_at"
       :edit-trigger="editTrigger"
       @update:title="(title:string) => updateData.title = title"
     />
-    <ArticleAddOn
+    <TechAddOn
       :article-id="techId"
       :data="techDetailData"
       :activate-like="techBlogLikeTrigger"
       @update-count="updateLikeCount"
     />
-    <ArticleControlButton
+    <TechControlButton
       v-if="adminAccess"
       :edit-trigger="editTrigger"
       @check:admin="clickEditArticle"
       @update:article="updateArticle"
       @edit:cancel="() => editTrigger = false"
     />
-    <ArticleContent
+    <TechContent
       :tech-blog-detail-data="techDetailData"
       :edit-trigger="editTrigger"
       @update:article-content="editArticle"
     />
-    <ArticleComments
+    <TechComments
       :comment-title="$t('tech.commentTitle')"
       :comment-data="techCommentData"
       @delete:admin-comment="deleteAdminComment"
       @delete:comment="deleteComment"
     />
-    <LazyArticleCreateComment @create-comment="createComment" />
-    <ArticleLikeButton
+    <LazyTechCreateComment @create-comment="createComment" />
+    <TechLikeButton
       :trigger="displayFloatButtonTrigger"
       :activate-like="techBlogLikeTrigger"
       @click-affix="updateLikeCount"
@@ -51,7 +51,7 @@ const { insertData, upsertData, deleteData } = useFetchComposable()
 const { clickedTechArticle, adminAccess } = storeToRefs(useTechStore())
 
 const { path, params } = useRoute()
-const { notify } = useAlarm()
+const toast = useToast()
 
 const techId = computed(() => {
   return params.id as string
@@ -120,7 +120,7 @@ const updateArticle = async () => {
   const error = await upsertData(updateData.value, 'tech')
 
   if (!error) {
-    notify('', 'success', t('messages.edit'), true, 3000, 0)
+    toast.add({ title: t('messages.edit'), color: 'emerald', timeout: 3000 })
     editTrigger.value = false
     techRefresh()
   }
@@ -130,7 +130,7 @@ const updateLikeCount = () => {
   const alreadyLike = clickedTechArticle.value.includes(techDetailData.value?.id ?? '')
   !alreadyLike
     ? updateTechBlogLikeCount()
-    : notify('', 'warning', t('messages.alreadyPressLike'), true, 1000, 0)
+    : toast.add({ title: t('messages.alreadyPressLike'), color: 'rose', timeout: 3000 })
 }
 
 const updateTechBlogLikeCount = async () => {
@@ -142,7 +142,7 @@ const updateTechBlogLikeCount = async () => {
   const error = await upsertData(countData, 'tech')
 
   if (!error) {
-    notify('', 'success', t('messages.successPressLike'), true, 1000, 0)
+    toast.add({ title: t('messages.successPressLike'), color: 'emerald', timeout: 3000 })
     clickedTechArticle.value.push(techDetailData.value?.id ?? '')
     techRefresh()
   }
@@ -157,7 +157,7 @@ const createComment = async (commentData:CreateComment) => {
   const error = await insertData(createCommentData, 'techComment')
 
   if (!error) {
-    notify('', 'error', t('messages.successCreateComment'), true, 1000, 0)
+    toast.add({ title: t('messages.successCreateComment'), color: 'emerald', timeout: 3000 })
     techCommentRefresh()
   }
 }
@@ -166,7 +166,7 @@ const deleteAdminComment = async (comment:SerializeObject) => {
   const error = await deleteData(comment.id, 'techComment', true, 'tech_id', techId.value, '', '')
 
   if (!error) {
-    notify('', 'error', t('messages.deleteComment'), true, 1000, 0)
+    toast.add({ title: t('messages.deleteComment'), color: 'orange', timeout: 3000 })
     techCommentRefresh()
   }
 }
@@ -175,7 +175,7 @@ const deleteComment = async (comment:SerializeObject, password:string) => {
   const error = await deleteData(comment.id, 'techComment', false, 'tech_id', techId.value, 'password', password)
 
   if (!error) {
-    notify('', 'error', t('messages.deleteComment'), true, 1000, 0)
+    toast.add({ title: t('messages.deleteComment'), color: 'orange', timeout: 3000 })
     techCommentRefresh()
   }
 }
@@ -183,7 +183,7 @@ const deleteComment = async (comment:SerializeObject, password:string) => {
 const clickEditArticle = () => {
   adminAccess.value
     ? editTrigger.value = true
-    : notify('', 'error', t('messages.unAuthorizedWrite'), true, 3000, 0)
+    : toast.add({ title: t('messages.unAuthorizedWrite'), color: 'rose', timeout: 3000 })
 }
 
 updateViewCount()
