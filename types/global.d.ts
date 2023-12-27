@@ -47,3 +47,10 @@ interface CreateComment {
   message: string,
   password: string
 }
+
+interface AccordionItem {
+  icon: string,
+  label: string,
+  slot: string,
+  description: string[] | string
+}

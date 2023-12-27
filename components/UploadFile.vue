@@ -21,6 +21,8 @@
       height="200"
       fit="cover"
       alt="image-prev"
+      :draggable="false"
+      @contextmenu.prevent
     />
   </div>
 </template>

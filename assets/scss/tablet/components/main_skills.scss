@@ -6,16 +6,16 @@
 */
 .main-skills {
   .skills-descriptions {
+    padding-top: $space-20;
     width: fit-content;
+    .skills-title {
+      @include headline3;
+      text-align: right;
+    }
     .skills-text {
-      margin-right: $space-80;
-      @include headline5;
+      padding-right: $space-80;
+      @include headline6;
         text-align: right;
-      &:nth-child(1),
-      &:nth-child(2) {
-        @include headline3;
-        text-align: right;
-      }
     }
     .skills-title-box {
       top: $space-minus-50;

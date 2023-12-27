@@ -4,18 +4,18 @@
       class="main-title"
       :class="{'activate': mainTitleTrigger}"
     >
-      {{ locale === 'ko' ? mainTitle?.textTitle.ko : mainTitle?.textTitle.en }}
+      {{ $t('main.intro.largeTitle') }}
     </span>
     <div
       class="main-text-group flex flex-column"
       :class="{'activate': mainTextTrigger}"
     >
       <span
-        v-for="item in mainText"
-        :key="item.index"
+        v-for="(item, index) in $tm('main.intro.description')"
+        :key="index"
         class="text"
       >
-        {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
+        {{ $rt(item) }}
       </span>
     </div>
     <nuxt-picture
@@ -27,20 +27,18 @@
       fit="cover"
       alt="main-banner"
       :img-attrs="{class: 'banner'}"
+      :draggable="false"
+      @contextmenu.prevent
     />
   </div>
 </template>
 
 <script setup lang=ts>
 
-const { locale } = useLocale()
-
 const { url } = useImageStorage()
 
 withDefaults(
   defineProps<{
-    mainTitle: SerializeObject,
-    mainText: SerializeObject[],
     mainTitleTrigger?: boolean,
     mainTextTrigger?: boolean
   }>(),

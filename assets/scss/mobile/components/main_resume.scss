@@ -9,29 +9,31 @@
   .resume-container {
     flex-direction: column;
     align-items: center;
-    height: fit-content;
     padding: $space-20 0;
     .resume-image {
-      width: $space-percent-80;
+      width: $space-80vw;
+      height: auto;
+      border-radius: $space-percent-50;
       margin: $space-20 auto;
-      .dewdew {
-        width: $space-percent-100;
-        height: $space-percent-100;
-        border-radius: $space-percent-50;
-      }
     }
-    .resume-texts {
-      width: $space-percent-80;
-      .title-container {
-        .title {
-          @include headline3;
+    .resume-title {
+      @include headline3;
+    }
+    .accordion {
+      padding: $space-20;
+      .educate-group,
+      .career-group {
+        .icon {
+          width: $space-20;
+          height: $space-20;
+          color: var(--d-text-color);
         }
-        .educate {
-          @include headline5;
+        .text {
+          @include headline6;
         }
       }
-      .career-container {
-        @include headline6;
+      .career-group {
+        margin-top: $space-8;
       }
     }
   }

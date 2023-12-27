@@ -268,11 +268,21 @@
     position: relative;
     height: fit-content;
     z-index: 9;
-    transition: opacity .9s;
+    transition: opacity .9s, all .3s;
     opacity: 0;
+    &.reverse {
+      transform-style: preserve-3d;
+      transform: rotateY(180deg);
+      .skills-title,
+      .skills-text {
+        transform: rotateY(180deg);
+      }
+    }
+    .skills-title,
     .skills-text {
-      margin-right: calc($space-60 + $space-8);
-      z-index: 10;
+      padding-right: calc($space-60 + $space-8);
+      cursor: pointer;
+      z-index: 9;
       &:nth-child(3),
       &:nth-child(6),
       &:nth-child(9) {
@@ -281,9 +291,19 @@
     }
     .skills-title-box {
       position: absolute;
+      top: 0;
       background-color: var(--d-color-01-opacity);
       border-radius: $space-percent-50;
       box-shadow: $space-2 $space-2 $space-4 var(--d-bg-sub-color), -2px -2px $space-4 var(--d-bg-main-color);
+      cursor: pointer;
+      &.reverse {
+        background-color: var(--d-color-04-opacity);
+        left: 0;
+      }
+      .reverse-icon {
+        margin-bottom: $space-10;
+        align-self: center;
+      }
     }
   }
   .skill-list {

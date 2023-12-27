@@ -4,13 +4,13 @@
     :class="{'activate': portfolioTrigger}"
   >
     <span class="section-title">
-      {{ locale === 'ko' ? portfolioTitle?.textTitle.ko : portfolioTitle?.textTitle.en }}
+      {{ $t('main.reference.title') }}
     </span>
     <span class="section-text">
-      {{ locale === 'ko' ? portfolioDescription?.textTitle.ko : portfolioDescription?.textTitle.en }}
+      {{ $t('main.reference.description') }}
     </span>
     <span class="section-bg-text">
-      {{ locale === 'ko' ? portfolioBackground?.textTitle.ko : portfolioBackground?.textTitle.en }}
+      {{ $t('main.reference.background') }}
     </span>
     <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center">
       <div
@@ -31,6 +31,8 @@
             loading="lazy"
             fit="cover"
             :alt="item.alt"
+            :draggable="false"
+            @contextmenu.prevent
           />
           <span class="portfolio-text mt-default">
             {{ item.title }}
@@ -53,13 +55,8 @@
 
 <script setup lang="ts">
 
-const { locale } = useLocale()
-
 withDefaults(
   defineProps<{
-    portfolioTitle: SerializeObject,
-    portfolioDescription: SerializeObject,
-    portfolioBackground: SerializeObject,
     portfolioImageData: { orderIndex: {index: number }, title: string, desc: string, url: string, image: string, thumbnail: string, alt: string, deleted: boolean }[] | null | undefined,
     portfolioTrigger?: boolean
   }>(),

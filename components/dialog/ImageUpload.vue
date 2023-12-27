@@ -27,6 +27,8 @@
         height="200"
         fit="cover"
         alt="image-prev"
+        :draggable="false"
+        @contextmenu.prevent
       />
       <DDInput
         v-if="imageHyperLinkTrigger"

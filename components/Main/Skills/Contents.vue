@@ -1,12 +1,6 @@
 <template>
   <div class="main-skills flex flex-column">
-    <MainSkillsDescriptions
-      :skills-title="mainSkillTitle"
-      :skills-first-text="mainSkillFirstText"
-      :skills-second-text="mainSkillSecondText"
-      :skills-third-text="mainSkillThirdText"
-      :skills-text-trigger="skillsTextTrigger"
-    />
+    <LazyMainSkillsDescriptions :skills-text-trigger="skillsTextTrigger" />
     <MainSkillsImage
       :skills-image="stackLogoData"
       :skills-bg-trigger="skillsBgTrigger"
@@ -56,7 +50,6 @@
 
 <script setup lang="ts">
 
-const { mainSkillTitle, mainSkillFirstText, mainSkillSecondText, mainSkillThirdText } = storeToRefs(useMainStore())
 const { stackLogoData } = storeToRefs(useStackStore())
 
 const { skillTitleList, frontEnd, backEnd, devOps } = useSkillData()

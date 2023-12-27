@@ -20,6 +20,8 @@
             loading="lazy"
             :img-attrs="{class: 'thumbnail'}"
             :alt="image?.title ?? 'image'"
+            :draggable="false"
+            @contextmenu.prevent
             @click="mainSliderTrigger ? navigateTo(`/archives/${image?.title ?? ''}`) : $emit('open-dialog', image)"
           />
           <div
