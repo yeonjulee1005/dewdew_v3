@@ -7,9 +7,10 @@
 .main-intro {
   .main-title {
     width: calc($space-300 + $space-60);
-    top: $space-180;
+    top: $space-200;
     right: $space-minus-100;
     font-size: 3.5em;
+    line-height: $space-50;
   }
   .main-text-group {
     top: calc($space-60vw + $space-80 );

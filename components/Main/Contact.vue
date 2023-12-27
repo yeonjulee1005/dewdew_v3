@@ -25,6 +25,8 @@
             format="webp"
             loading="lazy"
             :alt="$t('main.kakao')"
+            :draggable="false"
+            @contextmenu.prevent
           />
           <div class="desc mt-default mb-default">
             {{ $t('main.contactKakao') }}

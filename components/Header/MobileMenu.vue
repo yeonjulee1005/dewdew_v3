@@ -29,6 +29,8 @@
           loading="lazy"
           :img-attrs="{ class: 'dewdew-logo' }"
           alt="logo"
+          :draggable="false"
+          @contextmenu.prevent
           @click="clickLogo"
         />
         <DDButton
@@ -73,6 +75,8 @@
           format="webp"
           loading="lazy"
           :alt="socialMenuData[0].title"
+          :draggable="false"
+          @contextmenu.prevent
         />
       </nuxt-link>
     </DDSlideover>

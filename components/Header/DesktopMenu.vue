@@ -28,6 +28,8 @@
         format="webp"
         loading="lazy"
         :alt="socialMenuData[0].title"
+        :draggable="false"
+        @contextmenu.prevent
       />
     </nuxt-link>
   </div>

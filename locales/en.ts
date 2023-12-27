@@ -42,12 +42,63 @@ export default {
   },
   main: {
     intro: {
-      largeTitle: 'FRONT-END DEVELOPER',
-      title: [
+      largeTitle: 'FRONTEND DEVELOPER',
+      description: [
         'A person who tries hard cannot beat a person who enjoys.',
-        'I am Yeonju Lee, a developer who enjoys both development and hobbies.'
+        'I am Yeonju Lee, a developer who enjoys both development and hobbies.',
+        'This page was created with \'Nuxt3, Supabase\'.'
       ],
-      subTitle: 'This page was created with \'Nuxt3, Supabase\'.'
+      scroll: '👇🏻 Scroll Down'
+    },
+    resume: {
+      title: 'RESUME'
+    },
+    skills: {
+      frontDescription: {
+        title: [
+          'Hello.',
+          'I\'m Yeonju, FE engineer.'
+        ],
+        first: [
+          'It may not be a glamorous life,',
+          'but I am a developer who enjoys working ',
+          'and experiencing new things',
+          'in this once-in-a-lifetime life.'
+        ],
+        second: [
+          'New tech stacks are coming out every day.',
+          'I believe it\'s important to learn and use the latest tech stacks without resistance,',
+          'I think it\'s important to create services efficiently.'
+        ],
+        third: [
+          'Although I didn\'t major in it, I\'m growing as a developer',
+          'who learns and strives harder.'
+        ]
+      },
+      backDescription: {
+        title: [
+          'Core Stack'
+        ],
+        first: [
+          'FE: nuxt3(vue3), astro',
+          'BE: supabase',
+          'UI: element-plus, nuxt-ui'
+        ],
+        second: [
+          'Modules: nuxt-img, nuxt-content, nuxt-i18n',
+          'vite-pwa, vueuse, pinia, tiptap'
+        ],
+        third: [
+          'Language: javascript, typescript',
+          'Style: scss, tailwind',
+          'Design: figma'
+        ]
+      }
+    },
+    reference: {
+      title: 'Project',
+      description: 'List of development portfolios.',
+      background: 'PROJECTS'
     },
     contact: 'CONTACT',
     kakao: 'Kakao Talk',

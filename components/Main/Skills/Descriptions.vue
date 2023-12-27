@@ -1,55 +1,62 @@
 <template>
   <div
     class="skills-descriptions flex flex-column"
-    :class="{'activate': skillsTextTrigger}"
+    :class="{'activate': skillsTextTrigger, 'reverse': toggleTrigger}"
+    @click="() => toggleTrigger = !toggleTrigger"
   >
-    <span
-      v-for="(item, index) in skillsTitle"
+    <p
+      v-for="(title, index) in toggleTrigger ? $tm('main.skills.frontDescription.title') : $tm('main.skills.backDescription.title')"
+      :key="index"
+      class="skills-title"
+    >
+      {{ $rt(title) }}
+    </p>
+    <p
+      v-for="(first, index) in toggleTrigger ? $tm('main.skills.frontDescription.first') : $tm('main.skills.backDescription.first')"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </span>
-    <span
-      v-for="(item, index) in skillsFirstText"
+      {{ $rt(first) }}
+    </p>
+    <p
+      v-for="(second, index) in toggleTrigger ? $tm('main.skills.frontDescription.second') : $tm('main.skills.backDescription.second')"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </span>
-    <span
-      v-for="(item, index) in skillsSecondText"
+      {{ $rt(second) }}
+    </p>
+    <p
+      v-for="(third, index) in toggleTrigger ? $tm('main.skills.frontDescription.third') : $tm('main.skills.backDescription.third')"
       :key="index"
       class="skills-text"
     >
-      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </span>
-    <span
-      v-for="(item, index) in skillsThirdText"
-      :key="index"
-      class="skills-text"
+      {{ $rt(third) }}
+    </p>
+    <div
+      class="skills-title-box flex flex-column flex-justify-end flex-align-end"
+      :class="{'reverse': toggleTrigger}"
     >
-      {{ locale === 'ko' ? item?.textTitle.ko : item?.textTitle.en }}
-    </span>
-    <div class="skills-title-box" />
+      <Icon
+        class="reverse-icon"
+        name="line-md:round-360"
+        :width="30"
+        :height="30"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 
-const { locale } = useLocale()
-
 withDefaults(
   defineProps<{
-    skillsTitle: SerializeObject[],
-    skillsFirstText: SerializeObject[],
-    skillsSecondText: SerializeObject[],
-    skillsThirdText: SerializeObject[],
     skillsTextTrigger?: boolean
   }>(),
   {
     skillsTextTrigger: false
   }
 )
+
+const toggleTrigger = ref(true)
 
 </script>

@@ -13,6 +13,8 @@
       loading="lazy"
       format="webp"
       :alt="image.title"
+      :draggable="false"
+      @contextmenu.prevent
     />
   </div>
 </template>

@@ -11,6 +11,8 @@
       fit="cover"
       :img-attrs="{style: 'width: 100%'}"
       :alt="selectImageData?.title"
+      :draggable="false"
+      @contextmenu.prevent
     />
   </ADialog>
 </template>
