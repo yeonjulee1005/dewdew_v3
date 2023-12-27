@@ -7,15 +7,10 @@
       :to="image.url"
       target="_blank"
     >
-      <nuxt-img
-        :src="image.image_url"
-        width="50"
-        height="50"
-        format="webp"
-        loading="lazy"
-        :alt="image.title"
-        :draggable="false"
-        @contextmenu.prevent
+      <Icon
+        :name="`line-md:${image.icon}`"
+        :width="28"
+        :height="28"
       />
     </nuxt-link>
   </div>

@@ -5,13 +5,16 @@ export const usePortfolioStore = defineStore('portfolioData', () => {
    * ! Pinia State !
    *
    * @param portfolioData 포트폴리오 데이터
+   * @param selectedPortfolioData 선택된 포트폴리오 데이터
    *
    */
 
   const portfolioData = ref<{ orderIndex: {index: number }, title: string, desc: string, url: string, image: string, thumbnail: string, alt: string, deleted: boolean }[] | null>()
+  const selectedPortfolioData = ref<{ orderIndex: {index: number }, title: string, desc: string, url: string, image: string, thumbnail: string, alt: string, deleted: boolean } | null>()
 
   return {
-    portfolioData
+    portfolioData,
+    selectedPortfolioData
   }
 }, {
   persist: {

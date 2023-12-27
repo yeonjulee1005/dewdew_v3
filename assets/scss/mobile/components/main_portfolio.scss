@@ -5,8 +5,17 @@
 * *  Mobile *
 */
 .main-portfolio {
-  .section-text {
+  .section-text-group {
+    width: $space-percent-100;
+    flex-direction: column;
     margin: $space-10 0 $space-10;
+    border-bottom: none;
+    .move-portfolio {
+      align-self: flex-end;
+    }
+  }
+  .section-bg-text {
+    line-height: $space-160;
   }
   .portfolio-list {
     margin: 0 $space-10;

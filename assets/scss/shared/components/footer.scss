@@ -24,14 +24,9 @@
   .footer-sns-container {
     width: $space-160;
     .sns-links {
-      transition: all .1s ease-in-out;
       width: $space-40;
       height: fit-content;
       margin: auto $space-8;
-      img {
-        width: $space-30;
-        height: auto;
-      }
     }
   }
   .footer-information {

@@ -62,22 +62,22 @@
         </span>
       </nuxt-link>
       <nuxt-link
-        v-if="socialMenuData"
-        class="github"
-        :to="socialMenuData[0].url"
+        v-for="(sns, index) in socialMenuData"
+        v-show="index < 2"
+        :key="index"
+        class="sns flex flex-align-center gap-2"
+        :to="sns.url"
         target="_blank"
         aria-label="github"
       >
-        <nuxt-img
-          :src="socialMenuData[0].image_url"
-          width="40"
-          height="40"
-          format="webp"
-          loading="lazy"
-          :alt="socialMenuData[0].title"
-          :draggable="false"
-          @contextmenu.prevent
+        <Icon
+          :name="`line-md:${sns.icon}`"
+          :width="28"
+          :height="28"
         />
+        <span>
+          {{ sns.title }}
+        </span>
       </nuxt-link>
     </DDSlideover>
   </div>
