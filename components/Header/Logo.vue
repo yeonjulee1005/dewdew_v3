@@ -9,6 +9,8 @@
       :height="isDesktop ? 46 : 28"
       :img-attrs="{ class: 'dewdew-logo' }"
       alt="logo"
+      :draggable="false"
+      @contextmenu.prevent
     />
   </nuxt-link>
 </template>

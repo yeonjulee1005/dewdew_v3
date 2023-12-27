@@ -13,38 +13,18 @@
   opacity: 0;
   .resume-container {
     width: $space-percent-100;
+    height: auto;
     border-radius: $space-30;
-    background-color: var(--d-bg-blue-color);
+    background: linear-gradient(220deg, rgba($d-color-03-dark-deep, 0.3), rgba($d-color-01-light-deep, 0.3));
     .resume-image {
       text-align: center;
-      .dewdew {
-        width: $space-300;
-        height: $space-300;
-        border-radius: $space-percent-50;
-      }
-    }
-    .resume-texts {
-      .title-container {
-        width: fit-content;
-        padding-bottom: $space-10;
-        border-bottom:  $space-2 double var(--d-text-color);
-        .title {
-          align-self: flex-start;
-        }
-      }
-      .career-container {
-        .career-title {
-          @include headline6;
-          font-weight: 700;
-          align-self: flex-start;
-          word-break: keep-all;
-        }
-        .career-desc {
-          margin-left: $space-20;
-          @include headline6;
-          align-self: flex-start;
-          word-break: keep-all;
-        }
+      perspective: $space-300;
+      border-radius: $space-percent-50;
+      cursor: pointer;
+      transition: transform .2s;
+      &.reverse {
+        transform-style: preserve-3d;
+        transform: rotateY(180deg);
       }
     }
   }

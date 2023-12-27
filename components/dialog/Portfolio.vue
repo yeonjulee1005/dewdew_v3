@@ -3,6 +3,7 @@
     :dialog-trigger="dialogTrigger"
     :title="$t('texts.portfolio')"
     hide-double-button
+    full-screen
     @close-dialog="() => $emit('close:dialog')"
   >
     <div class="flex flex-column gap-10">
@@ -22,6 +23,8 @@
       fit="cover"
       :alt="selectPortfolio.alt"
       :img-attrs="{class: 'image'}"
+      :draggable="false"
+      @contextmenu.prevent
       @click="navigateTo(selectPortfolio.url, { open: { target: '_blank' } })"
     />
   </ADialog>

@@ -1,30 +1,17 @@
 <template>
   <div class="main">
     <LazyMainIntroBanner
-      :main-title="mainIntroTitle"
-      :main-text="mainIntroText"
       :main-title-trigger="mainTitleTrigger"
       :main-text-trigger="mainTextTrigger"
     />
-    <LazyMainScrollDown
-      :main-scroll-text="mainIntroScrollText"
-      :scroll-down-trigger="scrollDownTrigger"
-    />
-    <LazyMainResume
-      :resume-title="mainResumeTitle"
-      :educate-text="mainEducatedText"
-      :career-data="mainCareerText"
-      :main-resume-trigger="mainResumeTrigger"
-    />
+    <LazyMainScrollDown :scroll-down-trigger="scrollDownTrigger" />
+    <LazyMainResume :main-resume-trigger="mainResumeTrigger" />
     <LazyMainSkillsContents
       :skills-text-trigger="mainSkillsTextTrigger"
       :skills-bg-trigger="mainSkillsBgTrigger"
       :skills-list-trigger="mainSkillsListTrigger"
     />
     <LazyMainPortfolio
-      :portfolio-title="mainPortfolioTitle"
-      :portfolio-description="mainPortfolioText"
-      :portfolio-background="mainPortfolioBackground"
       :portfolio-image-data="portfolioData"
       :portfolio-trigger="referenceListTrigger"
     />
@@ -38,10 +25,9 @@ const { t } = useLocale()
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
-const { mainIntroTitle, mainIntroText, mainIntroScrollText, mainResumeTitle, mainEducatedText, mainCareerText, mainPortfolioTitle, mainPortfolioText, mainPortfolioBackground } = storeToRefs(useMainStore())
 const { portfolioData } = storeToRefs(usePortfolioStore())
 
-const { loadMainData, loadStackData, loadPortfolioData } = useFetchComposable()
+const { loadStackData, loadPortfolioData } = useFetchComposable()
 
 useHead({
   meta: [
@@ -115,7 +101,6 @@ const desktop = (scrollY:number) => {
   contactTrigger.value = scrollY > 7400
 }
 
-loadMainData()
 loadStackData()
 loadPortfolioData()
 

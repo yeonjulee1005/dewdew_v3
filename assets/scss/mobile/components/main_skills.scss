@@ -8,21 +8,24 @@
   .skills-descriptions {
     width: fit-content;
     padding-top: $space-40;
+    .skills-title {
+      padding-right: $space-20;
+      @include headline4;
+      text-align: right;
+    }
     .skills-text {
-      margin-right: $space-20;
+      padding-right: $space-20;
       @include headline6;
         text-align: right;
-      &:nth-child(1),
-      &:nth-child(2) {
-        @include headline4;
-        text-align: right;
-      }
     }
     .skills-title-box {
       top: $space-minus-50;
-      right: $space-minus-100;
-      width: $space-500;
-      height: $space-500; 
+      left: $space-minus-100;
+      width: $space-600;
+      height: $space-600;
+      &.reverse {
+        left: $space-minus-100;
+      }
     }
   }
   .skill-list {
