@@ -14,14 +14,26 @@
   opacity: 0;
   .section-title {
     @include headline1;
-    align-self: flex-start;
   }
-  .section-text {
+  .section-text-group {
     width: fit-content;
-    @include headline5;
-    align-self: flex-start;
     border-bottom: $space-2 solid var(--d-bg-side-color);
     border-spacing: $space-10;
+    .text {
+      @include headline5;
+    }
+    .move-portfolio {
+      cursor: pointer;
+      .enter-text {
+        @include headline6;
+        transition: all 0.2s ease-in-out;
+      }
+      &:hover {
+        .enter-text {
+          color: var(--d-bg-green-color-deep);
+        }
+      }
+    }
   }
   .section-bg-text {
     position: absolute;
