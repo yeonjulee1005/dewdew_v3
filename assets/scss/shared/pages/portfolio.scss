@@ -1,0 +1,14 @@
+@use '../../variables' as *;
+
+/**
+* ! Portfolio Page Style !
+*a
+* ? Shared ?
+*/
+.portfolio {
+  position: relative;
+  padding-top: $space-100;
+  width: $space-80vw;
+  margin: 0 auto;
+  overflow: auto;
+}

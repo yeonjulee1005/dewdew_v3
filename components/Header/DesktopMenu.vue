@@ -5,6 +5,7 @@
   >
     <nuxt-link
       v-for="(menu, index) in mainMenuData"
+      v-show="index"
       :key="index"
       class="menu-links flex-align-center"
       :to="menu.url"
@@ -16,20 +17,15 @@
     </nuxt-link>
     <nuxt-link
       v-if="socialMenuData"
-      class="github"
+      class="sns flex flex-align-center flex-justify-center"
       :to="socialMenuData[0].url"
       target="_blank"
       aria-label="github"
     >
-      <nuxt-img
-        :src="socialMenuData[0].image_url"
-        width="50"
-        height="50"
-        format="webp"
-        loading="lazy"
-        :alt="socialMenuData[0].title"
-        :draggable="false"
-        @contextmenu.prevent
+      <Icon
+        :name="`line-md:${socialMenuData[0].icon}`"
+        :width="28"
+        :height="28"
       />
     </nuxt-link>
   </div>

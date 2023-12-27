@@ -26,19 +26,17 @@
         transition: all .1s ease-in-out;
         cursor: pointer;
         &:hover {
-          scale: 1.1;
+          scale: 1.05;
           color: var(--d-text-dark-color-deep);
-        }
-        &:hover, &:focus {
-          cursor: pointer;
         }
       }
     }
-    .github {
-      padding: $space-2 0;
+    .sns {
       cursor: pointer;
-      width: $space-30;
-      height: auto;
+      transition: all .1s ease-in-out;
+      &:hover {
+        scale: 1.05;
+      }
     }
   }
 }
@@ -53,16 +51,18 @@
     transition: all .1s ease-in-out;
     cursor: pointer;
     &:hover {
-      scale: 1.1;
-    }
-    &:hover, &:focus {
-      cursor: pointer;
+      scale: 1.05;
     }
   }
-  .github {
+  .sns {
     padding: $space-20;
-    &:hover, &:focus {
-      cursor: pointer;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    span {
+      @include headline4;
+    }
+    &:hover {
+      scale: 1.05;
     }
   }
 }

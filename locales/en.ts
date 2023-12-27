@@ -98,6 +98,7 @@ export default {
     reference: {
       title: 'Project',
       description: 'List of development portfolios.',
+      moveTo: 'Move to',
       background: 'PROJECTS'
     },
     contact: 'CONTACT',

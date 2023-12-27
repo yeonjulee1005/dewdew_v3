@@ -97,6 +97,7 @@ export default {
     reference: {
       title: '프로젝트',
       description: '개발 포트폴리오 리스트 입니다.',
+      moveTo: '보러가기',
       background: 'PROJECTS'
     },
     contact: 'CONTACT',

@@ -3,15 +3,30 @@
     class="main-portfolio flex flex-column flex-justify-center gap-10"
     :class="{'activate': portfolioTrigger}"
   >
-    <span class="section-title">
+    <p class="section-title">
       {{ $t('main.reference.title') }}
-    </span>
-    <span class="section-text">
-      {{ $t('main.reference.description') }}
-    </span>
-    <span class="section-bg-text">
+    </p>
+    <div class="section-text-group flex gap-5">
+      <p class="text">
+        {{ $t('main.reference.description') }}
+      </p>
+      <div
+        class="move-portfolio flex flex-align-center gap-1"
+        @click="navigateTo('/portfolio')"
+      >
+        <p class="enter-text">
+          {{ $t('main.reference.moveTo') }}
+        </p>
+        <Icon
+          name="line-md:log-in"
+          :width="30"
+          :height="30"
+        />
+      </div>
+    </div>
+    <p class="section-bg-text">
       {{ $t('main.reference.background') }}
-    </span>
+    </p>
     <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center">
       <div
         v-for="item in portfolioImageData"
@@ -20,7 +35,7 @@
       >
         <div
           class="portfolio-item flex flex-column flex-align-center"
-          @click="clickReference(item)"
+          @click="navigatePortfolio(item)"
         >
           <nuxt-img
             class="portfolio-thumb"
@@ -45,15 +60,12 @@
       :key="item"
       class="portfolio-background"
     />
-    <DialogPortfolio
-      :dialog-trigger="portfolioDialogTrigger"
-      :select-portfolio="selectPortfolio"
-      @close:dialog="() => portfolioDialogTrigger = false"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
+
+const { selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
 withDefaults(
   defineProps<{
@@ -65,12 +77,9 @@ withDefaults(
   }
 )
 
-const selectPortfolio = ref<SerializeObject>()
-const portfolioDialogTrigger = ref(false)
-
-const clickReference = (data:SerializeObject) => {
-  selectPortfolio.value = data
-  portfolioDialogTrigger.value = true
+const navigatePortfolio = (item: SerializeObject) => {
+  selectedPortfolioData.value = item
+  navigateTo('/portfolio')
 }
 
 </script>
