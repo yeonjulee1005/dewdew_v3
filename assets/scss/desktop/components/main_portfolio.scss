@@ -12,15 +12,11 @@
     margin-left: $space-60;
     padding-bottom: $space-4;
   }
-  .portfolio-list {
-    .portfolio-item {
-      .portfolio-thumb {
-        width: $space-200;
-        height: $space-200;
-      }
-      .portfolio-text {
-        @include headline6;
-      }
-    }
+  .portfolio-list > .portfolio-item > .portfolio-thumb {
+    width: calc($space-200 + $space-60);
+    height: calc($space-200 + $space-60);
+  }
+  .portfolio-text {
+    @include headline6;
   }
 }

@@ -4,28 +4,23 @@
 
 ## 안녕하세요. FE 개발자 이연주 입니다.
 
-## Current Version: 1.18.0
+## Current Version: 1.20.0
 
 ## 🖥️ 사용한 스킬은 아래와 같습니다.
 
 [![My Skills](https://skillicons.dev/icons?i=nuxtjs,vue,supabase,vercel,vite,ts,js,postgres,html,sass,vscode,vim,github)](https://skillicons.dev)
 
 1. Nuxt3
-2. Nuxt-UI
-3. Element-Plus
-4. Supabase
-5. Pinia
+2. Nuxt Modules (UI, Content, Icon, Image, Device, ColorMode, Time, i18n, Fontaine, Robot, Simple Sitemap, Fontaine)
+3. Supabase
+4. Pinia
+5. Sass
 6. VueUse
-7. Nuxt/image
-8. Nuxt/color-mode
-9. Nuxt/i18n
-10. Nuxt/robots
-11. Nuxt/supabase
-12. Stylelint
-13. Tabler icons
-14. Tiptap
-15. TypeIt
-16. TresJs
+7. Stylelint
+8. Tiptap
+9. TypeIt
+10. Vercel
+11. Day.js
 
 ## Package manager
 

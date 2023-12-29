@@ -4,8 +4,9 @@
       :custom-class="`fixed-like ${trigger ? 'fixed-like-on' : ''}`"
       round-button
       button-size="lg"
+      use-leading
+      icon-name="line-md:heart-filled"
       :button-color="activateLike ? 'rose' : 'violet'"
-      :button-text="buttonText"
       @click:button="$emit('click-affix')"
     />
   </div>
@@ -16,11 +17,9 @@
 withDefaults(
   defineProps<{
     trigger: boolean,
-    buttonText?: string,
     activateLike?: boolean
   }>(),
   {
-    buttonText: '❤️',
     activateLike: false
   }
 )

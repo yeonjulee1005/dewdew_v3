@@ -12,8 +12,8 @@
     margin: 0 $space-10;
     .portfolio-item {
       .portfolio-thumb {
-        width: $space-160;
-        height: $space-160;
+        width: calc($space-200 - $space-20);
+        height: calc($space-200 - $space-20);
       }
       .portfolio-text {
         @include headline6;

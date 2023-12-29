@@ -43,7 +43,7 @@
           <AButton
             v-show="hyperLink !== ''"
             button-variant="ghost"
-            use-icon
+            use-leading
             icon-name="line-md:remove"
             :icon-size="18"
             @click:button="() => hyperLink = ''"

@@ -7,8 +7,41 @@
 */
 .portfolio {
   position: relative;
-  padding-top: $space-100;
+  max-width: $space-1000;
   width: $space-80vw;
   margin: 0 auto;
+  padding: calc($space-100 + $space-20) $space-8 $space-40;
   overflow: auto;
+  .flicking-viewport {
+    margin-bottom: $space-30;
+    .flicking-camera {
+      padding-bottom: $space-50;
+    }
+    .portfolio-picture {
+      margin: $space-10;
+      width: $space-200;
+      height: $space-200;
+      border-radius: $space-8;
+      border: $space-4 solid var(--d-bg-side-color);
+      transition: border .3s;
+      &:hover {
+        border: $space-4 solid $d-color-05-light;
+      }
+      .portfolio-image {
+        width: calc($space-200 - $space-8);
+        height: calc($space-200 - $space-8);
+        object-fit: cover;
+        border-radius: $space-4;
+      }
+    }
+  }
+  .card-title {
+    @include headline3;
+  }
+  .card-description {
+    @include headline6;
+  }
+  .card-image {
+    cursor: pointer;
+  }
 }

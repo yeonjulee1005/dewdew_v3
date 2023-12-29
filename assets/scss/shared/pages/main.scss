@@ -17,6 +17,9 @@
     opacity: 0;
     transition: opacity .75s;
     animation: motion .5s ease-in .5s infinite alternate;
+    &.activate {
+      opacity: 1;
+    }
     @keyframes motion {
       0% { margin-bottom: 0; }
       100% { margin-bottom: $space-10; }

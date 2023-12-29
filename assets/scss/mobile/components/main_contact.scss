@@ -9,13 +9,18 @@
     flex-direction: column;
     align-items: center;
     width: $space-percent-100;
-    .kakaotalk {
+    .social {
+      width: $space-90vw;
       margin-bottom: $space-30;
+      span {
+        font-size: $space-12;
+      }
     }
     .email {
+      width: $space-90vw;
       margin-top: $space-40;
       .email-form {
-        width: $space-300;
+        width: $space-90vw;
       }
     }
   }

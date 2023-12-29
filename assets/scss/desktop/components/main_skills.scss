@@ -25,13 +25,12 @@
   }
   .skill-list {
     .skills-text {
+      width: calc($space-200 - $space-20);
       @include headline5;
     }
     .frontend-list,
     .backend-list,
     .tools-list {
-      width: fit-content;
-      height: fit-content;
       padding: $space-30;
     }
   }

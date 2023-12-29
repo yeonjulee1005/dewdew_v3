@@ -23,7 +23,7 @@
           <template #trailing>
             <AButton
               button-variant="ghost"
-              use-icon
+              use-leading
               icon-name="charm:refresh"
               :icon-size="18"
               @click:button="formData.name = generateCommentName()"
@@ -63,7 +63,7 @@
               <AButton
                 v-show="formData.password !== ''"
                 button-variant="ghost"
-                use-icon
+                use-leading
                 icon-name="line-md:remove"
                 :icon-size="18"
                 @click:button="() => formData.password = ''"

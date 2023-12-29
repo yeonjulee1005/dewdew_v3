@@ -11,24 +11,24 @@
           v-if="title"
           class="flex flex-align-center flex-space-between"
         >
-          <span>
+          <span :class="dialogTitleClass">
             {{ title }}
           </span>
           <AButton
             color="violet"
             button-variant="ghost"
-            use-icon
+            use-leading
             icon-name="line-md:menu-to-close-alt-transition"
             @click="modalTrigger = false"
           />
         </div>
       </template>
       <slot />
-      <template #footer>
-        <div
-          v-if="!hideDoubleButton"
-          class="A-dialog-double-button flex flex-justify-end gap-16 "
-        >
+      <template
+        v-if="!hideDoubleButton"
+        #footer
+      >
+        <div class="A-dialog-double-button flex flex-justify-end gap-16 ">
           <AButton
             v-if="!hideFirstButton"
             :button-disabled="disableFirstButton"
@@ -57,6 +57,7 @@ const props = withDefaults(
     dialogTrigger?: boolean,
     fullScreen?: boolean,
     preventClose?: boolean,
+    dialogTitleClass?: string,
     title?: string,
     doubleFirstText?: string,
     doubleSecondText?: string,
@@ -69,6 +70,7 @@ const props = withDefaults(
     dialogTrigger: false,
     fullScreen: false,
     preventClose: false,
+    dialogTitleClass: '',
     title: '',
     doubleFirstText: '',
     doubleSecondText: '',

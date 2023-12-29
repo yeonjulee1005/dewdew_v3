@@ -15,9 +15,6 @@
 /**
 * * Mixins Style *
 */
-.activate {
-  opacity: 1 !important;
-}
 @mixin skills {
   position: absolute;
   width: $space-100;
@@ -128,6 +125,7 @@
   img {
     max-width: $space-percent-80;
     height: auto;
+    pointer-events: none;
   }
   blockquote {
     margin: 0 $space-10;

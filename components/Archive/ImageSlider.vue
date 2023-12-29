@@ -99,7 +99,7 @@ const option = {
   inputType: ['touch', 'mouse'],
   circular: true,
   circularFallback: 'bound',
-  deceleration: 0.01
+  deceleration: 0.004
 }
 
 watch(() => width.value, () => {

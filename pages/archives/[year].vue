@@ -5,8 +5,9 @@
       button-size="lg"
       button-variant="ghost"
       button-label="back"
-      use-icon
+      use-leading
       icon-name="line-md:arrow-small-left"
+      :button-text="$t('archives.back')"
       @click:button="navigateTo('/archives')"
     />
     <ArchiveImageSlider

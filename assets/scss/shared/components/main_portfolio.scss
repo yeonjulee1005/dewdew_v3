@@ -9,9 +9,12 @@
   width: $space-1000;
   max-width: $space-90vw;
   height: fit-content;
-  margin: $space-300 auto $space-300;
+  margin: $space-300 auto $space-100;
   transition: opacity .9s;
   opacity: 0;
+  &.activate {
+    opacity: 1;
+  }
   .section-title {
     @include headline1;
   }
@@ -48,30 +51,47 @@
   }
   .portfolio-background {
     position: absolute;
+    border-radius: $space-percent-50;
+    z-index: -10;
+  }
+  .portfolio-background-1 {
     top: $space-minus-200;
     left: $space-minus-400;
     width: calc($space-700 + $space-40);
     height: calc($space-700 + $space-40);
-    opacity: 0.15;
-    background-color: var(--d-color-17);
-    border-radius: $space-percent-50;
-    z-index: -10;
-    &:last-child {
-      top: calc($space-200 + $space-50);
-      left: calc($space-700 + $space-40);
-      width: $space-400;
-      height: $space-400;
-      opacity: 0.15;
-      background-color: var(--d-color-09);
-      border-radius: $space-400;
-    }
+    opacity: 0.2;
+    background-color: var(--d-color-13);
+  }
+  .portfolio-background-2 {
+    top: $space-400;
+    right: -$space-100;
+    width: $space-400;
+    height: $space-400;
+    opacity: 0.3;
+    background-color: var(--d-color-06);
+  }
+  .portfolio-background-3 {
+    top: $space-1000;
+    left: calc($space-100 + $space-40);
+    width: $space-700;
+    height: $space-700;
+    opacity: 0.2;
+    background-color: var(--d-color-01);
+  }
+  .portfolio-background-4 {
+    top: $space-700;
+    left: $space-minus-160;
+    width: $space-300;
+    height: $space-300;
+    opacity: 0.4;
+    background-color: var(--d-color-16);
   }
   .portfolio-list {
     width: $space-1000;
     max-width: $space-90vw;
     z-index: 9;
     .portfolio-item {
-      margin: $space-10;
+      margin: $space-20;
       .portfolio-thumb {
         cursor: pointer;
         object-fit: cover;

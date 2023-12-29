@@ -7,34 +7,44 @@
       {{ $t('main.contact') }}
     </div>
     <div class="contact-lists flex flex-row flex-space-between">
-      <div class="kakaotalk flex flex-column flex-align-center flex-space-between">
+      <div class="social flex flex-column flex-align-center flex-space-between gap-4">
         <div class="title mt-default mb-default">
-          {{ $t('main.kakao') }}
+          {{ $t('main.social') }}
         </div>
-        <nuxt-link
-          :to="'https://open.kakao.com/o/subhorMe'"
-          class="image-group flex flex-column flex-align-center"
-          :external="true"
-          target="_blank"
-        >
-          <nuxt-img
-            class="mt-default mb-20"
-            :src="url('kakao_medium.webp', 'assets', 'logo')"
-            width="100"
-            height="100"
-            format="webp"
-            loading="lazy"
-            :alt="$t('main.kakao')"
-            :draggable="false"
-            @contextmenu.prevent
-          />
-          <div class="desc mt-default mb-default">
-            {{ $t('main.contactKakao') }}
-          </div>
-        </nuxt-link>
+        <AButton
+          custom-class="kakao-button"
+          button-size="xl"
+          button-variant="soft"
+          use-leading
+          :image-src="url('kakao_medium.webp', 'assets', 'logo')"
+          :button-text="'https://open.kakao.com/o/subhorMe'.split('https://')[1]"
+          @click:button="navigateTo('https://open.kakao.com/o/subhorMe', { external: true, open: { target: '_blank' } })"
+        />
+        <AButton
+          v-if="socialMenuData"
+          custom-class="linkedin-button"
+          button-size="xl"
+          button-variant="soft"
+          use-leading
+          :icon-name="`line-md:${socialMenuData[1].icon}`"
+          :icon-size="28"
+          :button-text="socialMenuData[1].url.split('https://www.')[1]"
+          @click:button="navigateTo(socialMenuData[1].url, { external: true, open: { target: '_blank' } })"
+        />
+        <AButton
+          v-if="socialMenuData"
+          custom-class="instagram-button"
+          button-size="xl"
+          button-variant="soft"
+          use-leading
+          :icon-name="`line-md:${socialMenuData[2].icon}`"
+          :icon-size="28"
+          :button-text="socialMenuData[2].url.split('https://www.')[1]"
+          @click:button="navigateTo(socialMenuData[2].url, { external: true, open: { target: '_blank' } })"
+        />
         <div />
       </div>
-      <MainEmailContact
+      <MainContactEmail
         :form-title="$t('main.email')"
         :email-key="config.public.emailJsKey"
         :email-template="config.public.emailJSsTemplate"
@@ -47,6 +57,8 @@
 
 const config = useRuntimeConfig()
 const { url } = useImageStorage()
+
+const { socialMenuData } = storeToRefs(useMenuStore())
 
 withDefaults(
   defineProps<{

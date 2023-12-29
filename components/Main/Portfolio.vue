@@ -31,45 +31,44 @@
       <div
         v-for="item in portfolioImageData"
         :key="item.url"
-        class="portfolio-item flex flex-column"
+        class="portfolio-item flex flex-column flex-justify-center flex-align-center"
+        @click="navigatePortfolio(item)"
       >
-        <div
-          class="portfolio-item flex flex-column flex-align-center"
-          @click="navigatePortfolio(item)"
-        >
-          <nuxt-img
-            class="portfolio-thumb"
-            :src="item.image"
-            width="200"
-            height="200"
-            format="webp"
-            loading="lazy"
-            fit="cover"
-            :alt="item.alt"
-            :draggable="false"
-            @contextmenu.prevent
-          />
-          <span class="portfolio-text mt-default">
-            {{ item.title }}
-          </span>
-        </div>
+        <nuxt-img
+          class="portfolio-thumb"
+          :src="item.image"
+          width="200"
+          height="200"
+          format="webp"
+          loading="lazy"
+          fit="cover"
+          :alt="item.alt"
+          :draggable="false"
+          @contextmenu.prevent
+        />
+        <span class="portfolio-text mt-default">
+          {{ locale === 'ko' ? item.title.ko : item.title.en }}
+        </span>
       </div>
     </div>
     <div
-      v-for="item in 2"
-      :key="item"
+      v-for="count in 4"
+      :key="count"
       class="portfolio-background"
+      :class="`portfolio-background-${count}`"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 
+const { locale } = useLocale()
+
 const { selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
 withDefaults(
   defineProps<{
-    portfolioImageData: { orderIndex: {index: number }, title: string, desc: string, url: string, image: string, thumbnail: string, alt: string, deleted: boolean }[] | null | undefined,
+    portfolioImageData: { orderIndex: {index: number }, title: { ko: string, en: string }, description: { ko: string, en: string }, url: string, image: string, thumbnail: string, alt: string, deleted: boolean }[] | null | undefined,
     portfolioTrigger?: boolean
   }>(),
   {
