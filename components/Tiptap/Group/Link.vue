@@ -1,7 +1,7 @@
 <template>
   <DDPopover :mode="isDesktop ? 'click' : 'hover'">
     <AButton
-      use-icon
+      use-leading
       button-size="xs"
       icon-name="ri:attachment-2"
     />

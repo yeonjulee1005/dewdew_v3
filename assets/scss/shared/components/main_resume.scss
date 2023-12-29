@@ -11,6 +11,9 @@
   height: fit-content;
   transition: opacity .9s;
   opacity: 0;
+  &.activate {
+    opacity: 1;
+  }
   .resume-container {
     width: $space-percent-100;
     height: auto;

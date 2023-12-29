@@ -18,7 +18,7 @@
         </div>
         <AButton
           round-button
-          use-icon
+          use-leading
           icon-name="line-md:close-small"
           @click:button="openPasswordDialog(comment)"
         />

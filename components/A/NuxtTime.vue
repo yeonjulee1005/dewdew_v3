@@ -20,11 +20,12 @@ const { locale } = useLocale()
 
 withDefaults(
   defineProps<{
-    dateTime: string,
+    dateTime?: string,
     customClass?: string,
     fullDateTime?: boolean
   }>(),
   {
+    dateTime: '',
     customClass: 'time flex mb-default',
     fullDate: true
   }

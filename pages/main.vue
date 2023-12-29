@@ -72,9 +72,9 @@ const mobile = (scrollY:number) => {
   mainResumeTrigger.value = scrollY > 200 && scrollY < 1400
   mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
   mainSkillsBgTrigger.value = scrollY > 1300 && scrollY < 2900
-  mainSkillsListTrigger.value = scrollY > 3000 && scrollY < 7700
-  referenceListTrigger.value = scrollY > 7700 && scrollY < 12800
-  contactTrigger.value = scrollY > 12900
+  mainSkillsListTrigger.value = scrollY > 2400 && scrollY < 5500
+  referenceListTrigger.value = scrollY > 5100 && scrollY < 10800
+  contactTrigger.value = scrollY > 10700
 }
 
 const tablet = (scrollY:number) => {
@@ -82,11 +82,11 @@ const tablet = (scrollY:number) => {
   mainTextTrigger.value = scrollY < 500
   scrollDownTrigger.value = scrollY < 200
   mainResumeTrigger.value = scrollY > 300 && scrollY < 1600
-  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
-  mainSkillsBgTrigger.value = scrollY > 1200 && scrollY < 4000
-  mainSkillsListTrigger.value = scrollY > 2700 && scrollY < 7700
-  referenceListTrigger.value = scrollY > 7700 && scrollY < 10000
-  contactTrigger.value = scrollY > 10100
+  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2500
+  mainSkillsBgTrigger.value = scrollY > 1200 && scrollY < 3500
+  mainSkillsListTrigger.value = scrollY > 2700 && scrollY < 5600
+  referenceListTrigger.value = scrollY > 5700 && scrollY < 8200
+  contactTrigger.value = scrollY > 8000
 }
 
 const desktop = (scrollY:number) => {
@@ -96,9 +96,9 @@ const desktop = (scrollY:number) => {
   mainResumeTrigger.value = scrollY > 150 && scrollY < 1250
   mainSkillsTextTrigger.value = scrollY > 1300 && scrollY < 2200
   mainSkillsBgTrigger.value = scrollY > 900 && scrollY < 3000
-  mainSkillsListTrigger.value = scrollY > 2300 && scrollY < 5500
-  referenceListTrigger.value = scrollY > 5800 && scrollY < 7300
-  contactTrigger.value = scrollY > 7400
+  mainSkillsListTrigger.value = scrollY > 2300 && scrollY < 3800
+  referenceListTrigger.value = scrollY > 3600 && scrollY < 5800
+  contactTrigger.value = scrollY > 5600
 }
 
 loadStackData()

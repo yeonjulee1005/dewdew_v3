@@ -6,43 +6,38 @@
       :skills-bg-trigger="skillsBgTrigger"
     />
     <div
-      class="skill-list flex flex-row flex-space-evenly flex-align-center"
+      class="skill-list flex flex-align-start"
       :class="{'activate': skillsListTrigger}"
     >
-      <div class="main-skill-list flex flex-column">
-        <div class="frontend-list flex flex-column flex-justify-center mb-40">
-          <span class="skill-title-text flex flex-column">
-            {{ skillTitleList.frontEndTitle }}
-          </span>
-          <div
-            v-for="item in frontEnd"
-            :key="item.title"
-          >
-            <MainSkillsProgress :progress-data="item" />
-          </div>
-        </div>
-        <div class="backend-list flex flex-column flex-justify-center mb-40">
-          <span class="skill-title-text flex flex-column">
-            {{ skillTitleList.backEndTitle }}
-          </span>
-          <div
-            v-for="item in backEnd"
-            :key="item.title"
-          >
-            <MainSkillsProgress :progress-data="item" />
-          </div>
-        </div>
+      <div class="frontend-list flex flex-column flex-justify-center">
+        <span class="skill-title-text flex flex-column">
+          {{ skillTitleList.frontEndTitle }}
+        </span>
+        <MainSkillsProgress
+          v-for="item in frontEnd"
+          :key="item.title"
+          :progress-data="item"
+        />
       </div>
-      <div class="tools-list flex flex-column flex-justify-center mb-40">
+      <div class="backend-list flex flex-column flex-justify-center">
+        <span class="skill-title-text flex flex-column">
+          {{ skillTitleList.backEndTitle }}
+        </span>
+        <MainSkillsProgress
+          v-for="item in backEnd"
+          :key="item.title"
+          :progress-data="item"
+        />
+      </div>
+      <div class="tools-list flex flex-column flex-justify-center">
         <span class="skill-title-text flex flex-column">
           {{ skillTitleList.toolsTitle }}
         </span>
-        <div
+        <MainSkillsProgress
           v-for="item in devOps"
           :key="item.title"
-        >
-          <MainSkillsProgress :progress-data="item" />
-        </div>
+          :progress-data="item"
+        />
       </div>
     </div>
   </div>

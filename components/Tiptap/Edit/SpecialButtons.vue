@@ -3,7 +3,7 @@
     <AButton
       custom-class="menu-item"
       :button-disabled="disabled"
-      use-icon
+      use-leading
       button-size="xs"
       :icon-name="iconType"
       @click:button="clickAction"

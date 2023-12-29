@@ -9,6 +9,7 @@
     <TechAddOn
       :article-id="techId"
       :data="techDetailData"
+      :estimate-read-time="estimateReadingTime(techDetailData.desc)"
       :activate-like="techBlogLikeTrigger"
       @update-count="updateLikeCount"
     />
@@ -45,12 +46,13 @@ const user = useSupabaseUser()
 const { y } = useWindowScroll()
 
 const { t } = useLocale()
+const { path, params } = useRoute()
 
 const { insertData, upsertData, deleteData } = useFetchComposable()
 
 const { clickedTechArticle, adminAccess } = storeToRefs(useTechStore())
 
-const { path, params } = useRoute()
+const { estimateReadingTime } = useUi()
 const toast = useToast()
 
 const techId = computed(() => {

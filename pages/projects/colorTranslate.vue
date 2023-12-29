@@ -6,7 +6,7 @@
     <div class="flex flex-column gap-20">
       <AButton
         custom-class="eye-dropper flex-justify-center"
-        use-icon
+        use-leading
         icon-name="wpf:color-dropper"
         :button-text="$t('colorsTranslate.dropper')"
         @click:button="colorPicker"
@@ -44,14 +44,14 @@
               <AButton
                 v-show="formData.hexColor !== ''"
                 button-variant="ghost"
-                use-icon
+                use-leading
                 icon-name="line-md:remove"
                 :icon-size="18"
                 @click:button="() => formData.hexColor = ''"
               />
               <AButton
                 button-variant="ghost"
-                use-icon
+                use-leading
                 icon-name="line-md:document-add"
                 :icon-size="18"
                 @click:button="copyColor(formData.hexColor)"
@@ -76,7 +76,7 @@
           <template #trailing>
             <AButton
               button-variant="ghost"
-              use-icon
+              use-leading
               icon-name="line-md:document-add"
               :icon-size="18"
               @click:button="copyColor(formData.rgbColor)"
@@ -100,7 +100,7 @@
           <template #trailing>
             <AButton
               button-variant="ghost"
-              use-icon
+              use-leading
               icon-name="line-md:document-add"
               :icon-size="18"
               @click:button="copyColor(formData.hslColor)"
@@ -124,7 +124,7 @@
           <template #trailing>
             <AButton
               button-variant="ghost"
-              use-icon
+              use-leading
               icon-name="line-md:document-add"
               :icon-size="18"
               @click:button="copyColor(formData.cmykColor)"

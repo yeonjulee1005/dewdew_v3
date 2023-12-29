@@ -13,13 +13,25 @@
     @mouseleave="$emit('mouseleave:button')"
   >
     <template
-      v-if="useIcon"
+      v-if="useLeading"
       #leading
     >
       <Icon
+        v-if="iconName"
         :name="iconName"
         :width="iconSize"
         :height="iconSize"
+      />
+      <nuxt-img
+        v-if="imageSrc"
+        :src="imageSrc"
+        format="webp"
+        loading="lazy"
+        :width="imageSize"
+        :height="imageSize"
+        alt="image"
+        :draggable="false"
+        @contextmenu.prevent
       />
     </template>
     <span
@@ -44,9 +56,11 @@ withDefaults(
     buttonSize?: ButtonSize | undefined,
     buttonVariant?: ButtonVariant | undefined,
     buttonLabel?: string,
-    useIcon?: boolean,
+    useLeading?: boolean,
     iconName?: string,
+    imageSrc?: string,
     iconSize?: number,
+    imageSize?: number,
     buttonTextStyle?: string,
     buttonText?: string
   }>(),
@@ -59,9 +73,11 @@ withDefaults(
     buttonSize: 'sm',
     buttonVariant: 'outline',
     buttonLabel: 'button',
-    useIcon: false,
+    useLeading: false,
     iconName: '',
+    imageSrc: '',
     iconSize: 24,
+    imageSize: 36,
     buttonTextStyle: '',
     buttonText: ''
   }
