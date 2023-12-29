@@ -8,15 +8,18 @@
 .color-translate {
   flex-direction: column;
   height: fit-content;
-  .eye-dropper {
-    margin-top: $space-80;
-    span {
-      padding-left: $space-4;
+  .color-picker-group {
+    margin-top: $space-100;
+    width: $space-80vw;
+    .eye-dropper {
+      span {
+        padding-left: $space-4;
+      }
     }
   }
   .color-translate-form {
     width: $space-80vw;
-    margin: $space-80 0;
+    margin: $space-20 0;
   }
   .upload-drag-files {
     width: $space-80vw;

@@ -7,8 +7,11 @@
 */
 .color-translate {
   height: $space-80vh;
+  .color-picker-group {
+    width: $space-400;
+  }
   .color-translate-form {
-    width: $space-300;
+    width: $space-400;
   }
   .upload-drag-files {
     width: $space-400;
