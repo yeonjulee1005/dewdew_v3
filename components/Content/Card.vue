@@ -1,8 +1,5 @@
 <template>
   <div :class="['class']">
-    <ContentSlot
-      :use="$slots.default"
-      unwrap="p"
-    />
+    <ContentSlot :use="$slots.default" />
   </div>
 </template>

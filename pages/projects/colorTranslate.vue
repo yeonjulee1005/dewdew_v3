@@ -3,7 +3,7 @@
     class="color-translate flex flex-row flex-justify-center flex-align-center gap-20"
     :style="formData.backgroundColor"
   >
-    <div class="flex flex-column gap-20">
+    <div class="color-picker-group flex flex-column gap-20">
       <AButton
         custom-class="eye-dropper flex-justify-center"
         use-leading
