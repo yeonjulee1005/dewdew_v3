@@ -27,7 +27,7 @@ head:
 ---
 
 ::card{class="menu-list flex flex-justify-end"}
-- ### [블로그 홈](/blog)
+#### [블로그 홈](/blog)
 ::
 
 # 안녕하세요!
@@ -35,8 +35,9 @@ head:
 ::card{class="content-card"}
 기술 외적인 포스팅을 올리기 위한 색션입니다.<br>
 해당 색션은는 `Nuxt Content`를 이용하여, `markdown`으로 간단하게 작성할 수 있도록 구현하였습니다.
-
+::
 
 ::card{class="menu-list"}
-발행된 블로그 리스트입니다.
-- ### [20231229](/blog/20231229)
+### 발행된 블로그 리스트입니다.<br>
+- ### [2023년을 회고하며...(20231229)](/blog/20231229)
+::

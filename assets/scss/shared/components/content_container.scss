@@ -25,13 +25,29 @@
 
   .menu-list {
     margin-top: $space-20;
-    ul > li {
-      h3 {
-        @include headline5;
-        color: var(--d-yellow-color);
-        transition: color 0.2s ease-in-out;
-        &:hover, &:active {
-          color: var(--d-yellow-color-deep);
+    h3 {
+      @include headline4;
+      margin-bottom: $space-8;
+    }
+    h4 {
+      @include headline5;
+      color: var(--d-yellow-color);
+      transition: color 0.2s ease-in-out;
+      &:hover, &:active {
+        color: var(--d-yellow-color-deep);
+      }
+    }
+    ul {
+      margin: $space-8 $space-16;
+      li {
+        list-style-type: circle;
+        h3 {
+          @include headline5;
+          color: var(--d-yellow-color);
+          transition: color 0.2s ease-in-out;
+          &:hover, &:active {
+            color: var(--d-yellow-color-deep);
+          }
         }
       }
     }
@@ -56,10 +72,24 @@
 
   .content-card {
     padding: $space-10 0;
-    @include headline6;
+    h2 {
+      @include headline3;
+      padding: $space-10 0;
+      color: var(--d-red-color-deep);
+    }
+    h4 {
+      @include headline4;
+      padding: $space-10 0;
+      color: var(--d-blue-color-deep);
+    }
+    p {
+      padding: $space-16 0;
+      @include headline6;
+    }
     ol {
       padding: $space-10 0 $space-10 $space-30;
       margin: unset;
+      list-style-type: numeric;
     }
     blockquote {
       margin: unset;
