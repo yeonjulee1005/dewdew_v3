@@ -6,32 +6,31 @@ export const useSkillData = () => {
   }
 
   const frontEnd = [
-    { title: 'Nuxt3', percent: 90, emoji: '🚀' },
-    { title: 'Nuxt2', percent: 90, emoji: '🚀' },
+    { title: 'Nuxt2/3', percent: 90, emoji: '🚀' },
     { title: 'Vue2/3', percent: 85, emoji: '🚀' },
-    { title: 'Astro', percent: 25, emoji: '📖' },
-    { title: 'React', percent: 25, emoji: '📖' },
-    { title: 'Next.js', percent: 20, emoji: '📖' },
+    { title: 'Astro', percent: 30, emoji: '📖' },
+    { title: 'React', percent: 15, emoji: '📖' },
+    { title: 'Next.js', percent: 10, emoji: '📖' },
     { title: 'TypeScript', percent: 65, emoji: '💻' },
     { title: 'JavaScript', percent: 80, emoji: '🚀' },
-    { title: 'SASS/SCSS', percent: 90, emoji: '🚀' },
+    { title: 'SASS/SCSS', percent: 80, emoji: '🚀' },
     { title: 'element-plus', percent: 90, emoji: '🚀' },
     { title: 'Tailwind CSS', percent: 60, emoji: '🚀' },
     { title: 'HTML5', percent: 90, emoji: '🚀' },
     { title: 'CSS3', percent: 80, emoji: '🚀' },
-    { title: 'bun', percent: 50, emoji: '💻' },
-    { title: 'Swift', percent: 20, emoji: '📖' },
-    { title: 'Flutter', percent: 25, emoji: '📖' }
+    { title: 'Swift', percent: 10, emoji: '📖' },
+    { title: 'Flutter', percent: 15, emoji: '📖' }
   ]
 
   const backEnd = [
     { title: 'Supabase', percent: 80, emoji: '🚀' },
-    { title: 'Deno', percent: 10, emoji: '📖' },
-    { title: 'Docker', percent: 10, emoji: '💻' },
-    { title: 'Kubernetes', percent: 5, emoji: '📖' },
     { title: 'Express', percent: 60, emoji: '💻' },
     { title: 'Node.js', percent: 60, emoji: '💻' },
+    { title: 'bun', percent: 50, emoji: '💻' },
+    { title: 'Deno', percent: 10, emoji: '📖' },
     { title: 'PostgreSQL', percent: 50, emoji: '💻' },
+    { title: 'Docker', percent: 10, emoji: '💻' },
+    { title: 'Kubernetes', percent: 5, emoji: '📖' },
     { title: 'Python', percent: 15, emoji: '📖' }
   ]
 

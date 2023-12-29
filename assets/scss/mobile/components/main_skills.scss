@@ -36,14 +36,14 @@
       width: $space-percent-100;
     }
     .skills-text {
+      width: $space-160;
       @include headline6;
     }
     .frontend-list,
     .backend-list,
     .tools-list {
-      width: $space-percent-80;
+      width: $space-90vw;
       height: fit-content;
-      margin: 0 auto $space-40;
       padding: $space-20;
       .el-progress {
         width: $space-percent-100 !important;

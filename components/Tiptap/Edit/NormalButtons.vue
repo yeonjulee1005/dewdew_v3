@@ -2,7 +2,7 @@
   <DDTooltip :text="tooltipText">
     <AButton
       :custom-class="`menu-item ${isActive ? 'is-active' : ''}}`"
-      use-icon
+      use-leading
       button-size="xs"
       :icon-name="iconType"
       @click:button="clickAction"

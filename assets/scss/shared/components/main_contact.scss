@@ -9,24 +9,23 @@
   max-width: $space-1200;
   width: $space-90vw;
   height: fit-content;
-  margin: $space-300 auto $space-100;
+  margin: $space-200 auto $space-200;
   transition: opacity .9s;
   opacity: 0;
   .contact-title {
     @include headline1;
   }
   .contact-lists {
-    .kakaotalk {
+    .social {
       width: $space-percent-50;
       .title {
         @include headline3;
-        color: var(--d-yellow-color);
+        color: var(--d-green-color);
       }
-      .image-group {
-        text-decoration: none;
-        .desc {
-          @include headline6;
-        }
+      .kakao-button,
+      .linkedin-button,
+      .instagram-button {
+        width: $space-percent-100;
       }
     }
     .email {
@@ -39,5 +38,8 @@
         width: $space-300;
       }
     }
+  }
+  &.activate {
+    opacity: 1;
   }
 }

@@ -5,10 +5,13 @@
 * *  Common *
 */
 .content-container {
+  max-width: $space-1000;
+  width: $space-90vw;
   margin: 0 auto;
   padding: $space-100 $space-20;
   h1 {
-    padding: $space-20;
+    @include headline1;
+    padding: $space-20 $space-10;
   }
 
   li, p, span {
@@ -21,41 +24,79 @@
   }
 
   .menu-list {
-    margin: 0 0 $space-20 $space-30;
-    ul {
-      li {
-        margin-bottom: $space-30;
-        &:last-child {
-          margin-bottom: 0;
-        }
-        &:hover {
-          color: $d-green-color-light;
+    margin-top: $space-20;
+    ul > li {
+      h3 {
+        @include headline5;
+        color: var(--d-yellow-color);
+        transition: color 0.2s ease-in-out;
+        &:hover, &:active {
+          color: var(--d-yellow-color-deep);
         }
       }
     }
   }
 
+  .content-navigation {
+    width: fit-content;
+    .navigation-title {
+      @include headline5;
+      color: var(--d-blue-color);
+    }
+    .navigation-link {
+      width: max-content;
+      @include headline6;
+      color: var(--d-text-color);
+      transition: color 0.2s ease-in-out;
+      &:hover, &:active {
+        color: var(--d-text-color-deep);
+      }
+    }
+  }
+
   .content-card {
-    display: flex;
-    flex-direction: column;
-    padding: $space-30 0;
+    padding: $space-10 0;
+    @include headline6;
     ol {
       padding: $space-10 0 $space-10 $space-30;
       margin: unset;
     }
     blockquote {
       margin: unset;
-      padding: 0 0 0 $space-10;
+      padding: $space-4 0 $space-4 $space-10;
+      color: var(--d-text-color-deep);
+      &::before {
+        display: block;
+        position: absolute;
+        @include headline3;
+        content: "\201C";
+      }
+      p {
+        padding: $space-20 0 0 $space-24;
+        font-size: $space-16;
+        line-height: 1;
+        font-weight: 400;
+      }
+    }
+    img {
+      padding: $space-10 0;
+      pointer-events: none;
     }
     ul {
-      margin: $space-8 0;
+      margin: $space-8 $space-16;
+      li {
+        list-style-type: circle;
+      }
     }
     code {
-      font-size: calc($space-12 + $space-2);
       padding: $space-4;
       border-radius: $space-6;
-      background-color: var(--el-border-color);
+      background-color: var(--d-color-04);
       box-decoration-break: clone;
+      font-size: calc($space-12 + $space-2);
+    }
+    hr {
+      margin-top: $space-20;
     }
     pre {
       background-color: var(--el-bg-color);
@@ -146,25 +187,4 @@
       }
     }
   }
-
-  .content-footer {
-    margin: unset;
-    display: flex;
-    flex-direction: column;
-    .menu-list {
-      margin: unset;
-      ul {
-        li {
-          margin-bottom: $space-20;
-          &:last-child {
-            margin-bottom: unset;
-          }
-          &:hover {
-            color: $d-green-color-light;
-          }
-        }
-      }
-    }
-  }
-
 }

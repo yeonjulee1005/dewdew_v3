@@ -102,9 +102,12 @@ export default {
       background: 'PROJECTS'
     },
     contact: 'CONTACT',
-    kakao: 'Kakao Talk',
-    email: 'Email',
-    contactKakao: 'Contact to kakao'
+    social: 'Social Contact',
+    kakao: {
+      title: 'Kakao Talk',
+      contact: 'Contact to kakao'
+    },
+    email: 'Email'
   },
   colorsTranslate: {
     dropper: 'Dropper',
@@ -130,7 +133,8 @@ export default {
     articleTitle: '글제목',
     article: '컨텐츠',
     commentTitle: '댓글',
-    password: '비밀번호'
+    password: '비밀번호',
+    estimateReadTime: '{time} minutes'
   },
   dialog: {
     magicLinkTitle: 'Please enter your email!'

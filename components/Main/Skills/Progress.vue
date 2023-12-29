@@ -1,8 +1,8 @@
 <template>
-  <div class="flex-align-center">
-    <span class="skills-text">
+  <div class="flex flex-align-end gap-4 mb-8">
+    <p class="skills-text">
       {{ progressData.title }}
-    </span>
+    </p>
     <AProgressBar
       custom-class="progress"
       :count="progressData.percent"

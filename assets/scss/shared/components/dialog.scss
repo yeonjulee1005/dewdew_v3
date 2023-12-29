@@ -1,0 +1,19 @@
+@use '../../variables' as *;
+
+/**
+* ! Dialog Style !
+*a
+* ? Shared ?
+*/
+
+.archive-dialog {
+  .archive-dialog-title {
+    @include headline4;
+  }
+  .archive-image {
+    img {
+      max-height: $space-90vh;
+      cursor: pointer;
+    }
+  }
+}

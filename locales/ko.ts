@@ -101,9 +101,12 @@ export default {
       background: 'PROJECTS'
     },
     contact: 'CONTACT',
-    kakao: 'Kakao Talk',
-    email: 'Email',
-    contactKakao: '카카오톡으로 연락하기'
+    social: 'Social Contact',
+    kakao: {
+      title: 'Kakao Talk',
+      contact: '카카오톡으로 연락하기'
+    },
+    email: 'Email'
   },
   colorsTranslate: {
     dropper: '스포이드',
@@ -120,7 +123,7 @@ export default {
   },
   archives: {
     title: 'Dewdew History',
-    back: 'Back',
+    back: '뒤로가기',
     historyTitle: 'HISTORY OF'
   },
   tech: {
@@ -129,7 +132,8 @@ export default {
     articleTitle: '글제목',
     article: '컨텐츠',
     commentTitle: '댓글',
-    password: '비밀번호'
+    password: '비밀번호',
+    estimateReadTime: '{time}분'
   },
   pwa: {
     readyPwa: 'PWA를 사용할 준비가 됬어요!',

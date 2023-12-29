@@ -9,10 +9,16 @@
   max-width: $space-1200;
   width: $space-90vw;
   height: fit-content;
-  margin: $space-600 auto $space-600;
+  margin: $space-600 auto $space-100;
+  &.activate {
+    opacity: 1;
+  }
   .skill-images {
     transition: opacity .9s;
     opacity: 0;
+    &.activate {
+      opacity: 1;
+    }
     .azure {
       @include skills;
       top: $space-160;
@@ -270,6 +276,9 @@
     z-index: 9;
     transition: opacity .9s, all .3s;
     opacity: 0;
+    &.activate {
+      opacity: 1;
+    }
     &.reverse {
       transform-style: preserve-3d;
       transform: rotateY(180deg);
@@ -311,36 +320,28 @@
     transition: opacity .9s;
     opacity: 0;
     z-index: 9;
+    &.activate {
+      opacity: 1;
+    }
     .skill-title-text {
-      width: calc($space-300 + $space-60);
-      margin-bottom: $space-30;
-      @include headline2;
+      margin-bottom: $space-10;
+      @include headline3;
       text-align: left;
-    }
-    .skills-text {
-      width: $space-100;
-      margin-bottom: $space-20;
-    }
-    .progress {
-      margin-bottom: $space-20;
     }
     .frontend-list,
     .backend-list,
     .tools-list {
       padding: $space-20;
-      box-shadow: $space-2 $space-2 $space-4 var(--d-bg-sub-color), -2px -2px $space-4 var(--d-bg-main-color);
+      width: $space-percent-40;
     }
     .frontend-list {
-      background-color: var(--d-color-06-deep);
+      background-color: var(--d-color-15-deep);
     }
     .backend-list {
-      background-color: var(--d-color-04-deep);
+      background-color: var(--d-color-12-deep);
     }
     .tools-list {
-      background-color: var(--d-color-18-deep);
+      background-color: var(--d-color-03-deep);
     }
-  }
-  .skill-list-on {
-    opacity: 1;
   }
 }

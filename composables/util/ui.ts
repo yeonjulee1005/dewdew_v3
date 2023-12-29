@@ -37,6 +37,13 @@ export const useUi = () => {
     return text.toLowerCase().includes(search.toLowerCase())
   }
 
+  const estimateReadingTime = (text:string) => {
+    const wpm = 225
+    const words = text.trim().split(/\s+/).length
+    const time = Math.ceil(words / wpm)
+    return time
+  }
+
   const copyClipBoard = async (val:string) => {
     try {
       await navigator.clipboard.writeText(val)
@@ -112,6 +119,7 @@ export const useUi = () => {
     checkEmail,
     checkPassword,
     textInclude,
+    estimateReadingTime,
     copyClipBoard,
     randomOrder,
     removeHtmlTags,

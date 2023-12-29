@@ -25,6 +25,9 @@
     z-index: 9;
     opacity: 0;
     transition: opacity .75s;
+    &.activate {
+      opacity: 1;
+    }
   }
   .main-text-group {
     position: absolute;
@@ -35,6 +38,9 @@
     z-index: 9;
     opacity: 0;
     transition: opacity .75s;
+    &.activate {
+      opacity: 1;
+    }
     .text {
       @include headline4;
       word-break: keep-all;

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await client
     .from('portfolio')
-    .select('orderIndex!inner(index), title, desc, url, image, thumbnail, alt, deleted')
+    .select('orderIndex!inner(index), title(ko, en), description(ko, en), url, image, thumbnail, alt, deleted')
     .eq('deleted', false)
     .order('orderIndex(index)', { ascending: true })
 

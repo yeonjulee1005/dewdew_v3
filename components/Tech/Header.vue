@@ -1,5 +1,5 @@
 <template>
-  <div class="article-header flex flex-column flex-space-between gap-20">
+  <div class="article-header flex flex-column flex-space-between gap-20 mb-default">
     <nuxt-link
       class="route-back flex flex-row flex-align-center gap-20"
       to="/tech"
