@@ -28,10 +28,10 @@ loadMenuData('sub')
 loadMenuData('sns')
 
 useSeoMeta({
-  viewport: 'width=device-width, initial-scale=1.0',
+  viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
   formatDetection: 'telephone=no',
   themeColor: '#705757',
-  keywords: 'developer,develop,web,portfolio,개발자,FE웹개발자,웹개발자,포트폴리오,개발자 포트폴리오',
+  keywords: 'developer,develop,web,portfolio,개발자,FE웹개발자,웹개발자,포트폴리오,개발자 포트폴리오,프론트앤드 포트폴리오',
   title: seoTitle,
   author: 'Dewdew',
   description: seoDescription,

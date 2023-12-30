@@ -6,7 +6,7 @@
 * ? Shared ?
 */
 .main {
-  overflow: hidden;
+  overflow: clip;
   .scroll-down {
     position: absolute;
     width: $space-percent-100;
