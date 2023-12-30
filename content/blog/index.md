@@ -1,6 +1,5 @@
 ---
 title: Blog Home
-date: 2023-12-10
 authors:
   - name: "개발자 이연주"
     avatarUrl: https://avatars.githubusercontent.com/u/57179957?v=4
@@ -25,10 +24,6 @@ head:
     - name: 'copyright'
       content: '© 2023 Dewdew'
 ---
-
-::card{class="menu-list flex flex-justify-end"}
-#### [블로그 홈](/blog)
-::
 
 # 안녕하세요!
 

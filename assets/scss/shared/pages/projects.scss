@@ -10,7 +10,7 @@
   max-width: $space-800;
   height: $space-80vh;
   margin: 0 auto;
-  overflow: auto;
+  overflow: clip;
   .project-list {
     text-decoration: none;
     padding: $space-16;

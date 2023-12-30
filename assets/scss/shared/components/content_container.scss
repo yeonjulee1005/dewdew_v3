@@ -9,6 +9,12 @@
   width: $space-90vw;
   margin: 0 auto;
   padding: $space-100 $space-20;
+
+  .time {
+    @include headline5;
+    color : var(--d-red-color);
+  }
+
   h1 {
     @include headline1;
     padding: $space-20 $space-10;
@@ -85,6 +91,10 @@
     p {
       padding: $space-16 0;
       @include headline6;
+      strong {
+        font-weight: 900;
+        color: var(--d-text-color-deep);
+      }
     }
     ol {
       padding: $space-10 0 $space-10 $space-30;
@@ -109,7 +119,8 @@
       }
     }
     img {
-      padding: $space-10 0;
+      padding: $space-20 0;
+      width: $space-percent-100;
       pointer-events: none;
     }
     ul {
@@ -134,7 +145,7 @@
       font-family: HackRegular, JetBrainsMono, monospace;
       padding: 0.75rem 1rem;
       border-radius: 0.5rem;
-      overflow: scroll;
+      overflow: clip;
       code {
         color: inherit;
         padding: 0;
@@ -192,7 +203,7 @@
       border-collapse: collapse;
       table-layout: fixed;
       margin: 0 0 $space-20 $space-30;
-      overflow: hidden;
+      overflow: clip;
       td,
       th {
         min-width: $space-100;

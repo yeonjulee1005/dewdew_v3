@@ -84,8 +84,10 @@ export const useUi = () => {
 
   const badgeColor = (likeCount:number) => {
     if (likeCount === 0) {
+      return 'red'
+    } else if (likeCount > 0 && likeCount < 10) {
       return 'orange'
-    } else if (likeCount > 0 && likeCount < 20) {
+    } else if (likeCount >= 10 && likeCount < 20) {
       return 'yellow'
     } else if (likeCount >= 20 && likeCount < 50) {
       return 'emerald'

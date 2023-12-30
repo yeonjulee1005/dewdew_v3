@@ -1,27 +1,19 @@
 <template>
-  <DDCard class="tech-card">
+  <DDCard class="tech-card mt-6 mb-4">
     <template #header>
       <div class="card-title flex flex-row flex-align-center gap-8">
         <span class="title">
           {{ cardItem.title }}
         </span>
       </div>
-      <div class="card-sub-head flex flex-justify-end mt-2 space-x-2">
-        <DDBadge
-          :color="badgeColor(cardItem.like)"
-          size="md"
-          variant="soft"
-        >
-          {{ cardItem.like + ' ❤️' }}
-        </DDBadge>
-        <DDBadge
-          :color="badgeColor(cardItem.view_count ?? 0)"
-          size="md"
-          variant="soft"
-        >
-          {{ (cardItem.view_count ?? 0) + ' 👀' }}
-        </DDBadge>
-      </div>
+      <TechAddOn
+        add-on-class="tech-add-on flex flex-wrap flex-align-center flex-justify-end gap-2 mt-8"
+        :article-id="cardItem.id"
+        :data="cardItem"
+        use-nuxt-time
+        badge-size="xs"
+        :estimate-read-time="estimateReadingTime(cardItem.desc)"
+      />
     </template>
     <div class="desc">
       {{ cardItem.raw_article }}
@@ -31,7 +23,7 @@
 
 <script setup lang="ts">
 
-const { badgeColor } = useUi()
+const { estimateReadingTime } = useUi()
 
 defineProps<{
   cardItem: SerializeObject

@@ -14,24 +14,28 @@
     margin-top: $space-100;
     overflow-y: auto;
   }
-  .articles {
+  .tech-card {
     max-height: $space-60vh;
     width: $space-80vw;
-    .tech-card {
-      cursor: pointer;
-      .title {
-        @include headline4;
-      }
-      .desc {
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+    cursor: pointer;
+    .title {
+      @include headline4;
+    }
+    .tech-add-on {
+      .time {
         @include headline6;
+        color : var(--d-green-color);
       }
     }
-    .tech-pagination {
-      height: $space-60;
+    .desc {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: clip;
+      @include headline6;
     }
+  }
+  .tech-pagination {
+    height: $space-60;
   }
 }
