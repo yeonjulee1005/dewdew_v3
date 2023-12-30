@@ -26,7 +26,7 @@
     }
     .time {
       width: fit-content;
-      @include headline7;
+      @include headline6;
     }
   }
   .button-group {
@@ -48,9 +48,7 @@
     max-width: $space-1000;
     height: fit-content;
     padding: $space-30 $space-20;
-    background-color: var(--d-bg-main-color);
-    box-shadow: $space-1 $space-1 $space-2 var(--d-content-bg-color);
-    overflow-y: auto;
+    overflow-y: clip;
     @include tiptap-template;
   }
   .article-comments {
@@ -61,11 +59,11 @@
     padding: $space-20 0;
     border-top: $space-2 solid var(--d-text-dark-color);
     border-bottom: $space-2 solid var(--d-text-dark-color);
+    @include tiptap-template;
     .comments-title {
       margin: $space-20 $space-10;
       @include headline4;
     }
-    @include tiptap-template;
     .message-component {
       .name {
         @include headline6;

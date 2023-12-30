@@ -1,17 +1,15 @@
 <template>
-  <client-only>
-    <NuxtTime
-      :datetime="dateTime"
-      :locale="locale"
-      :class="customClass"
-      :year="fullDateTime ? 'numeric' : '2-digit'"
-      :month="fullDateTime ? 'long' : 'short'"
-      :day="fullDateTime ? 'numeric' : '2-digit'"
-      :hour="fullDateTime ? 'numeric' : '2-digit'"
-      :minute="fullDateTime ? 'numeric' : '2-digit'"
-      :second="fullDateTime ? 'numeric' : '2-digit'"
-    />
-  </client-only>
+  <NuxtTime
+    :datetime="dateTime"
+    :locale="locale"
+    :class="customClass"
+    :year="fullDateTime ? 'numeric' : '2-digit'"
+    :month="fullDateTime ? 'long' : 'short'"
+    :day="fullDateTime ? 'numeric' : '2-digit'"
+    :hour="fullDateTime ? 'numeric' : '2-digit'"
+    :minute="fullDateTime ? 'numeric' : '2-digit'"
+    :second="fullDateTime ? 'numeric' : '2-digit'"
+  />
 </template>
 
 <script setup lang="ts">
@@ -27,7 +25,7 @@ withDefaults(
   {
     dateTime: '',
     customClass: 'time flex mb-default',
-    fullDate: true
+    fullDateTime: true
   }
 )
 

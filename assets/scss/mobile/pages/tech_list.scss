@@ -9,16 +9,14 @@
   .write-button-container {
     margin-left: unset;
   }
-  .articles {
-    padding-left: unset;
-    .tech-card {
-      .card-card-title {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .card-sub-head {
-        width: $space-percent-100;
-      }
+  .tech-card {
+  padding-left: unset;
+    .card-card-title {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .card-sub-head {
+      width: $space-percent-100;
     }
   }
 }

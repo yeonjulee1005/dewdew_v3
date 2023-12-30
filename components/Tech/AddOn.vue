@@ -1,17 +1,25 @@
 <template>
-  <div class="article-add-on flex flex-justify-end mb-default space-x-4">
+  <div :class="addOnClass">
+    <ANuxtTime
+      v-if="useNuxtTime"
+      custom-class="time flex"
+      :date-time="data.created_at"
+      :full-date-time="false"
+    />
     <AButton
       :button-color="badgeColor(data.like)"
       button-variant="outline"
+      :button-size="badgeSize"
       use-leading
       icon-name="line-md:heart"
+      :icon-size="16"
       :button-text="data.like"
       @click="$emit('update-count')"
     />
     <DDBadge
       class="flex gap-2"
       :color="badgeColor(data.view_count ?? 0)"
-      size="md"
+      :size="badgeSize"
       variant="soft"
     >
       <Icon
@@ -25,8 +33,8 @@
     </DDBadge>
     <DDBadge
       class="flex gap-1"
-      color="rose"
-      size="md"
+      :color="badgeColor(estimateReadTime ?? 0)"
+      :size="badgeSize"
       variant="outline"
     >
       <Icon
@@ -42,19 +50,26 @@
 </template>
 
 <script setup lang="ts">
+import type { BadgeSize } from '@nuxt/ui/dist/runtime/types'
 
 const { badgeColor } = useUi()
 
 withDefaults(
   defineProps<{
     articleId: string,
+    addOnClass?: string,
     data: SerializeObject,
     estimateReadTime?: number,
-    activateLike?: boolean
+    useNuxtTime?: boolean,
+    activateLike?: boolean,
+    badgeSize?: BadgeSize | undefined
   }>(),
   {
+    addOnClass: 'article-add-on flex flex-justify-end mb-20 space-x-4',
     estimateReadTime: 0,
-    activateLike: false
+    useNuxtTime: false,
+    activateLike: false,
+    badgeSize: 'sm'
   }
 )
 

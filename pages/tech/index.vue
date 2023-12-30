@@ -12,19 +12,13 @@
         />
       </client-only>
     </div>
-    <div
+    <LazyTechCardComponent
       v-for="(item, index) in techData"
       v-show="count"
       :key="index"
-      class="articles mt-6 mb-4"
+      :card-item="item"
       @click="() => navigateTo(`/tech/${item.id}`)"
-    >
-      <ANuxtTime
-        :date-time="item.created_at"
-        :full-date-time="false"
-      />
-      <LazyTechCardComponent :card-item="item" />
-    </div>
+    />
     <DDPagination
       v-model="currentPage"
       class="flex flex-justify-center m-4 pb-8"
