@@ -135,6 +135,9 @@ export default {
     password: '비밀번호',
     estimateReadTime: '{time}분'
   },
+  blog: {
+    recentPost: '최근 포스트'
+  },
   pwa: {
     readyPwa: 'PWA를 사용할 준비가 됬어요!',
     newContent: '새로운 컨첸츠가 있어요! 업데이트 해주세요!',

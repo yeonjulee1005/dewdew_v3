@@ -1,5 +1,10 @@
 <template>
-  <div class="h-full flex flex-justify-center">
+  <div class="h-full flex flex-column flex-justify-center flex-align-center gap-4">
+    <Icon
+      name="svg-spinners:clock"
+      :width="160"
+      :height="160"
+    />
     <span>
       {{ $t('login.process') }}
     </span>
@@ -9,6 +14,7 @@
 <script setup lang="ts">
 
 const user = useSupabaseUser()
+const client = useSupabaseClient()
 
 const { t } = useLocale()
 
@@ -22,24 +28,27 @@ definePageMeta({
 })
 
 const setUserCoreData = async (userId:string) => {
-  const { data }: SerializeObject = await useFetch('/api/admin', {
-    headers: useRequestHeaders(['cookie']),
-    query: {
-      userId
-    },
-    immediate: true
-  })
+  const { data, error } = await client
+    .from('profiles')
+    .select('admin')
+    .eq('id', userId)
+    .eq('deleted', false)
+    .single()
 
-  data.value.admin
-    ? adminAccess.value = data.value.admin
+  if (error) {
+    throw createError({ statusMessage: error.message })
+  }
+
+  data?.admin
+    ? adminAccess.value = data.admin
     : logout()
 
   toast.add({
-    title: data.value.admin ? t('messages.welcome') : t('messages.notAdmin'),
-    color: data.value.admin ? 'rose' : 'fuchsia',
+    title: data.admin ? t('messages.welcome') : t('messages.notAdmin'),
+    color: data.admin ? 'rose' : 'fuchsia',
     timeout: 3000
   })
-  navigateTo(data.value.admin ? '/tech' : '/')
+  navigateTo(data.admin ? '/tech' : '/')
 }
 
 watch(() => user.value, () => {

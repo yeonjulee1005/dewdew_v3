@@ -12,7 +12,7 @@ export const useTechStore = defineStore('techStoreData', () => {
    */
 
   const currentPage = ref<number>(1)
-  const currentPageSize = ref<number>(3)
+  const currentPageSize = ref<number>(4)
   const clickedTechArticle = ref<string[]>([])
   const adminAccess = ref<boolean>(false)
 

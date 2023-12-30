@@ -6,7 +6,7 @@
     >
       <div class="content-navigation flex flex-column gap-2 mt-20">
         <span class="navigation-title">
-          {{ '최근 포스트' }}
+          {{ $t('blog.recentPost') }}
         </span>
         <NuxtLink
           v-for="(link, index) of navigation[0].children"
@@ -19,7 +19,18 @@
         </NuxtLink>
       </div>
     </ContentNavigation>
-    <ContentDoc class="w-full" />
+    <ContentDoc v-slot="{ doc }">
+      <div class="flex flex-column flex-align-end w-full">
+        <ANuxtDate
+          v-if="doc.date"
+          :date-time="doc.date"
+        />
+        <ContentRenderer
+          class="w-full"
+          :value="doc"
+        />
+      </div>
+    </ContentDoc>
   </DDContainer>
 </template>
 

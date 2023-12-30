@@ -136,6 +136,9 @@ export default {
     password: '비밀번호',
     estimateReadTime: '{time} minutes'
   },
+  blog: {
+    recentPost: 'Recent Post'
+  },
   dialog: {
     magicLinkTitle: 'Please enter your email!'
   },
