@@ -4,7 +4,7 @@
 
 ## 안녕하세요. FE 개발자 이연주 입니다.
 
-## Current Version: 1.23.0
+## Current Version: 1.24.0
 
 ## 🖥️ 사용한 스킬은 아래와 같습니다.
 
@@ -21,6 +21,7 @@
 9. TypeIt
 10. Vercel
 11. Day.js
+12. Spline
 
 ## Package manager
 
