@@ -23,6 +23,18 @@
 // @ts-ignore
 import { Application } from '@splinetool/runtime'
 
+const { t } = useLocale()
+
+useHead({
+  title: t('pageTitle.hhkb'),
+  meta: [
+    { property: 'description', content: t('openGraph.hhkbDesc') },
+    { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.hhkb') }) },
+    { property: 'og:url', content: 'https://www.dewdew.kr/projects/hhkb/' },
+    { property: 'og:description', content: t('openGraph.hhkbDesc') }
+  ]
+})
+
 const hhkbRef = ref(null)
 
 const state = reactive({
