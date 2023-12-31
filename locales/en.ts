@@ -2,7 +2,8 @@ export default {
   pageTitle: {
     yeonju: 'Developer Yeonju',
     project: 'Project',
-    colorsTranslate: 'Find my color..',
+    colorsTranslate: 'Find my color!',
+    hhkb: 'HHKB Keyboard Modeling',
     blog: 'Blog',
     tech: 'Tech Blog',
     archives: 'Archives'
@@ -14,6 +15,7 @@ export default {
     dewdew: 'Developer Yeonju | {text}',
     projectDesc: '토이 프로젝트 리스트 입니다.',
     colorsTranslateDesc: '잊고 지낸 색상코드를 찾아보세요.',
+    hhkbDesc: 'Spline을 이용한 HHKB 키보드 모델링 입니다.',
     blogDesc: 'FE개발자 이연주의 블로그 입니다.',
     techDesc: 'FE개발자 이연주의 개발 블로그 입니다.',
     archivesDesc: 'FE개발자 이연주의 사진기록 입니다.'
