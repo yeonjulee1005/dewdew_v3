@@ -8,15 +8,17 @@
 .tech-lists {
   position: relative;
   width: $space-100vw;
-  overflow-x: hidden;
+  overflow: clip;
   .write-button-container {
     width: $space-80vw;
+    max-width: $space-1000;
     margin-top: $space-100;
-    overflow-y: auto;
+    overflow-y: clip;
   }
   .tech-card {
     max-height: $space-60vh;
     width: $space-80vw;
+    max-width: $space-1000;
     cursor: pointer;
     .title {
       @include headline4;
