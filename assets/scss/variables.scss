@@ -123,6 +123,7 @@
     border-radius: 0.25em;
     background-color: var(--d-color-04);
     box-decoration-break: clone;
+    line-height: 1.5;
     color: var(--d-text-dark-color);
   }
   pre {
@@ -130,6 +131,7 @@
     font-family: JetBrainsMono, monospace;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
+    text-wrap: pretty;
     code {
       color: inherit;
       padding: 0;
@@ -183,13 +185,14 @@
   table {
     border-collapse: collapse;
     table-layout: fixed;
-    width: $space-percent-50;
+    width: $space-percent-100;
+    max-width: $space-400;
     margin: 0;
     overflow: clip;
     td,
     th {
       min-width: 1em;
-      border: $space-2 solid black;
+      border: $space-2 solid var(--d-text-color-deep);
       padding: $space-2 $space-4;
       vertical-align: top;
       box-sizing: border-box;
@@ -201,7 +204,7 @@
     th {
       font-weight: bold;
       text-align: left;
-      background-color: oldlace;
+      background-color: var(--d-color-18-deep);
     }
     .selectedCell::after {
       z-index: 2;
