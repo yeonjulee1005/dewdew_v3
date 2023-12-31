@@ -1,0 +1,29 @@
+@use '../../variables' as *;
+
+/**
+* ! HHKB Page Style !
+*a
+* ? Shared ?
+*/
+.hhkb {
+  position: relative;
+  max-width: $space-1000;
+  width: $space-80vw;
+  margin: 0 auto;
+  overflow: clip;
+  .hhkb-title {
+    padding: $space-160 $space-20 $space-20;
+    @include headline2;
+  }
+  .hhkb-input {
+    padding: 0 $space-20;
+  }
+  .hhkb-canvas {
+    width: calc($space-percent-100 - 40px) !important;
+    height: $space-50vh !important;
+    margin: $space-20 auto $space-100;
+    overflow: clip;
+    border: $space-2 solid var(--d-yellow-color);
+    border-radius: $space-8;
+  }
+}
