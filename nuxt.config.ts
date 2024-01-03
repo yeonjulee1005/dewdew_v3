@@ -18,6 +18,13 @@ export default defineNuxtConfig({
         { property: 'Imagetoolbar', content: 'no' },
         { name: 'naver-site-verification', content: '7c406de71b03c1e444a4fe2630a29bd7a8e17559' }
       ],
+      script: [
+        {
+          hid: 'spline-viewer',
+          src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
+          type: 'module'
+        }
+      ],
       link: [
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' },
@@ -158,6 +165,15 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'ko',
     strategy: 'no_prefix'
+  },
+  vite: {
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => tag === 'spline-viewer'
+        }
+      }
+    }
   },
   pinia: {
     storesDirs: [
