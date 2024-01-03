@@ -1,7 +1,7 @@
 <template>
   <div class="tech-lists flex flex-column flex-justify-center flex-align-center">
     <div class="write-button-container flex flex-justify-end">
-      <client-only>
+      <ClientOnly>
         <AButton
           v-if="adminAccess"
           custom-class="write-tech-blog"
@@ -10,7 +10,7 @@
           :button-text="$t('texts.write')"
           @click:button="openCreateArticleDialog"
         />
-      </client-only>
+      </ClientOnly>
     </div>
     <LazyTechCardComponent
       v-for="(item, index) in techData"
