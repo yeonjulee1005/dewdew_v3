@@ -34,7 +34,13 @@
         class="portfolio-item flex flex-column flex-justify-center flex-align-center"
         @click="navigatePortfolio(item)"
       >
+        <spline-viewer
+          v-if="item.dynamic_thumbnail"
+          class="portfolio-thumb"
+          :url="item.dynamic_thumbnail"
+        />
         <nuxt-img
+          v-else
           class="portfolio-thumb"
           :src="item.image"
           width="200"
@@ -68,7 +74,7 @@ const { selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
 withDefaults(
   defineProps<{
-    portfolioImageData: { orderIndex: {index: number }, title: { ko: string, en: string }, description: { ko: string, en: string }, url: string, image: string, thumbnail: string, alt: string, deleted: boolean }[] | null | undefined,
+    portfolioImageData: { orderIndex: {index: number }, title: { ko: string, en: string }, description: { ko: string, en: string }, url: string, image: string, dynamic_thumbnail:string, thumbnail: string, alt: string, deleted: boolean }[] | null | undefined,
     portfolioTrigger?: boolean
   }>(),
   {

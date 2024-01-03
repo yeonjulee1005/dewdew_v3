@@ -12,16 +12,16 @@
         :rows="5"
       />
     </div>
-    <canvas
-      ref="hhkbRef"
-      class="hhkb-canvas"
-    />
+    <ClientOnly>
+      <spline-viewer
+        class="hhkb-canvas"
+        :url="splineUrl"
+      />
+    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
-// @ts-ignore
-import { Application } from '@splinetool/runtime'
 
 const { t } = useLocale()
 
@@ -35,27 +35,6 @@ useHead({
   ]
 })
 
-const hhkbRef = ref(null)
-
-const state = reactive({
-  spline: {
-    scene: 'https://prod.spline.design/drAMoZbfLXDCLqRs/scene.splinecode',
-    app: null,
-    isLoaded: false
-  }
-})
-
-onMounted(async () => {
-  try {
-    const app = new Application(hhkbRef.value, {
-      preload: true
-    })
-    await app.load(state.spline.scene)
-    state.spline.app = app
-    state.spline.isLoaded = true
-  } catch (error) {
-    console.error(error)
-  }
-})
+const splineUrl = 'https://prod.spline.design/piJPNSilaNlBFqN6/scene.splinecode'
 
 </script>
