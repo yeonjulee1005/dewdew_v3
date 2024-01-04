@@ -1,57 +1,59 @@
 <template>
   <div class="main-slider-section">
-    <Flicking
-      :plugins="plugin"
-      :options="option"
-      nested-wide
-    >
-      <div
-        v-for="(image, index) in imageData"
-        :key="index"
-        class="flicking-panel p-20"
+    <ClientOnly>
+      <Flicking
+        :plugins="plugin"
+        :options="option"
+        nested-wide
       >
-        <div class="image-component">
-          <nuxt-picture
-            v-if="image?.url"
-            :src="image.url"
-            width="360"
-            height="300"
-            format="webp"
-            loading="lazy"
-            :img-attrs="{class: 'thumbnail'}"
-            :alt="image?.title ?? 'image'"
-            :draggable="false"
-            @contextmenu.prevent
-            @click="mainSliderTrigger ? navigateTo(`/archives/${image?.title ?? ''}`) : $emit('open-dialog', image)"
-          />
-          <div
-            v-if="mainSliderTrigger && image?.url"
-            class="text-group flex flex-column"
-          >
-            <span class="title">
-              {{ $t('archives.historyTitle') }}
-            </span>
-            <span class="subtitle">
-              {{ image?.title }}
-            </span>
+        <div
+          v-for="(image, index) in imageData"
+          :key="index"
+          class="flicking-panel p-20"
+        >
+          <div class="image-component">
+            <nuxt-picture
+              v-if="image?.url"
+              :src="image.url"
+              width="360"
+              height="300"
+              format="webp"
+              loading="lazy"
+              :img-attrs="{class: 'thumbnail'}"
+              :alt="image?.title ?? 'image'"
+              :draggable="false"
+              @contextmenu.prevent
+              @click="mainSliderTrigger ? navigateTo(`/archives/${image?.title ?? ''}`) : $emit('open-dialog', image)"
+            />
+            <div
+              v-if="mainSliderTrigger && image?.url"
+              class="text-group flex flex-column"
+            >
+              <span class="title">
+                {{ $t('archives.historyTitle') }}
+              </span>
+              <span class="subtitle">
+                {{ image?.title }}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <template #viewport>
-        <span
-          v-if="showNavigation"
-          class="flicking-arrow-prev"
-        />
-        <span
-          v-if="showNavigation"
-          class="flicking-arrow-next"
-        />
-        <div
-          v-if="showNavigation"
-          class="flicking-pagination"
-        />
-      </template>
-    </Flicking>
+        <template #viewport>
+          <span
+            v-if="showNavigation"
+            class="flicking-arrow-prev"
+          />
+          <span
+            v-if="showNavigation"
+            class="flicking-arrow-next"
+          />
+          <div
+            v-if="showNavigation"
+            class="flicking-pagination"
+          />
+        </template>
+      </Flicking>
+    </ClientOnly>
   </div>
 </template>
 

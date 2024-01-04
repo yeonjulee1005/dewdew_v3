@@ -124,6 +124,10 @@ export default {
     dropperDesc: 'and Dropper Color',
     checkDropper: 'Check.'
   },
+  hhkb: {
+    title: 'HHKB Keyboard Modeling',
+    inputPlaceholder: 'If you type in English or click the keyboard with the mouse, the 3D modeled hhkb keyboard below will work.'
+  },
   archives: {
     title: 'Dewdew History',
     back: 'Back',

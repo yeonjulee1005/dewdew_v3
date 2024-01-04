@@ -193,7 +193,9 @@ onMounted(() => {
   editor.value = new Editor({
     content: props.textData,
     extensions: [
-      starterKit,
+      starterKit.configure({
+        codeBlock: false
+      }),
       placeholder.configure({
         placeholder: t('tiptap.placeholder')
       }),

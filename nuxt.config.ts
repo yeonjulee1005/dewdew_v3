@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { sentryVitePlugin } from '@sentry/vite-plugin'
 import packageJson from './package.json'
 
 export default defineNuxtConfig({
@@ -22,7 +23,8 @@ export default defineNuxtConfig({
         {
           hid: 'spline-viewer',
           src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
-          type: 'module'
+          type: 'module',
+          async: true
         }
       ],
       link: [
@@ -173,7 +175,14 @@ export default defineNuxtConfig({
           isCustomElement: tag => tag === 'spline-viewer'
         }
       }
-    }
+    },
+    plugins: [
+      sentryVitePlugin({
+        org: 'dewdew',
+        project: 'dewdew_v3',
+        authToken: process.env.SENTRY_AUTH_TOKEN
+      })
+    ]
   },
   pinia: {
     storesDirs: [
