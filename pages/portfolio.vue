@@ -1,29 +1,31 @@
 <template>
   <div class="portfolio">
-    <Flicking
-      :options="option"
-      :plugins="plugin"
-    >
-      <nuxt-picture
-        v-for="item in portfolioData"
-        :key="item.url"
-        class="portfolio-picture"
-        :src="item?.image ?? ''"
-        width="200"
-        height="200"
-        format="webp"
-        fit="cover"
-        :alt="item?.alt"
-        :img-attrs="{ class: 'portfolio-image' }"
-        :draggable="false"
-        @contextmenu.prevent
-        @click="selectPortfolio(item)"
-        @mouseenter="selectPortfolio(item)"
-      />
-      <template #viewport>
-        <div class="flicking-pagination" />
-      </template>
-    </Flicking>
+    <ClientOnly>
+      <Flicking
+        :options="option"
+        :plugins="plugin"
+      >
+        <nuxt-picture
+          v-for="item in portfolioData"
+          :key="item.url"
+          class="portfolio-picture"
+          :src="item?.image ?? ''"
+          width="200"
+          height="200"
+          format="webp"
+          fit="cover"
+          :alt="item?.alt"
+          :img-attrs="{ class: 'portfolio-image' }"
+          :draggable="false"
+          @contextmenu.prevent
+          @click="selectPortfolio(item)"
+          @mouseenter="selectPortfolio(item)"
+        />
+        <template #viewport>
+          <div class="flicking-pagination" />
+        </template>
+      </Flicking>
+    </ClientOnly>
     <DDCard v-if="selectedPortfolioData">
       <template #header>
         <div class="flex flex-column gap-10">
