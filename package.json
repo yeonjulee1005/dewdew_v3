@@ -4,7 +4,7 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "1.27.0",
+  "version": "1.28.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -41,6 +41,8 @@
     "@nuxtjs/supabase": "1.1.4",
     "@pinia-plugin-persistedstate/nuxt": "1.2.0",
     "@pinia/nuxt": "^0.5.1",
+    "@sentry/vite-plugin": "^2.10.2",
+    "@sentry/vue": "^7.91.0",
     "@tiptap/core": "^2.1.12",
     "@tiptap/extension-character-count": "^2.1.12",
     "@tiptap/extension-code-block": "^2.1.13",

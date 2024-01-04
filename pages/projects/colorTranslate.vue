@@ -38,6 +38,7 @@
           :placeholder="$t('placeholder.inputContent')"
           aria-label="hex"
           :ui="{ icon: { trailing: { pointer: '' } } }"
+          name="hex-color"
         >
           <template #trailing>
             <div class="space-x-1">
@@ -72,6 +73,7 @@
           :placeholder="$t('placeholder.inputContent')"
           aria-label="rgb"
           :ui="{ icon: { trailing: { pointer: '' } } }"
+          name="rgb-color"
         >
           <template #trailing>
             <AButton
@@ -96,6 +98,7 @@
           :placeholder="$t('placeholder.inputContent')"
           aria-label="hsl"
           :ui="{ icon: { trailing: { pointer: '' } } }"
+          name="hls-color"
         >
           <template #trailing>
             <AButton
@@ -120,6 +123,7 @@
           :placeholder="$t('placeholder.inputContent')"
           aria-label="cmyk"
           :ui="{ icon: { trailing: { pointer: '' } } }"
+          name="cmyk-color"
         >
           <template #trailing>
             <AButton

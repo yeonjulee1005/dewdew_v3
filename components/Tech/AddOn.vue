@@ -13,7 +13,7 @@
       use-leading
       icon-name="line-md:heart"
       :icon-size="16"
-      :button-text="data.like"
+      :button-text="String(data.like)"
       @click="$emit('update-count')"
     />
     <DDBadge

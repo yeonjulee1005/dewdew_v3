@@ -123,6 +123,10 @@ export default {
     dropperDesc: '그리고 스포이드로 컬러를',
     checkDropper: '확인해주세요.'
   },
+  hhkb: {
+    title: 'HHKB Keyboard Modeling',
+    inputPlaceholder: '영어로 작성하거나 마우스로 키보드를 클릭하면, 아래의 3D 모델링된 hhkb 키보드가 동작합니다.'
+  },
   archives: {
     title: 'Dewdew History',
     back: '뒤로가기',
