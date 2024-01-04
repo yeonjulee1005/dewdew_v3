@@ -180,7 +180,8 @@ export default defineNuxtConfig({
       sentryVitePlugin({
         org: 'dewdew',
         project: 'dewdew_v3',
-        authToken: process.env.SENTRY_AUTH_TOKEN
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+        telemetry: false
       })
     ]
   },
