@@ -13,7 +13,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       new Sentry.BrowserTracing({
       // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
         routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-        tracingOrigins: ['usimsa.com', 'www.usimsa.com', /^\//],
+        tracingOrigins: ['dewdew.dev', 'www.dewdew.dev', /^\//],
         tracePropagationTargets: ['localhost', /^https:\/\/api.dewdew\.dev/]
       }),
       new Sentry.Replay(
