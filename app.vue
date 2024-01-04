@@ -21,7 +21,7 @@ const { loadMenuData } = useFetchComposable()
 const seoTitle = 'Developer Dewdew | 개발자 이연주'
 const seoDescription = '안녕하세요. FE 개발자 이연주입니다.'
 const seoUrl = 'https://www.dewdew.dev'
-const seoImage = 'https://tgtlrqqasaiavynmlxkc.supabase.co/storage/v1/object/public/assets/banner/main_banner.webp'
+const seoImage = 'https://api.dewdew.dev/storage/v1/object/public/assets/banner/main_banner.webp'
 
 loadMenuData('root')
 loadMenuData('sub')
