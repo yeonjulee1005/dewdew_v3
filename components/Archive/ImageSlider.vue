@@ -87,6 +87,7 @@ defineEmits([
 const plugin = [
   new AutoPlay({
     animationDuration: 1000,
+    direction: 'NEXT',
     stopOnHover: true
   }),
   new Arrow(),
