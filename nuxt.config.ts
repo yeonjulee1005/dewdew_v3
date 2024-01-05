@@ -28,11 +28,11 @@ export default defineNuxtConfig({
         }
       ],
       link: [
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/icons/iconapple-touch-icon.png' },
+        { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#5bbad5' },
         { rel: 'canonical', href: 'https://www.dewdew.dev' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/icons/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/icons/favicon-32x32.png' }
       ]
     }
   },
@@ -118,39 +118,42 @@ export default defineNuxtConfig({
     }
   },
   pwa: {
+    manifest: false, // public/manifest.webmanifest
+    strategies: 'generateSW',
+    injectRegister: 'script',
     registerType: 'autoUpdate',
-    srcDir: './public/worker',
-    filename: 'serviceWorker.ts',
-    manifest: {
-      name: 'Dewdew',
-      short_name: 'Dewdew',
-      theme_color: '#fa7474',
-      icons: [
-        {
-          src: 'icon.png',
-          sizes: '512x512',
-          type: 'image/png'
-        }
-      ]
-    },
     workbox: {
       navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
-    },
-    injectManifest: {
-      globDirectory: './.nuxt/dev-sw-dist',
-      globPatterns: ['**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}'],
-      globIgnores: ['**/node_modules/**/*', 'sw.js', 'workbox-*.js']
-    },
-    client: {
-      installPrompt: true,
-      periodicSyncForUpdates: 20
+      globPatterns: ['**/*.{js,css,html,json,svg,png,ico,webmanifest}'],
+      globIgnores: ['google*.html'],
+      navigateFallbackDenylist: [
+        /^\/.*\\?giscus=.*/,
+        /^\/.*\\?api.*/,
+        /^\/privacy.*/
+      ],
+      runtimeCaching: [
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon|privacy|manifest|).*/i),
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'homepage' }
+        }, // Every article have to be visited before it is cached
+        {
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
+          handler: 'NetworkFirst' as const,
+          options: { cacheName: 'articles' }
+        } // when this is cached - the frontpage is working offline
+      ]
     },
     devOptions: {
       enabled: false,
+      type: 'module',
       suppressWarnings: true,
-      navigateFallbackAllowlist: [/^\/$/],
-      type: 'module'
+      navigateFallback: '/',
+      navigateFallbackAllowlist: [/^\/$/]
+    },
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 300
     }
   },
   i18n: {
@@ -173,6 +176,17 @@ export default defineNuxtConfig({
       template: {
         compilerOptions: {
           isCustomElement: tag => tag === 'spline-viewer'
+        }
+      }
+    },
+    build: {
+      sourcemap: true,
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vue-i18n': ['vue-i18n']
+          }
         }
       }
     },

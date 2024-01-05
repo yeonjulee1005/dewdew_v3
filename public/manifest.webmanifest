@@ -1,0 +1,33 @@
+{
+  "name": "Dewdew PWA",
+  "short_name": "Dewdew",
+  "description": "안녕하세요. FE 개발자 이연주 입니다.",
+  "start_url": "/",
+  "theme_color": "#fa7474",
+  "orientation": "any",
+  "display": "minimal-ui",
+  "icons": [
+    {
+      "src": "pwa/icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/pwa/screenshots/wide-notepad.png",
+      "sizes": "720x540",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Notepad wide"
+    }
+  ],
+  "id": "/",
+  "scope": "/",
+  "lang": "ko",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "display_override": ["window-controls-overlay"],
+  "categories": ["portfolio", "books", "education", "blogging"]
+}

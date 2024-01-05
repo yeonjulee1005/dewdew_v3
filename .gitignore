@@ -6,7 +6,6 @@
 .cache
 dist
 bun.lockb
-sw.*
 
 # Node dependencies
 node_modules

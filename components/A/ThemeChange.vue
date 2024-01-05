@@ -24,7 +24,7 @@ const isDark = computed({
     return colorMode.value === 'dark'
   },
   set () {
-    useFavicon(colorMode.value !== 'dark' ? 'favicon-32x32.png' : 'favicon-light-32x32.png')
+    useFavicon(colorMode.value !== 'dark' ? '/icons/favicon-32x32.png' : '/icons/favicon-light-32x32.png')
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
   }
 })
