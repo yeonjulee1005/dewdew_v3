@@ -28,11 +28,11 @@ export default defineNuxtConfig({
         }
       ],
       link: [
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/icons/iconapple-touch-icon.png' },
-        { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#5bbad5' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' },
         { rel: 'canonical', href: 'https://www.dewdew.dev' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/icons/favicon-16x16.png' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/icons/favicon-32x32.png' }
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }
       ]
     }
   },
@@ -118,42 +118,31 @@ export default defineNuxtConfig({
     }
   },
   pwa: {
-    manifest: false, // public/manifest.webmanifest
-    strategies: 'generateSW',
-    injectRegister: 'script',
     registerType: 'autoUpdate',
-    workbox: {
-      navigateFallback: '/',
-      globPatterns: ['**/*.{js,css,html,json,svg,png,ico,webmanifest}'],
-      globIgnores: ['google*.html'],
-      navigateFallbackDenylist: [
-        /^\/.*\\?giscus=.*/,
-        /^\/.*\\?api.*/,
-        /^\/privacy.*/
-      ],
-      runtimeCaching: [
+    manifest: {
+      name: 'Dewdew',
+      short_name: 'Dewdew',
+      theme_color: '#fa7474',
+      icons: [
         {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/.*(avatar|favicon|privacy|manifest|).*/i),
-          handler: 'NetworkFirst' as const,
-          options: { cacheName: 'homepage' }
-        }, // Every article have to be visited before it is cached
-        {
-          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.match(/^\/(api|article)\/.*/i),
-          handler: 'NetworkFirst' as const,
-          options: { cacheName: 'articles' }
-        } // when this is cached - the frontpage is working offline
+          src: 'icon.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
       ]
     },
-    devOptions: {
-      enabled: false,
-      type: 'module',
-      suppressWarnings: true,
-      navigateFallback: '/',
-      navigateFallbackAllowlist: [/^\/$/]
+    workbox: {
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
     },
     client: {
       installPrompt: true,
-      periodicSyncForUpdates: 300
+      periodicSyncForUpdates: 20
+    },
+    devOptions: {
+      enabled: true,
+      type: 'module',
+      suppressWarnings: true,
+      navigateFallbackAllowlist: [/^\/$/]
     }
   },
   i18n: {
