@@ -4,7 +4,7 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "1.28.2",
+  "version": "1.29.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -35,7 +35,7 @@
     "@nuxtjs/eslint-module": "^4.1.0",
     "@nuxtjs/fontaine": "^0.4.1",
     "@nuxtjs/html-validator": "^1.6.0",
-    "@nuxtjs/i18n": "v8.0.0-rc.5",
+    "@nuxtjs/i18n": "8.0.0",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/stylelint-module": "^5.1.0",
     "@nuxtjs/supabase": "1.1.4",

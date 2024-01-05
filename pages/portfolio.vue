@@ -56,7 +56,6 @@
 
 <script setup lang="ts">
 import Flicking from '@egjs/vue3-flicking'
-import { type FlickingOptions } from '@egjs/flicking'
 import { AutoPlay, Pagination } from '@egjs/flicking-plugins'
 import '@egjs/vue3-flicking/dist/flicking.css'
 import '@egjs/flicking-plugins/dist/pagination.css'
@@ -65,22 +64,20 @@ const { locale } = useLocale()
 
 const { portfolioData, selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
-const option: Partial<FlickingOptions> = {
-  inputType: ['touch', 'mouse'],
-  circular: true,
-  bound: true,
-  bounce: 30,
-  deceleration: 0.0035,
-  moveType: 'freeScroll'
-}
-
 const plugin = [
   new AutoPlay({
     animationDuration: 1000,
+    direction: 'NEXT',
     stopOnHover: true
   }),
   new Pagination({ type: 'scroll' })
 ]
+
+const option = {
+  inputType: ['touch', 'mouse'],
+  circular: true,
+  deceleration: 0.0035
+}
 
 onMounted(() => {
   if (!selectedPortfolioData.value && portfolioData.value) {
