@@ -16,9 +16,10 @@
 
 <script setup lang="ts">
 
+const route = useRoute()
+
 const { loadMenuData } = useFetchComposable()
 
-const seoTitle = 'Developer Dewdew | 개발자 이연주'
 const seoDescription = '안녕하세요. FE 개발자 이연주입니다.'
 const seoUrl = 'https://www.dewdew.dev'
 const seoImage = 'https://api.dewdew.dev/storage/v1/object/public/assets/banner/main_banner.webp'
@@ -27,27 +28,97 @@ loadMenuData('root')
 loadMenuData('sub')
 loadMenuData('sns')
 
-useSeoMeta({
-  viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
-  formatDetection: 'telephone=no',
-  themeColor: '#705757',
-  keywords: 'developer,develop,web,portfolio,개발자,FE웹개발자,웹개발자,포트폴리오,개발자 포트폴리오,프론트앤드 포트폴리오',
-  title: seoTitle,
-  author: 'Dewdew',
-  description: seoDescription,
-  ogType: 'website',
-  ogTitle: seoTitle,
-  ogDescription: seoDescription,
-  ogUrl: seoUrl,
-  ogImage: seoImage,
-  ogImageSecureUrl: seoImage,
-  ogImageType: 'image/png',
-  ogImageWidth: '410',
-  ogImageHeight: '200',
-  twitterCard: 'summary_large_image',
-  twitterTitle: seoTitle,
-  twitterDescription: seoDescription,
-  twitterImage: seoImage
-})
+if (process.server) {
+  useServerHead({
+    meta: () => [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover' },
+      { name: 'author', content: 'Dewdew' },
+      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'theme-color', content: '#705757' },
+      { name: 'msapplication-TileColor', content: '#705757' },
+      { name: 'keywords', content: 'developer,develop,web,portfolio,개발자,FE웹개발자,웹개발자,포트폴리오,개발자 포트폴리오,프론트앤드 포트폴리오' },
+      { name: 'naver-site-verification', content: '7c406de71b03c1e444a4fe2630a29bd7a8e17559' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: seoUrl },
+      {
+        property: 'og:image',
+        content: seoImage,
+        key: 'og:image'
+      },
+      { property: 'og:image:width', content: '410' },
+      { property: 'og:image:height', content: '200' },
+      { property: 'og:image:type', content: 'image/png' },
+      {
+        property: 'og:title',
+        content: (route.meta.title as string) || '개발자 이연주 Dewdew'
+      },
+      {
+        name: 'description',
+        content:
+          (route.meta.description as string) ||
+          seoDescription
+      },
+      {
+        property: 'og:description',
+        content:
+          (route.meta.description as string) ||
+          seoDescription
+      }
+    ],
+    link: [
+      ...[
+        '/fonts/Pretendard-Thin.otf',
+        '/fonts/Pretendard-ExtraLight.otf',
+        '/fonts/Pretendard-Light.otf',
+        '/fonts/Pretendard-Regular.otf',
+        '/fonts/Pretendard-Medium.otf',
+        '/fonts/Pretendard-SemiBold.otf',
+        '/fonts/Pretendard-Bold.otf',
+        '/fonts/Pretendard-ExtraBold.otf',
+        '/fonts/Pretendard-Black.otf',
+        'https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2'
+      ].map(href => ({
+        rel: 'preload',
+        as: 'font',
+        type: href.includes('woff2') ? 'font/woff2' : 'font/otf',
+        crossorigin: '',
+        href
+      }) as const
+      ),
+      { rel: 'canonical', href: route.fullPath },
+      { rel: 'mask-icon', color: '#5bbad5', href: '/safari-pinned-tab.svg' },
+      { rel: 'icon', type: 'image/png', href: '/icon.png' },
+      { rel: 'alternate', type: 'application/rss+xml', href: '/rss.xml' },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png'
+      },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
+    ],
+    script: [
+      {
+        hid: 'spiine-viewer',
+        src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
+        type: 'module',
+        async: true
+      }
+    ]
+  })
+}
 
 </script>
