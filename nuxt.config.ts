@@ -16,23 +16,7 @@ export default defineNuxtConfig({
         lang: 'ko'
       },
       meta: [
-        { property: 'Imagetoolbar', content: 'no' },
-        { name: 'naver-site-verification', content: '7c406de71b03c1e444a4fe2630a29bd7a8e17559' }
-      ],
-      script: [
-        {
-          hid: 'spline-viewer',
-          src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
-          type: 'module',
-          async: true
-        }
-      ],
-      link: [
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' },
-        { rel: 'canonical', href: 'https://www.dewdew.dev' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }
+        { property: 'Imagetoolbar', content: 'no' }
       ]
     }
   },
@@ -110,12 +94,33 @@ export default defineNuxtConfig({
   },
   content: {
     highlight: {
+      preload: ['js', 'ts', 'json', 'vue'],
       theme: {
         default: 'github-light',
         dark: 'github-dark',
         sepia: 'dracula-soft'
       }
     }
+  },
+  htmlValidator: {
+    failOnError: true,
+    options: {
+      rules: {
+        'wcag/h37': 'warn',
+        'element-permitted-content': 'warn',
+        'element-required-attributes': 'warn',
+        'attribute-empty-style': 'off'
+      }
+    }
+  },
+  fontMetrics: {
+    fonts: [
+      {
+        fallbackName: 'Pretendard fallback',
+        family: 'Pretendard',
+        fallbacks: ['Arial']
+      }
+    ]
   },
   pwa: {
     registerType: 'autoUpdate',
@@ -139,7 +144,7 @@ export default defineNuxtConfig({
       periodicSyncForUpdates: 20
     },
     devOptions: {
-      enabled: true,
+      enabled: false,
       type: 'module',
       suppressWarnings: true,
       navigateFallbackAllowlist: [/^\/$/]

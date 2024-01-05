@@ -1,0 +1,14 @@
+{
+  "name": "Dewdew",
+  "short_name": "Dewdew",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#705757",
+  "background_color": "#705757",
+  "display": "standalone"
+}
