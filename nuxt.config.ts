@@ -120,7 +120,7 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     srcDir: './public/worker',
-    filename: 'sw.ts',
+    filename: 'serviceWorker.ts',
     manifest: {
       name: 'Dewdew',
       short_name: 'Dewdew',
