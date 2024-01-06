@@ -30,9 +30,7 @@ const { portfolioData } = storeToRefs(usePortfolioStore())
 const { loadStackData, loadPortfolioData } = useFetchComposable()
 
 useHead({
-  meta: [
-    { property: 'og:title', content: t('openGraph.dewdew', { text: 'dewdew' }) }
-  ]
+  title: t('pageTitle.main')
 })
 
 const mainTitleTrigger = ref(true)

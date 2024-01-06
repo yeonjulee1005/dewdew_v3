@@ -19,7 +19,10 @@
         </NuxtLink>
       </div>
     </ContentNavigation>
-    <ContentDoc v-slot="{ doc }">
+    <ContentDoc
+      v-slot="{ doc }"
+      head
+    >
       <div class="flex flex-column flex-align-end w-full">
         <ANuxtDate
           v-if="doc.date"
@@ -37,16 +40,17 @@
 <script setup lang="ts">
 
 const { t } = useLocale()
+const { path } = useRoute()
 
 const blogQuery = queryContent('blog')
 
 useHead({
   title: t('pageTitle.blog'),
   meta: [
-    { property: 'description', content: t('openGraph.blogDesc') },
-    { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.blog') }) },
-    { property: 'og:url', content: 'https://www.dewdew.kr/tech/' },
-    { property: 'og:description', content: t('openGraph.blogDesc') }
+    { property: 'description', content: t('openGraph.blog') },
+    { property: 'og:title', content: t('pageTitle.blog') },
+    { property: 'og:description', content: t('openGraph.blog') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
   ]
 })
 

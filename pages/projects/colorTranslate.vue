@@ -149,6 +149,7 @@
 <script setup lang="ts">
 
 const { t } = useLocale()
+const { path } = useRoute()
 
 const { textInclude } = useUi()
 const { open } = useEyeDropper()
@@ -158,10 +159,10 @@ const toast = useToast()
 useHead({
   title: t('pageTitle.colorsTranslate'),
   meta: [
-    { property: 'description', content: t('openGraph.colorsTranslateDesc') },
-    { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.colorsTranslate') }) },
-    { property: 'og:url', content: 'https://www.dewdew.kr/projects/colorTranslate/' },
-    { property: 'og:description', content: t('openGraph.colorsTranslateDesc') }
+    { property: 'description', content: t('openGraph.colorsTranslate') },
+    { property: 'og:title', content: t('pageTitle.colorsTranslate') },
+    { property: 'og:description', content: t('openGraph.colorsTranslate') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
   ]
 })
 

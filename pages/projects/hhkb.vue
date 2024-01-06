@@ -23,14 +23,15 @@
 <script setup lang="ts">
 
 const { t } = useLocale()
+const { path } = useRoute()
 
 useHead({
-  title: t('pageTitle.hhkb'),
+  title: t('pageSubTitle.hhkb'),
   meta: [
-    { property: 'description', content: t('openGraph.hhkbDesc') },
-    { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.hhkb') }) },
-    { property: 'og:url', content: 'https://www.dewdew.kr/projects/hhkb/' },
-    { property: 'og:description', content: t('openGraph.hhkbDesc') }
+    { property: 'description', content: t('openGraph.hhkb') },
+    { property: 'og:title', content: t('pageSubTitle.hhkb') },
+    { property: 'og:description', content: t('openGraph.hhkb') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
   ]
 })
 

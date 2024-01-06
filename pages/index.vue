@@ -13,9 +13,7 @@
 const { t } = useLocale()
 
 useHead({
-  meta: [
-    { property: 'og:title', content: t('openGraph.dewdew', { text: 'dewdew' }) }
-  ]
+  title: t('pageTitle.dewdew')
 })
 
 definePageMeta({

@@ -13,6 +13,7 @@
 <script setup lang="ts">
 
 const { t } = useLocale()
+const { path } = useRoute()
 
 const { loadArchiveData } = useFetchComposable()
 
@@ -21,10 +22,10 @@ const { randomOrder } = useUi()
 useHead({
   title: t('pageTitle.archives'),
   meta: [
-    { property: 'description', content: t('openGraph.archivesDesc') },
-    { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.archives') }) },
-    { property: 'og:url', content: 'https://www.dewdew.kr/archives/' },
-    { property: 'og:description', content: t('openGraph.archivesDesc') }
+    { property: 'description', content: t('openGraph.archives') },
+    { property: 'og:title', content: t('pageTitle.archives') },
+    { property: 'og:description', content: t('openGraph.archives') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
   ]
 })
 

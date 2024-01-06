@@ -3,12 +3,6 @@ import { sentryVitePlugin } from '@sentry/vite-plugin'
 import packageJson from './package.json'
 
 export default defineNuxtConfig({
-  devtools: {
-    enabled: true,
-    timeline: {
-      enabled: true
-    }
-  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -17,36 +11,10 @@ export default defineNuxtConfig({
       },
       meta: [
         { property: 'Imagetoolbar', content: 'no' }
+      ],
+      link: [
+        { rel: 'canonical', href: 'https://www.dewdew.dev' }
       ]
-    }
-  },
-  experimental: {
-    componentIslands: true
-  },
-  supabase: {
-    redirect: false,
-    redirectOptions: {
-      login: '/login',
-      callback: '/confirm',
-      exclude: [
-        '/',
-        '/tech',
-        '/tech/*',
-        '/blog',
-        '/blog/*',
-        '/projects',
-        '/projects/*',
-        '/archives',
-        '/archives/*'
-      ]
-    },
-    clientOptions: {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-        autoRefreshToken: true
-      }
     }
   },
   modules: [
@@ -77,9 +45,6 @@ export default defineNuxtConfig({
   ui: {
     prefix: 'DD'
   },
-  stylelint: {
-    lintOnStart: true
-  },
   components: [
     {
       path: '~/components',
@@ -91,6 +56,73 @@ export default defineNuxtConfig({
       'composables/**',
       'stores/**'
     ]
+  },
+  pinia: {
+    storesDirs: [
+      './stores/**'
+    ]
+  },
+  supabase: {
+    redirect: false,
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: [
+        '/',
+        '/tech',
+        '/tech/*',
+        '/blog',
+        '/blog/*',
+        '/projects',
+        '/projects/*',
+        '/archives',
+        '/archives/*'
+      ]
+    },
+    clientOptions: {
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true
+      }
+    }
+  },
+  vite: {
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => tag === 'spline-viewer'
+        }
+      }
+    },
+    build: {
+      sourcemap: true,
+      cssMinify: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vue-i18n': ['vue-i18n']
+          }
+        }
+      }
+    },
+    plugins: [
+      sentryVitePlugin({
+        org: 'dewdew',
+        project: 'dewdew_v3',
+        authToken: process.env.SENTRY_AUTH_TOKEN,
+        telemetry: false
+      })
+    ]
+  },
+  runtimeConfig: {
+    public: {
+      emailJsKey: process.env.EMAILJS_KEY,
+      emailJSsTemplate: process.env.EMAILJS_TEMPLATE,
+      siteUrl: process.env.BASE_URL,
+      serviceVersion: JSON.stringify(packageJson.version)
+    }
   },
   content: {
     highlight: {
@@ -129,15 +161,14 @@ export default defineNuxtConfig({
       short_name: 'Dewdew',
       theme_color: '#fa7474',
       icons: [
-        {
-          src: 'icon.png',
-          sizes: '512x512',
-          type: 'image/png'
-        }
+        { src: 'icon.png', sizes: '512x512', type: 'image/png' }
       ]
     },
     workbox: {
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
+      runtimeCaching: [
+        { urlPattern: '/', handler: 'StaleWhileRevalidate' }
+      ]
     },
     client: {
       installPrompt: true,
@@ -153,50 +184,29 @@ export default defineNuxtConfig({
   i18n: {
     langDir: './locales',
     locales: [
-      {
-        code: 'ko',
-        file: 'ko.ts'
-      },
-      {
-        code: 'en',
-        file: 'en.ts'
-      }
+      { code: 'ko', file: 'ko.ts' },
+      { code: 'en', file: 'en.ts' }
     ],
     defaultLocale: 'ko',
     strategy: 'no_prefix'
   },
-  vite: {
-    vue: {
-      template: {
-        compilerOptions: {
-          isCustomElement: tag => tag === 'spline-viewer'
-        }
-      }
-    },
-    build: {
-      sourcemap: true,
-      cssMinify: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'vue-i18n': ['vue-i18n']
-          }
-        }
-      }
-    },
-    plugins: [
-      sentryVitePlugin({
-        org: 'dewdew',
-        project: 'dewdew_v3',
-        authToken: process.env.SENTRY_AUTH_TOKEN,
-        telemetry: false
-      })
-    ]
+  dayjs: {
+    locales: ['ko'],
+    plugins: ['relativeTime', 'utc', 'timezone'],
+    defaultLocale: 'ko',
+    defaultTimezone: 'Asia/Seoul'
   },
-  pinia: {
-    storesDirs: [
-      './stores/**'
-    ]
+  devtools: {
+    enabled: true,
+    timeline: {
+      enabled: true
+    }
+  },
+  experimental: {
+    componentIslands: true
+  },
+  stylelint: {
+    lintOnStart: true
   },
   vueuse: {
     ssrHandlers: false
@@ -206,27 +216,10 @@ export default defineNuxtConfig({
   },
   robots: {
     rules: [
-      {
-        UserAgent: '*',
-        Allow: '/'
-      }
+      { UserAgent: '*', Allow: '/' }
     ]
   },
   site: {
     url: 'https://www.dewdew.dev'
-  },
-  dayjs: {
-    locales: ['ko'],
-    plugins: ['relativeTime', 'utc', 'timezone'],
-    defaultLocale: 'ko',
-    defaultTimezone: 'Asia/Seoul'
-  },
-  runtimeConfig: {
-    public: {
-      emailJsKey: process.env.EMAILJS_KEY,
-      emailJSsTemplate: process.env.EMAILJS_TEMPLATE,
-      siteUrl: process.env.BASE_URL,
-      serviceVersion: JSON.stringify(packageJson.version)
-    }
   }
 })
