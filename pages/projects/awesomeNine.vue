@@ -11,8 +11,22 @@
 </template>
 
 <script setup lang="ts">
+
+// const { t } = useLocale()
+const { path } = useRoute()
+
 const instagramId = '780206030572243'
 const redirectUri = 'https://localhost:4500/projects/awesomeNine'
+
+useHead({
+  // title: t('pageTitle.colorsTranslate'),
+  meta: [
+    // { property: 'description', content: t('openGraph.colorsTranslate') },
+    // { property: 'og:title', content: t('pageTitle.colorsTranslate') },
+    // { property: 'og:description', content: t('openGraph.colorsTranslate') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
+  ]
+})
 
 // const code = 'AQCli081wiTWbGJDdGB4134T5fvXEHaAqFf_fbmynHClSjK_4BdPpxIiVqEpjEYjygynzraovZ-itxgrQmnzrMU2xbhzGbXPwmVA6PF8SYEn0NZdO3_6i9fkW26DIJKcEZliXgpS-KKUGoD9XWt2ut3Ns5hgqxS6rJisrLxQABe9kTp8LCcHKxzwzzFPVCoryeRQgOEpdDnmWNdL6m5NgcGy5QytaiM8HymZW6qHsm6ogA'
 
