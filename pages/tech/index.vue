@@ -47,6 +47,7 @@
 const user = useSupabaseUser()
 
 const { t } = useLocale()
+const { path } = useRoute()
 
 const { countData, upsertData } = useFetchComposable()
 
@@ -56,10 +57,10 @@ const toast = useToast()
 useHead({
   title: t('pageTitle.tech'),
   meta: [
-    { property: 'description', content: t('openGraph.techDesc') },
-    { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.archives') }) },
-    { property: 'og:url', content: 'https://www.dewdew.kr/tech/' },
-    { property: 'og:description', content: t('openGraph.techDesc') }
+    { property: 'description', content: t('openGraph.tech') },
+    { property: 'og:title', content: t('pageTitle.tech') },
+    { property: 'og:description', content: t('openGraph.tech') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
   ]
 })
 

@@ -15,16 +15,17 @@
 <script setup lang="ts">
 
 const { t } = useLocale()
+const { path } = useRoute()
 
 const { subMenuData } = storeToRefs(useMenuStore())
 
 useHead({
   title: t('pageTitle.project'),
   meta: [
-    { property: 'description', content: t('openGraph.projectDesc') },
-    { property: 'og:title', content: t('openGraph.dewdew', { text: t('pageTitle.project') }) },
-    { property: 'og:url', content: 'https://www.dewdew.kr/projects/' },
-    { property: 'og:description', content: t('openGraph.projectDesc') }
+    { property: 'description', content: t('openGraph.project') },
+    { property: 'og:title', content: t('pageTitle.project') },
+    { property: 'og:description', content: t('openGraph.project') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
   ]
 })
 
