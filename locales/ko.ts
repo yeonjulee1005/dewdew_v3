@@ -1,24 +1,28 @@
 export default {
   pageTitle: {
     yeonju: '개발자 이연주',
+    dewdew: 'Dewdew',
+    main: '메인',
+    portfolio: '포트폴리오',
     project: '프로젝트',
     colorsTranslate: '내 색상 찾아줘!',
-    hhkb: 'HHKB 키보드 모델링',
     blog: '블로그',
     tech: '테크 블로그',
     archives: '아카이브'
   },
   pageSubTitle: {
-    colorsTranslate: '내 색상 찾아줘..'
+    colorsTranslate: '내 색상 찾아줘..',
+    hhkb: 'HHKB 키보드 모델링'
   },
   openGraph: {
-    dewdew: '개발자 이연주 | {text}',
-    projectDesc: '토이 프로젝트 리스트 입니다.',
-    colorsTranslateDesc: '잊고 지낸 색상코드를 찾아보세요.',
-    hhkbDesc: 'Spline을 이용한 HHKB 키보드 모델링 입니다.',
-    blogDesc: 'FE개발자 이연주의 블로그 입니다.',
-    techDesc: 'FE개발자 이연주의 개발 블로그 입니다.',
-    archivesDesc: 'FE개발자 이연주의 사진기록 입니다.'
+    main: '안녕하세요. FE 개발자 이연주입니다.',
+    portfolio: '포트폴리오 입니다.',
+    project: '토이 프로젝트 리스트 입니다.',
+    colorsTranslate: '잊고 지낸 색상코드를 찾아보세요.',
+    hhkb: 'Spline을 이용한 HHKB 키보드 모델링 입니다.',
+    blog: 'FE개발자 이연주의 블로그 입니다.',
+    tech: 'FE개발자 이연주의 개발 블로그 입니다.',
+    archives: 'FE개발자 이연주의 사진기록 입니다.'
   },
   texts: {
     enter: '들어가기',

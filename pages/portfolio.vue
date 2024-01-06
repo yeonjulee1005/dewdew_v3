@@ -60,9 +60,20 @@ import { AutoPlay, Pagination } from '@egjs/flicking-plugins'
 import '@egjs/vue3-flicking/dist/flicking.css'
 import '@egjs/flicking-plugins/dist/pagination.css'
 
-const { locale } = useLocale()
+const { t, locale } = useLocale()
+const { path } = useRoute()
 
 const { portfolioData, selectedPortfolioData } = storeToRefs(usePortfolioStore())
+
+useHead({
+  title: t('pageTitle.portfolio'),
+  meta: [
+    { property: 'description', content: t('openGraph.portfolio') },
+    { property: 'og:title', content: t('pageTitle.portfolio') },
+    { property: 'og:description', content: t('openGraph.portfolio') },
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
+  ]
+})
 
 const plugin = [
   new AutoPlay({
