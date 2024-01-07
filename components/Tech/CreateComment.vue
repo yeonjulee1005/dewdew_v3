@@ -3,7 +3,7 @@
     <DDForm
       :schema="schema"
       :state="formData"
-      class="create-form space-y-2"
+      class="create-form space-y-4"
       @submit="onSubmit"
     >
       <DDFormGroup

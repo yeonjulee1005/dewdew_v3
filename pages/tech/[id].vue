@@ -7,7 +7,7 @@
       @update:title="(title:string) => updateData.title = title"
     />
     <TechAddOn
-      :article-id="techId"
+      :article-id="String(params.id)"
       :data="techDetailData"
       :estimate-read-time="estimateReadingTime(techDetailData.desc)"
       :activate-like="techBlogLikeTrigger"
@@ -55,10 +55,6 @@ const { clickedTechArticle, adminAccess } = storeToRefs(useTechStore())
 const { estimateReadingTime } = useUi()
 const toast = useToast()
 
-const techId = computed(() => {
-  return params.id as string
-})
-
 const techBlogLikeTrigger = ref(false)
 const displayFloatButtonTrigger = ref(false)
 const editTrigger = ref(false)
@@ -66,7 +62,7 @@ const editTrigger = ref(false)
 const { data: techDetailData, refresh: techRefresh }: SerializeObject = await useFetch('/api/tech/detail', {
   headers: useRequestHeaders(['cookie']),
   query: {
-    techBlogId: techId.value
+    techBlogId: params.id
   },
   immediate: true
 })
@@ -74,7 +70,7 @@ const { data: techDetailData, refresh: techRefresh }: SerializeObject = await us
 const { data: techCommentData, refresh: techCommentRefresh }: SerializeObject = await useFetch('/api/tech/comment', {
   headers: useRequestHeaders(['cookie']),
   query: {
-    techBlogId: techId.value
+    techBlogId: params.id
   },
   immediate: true
 })
@@ -107,7 +103,7 @@ const editArticle = (text:string, rawText:string) => {
 
 const updateViewCount = async () => {
   const countData:SerializeObject = {
-    id: techId.value,
+    id: params.id,
     view_count: (techDetailData.value?.view_count ?? 0) + 1
   }
 
@@ -137,7 +133,7 @@ const updateLikeCount = () => {
 
 const updateTechBlogLikeCount = async () => {
   const countData:SerializeObject = {
-    id: techId.value,
+    id: params.id,
     like: parseInt(techDetailData.value?.like ?? '') + 1
   }
 
@@ -153,7 +149,7 @@ const updateTechBlogLikeCount = async () => {
 const createComment = async (commentData:CreateComment) => {
   const createCommentData:SerializeObject = {
     ...commentData,
-    tech_id: techId.value
+    tech_id: params.id
   }
 
   const error = await insertData(createCommentData, 'techComment')
@@ -165,7 +161,7 @@ const createComment = async (commentData:CreateComment) => {
 }
 
 const deleteAdminComment = async (comment:SerializeObject) => {
-  const error = await deleteData(comment.id, 'techComment', true, 'tech_id', techId.value, '', '')
+  const error = await deleteData(comment.id, 'techComment', true, 'tech_id', String(params.id), '', '')
 
   if (!error) {
     toast.add({ title: t('messages.deleteComment'), color: 'orange', timeout: 3000 })
@@ -174,7 +170,7 @@ const deleteAdminComment = async (comment:SerializeObject) => {
 }
 
 const deleteComment = async (comment:SerializeObject, password:string) => {
-  const error = await deleteData(comment.id, 'techComment', false, 'tech_id', techId.value, 'password', password)
+  const error = await deleteData(comment.id, 'techComment', false, 'tech_id', String(params.id), 'password', password)
 
   if (!error) {
     toast.add({ title: t('messages.deleteComment'), color: 'orange', timeout: 3000 })
