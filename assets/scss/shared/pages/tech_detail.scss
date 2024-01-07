@@ -68,12 +68,6 @@
         @include headline6;
       }
     }
-    .empty-comments {
-      height: $space-100;
-      .el-empty__image {
-        width: $space-80;
-      }
-    }
   }
   .article-create-comment {
     width: $space-80vw;

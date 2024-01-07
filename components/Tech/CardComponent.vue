@@ -1,11 +1,11 @@
 <template>
   <DDCard class="tech-card mt-6 mb-4">
     <template #header>
-      <div class="card-title flex flex-row flex-align-center gap-8">
-        <span class="title">
-          {{ cardItem.title }}
-        </span>
-      </div>
+      <AParagSkeleton
+        :pending-text="pendingData"
+        :paragraph-text="cardItem.title"
+        paragraph-class="title"
+      />
       <TechAddOn
         add-on-class="tech-add-on flex flex-wrap flex-align-center flex-justify-end gap-2 mt-8"
         :article-id="cardItem.id"
@@ -15,9 +15,12 @@
         :estimate-read-time="estimateReadingTime(cardItem.desc)"
       />
     </template>
-    <div class="desc">
-      {{ cardItem.raw_article }}
-    </div>
+    <AParagSkeleton
+      :pending-text="pendingData"
+      :paragraph-text="cardItem.raw_article"
+      skeleton-class="h-[100px]"
+      paragraph-class="desc"
+    />
   </DDCard>
 </template>
 
@@ -25,8 +28,14 @@
 
 const { estimateReadingTime } = useUi()
 
-defineProps<{
-  cardItem: SerializeObject
-}>()
+withDefaults(
+  defineProps<{
+    cardItem: SerializeObject,
+    pendingData?: boolean
+  }>(),
+  {
+    pendingData: true
+  }
+)
 
 </script>

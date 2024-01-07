@@ -11,9 +11,9 @@
     >
       <div class="flex flex-row flex-space-between flex-align-center">
         <div class="message-component">
-          <span class="name">
+          <p class="name">
             {{ comment.name }}
-          </span>
+          </p>
           <div v-dompurify-html="comment.message" />
         </div>
         <AButton
@@ -26,7 +26,7 @@
     </DDCard>
     <DDSkeleton
       v-show="!commentData.length"
-      class="empty-comments mt-4 mb-4"
+      class="h-[100px] mt-4 mb-4"
       :ui="{ rounded: 'rounded-fill'}"
     />
     <DialogPasswordCheck

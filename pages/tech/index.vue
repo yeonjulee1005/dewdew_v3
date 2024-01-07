@@ -14,8 +14,8 @@
     </div>
     <LazyTechCardComponent
       v-for="(item, index) in techData"
-      v-show="count"
       :key="index"
+      :pending-data="pendingTechData"
       :card-item="item"
       @click="() => navigateTo(`/tech/${item.id}`)"
     />
@@ -28,11 +28,6 @@
       :total="count ?? 0"
       show-first
       show-last
-    />
-    <DDSkeleton
-      v-show="!count"
-      class="articles"
-      :ui="{ rounded: 'rounded-fill'}"
     />
     <DialogCreateArticle
       :create-article-trigger="createArticleTrigger"
@@ -66,7 +61,7 @@ useHead({
 
 const createArticleTrigger = ref(false)
 
-const { data: techData, refresh: techRefresh } = useAsyncData('techData', async () => {
+const { data: techData, refresh: techRefresh, pending: pendingTechData } = useAsyncData('techData', async () => {
   const { data }: SerializeObject = await useFetch('/api/tech', {
     headers: useRequestHeaders(['cookie']),
     query: {
@@ -86,6 +81,8 @@ const { data: count } = useAsyncData('techCount', async () => {
   const data = await countData('tech')
 
   return data.count
+}, {
+  immediate: true
 })
 
 const openCreateArticleDialog = () => {
