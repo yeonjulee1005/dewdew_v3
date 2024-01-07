@@ -80,7 +80,7 @@ if (process.server) {
         '/fonts/Pretendard-Black.otf',
         'https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2'
       ].map(href => ({
-        rel: 'preload',
+        // rel: 'preload',
         as: 'font',
         type: href.includes('woff2') ? 'font/woff2' : 'font/otf',
         crossorigin: '',

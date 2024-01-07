@@ -64,6 +64,7 @@ const { t, locale } = useLocale()
 const { path } = useRoute()
 
 const { portfolioData, selectedPortfolioData } = storeToRefs(usePortfolioStore())
+const { loadPortfolioData } = useFetchComposable()
 
 useHead({
   title: t('pageTitle.portfolio'),
@@ -90,11 +91,12 @@ const option = {
   deceleration: 0.0035
 }
 
-onMounted(() => {
-  if (!selectedPortfolioData.value && portfolioData.value) {
+if (!portfolioData.value) {
+  await loadPortfolioData()
+  if (portfolioData.value) {
     selectedPortfolioData.value = portfolioData.value[0]
   }
-})
+}
 
 const selectPortfolio = (item: SerializeObject) => {
   selectedPortfolioData.value = item
