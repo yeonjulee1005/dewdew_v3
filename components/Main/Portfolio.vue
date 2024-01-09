@@ -33,6 +33,7 @@
         :key="item.url"
         class="portfolio-item flex flex-column flex-justify-center flex-align-center"
         @click="navigatePortfolio(item)"
+        @touchstart="navigatePortfolio(item)"
       >
         <spline-viewer
           v-if="item.dynamic_thumbnail"

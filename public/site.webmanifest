@@ -1,11 +1,27 @@
 {
+  "id": "/",
   "name": "Dewdew",
   "short_name": "Dewdew",
+  "start_url": "/",
   "icons": [
     {
       "src": "/icon.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+    "src": "wide.webp",
+    "sizes": "1800x1206",
+    "type": "image/webp",
+    "form_factor": "wide"
+    },
+    {
+      "src": "narrow.webp",
+      "sizes": "800x1652",
+      "type": "image/webp",
+      "form_factor": "narrow"
     }
   ],
   "theme_color": "#705757",
