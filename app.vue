@@ -103,7 +103,7 @@ if (process.server) {
         hid: 'spiine-viewer',
         src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
         type: 'module',
-        async: true
+        defer: true
       }
     ]
   })
