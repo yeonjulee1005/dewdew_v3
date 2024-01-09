@@ -39,6 +39,7 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     'dayjs-nuxt'
   ],
+  plugins: ['~/plugins/spline-viewer.client.ts'],
   css: [
     '~/assets/scss/style.scss'
   ],
@@ -156,30 +157,18 @@ export default defineNuxtConfig({
   },
   pwa: {
     registerType: 'autoUpdate',
-    manifest: {
-      name: 'Dewdew',
-      short_name: 'Dewdew',
-      theme_color: '#fa7474',
-      icons: [
-        { src: 'icon.png', sizes: '512x512', type: 'image/png' }
-      ]
-    },
     workbox: {
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-      navigateFallback: null,
-      runtimeCaching: [
-        { urlPattern: '/', handler: 'NetworkFirst' }
-      ]
+      globPatterns: ['**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}']
     },
     client: {
       installPrompt: true,
       periodicSyncForUpdates: 20
     },
     devOptions: {
-      enabled: false,
-      type: 'module',
+      enabled: true,
       suppressWarnings: true,
-      navigateFallbackAllowlist: [/^\/$/]
+      navigateFallbackAllowlist: [/^\/$/],
+      type: 'module'
     }
   },
   i18n: {

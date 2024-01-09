@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtPwaManifest />
+    <VitePwaManifest />
     <NuxtLayout>
       <div>
         <NuxtLoadingIndicator
@@ -37,7 +37,7 @@ const seoUrl = 'https://www.dewdew.dev'
 const seoImage = 'https://api.dewdew.dev/storage/v1/object/public/assets/banner/main_banner.webp'
 
 if (process.server) {
-  useServerHead({
+  useHead({
     title: (meta.title as string) ?? '개발자 이연주 | Dewdew',
     meta: () => [
       { charset: 'utf-8' },
@@ -96,14 +96,6 @@ if (process.server) {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'manifest', href: '/site.webmanifest' },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
-    ],
-    script: [
-      {
-        hid: 'spiine-viewer',
-        src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
-        type: 'module',
-        async: true
-      }
     ]
   })
 }
