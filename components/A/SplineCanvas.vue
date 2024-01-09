@@ -1,16 +1,12 @@
 <template>
   <div :class="canvasClass">
-    <canvas ref="canvasRef" />
+    <spline-viewer :url="splineUrl" />
   </div>
 </template>
 
 <script setup lang="ts">
 
-const { loadSpline } = useSpline()
-
-const canvasRef = ref()
-
-const props = withDefaults(
+withDefaults(
   defineProps<{
     canvasClass?: string,
     splineUrl: string
@@ -19,9 +15,5 @@ const props = withDefaults(
     canvasClass: ''
   }
 )
-
-onMounted(() => {
-  loadSpline(canvasRef, props.splineUrl)
-})
 
 </script>

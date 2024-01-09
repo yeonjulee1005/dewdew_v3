@@ -89,14 +89,20 @@ export default defineNuxtConfig({
     }
   },
   vite: {
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => tag === 'spline-viewer'
+        }
+      }
+    },
     build: {
       sourcemap: true,
       cssMinify: true,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'vue-i18n': ['vue-i18n']
-          }
+      minify: true,
+      terserOptions: {
+        compress: {
+          drop_console: true
         }
       }
     },
