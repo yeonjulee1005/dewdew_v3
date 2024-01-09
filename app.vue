@@ -81,6 +81,7 @@ if (process.server) {
         'https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2'
       ].map(href => ({
         // rel: 'preload',
+        lazy: true,
         as: 'font',
         type: href.includes('woff2') ? 'font/woff2' : 'font/otf',
         crossorigin: '',
@@ -96,6 +97,14 @@ if (process.server) {
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'manifest', href: '/site.webmanifest' },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
+    ],
+    script: [
+      {
+        hid: 'spiine-viewer',
+        src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
+        type: 'module',
+        async: true
+      }
     ]
   })
 }
