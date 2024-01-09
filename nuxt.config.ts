@@ -39,7 +39,6 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     'dayjs-nuxt'
   ],
-  plugins: ['~/plugins/spline-viewer.client.ts'],
   css: [
     '~/assets/scss/style.scss'
   ],
@@ -90,13 +89,6 @@ export default defineNuxtConfig({
     }
   },
   vite: {
-    vue: {
-      template: {
-        compilerOptions: {
-          isCustomElement: tag => tag === 'spline-viewer'
-        }
-      }
-    },
     build: {
       sourcemap: true,
       cssMinify: true,
