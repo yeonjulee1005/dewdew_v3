@@ -35,10 +35,10 @@
         @click="navigatePortfolio(item)"
         @touchstart="navigatePortfolio(item)"
       >
-        <spline-viewer
+        <LazyASplineCanvas
           v-if="item.dynamic_thumbnail"
-          class="portfolio-thumb"
-          :url="item.dynamic_thumbnail"
+          canvas-class="portfolio-thumb"
+          :spline-url="item.dynamic_thumbnail"
         />
         <nuxt-img
           v-else
