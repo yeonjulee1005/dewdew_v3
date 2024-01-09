@@ -43,6 +43,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@sentry/vite-plugin": "^2.10.2",
     "@sentry/vue": "^7.91.0",
+    "@splinetool/runtime": "^1.0.21",
     "@tiptap/core": "^2.1.12",
     "@tiptap/extension-character-count": "^2.1.12",
     "@tiptap/extension-code-block": "^2.1.13",

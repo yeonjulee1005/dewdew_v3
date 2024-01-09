@@ -13,9 +13,9 @@
         name="hhkb-input"
       />
     </div>
-    <spline-viewer
-      class="hhkb-canvas"
-      :url="splineUrl"
+    <ASplineCanvas
+      canvas-class="hhkb-canvas"
+      :spline-url="splineUrl"
     />
   </div>
 </template>
@@ -24,6 +24,8 @@
 
 const { t } = useLocale()
 const { path } = useRoute()
+
+const splineUrl = 'https://prod.spline.design/piJPNSilaNlBFqN6/scene.splinecode'
 
 useHead({
   title: t('pageSubTitle.hhkb'),
@@ -34,7 +36,5 @@ useHead({
     { property: 'og:url', content: `https://www.dewdew.kr${path}` }
   ]
 })
-
-const splineUrl = 'https://prod.spline.design/piJPNSilaNlBFqN6/scene.splinecode'
 
 </script>
