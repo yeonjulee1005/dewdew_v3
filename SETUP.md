@@ -1,6 +1,9 @@
 ## 기본 셋업 방법
 
-## Setup
+<details>
+<summary>Project Setup</summary>
+
+### Setup
 
 Make sure to install the dependencies:
 
@@ -9,13 +12,13 @@ Make sure to install the dependencies:
 bun install
 ```
 
-## Development Server
+### Development Server
 
 ```zsh
 bun run dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
@@ -29,15 +32,23 @@ Locally preview production build:
 bun preview
 ```
 
-## 버전 관리 커맨드
-
+### Nuxt 패키지 정보확인
 ```zsh
-npm version patch //0.0.x
-npm version minor //0.x.0
-npm version major //x.0.0
+npx nuxi info
 ```
 
+### Nuxt3 Edge Channel 설정법
+> `package.json` 내에 `"nuxt": "npm:nuxt3@latest"` 처리
+
+
+
+</details>
+
 ## 셋업이 진행 안될 경우 조치사항
+
+<details>
+<summary>Terminal Command</summary>
+
 ```zsh
 // bun.lockb, node_modules 삭제, .nuxt 삭제 
 bun install 진행
@@ -51,7 +62,11 @@ bun pm cache rm
 bun install
 ```
 
+</details>
+
 ## Supabase Cli 셋업
+<details>
+<summary>Supabase Setup</summary>
 
 #### 패키지 설치
 ```zsh
@@ -71,18 +86,18 @@ bun supabase:login
 "supabase:type": "supabase gen types typescript --project-id ${PROJECT Reference ID} --schema public > types/supabase.ts"
 ```
 
+</details>
 
-## Nuxt 패키지 정보확인
-```zsh
-npx nuxi info
-```
+## Code-Server 
+<details>
+<summary>설정방법</summary>
 
-## Code-Server 포트 설정방법(devTool 내 vscode 실행방법)
+### Code-Server 포트 설정방법(devTool 내 vscode 실행방법)
 ```zsh
 PORT=3080 code-server
 ```
 
-## Code-Server 설치 방법
+### Code-Server 설치 방법
 ```zsh
 brew install code-server
 ```
@@ -90,5 +105,13 @@ brew install code-server
 > [참조링크1:vscode server](https://code.visualstudio.com/docs/remote/vscode-server)
 > [참조링크2:tunnels](https://code.visualstudio.com/docs/remote/tunnels#_using-the-vs-code-ui)
 
-## Nuxt3 Edge Channel 설정법
-> `package.json` 내에 `"nuxt": "npm:nuxt3@latest"` 처리
+</details>
+
+## 버전 관리 커맨드
+
+```zsh
+npm version patch //0.0.x
+npm version minor //0.x.0
+npm version major //x.0.0
+```
+
