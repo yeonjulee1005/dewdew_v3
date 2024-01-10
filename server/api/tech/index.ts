@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await client
     .from('tech')
-    .select('id, title, desc, raw_article, view_count, like, update_user_id, created_at, updated_at, deleted')
+    .select('id, title, desc, raw_article, view_count, like, tags, update_user_id, created_at, updated_at, deleted')
     .eq('deleted', false)
     .order('created_at', { ascending: false })
     .range(supabasePageCalc(page, pageCount, true), supabasePageCalc(page, pageCount, false))

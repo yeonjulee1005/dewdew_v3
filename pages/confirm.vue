@@ -48,7 +48,7 @@ const setUserCoreData = async (userId:string) => {
     color: data.admin ? 'rose' : 'fuchsia',
     timeout: 3000
   })
-  navigateTo(data.admin ? '/tech' : '/')
+  navigateTo(data.admin ? '/tech?page=1&count=4' : '/')
 }
 
 watch(() => user.value, () => {

@@ -1,27 +1,38 @@
 <template>
-  <div class="article-header flex flex-column flex-space-between gap-20 mb-default">
-    <nuxt-link
-      class="route-back flex flex-row flex-align-center gap-20"
-      to="/tech"
-    >
-      <Icon name="line-md:arrow-small-left" />
-      <span class="ml-8">
-        {{ $t('archives.back') }}
-      </span>
-    </nuxt-link>
-    <span
+  <div class="article-header flex flex-column flex-space-between gap-6 mb-default">
+    <AButton
+      custom-class="w-[fit-content]"
+      button-size="lg"
+      use-leading
+      icon-name="line-md:arrow-small-left"
+      :button-text="$t('archives.back')"
+      @click:button="router.back()"
+    />
+    <p
       v-if="!editTrigger"
       class="title"
     >
       {{ title }}
-    </span>
+    </p>
+    <TechBadge
+      v-if="!editTrigger"
+      :tags="tags"
+    />
     <DDInput
-      v-else
+      v-if="editTrigger"
       v-model="copiedTitle"
       color="violet"
       size="xl"
       aria-label="title"
       @change="() => $emit('update:title', copiedTitle)"
+    />
+    <DDInput
+      v-if="editTrigger"
+      v-model="copiedTags"
+      color="violet"
+      size="xl"
+      aria-label="title"
+      @change="() => $emit('update:tags', copiedTags)"
     />
     <ANuxtTime :date-time="createdAt" />
   </div>
@@ -29,23 +40,29 @@
 
 <script setup lang="ts">
 
+const router = useRouter()
+
 const props = withDefaults(
   defineProps<{
     title?: string,
+    tags?: string,
     createdAt?: string,
     editTrigger?: boolean
   }>(),
   {
     title: '',
+    tags: '',
     createdAt: '',
     editTrigger: false
   }
 )
 
 defineEmits([
-  'update:title'
+  'update:title',
+  'update:tags'
 ])
 
 const copiedTitle = ref(props.title)
+const copiedTags = ref(props.tags)
 
 </script>

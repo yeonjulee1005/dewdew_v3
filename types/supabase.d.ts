@@ -483,6 +483,7 @@ interface SupabaseDataBase {
           id: string
           like: number | null
           raw_article: string | null
+          tags: string | null
           title: string | null
           update_user_id: string | null
           updated_at: string | null
@@ -495,6 +496,7 @@ interface SupabaseDataBase {
           id?: string
           like?: number | null
           raw_article?: string | null
+          tags?: string | null
           title?: string | null
           update_user_id?: string | null
           updated_at?: string | null
@@ -507,6 +509,7 @@ interface SupabaseDataBase {
           id?: string
           like?: number | null
           raw_article?: string | null
+          tags?: string | null
           title?: string | null
           update_user_id?: string | null
           updated_at?: string | null

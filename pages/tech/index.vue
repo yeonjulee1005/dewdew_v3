@@ -42,11 +42,12 @@
 const user = useSupabaseUser()
 
 const { t } = useLocale()
-const { path } = useRoute()
+const { path, query } = useRoute()
+const router = useRouter()
 
 const { countData, upsertData } = useFetchComposable()
 
-const { currentPage, currentPageSize, adminAccess } = storeToRefs(useTechStore())
+const { adminAccess } = storeToRefs(useTechStore())
 const toast = useToast()
 
 useHead({
@@ -59,7 +60,24 @@ useHead({
   ]
 })
 
+const currentPage = ref(1)
+const currentPageSize = ref(4)
+
+currentPage.value = parseInt(query.page as string)
+currentPageSize.value = parseInt(query.count as string)
+
 const createArticleTrigger = ref(false)
+
+watch(() => currentPage.value, () => {
+  router.push({
+    query: {
+      ...router.currentRoute.value.query,
+      page: currentPage.value
+    }
+  })
+}, {
+  immediate: true
+})
 
 const { data: techData, refresh: techRefresh, pending: pendingTechData } = useAsyncData('techData', async () => {
   const { data }: SerializeObject = await useFetch('/api/tech', {
@@ -67,13 +85,12 @@ const { data: techData, refresh: techRefresh, pending: pendingTechData } = useAs
     query: {
       page: currentPage.value,
       pageCount: currentPageSize.value
-    },
-    immediate: true,
-    watch: [currentPage, currentPageSize]
+    }
   })
 
   return data.value
 }, {
+  immediate: true,
   watch: [currentPage, currentPageSize]
 })
 
