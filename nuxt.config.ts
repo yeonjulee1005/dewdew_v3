@@ -7,14 +7,6 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/main': { prerender: true }
   },
-  nitro: {
-    preset: 'vercel-edge',
-    wasm: {
-      rollup: {
-        targetEnv: 'browser'
-      }
-    }
-  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
