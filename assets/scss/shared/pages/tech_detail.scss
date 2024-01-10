@@ -14,10 +14,6 @@
     width: $space-80vw;
     max-width: $space-1000;
     margin-top: calc($space-100 + $space-20);
-    .route-back {
-      @include headline4;
-      text-decoration: none;
-    }
     .title {
       @include headline3;
       align-self: flex-start;

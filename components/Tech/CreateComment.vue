@@ -85,6 +85,15 @@
         type="submit"
       />
     </DDForm>
+    <AButton
+      custom-class="w-[fit-content] mt-4 mb-20"
+      button-size="lg"
+      button-color="rose"
+      use-leading
+      icon-name="line-md:arrow-small-left"
+      :button-text="$t('archives.back')"
+      @click:button="router.back()"
+    />
   </div>
 </template>
 
@@ -93,6 +102,7 @@ import { object, string, type InferType } from 'yup'
 import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
+const router = useRouter()
 
 const { passwordRegex, generateCommentName } = useUi()
 

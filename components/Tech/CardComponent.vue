@@ -1,19 +1,25 @@
 <template>
   <DDCard class="tech-card mt-6 mb-4">
     <template #header>
-      <AParagSkeleton
-        :pending-text="pendingData"
-        :paragraph-text="cardItem.title"
-        paragraph-class="title"
-      />
-      <TechAddOn
-        add-on-class="tech-add-on flex flex-wrap flex-align-center flex-justify-end gap-2 mt-8"
-        :article-id="cardItem.id"
-        :data="cardItem"
-        use-nuxt-time
-        badge-size="xs"
-        :estimate-read-time="estimateReadingTime(cardItem.desc)"
-      />
+      <div class="flex flex-col gap-6">
+        <AParagSkeleton
+          :pending-text="pendingData"
+          :paragraph-text="cardItem.title"
+          paragraph-class="title"
+        />
+        <TechBadge
+          :tags="cardItem.tags"
+          badge-size="lg"
+        />
+        <TechAddOn
+          add-on-class="tech-add-on flex flex-wrap flex-align-center flex-justify-end gap-4"
+          :article-id="cardItem.id"
+          :data="cardItem"
+          tag-size="lg"
+          use-nuxt-time
+          :estimate-read-time="estimateReadingTime(cardItem.desc)"
+        />
+      </div>
     </template>
     <AParagSkeleton
       :pending-text="pendingData"

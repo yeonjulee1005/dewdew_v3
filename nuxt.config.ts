@@ -154,9 +154,17 @@ export default defineNuxtConfig({
     ]
   },
   pwa: {
+    scope: '/',
+    base: '/',
+    injectRegister: 'auto',
     registerType: 'autoUpdate',
     workbox: {
-      globPatterns: ['**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}', '/']
+      navigateFallback: undefined,
+      globPatterns: ['**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}', '/'],
+      runtimeCaching: [{
+        urlPattern: '/',
+        handler: 'NetworkFirst'
+      }]
     },
     client: {
       installPrompt: true,
