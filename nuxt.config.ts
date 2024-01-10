@@ -99,7 +99,7 @@ export default defineNuxtConfig({
     build: {
       sourcemap: true,
       cssMinify: true,
-      minify: true,
+      minify: 'terser',
       terserOptions: {
         compress: {
           drop_console: true
