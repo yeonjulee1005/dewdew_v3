@@ -221,8 +221,14 @@ onMounted(() => {
           rel: 'noopener noreferrer',
           target: '_blank'
         },
-        protocols: ['ftp', 'mailto'],
-        openOnClick: true
+        protocols: [
+          'ftp',
+          'mailto',
+          {
+            scheme: 'tel',
+            optionalSlashes: true
+          }
+        ]
       }),
       table.configure({
         resizable: true

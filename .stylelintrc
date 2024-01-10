@@ -24,6 +24,7 @@
         "no-descending-specificity": null,
         "rule-empty-line-before": null,
         "declaration-empty-line-before": "never",
+        "import-notation": "url",
         "at-rule-empty-line-before": "never",
         "scss/at-import-partial-extension": [
           "always", { "except": ["scss"] }
