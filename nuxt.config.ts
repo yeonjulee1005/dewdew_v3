@@ -1,12 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import packageJson from './package.json'
-import { includes } from '@egjs/vue3-flicking'
 
 export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/main': { prerender: true }
+  },
+  nitro: {
+    preset: 'vercel-edge',
+    wasm: {
+      rollup: {
+        targetEnv: 'browser'
+      }
+    }
   },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
