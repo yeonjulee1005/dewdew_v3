@@ -2,14 +2,17 @@
   <div class="tech-article flex flex-column flex-align-center">
     <TechHeader
       :title="techDetailData?.title"
+      :tags="techDetailData?.tags"
       :created-at="techDetailData?.created_at"
       :edit-trigger="editTrigger"
       @update:title="(title:string) => updateData.title = title"
+      @update:tags="(tags:string) => updateData.tags = tags"
     />
     <TechAddOn
       :article-id="String(params.id)"
       :data="techDetailData"
       :estimate-read-time="estimateReadingTime(techDetailData.desc)"
+      badge-size="sm"
       :activate-like="techBlogLikeTrigger"
       @update-count="updateLikeCount"
     />
@@ -64,7 +67,8 @@ const { data: techDetailData, refresh: techRefresh }: SerializeObject = await us
   query: {
     techBlogId: params.id
   },
-  immediate: true
+  immediate: true,
+  watch: [params]
 })
 
 const { data: techCommentData, refresh: techCommentRefresh }: SerializeObject = await useFetch('/api/tech/comment', {
@@ -72,7 +76,8 @@ const { data: techCommentData, refresh: techCommentRefresh }: SerializeObject = 
   query: {
     techBlogId: params.id
   },
-  immediate: true
+  immediate: true,
+  watch: [params]
 })
 
 const updateData = ref<SerializeObject>({
@@ -82,10 +87,11 @@ const updateData = ref<SerializeObject>({
 useHead({
   title: t('pageTitle.tech'),
   meta: [
-    { property: 'description', content: techDetailData.value?.desc },
+    { property: 'keyword', content: techDetailData.value?.tags },
+    { property: 'description', content: t('openGraph.tech') },
     { property: 'og:title', content: techDetailData.value?.title },
     { property: 'og:url', content: `https://www.dewdew.kr${path}` },
-    { property: 'og:description', content: techDetailData.value?.desc }
+    { property: 'og:description', content: t('openGraph.tech') }
   ]
 })
 
