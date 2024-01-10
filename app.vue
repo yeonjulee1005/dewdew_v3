@@ -48,46 +48,17 @@ if (process.server) {
       { name: 'msapplication-TileColor', content: '#705757' },
       { name: 'keywords', content: 'developer,develop,web,portfolio,개발자,FE웹개발자,웹개발자,포트폴리오,개발자 포트폴리오,프론트앤드 포트폴리오' },
       { name: 'naver-site-verification', content: '7c406de71b03c1e444a4fe2630a29bd7a8e17559' },
-      {
-        name: 'description',
-        content: (meta.description as string) ?? t('openGraph.main')
-      },
+      { name: 'description', content: (meta.description as string) ?? t('openGraph.main') },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: seoUrl },
       { property: 'og:image', content: seoImage, key: 'og:image' },
       { property: 'og:image:width', content: '410' },
       { property: 'og:image:height', content: '200' },
       { property: 'og:image:type', content: 'image/png' },
-      {
-        property: 'og:title',
-        content: (meta.title as string) ?? t('pageTitle.yeonju')
-      },
-      {
-        property: 'og:description',
-        content: (meta.description as string) ?? t('openGraph.main')
-      }
+      { property: 'og:title', content: (meta.title as string) ?? t('pageTitle.yeonju') },
+      { property: 'og:description', content: (meta.description as string) ?? t('openGraph.main') }
     ],
     link: [
-      ...[
-        '/fonts/Pretendard-Thin.otf',
-        '/fonts/Pretendard-ExtraLight.otf',
-        '/fonts/Pretendard-Light.otf',
-        '/fonts/Pretendard-Regular.otf',
-        '/fonts/Pretendard-Medium.otf',
-        '/fonts/Pretendard-SemiBold.otf',
-        '/fonts/Pretendard-Bold.otf',
-        '/fonts/Pretendard-ExtraBold.otf',
-        '/fonts/Pretendard-Black.otf',
-        'https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2'
-      ].map(href => ({
-        rel: 'preload',
-        lazy: true,
-        as: 'font',
-        type: href.includes('woff2') ? 'font/woff2' : 'font/otf',
-        crossorigin: '',
-        href
-      }) as const
-      ),
       { rel: 'canonical', href: fullPath },
       { rel: 'mask-icon', color: '#5bbad5', href: '/safari-pinned-tab.svg' },
       { rel: 'icon', type: 'image/png', href: '/icon.png' },
