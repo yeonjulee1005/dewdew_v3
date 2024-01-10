@@ -3,6 +3,10 @@ import { sentryVitePlugin } from '@sentry/vite-plugin'
 import packageJson from './package.json'
 
 export default defineNuxtConfig({
+  routeRules: {
+    '/': { prerender: true },
+    '/main': { prerender: true }
+  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
