@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import packageJson from './package.json'
+import { includes } from '@egjs/vue3-flicking'
 
 export default defineNuxtConfig({
   routeRules: {
@@ -18,6 +19,14 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'canonical', href: 'https://www.dewdew.dev' }
+      ],
+      script: [
+        {
+          hid: 'spiine-viewer',
+          src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
+          type: 'module',
+          defer: true
+        }
       ]
     }
   },
@@ -144,7 +153,10 @@ export default defineNuxtConfig({
         'wcag/h37': 'warn',
         'element-permitted-content': 'warn',
         'element-required-attributes': 'warn',
-        'attribute-empty-style': 'off'
+        'attribute-empty-style': 'off',
+        'prefer-native-element': 'off',
+        'no-unknown-elements': 'off',
+        'wcag/h30': 'off'
       }
     }
   },
