@@ -3,10 +3,6 @@ import { sentryVitePlugin } from '@sentry/vite-plugin'
 import packageJson from './package.json'
 
 export default defineNuxtConfig({
-  routeRules: {
-    '/': { prerender: true },
-    '/main': { prerender: true }
-  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -18,14 +14,6 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'canonical', href: 'https://www.dewdew.dev' }
-      ],
-      script: [
-        {
-          hid: 'spiine-viewer',
-          src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
-          type: 'module',
-          defer: true
-        }
       ]
     }
   },
@@ -152,10 +140,7 @@ export default defineNuxtConfig({
         'wcag/h37': 'warn',
         'element-permitted-content': 'warn',
         'element-required-attributes': 'warn',
-        'attribute-empty-style': 'off',
-        'prefer-native-element': 'off',
-        'no-unknown-elements': 'off',
-        'wcag/h30': 'off'
+        'attribute-empty-style': 'off'
       }
     }
   },
