@@ -4,7 +4,7 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "1.41.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
