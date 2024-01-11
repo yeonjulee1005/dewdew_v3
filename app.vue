@@ -16,10 +16,15 @@
 
 <script setup lang="ts">
 
+const { coords } = useGeolocation()
+
 const { meta, fullPath } = useRoute()
 
 const { t } = useLocale()
+
+const { geoX, geoY, latitude, longitude } = storeToRefs(useLocWeatherStore())
 const { loadMenuData } = useFetchComposable()
+const { dfsXyConvert } = useTranslateCoords()
 
 loadMenuData('root')
 loadMenuData('sub')
@@ -32,6 +37,17 @@ useHead({
       : null
   }
 })
+
+watch(() => coords.value, () => {
+  if (coords.value.latitude === Infinity) {
+    return
+  }
+  const rs = dfsXyConvert('toLL', coords.value.latitude, coords.value.longitude)
+  geoX.value = rs.x
+  geoY.value = rs.y
+  latitude.value = rs.lat
+  longitude.value = rs.lng
+}, { immediate: true })
 
 const seoUrl = 'https://www.dewdew.dev'
 const seoImage = 'https://api.dewdew.dev/storage/v1/object/public/assets/banner/main_banner.webp'

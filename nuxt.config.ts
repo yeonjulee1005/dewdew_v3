@@ -119,6 +119,7 @@ export default defineNuxtConfig({
     public: {
       emailJsKey: process.env.EMAILJS_KEY,
       emailJSsTemplate: process.env.EMAILJS_TEMPLATE,
+      dataPortalApiKey: process.env.DATA_PORTAL_API_KEY,
       siteUrl: process.env.BASE_URL,
       serviceVersion: JSON.stringify(packageJson.version)
     }

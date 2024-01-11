@@ -68,6 +68,10 @@ export const useUi = () => {
     return dayjs(new Date()).format('YYYYMMDD_HHmmss')
   }
 
+  const genDateFormat = (format: string) => {
+    return dayjs(new Date()).format(format)
+  }
+
   const currentDateIosFormat = () => {
     return new Date().toISOString().split('T')
   }
@@ -127,6 +131,7 @@ export const useUi = () => {
     removeHtmlTags,
     genUid,
     genFileDate,
+    genDateFormat,
     currentDateIosFormat,
     generateCommentName,
     badgeColor,
