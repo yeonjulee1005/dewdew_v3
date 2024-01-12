@@ -9,6 +9,10 @@ export const useUi = () => {
   const emailRegex = /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
 
+  const splitByChar = (value: string | number, char: string) => {
+    return String(value).split(char)[0]
+  }
+
   const comma = (val:number) => {
     return String(val).replace(uncommaRegex, '$1,')
   }
@@ -72,6 +76,10 @@ export const useUi = () => {
     return dayjs(new Date()).format(format)
   }
 
+  const getMinute = (format: string) => {
+    return dayjs(new Date()).format(format)
+  }
+
   const currentDateIosFormat = () => {
     return new Date().toISOString().split('T')
   }
@@ -118,6 +126,7 @@ export const useUi = () => {
     hyperLinkRegex,
     youtubeRegex,
     passwordRegex,
+    splitByChar,
     comma,
     uncomma,
     checkHyperLink,
@@ -132,6 +141,7 @@ export const useUi = () => {
     genUid,
     genFileDate,
     genDateFormat,
+    getMinute,
     currentDateIosFormat,
     generateCommentName,
     badgeColor,

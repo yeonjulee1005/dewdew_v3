@@ -1,5 +1,5 @@
 <template>
-  <div class="header flex flex-justify-center flex-align-center">
+  <div class="header flex flex-column flex-justify-center flex-align-center">
     <div class="header-container flex flex-align-center gap-20">
       <HeaderLogo />
       <div class="flex-auto" />
@@ -8,5 +8,6 @@
       <AThemeChange />
       <HeaderMobileMenu />
     </div>
+    <LazyHeaderForecast />
   </div>
 </template>

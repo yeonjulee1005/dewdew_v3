@@ -25,12 +25,9 @@ const { t } = useLocale()
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
 
-const { geoX, geoY } = storeToRefs(useLocWeatherStore())
 const { portfolioData } = storeToRefs(usePortfolioStore())
 
-const { weatherQuery } = useQuery()
 const { loadStackData, loadPortfolioData } = useFetchComposable()
-const { genDateFormat } = useUi()
 
 useHead({
   title: t('pageTitle.main')
@@ -65,12 +62,6 @@ const scrollDetect = () => {
       break
   }
 }
-
-const { data: forecast } = useAsyncData('weather', async () => {
-  return await $fetch(`https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst${weatherQuery(genDateFormat('YYYYMMDD'), genDateFormat('hh').concat('00'), geoX.value ?? 0, geoY.value ?? 0)}`)
-}, { watch: [geoX, geoY] })
-
-console.log(forecast)
 
 const mobile = (scrollY:number) => {
   mainTitleTrigger.value = scrollY < 200
