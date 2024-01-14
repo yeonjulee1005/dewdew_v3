@@ -56,7 +56,7 @@
     cursor: pointer;
   }
   .mobile-menu-links {
-    @include headline4;
+    @include headline5;
     text-decoration: none;
     transition: all .1s ease-in-out;
     cursor: pointer;
@@ -65,11 +65,10 @@
     }
   }
   .sns {
-    padding: $space-20;
     cursor: pointer;
     transition: all .1s ease-in-out;
     span {
-      @include headline4;
+      @include headline5;
     }
     &:hover {
       scale: 1.05;
@@ -78,7 +77,6 @@
   .forecast {
     width: fit-content;
     height: $space-40;
-    margin: $space-20;
     .weather-pannel {
       height: $space-40;
       width: $space-percent-100;
