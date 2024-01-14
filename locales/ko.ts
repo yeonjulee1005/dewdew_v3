@@ -56,6 +56,10 @@ export default {
       ],
       scroll: '👇🏻 아래로 스크롤'
     },
+    forecast: {
+      uv: '자외선',
+      diffusion: '대기정체'
+    },
     resume: {
       title: 'RESUME'
     },

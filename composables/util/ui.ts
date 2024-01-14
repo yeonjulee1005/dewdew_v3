@@ -77,7 +77,7 @@ export const useUi = () => {
   }
 
   const getLastHour = () => {
-    return String(parseInt(genDateFormat('HH')) - 1)
+    return dayjs(new Date()).subtract(1, 'hour').format('HH')
   }
 
   const getMinute = (format: string) => {
