@@ -39,6 +39,16 @@
       }
     }
   }
+  .forecast {
+    position: fixed;
+    top: $space-100;
+    left: $space-20;
+    height: $space-40;
+    .weather-pannel {
+      height: $space-40;
+      width: $space-percent-100;
+    }
+  }
 }
 
 .mobile-menu {
@@ -63,6 +73,15 @@
     }
     &:hover {
       scale: 1.05;
+    }
+  }
+  .forecast {
+    width: fit-content;
+    height: $space-40;
+    margin: $space-20;
+    .weather-pannel {
+      height: $space-40;
+      width: $space-percent-100;
     }
   }
 }

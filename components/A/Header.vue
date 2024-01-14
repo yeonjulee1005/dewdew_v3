@@ -8,6 +8,15 @@
       <AThemeChange />
       <HeaderMobileMenu />
     </div>
-    <LazyHeaderForecast />
+    <LazyHeaderForecast
+      v-if="isDesktop"
+      class="forecast"
+    />
   </div>
 </template>
+
+<script setup lang="ts">
+
+const { isDesktop } = useDevice()
+
+</script>
