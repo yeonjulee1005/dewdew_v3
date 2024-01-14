@@ -18,7 +18,7 @@
         />
         <AIconText
           :use-icon="false"
-          :text="'자외선'"
+          :text="$t('main.forecast.uv')"
         />
         <AIconText
           :custom-class="uvColor(uvData.uvIndex)"
@@ -43,7 +43,7 @@
         />
         <AIconText
           :use-icon="false"
-          :text="'대기질'"
+          :text="$t('main.forecast.diffusion')"
         />
         <AIconText
           :custom-class="airDiffusionColor(airDiffusionData.diffusionIndex)"

@@ -56,6 +56,10 @@ export default {
       ],
       scroll: '👇🏻 Scroll Down'
     },
+    forecast: {
+      uv: 'UV',
+      diffusion: 'Air Exposed'
+    },
     resume: {
       title: 'RESUME'
     },

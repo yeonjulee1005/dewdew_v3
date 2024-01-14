@@ -74,16 +74,16 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
 
   const recordWeatherData = (response: WeatherItem[]) => {
     weatherFirstData.value = {
-      sky: getWeatherData('sky', filterLastData(response, 'SKY')?.fcstValue ?? 0),
-      t1h: getWeatherData('t1h', filterLastData(response, 'T1H')?.fcstValue ?? 0),
-      vec: getWeatherData('vec', Math.floor((parseInt(filterLastData(response, 'VEC')?.fcstValue ?? '0') + 22.5) / 45)),
-      wsd: getWeatherData('wsd', filterLastData(response, 'WSD')?.fcstValue ?? 0)
+      sky: getWeatherData('sky', filterWeatherData(response, 'SKY', 0)?.fcstValue ?? 0),
+      t1h: getWeatherData('t1h', filterWeatherData(response, 'T1H', 0)?.fcstValue ?? 0),
+      vec: getWeatherData('vec', Math.floor((parseInt(filterWeatherData(response, 'VEC', 0)?.fcstValue ?? '0') + 22.5) / 45)),
+      wsd: getWeatherData('wsd', filterWeatherData(response, 'WSD', 0)?.fcstValue ?? 0)
     }
 
     weatherSecondData.value = {
-      pty: getWeatherData('pty', filterLastData(response, 'PTY')?.fcstValue ?? 0),
-      r1n: getWeatherData('r1n', filterLastData(response, 'RN1')?.fcstValue ?? 0),
-      reh: getWeatherData('reh', filterLastData(response, 'REH')?.fcstValue ?? 0)
+      pty: getWeatherData('pty', filterWeatherData(response, 'PTY', 0)?.fcstValue ?? 0),
+      r1n: getWeatherData('r1n', filterWeatherData(response, 'RN1', 0)?.fcstValue ?? 0),
+      reh: getWeatherData('reh', filterWeatherData(response, 'REH', 0)?.fcstValue ?? 0)
     }
   }
 
@@ -92,8 +92,8 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
     return typeof data === 'function' ? data(value) : data[value as number]
   }
 
-  const filterLastData = (data: WeatherItem[], category: string) => {
-    return data.filter((item: WeatherItem) => item.category === category).at(-1)
+  const filterWeatherData = (data: WeatherItem[], category: string, index:number) => {
+    return data.filter((item: WeatherItem) => item.category === category).at(index)
   }
 
   return {
