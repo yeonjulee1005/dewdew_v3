@@ -51,7 +51,7 @@
       <nuxt-link
         v-for="(menu, index) in mainMenuData"
         :key="index"
-        class="mobile-menu-links flex-align-center p-5"
+        class="mobile-menu-links flex-align-center p-3"
         :to="menu.url"
         :aria-label="menu.title"
         @click="() => sideMenuTrigger = false"
@@ -65,21 +65,21 @@
         v-for="(sns, index) in socialMenuData"
         v-show="index < 2"
         :key="index"
-        class="sns flex flex-align-center gap-2"
+        class="sns flex flex-align-center gap-2 p-3"
         :to="sns.url"
         target="_blank"
         aria-label="github"
       >
         <Icon
           :name="`line-md:${sns.icon}`"
-          :width="28"
-          :height="28"
+          :width="22"
+          :height="22"
         />
         <span>
           {{ sns.title }}
         </span>
       </nuxt-link>
-      <LazyHeaderForecast class="forecast" />
+      <LazyHeaderForecast class="forecast m-3" />
     </DDSlideover>
   </div>
 </template>
