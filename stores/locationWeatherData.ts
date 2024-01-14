@@ -42,8 +42,8 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
   }
 
   const fetchLivingData = async () => {
-    const uvIndexData: WeatherData = await $fetch(`http://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/getUVIdxV4?serviceKey=${livingIndexQuery(currentLocationCode.value?.code ?? 0, genDateFormat('YYYYMMDDHH'))}`)
-    const diffusionData: WeatherData = await $fetch(`http://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/getAirDiffusionIdxV4?serviceKey=${livingIndexQuery(currentLocationCode.value?.code ?? 0, genDateFormat('YYYYMMDDHH'))}`)
+    const uvIndexData: WeatherData = await $fetch(`https://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/getUVIdxV4?serviceKey=${livingIndexQuery(currentLocationCode.value?.code ?? 0, genDateFormat('YYYYMMDDHH'))}`)
+    const diffusionData: WeatherData = await $fetch(`https://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/getAirDiffusionIdxV4?serviceKey=${livingIndexQuery(currentLocationCode.value?.code ?? 0, genDateFormat('YYYYMMDDHH'))}`)
 
     if (!uvIndexData.response) { return }
     if (!diffusionData.response) { return }
