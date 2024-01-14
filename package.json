@@ -4,7 +4,7 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "1.41.0",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -76,7 +76,7 @@
     "eslint": "8.56.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vitest": "0.3.18",
-    "nuxt": "^3.8.2",
+    "nuxt": "^3.9.1",
     "nuxt-icon": "^0.6.7",
     "nuxt-simple-sitemap": "4.2.0",
     "nuxt-time": "^0.1.1",

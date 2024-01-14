@@ -79,6 +79,7 @@
           {{ sns.title }}
         </span>
       </nuxt-link>
+      <LazyHeaderForecast class="forecast" />
     </DDSlideover>
   </div>
 </template>

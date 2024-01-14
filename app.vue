@@ -16,10 +16,21 @@
 
 <script setup lang="ts">
 
+const { coords, resume } = useGeolocation()
+
 const { meta, fullPath } = useRoute()
 
 const { t } = useLocale()
+
+const locWeatherStore = useLocWeatherStore()
+const { geoX, geoY, latitude, longitude, forecastHour, currentLocationCode } = storeToRefs(locWeatherStore)
+const { fetchLivingData, fetchWeatherData } = locWeatherStore
+
+const { filteredLocations } = useKorLocation()
 const { loadMenuData } = useFetchComposable()
+const { dfsXyConvert } = useTranslateCoords()
+
+const { genDateFormat } = useUi()
 
 loadMenuData('root')
 loadMenuData('sub')
@@ -32,6 +43,38 @@ useHead({
       : null
   }
 })
+
+watch(() => genDateFormat('HH'), () => {
+  if (genDateFormat('HH').concat('00') !== forecastHour.value) {
+    fetchLivingData()
+    fetchWeatherData()
+  }
+})
+
+
+watch(() => coords.value, () => {
+  if (coords.value.latitude === Infinity) {
+    resume()
+    return
+  }
+
+  initWeatherData()
+}, { immediate: true })
+
+const initWeatherData = () => {
+  const rs = dfsXyConvert('toXY', coords.value.latitude, coords.value.longitude)
+
+  geoX.value = Math.floor(rs.x ?? 0)
+  geoY.value = Math.floor(rs.y ?? 0)
+
+  latitude.value = rs.lat
+  longitude.value = rs.lng
+
+  currentLocationCode.value = filteredLocations(geoX.value, geoY.value)
+
+  fetchLivingData()
+  fetchWeatherData()
+}
 
 const seoUrl = 'https://www.dewdew.dev'
 const seoImage = 'https://api.dewdew.dev/storage/v1/object/public/assets/banner/main_banner.webp'

@@ -9,6 +9,10 @@ export const useUi = () => {
   const emailRegex = /^([0-9a-zA-Z_.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/
 
+  const splitByChar = (value: string | number, char: string) => {
+    return String(value).split(char)[0]
+  }
+
   const comma = (val:number) => {
     return String(val).replace(uncommaRegex, '$1,')
   }
@@ -68,6 +72,18 @@ export const useUi = () => {
     return dayjs(new Date()).format('YYYYMMDD_HHmmss')
   }
 
+  const genDateFormat = (format: string) => {
+    return dayjs(new Date()).format(format)
+  }
+
+  const getLastHour = () => {
+    return String(parseInt(genDateFormat('HH')) - 1)
+  }
+
+  const getMinute = (format: string) => {
+    return dayjs(new Date()).format(format)
+  }
+
   const currentDateIosFormat = () => {
     return new Date().toISOString().split('T')
   }
@@ -80,6 +96,55 @@ export const useUi = () => {
     const randomBack = backName[Math.floor(Math.random() * backName.length)]
 
     return randomFront.concat(' ', randomBack)
+  }
+
+  const airDiffusionColor = (airDiffusion: number) => {
+    if (airDiffusion === 25) {
+      return 'text-rose-600'
+    } else if (airDiffusion === 50) {
+      return 'text-orange-600'
+    } else if (airDiffusion === 75) {
+      return 'text-sky-600'
+    } else if (airDiffusion === 100) {
+      return 'text-emerald-600'
+    }
+  }
+
+  const uvColor = (uv: number) => {
+    if (uv < 3) {
+      return 'text-emerald-600'
+    } else if (uv >= 3 && uv < 6) {
+      return 'text-sky-600'
+    } else if (uv >= 6 && uv < 8) {
+      return 'text-orange-600'
+    } else if (uv >= 8 && uv < 11) {
+      return 'text-rose-600'
+    } else if (uv >= 11) {
+      return 'text-red-600'
+    }
+  }
+
+  const weatherColor = (weather: string) => {
+    if (weather === '맑음') {
+      return 'text-yellow-600'
+    } else if (weather === '구름 많음') {
+      return 'text-sky-600'
+    } else if (weather === '흐림') {
+      return 'text-yellow-600'
+    }
+  }
+
+  const temperatureColor = (temperature: string) => {
+    const temperture = parseInt(temperature)
+    if (temperture >= 30) {
+      return 'text-orange-600'
+    } else if (temperture < 30 && temperture >= 15) {
+      return 'text-orange-300'
+    } else if (temperture < 15 && temperture >= 5) {
+      return 'text-sky-600'
+    } else if (temperture < 5) {
+      return 'text-blue-600'
+    }
   }
 
   const badgeColor = (likeCount:number) => {
@@ -114,6 +179,7 @@ export const useUi = () => {
     hyperLinkRegex,
     youtubeRegex,
     passwordRegex,
+    splitByChar,
     comma,
     uncomma,
     checkHyperLink,
@@ -127,8 +193,15 @@ export const useUi = () => {
     removeHtmlTags,
     genUid,
     genFileDate,
+    genDateFormat,
+    getLastHour,
+    getMinute,
     currentDateIosFormat,
     generateCommentName,
+    airDiffusionColor,
+    uvColor,
+    weatherColor,
+    temperatureColor,
     badgeColor,
     progressColor
   }

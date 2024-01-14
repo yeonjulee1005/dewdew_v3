@@ -23,4 +23,8 @@
       }
     }
   }
+  .forecast {
+    top: calc($space-60 + $space-10);
+    left: $space-10;
+  }
 }
