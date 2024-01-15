@@ -2,13 +2,13 @@ export default {
   pageTitle: {
     yeonju: '개발자 이연주',
     dewdew: 'Dewdew',
-    main: '메인',
-    portfolio: '포트폴리오',
-    project: '프로젝트',
+    main: 'Main',
+    portfolio: 'Portfolio',
+    project: 'Project',
     colorsTranslate: '내 색상 찾아줘!',
-    blog: '블로그',
-    tech: '테크 블로그',
-    archives: '아카이브'
+    blog: 'Blog',
+    tech: 'Tech Blog',
+    archives: 'Archives'
   },
   pageSubTitle: {
     colorsTranslate: '내 색상 찾아줘..',
@@ -61,7 +61,10 @@ export default {
       diffusion: '대기정체'
     },
     resume: {
-      title: 'RESUME'
+      name: [
+        'Software Engineer 이연주',
+        'A.K.A Dewdew'
+      ]
     },
     skills: {
       frontDescription: {
@@ -146,6 +149,8 @@ export default {
     articleTitle: '글제목',
     article: '컨텐츠',
     commentTitle: '댓글',
+    name: '이름',
+    content: '내용',
     password: '비밀번호',
     estimateReadTime: '{time}분'
   },

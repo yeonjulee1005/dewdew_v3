@@ -9,13 +9,9 @@
 
 <script setup lang="ts">
 
-withDefaults(
-  defineProps<{
-    scrollDownTrigger?: boolean
-  }>(),
-  {
-    scrollDownTrigger: false
-  }
-)
+const scrollDownTrigger = defineModel('scrollDownTrigger', {
+  type: Boolean,
+  default: false
+})
 
 </script>

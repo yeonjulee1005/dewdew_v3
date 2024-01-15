@@ -60,13 +60,9 @@ const { url } = useImageStorage()
 
 const { socialMenuData } = storeToRefs(useMenuStore())
 
-withDefaults(
-  defineProps<{
-    contactTrigger?: boolean
-  }>(),
-  {
-    contactTrigger: false
-  }
-)
+const contactTrigger = defineModel('contactTrigger', {
+  type: Boolean,
+  default: false
+})
 
 </script>

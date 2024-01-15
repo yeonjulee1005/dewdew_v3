@@ -73,15 +73,15 @@ const { locale } = useLocale()
 
 const { selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
-withDefaults(
-  defineProps<{
-    portfolioImageData: { orderIndex: {index: number }, title: { ko: string, en: string }, description: { ko: string, en: string }, url: string, image: string, dynamic_thumbnail:string, thumbnail: string, alt: string, deleted: boolean }[] | null | undefined,
-    portfolioTrigger?: boolean
-  }>(),
-  {
-    portfolioTrigger: false
-  }
-)
+const portfolioTrigger = defineModel('portfolioTrigger', {
+  type: Boolean,
+  default: false
+})
+
+const portfolioImageData = defineModel('portfolioImageData', {
+  type: Array<PortfolioType>,
+  default: []
+})
 
 const navigatePortfolio = (item: SerializeObject) => {
   selectedPortfolioData.value = item

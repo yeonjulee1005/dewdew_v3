@@ -53,14 +53,10 @@ import type { FormSubmitEvent } from '@nuxt/ui/dist/runtime/types'
 
 const { t } = useLocale()
 
-withDefaults(
-  defineProps<{
-    createArticleTrigger?: boolean
-  }>(),
-  {
-    createArticleTrigger: false
-  }
-)
+const createArticleTrigger = defineModel('dialogTrigger', {
+  type: Boolean,
+  default: false
+})
 
 const emits = defineEmits([
   'create:article',

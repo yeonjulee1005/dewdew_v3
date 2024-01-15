@@ -10,7 +10,7 @@
   max-width: $space-1000;
   width: $space-80vw;
   margin: 0 auto;
-  padding: calc($space-100 + $space-20) $space-8 $space-40;
+  padding: calc($space-100 + $space-60) $space-8 $space-40;
   overflow: clip;
   .flicking-viewport {
     margin-bottom: $space-30;
@@ -41,7 +41,14 @@
   .card-description {
     @include headline6;
   }
-  .card-image {
+  .portfolio-card {
     cursor: pointer;
+    &:hover {
+      .card-title,
+      .card-description {
+        color: var(--d-red-color);
+        transition: color .3s
+      }
+    }
   }
 }

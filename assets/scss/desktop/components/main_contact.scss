@@ -9,7 +9,7 @@
     width: $space-800;
     .email {
       .email-form {
-        width: $space-300;
+        width: calc($space-300 + $space-60);
       }
     }
   }

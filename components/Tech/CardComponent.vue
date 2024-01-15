@@ -1,5 +1,8 @@
 <template>
-  <DDCard class="tech-card mt-6 mb-4">
+  <DDCard
+    class="tech-card mt-6 mb-4"
+    :ui="{ ring: 'ring-0', divide: 'divide-violet-200 dark:divide-violet-950', rounded: 'rounded-2xl', background: 'bg-zinc-100 dark:bg-neutral-900' }"
+  >
     <template #header>
       <div class="flex flex-col gap-6">
         <AParagSkeleton

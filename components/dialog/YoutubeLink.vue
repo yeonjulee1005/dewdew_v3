@@ -44,14 +44,10 @@ const { t } = useLocale()
 
 const { youtubeRegex } = useUi()
 
-withDefaults(
-  defineProps<{
-    dialogTrigger?: boolean,
-  }>(),
-  {
-    dialogTrigger: false
-  }
-)
+const dialogTrigger = defineModel('dialogTrigger', {
+  type: Boolean,
+  default: false
+})
 
 const emits = defineEmits([
   'close:dialog',

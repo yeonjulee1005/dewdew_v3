@@ -1,0 +1,25 @@
+@use '../../variables' as *;
+
+/**
+* ! Main Prev Tech Style !
+* *  Shared *
+*/
+.main-prev-tech {
+  margin-top: $space-400;
+  opacity: 0;
+  transition: opacity .75s;
+  .title {
+    @include headline1;
+  }
+  .prev-card {
+    @include headline5;
+    cursor: pointer;
+    &:hover {
+      color: var(--d-red-color);
+      transition: color .3s;
+    }
+  }
+  &.activate {
+    opacity: 1;
+  }
+}

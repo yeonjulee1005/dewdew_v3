@@ -42,14 +42,10 @@ const { t } = useLocale()
 
 const { passwordRegex } = useUi()
 
-withDefaults(
-  defineProps<{
-    dialogTrigger?: boolean
-  }>(),
-  {
-    dialogTrigger: false
-  }
-)
+const dialogTrigger = defineModel('dialogTrigger', {
+  type: Boolean,
+  default: false
+})
 
 const emits = defineEmits([
   'confirm-password',

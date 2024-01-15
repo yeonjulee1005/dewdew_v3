@@ -48,14 +48,10 @@
 
 <script setup lang="ts">
 
-withDefaults(
-  defineProps<{
-    skillsTextTrigger?: boolean
-  }>(),
-  {
-    skillsTextTrigger: false
-  }
-)
+const skillsTextTrigger = defineModel('skillsTextTrigger', {
+  type: Boolean,
+  default: false
+})
 
 const toggleTrigger = ref(true)
 

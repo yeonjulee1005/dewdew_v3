@@ -44,20 +44,15 @@ const { t } = useLocale()
 
 const toast = useToast()
 
-withDefaults(
-  defineProps<{
-    dialogTrigger?: boolean
-  }>(),
-  {
-    dialogTrigger: false
-  }
-)
+const dialogTrigger = defineModel('dialogTrigger', {
+  type: Boolean,
+  default: false
+})
 
 const emits = defineEmits([
   'close:dialog',
   'submit:email'
 ])
-
 
 const schema = object({
   email: string()

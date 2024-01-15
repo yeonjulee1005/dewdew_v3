@@ -37,15 +37,14 @@
 
 const { url } = useImageStorage()
 
-withDefaults(
-  defineProps<{
-    mainTitleTrigger?: boolean,
-    mainTextTrigger?: boolean
-  }>(),
-  {
-    mainTitleTrigger: false,
-    mainTextTrigger: false
-  }
-)
+const mainTitleTrigger = defineModel('mainTitleTrigger', {
+  type: Boolean,
+  default: false
+})
+
+const mainTextTrigger = defineModel('mainTextTrigger', {
+  type: Boolean,
+  default: false
+})
 
 </script>

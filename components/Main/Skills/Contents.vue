@@ -1,9 +1,9 @@
 <template>
   <div class="main-skills flex flex-column">
-    <LazyMainSkillsDescriptions :skills-text-trigger="skillsTextTrigger" />
+    <LazyMainSkillsDescriptions v-model:skills-text-trigger="skillsTextTrigger" />
     <MainSkillsImage
-      :skills-image="stackLogoData"
-      :skills-bg-trigger="skillsBgTrigger"
+      v-model:skills-image="stackLogoData"
+      v-model:skills-bg-trigger="skillsBgTrigger"
     />
     <div
       class="skill-list flex flex-align-start"
@@ -49,17 +49,19 @@ const { stackLogoData } = storeToRefs(useStackStore())
 
 const { skillTitleList, frontEnd, backEnd, devOps } = useSkillData()
 
-withDefaults(
-  defineProps<{
-    skillsTextTrigger?: boolean,
-    skillsBgTrigger?: boolean,
-    skillsListTrigger?: boolean
-  }>(),
-  {
-    skillsTextTrigger: false,
-    skillsBgTrigger: false,
-    skillsListTrigger: false
-  }
-)
+const skillsTextTrigger = defineModel('skillsTextTrigger', {
+  type: Boolean,
+  default: false
+})
+
+const skillsBgTrigger = defineModel('skillsBgTrigger', {
+  type: Boolean,
+  default: false
+})
+
+const skillsListTrigger = defineModel('skillsListTrigger', {
+  type: Boolean,
+  default: false
+})
 
 </script>

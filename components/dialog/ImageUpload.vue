@@ -67,14 +67,10 @@ const { loadStorage, uploadStorage } = useFetchComposable()
 
 const toast = useToast()
 
-withDefaults(
-  defineProps<{
-    dialogTrigger?: boolean
-  }>(),
-  {
-    dialogTrigger: false
-  }
-)
+const dialogTrigger = defineModel('dialogTrigger', {
+  type: Boolean,
+  default: false
+})
 
 const emits = defineEmits([
   'close:dialog',
