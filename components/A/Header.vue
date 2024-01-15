@@ -4,8 +4,8 @@
       <HeaderLogo />
       <div class="flex-auto" />
       <HeaderDesktopMenu />
-      <ALanguageChange />
       <AThemeChange />
+      <ALanguageChange />
       <HeaderMobileMenu />
     </div>
     <LazyHeaderForecast

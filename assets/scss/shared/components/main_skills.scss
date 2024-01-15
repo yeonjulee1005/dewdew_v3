@@ -274,7 +274,7 @@
     position: relative;
     height: fit-content;
     z-index: 9;
-    transition: opacity .9s, all .3s;
+    transition: opacity .75s, all .3s;
     opacity: 0;
     &.activate {
       opacity: 1;

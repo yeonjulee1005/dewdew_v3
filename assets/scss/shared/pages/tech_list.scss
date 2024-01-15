@@ -12,7 +12,7 @@
   .write-button-container {
     width: $space-80vw;
     max-width: $space-1000;
-    margin-top: $space-100;
+    margin-top: $space-160;
     overflow-y: clip;
   }
   .tech-card {
@@ -20,6 +20,13 @@
     width: $space-80vw;
     max-width: $space-1000;
     cursor: pointer;
+    &:hover {
+      .title,
+      .desc {
+        color: var(--d-red-color);
+        transition: color .3s;
+      }
+    }
     .title {
       @include headline4;
     }

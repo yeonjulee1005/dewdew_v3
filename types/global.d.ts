@@ -56,6 +56,29 @@ interface AccordionItem {
 }
 
 /**
+ * ? Main Interface ?
+ */
+
+interface PortfolioType {
+  orderIndex: { index: number },
+  title: { ko: string; en: string },
+  description: { ko: string; en: string },
+  url: string,
+  image: string,
+  dynamic_thumbnail: string,
+  thumbnail: string,
+  alt: string,
+  deleted: boolean
+}
+
+interface SkillsImage {
+  orderIndex: { index: number },
+  title: string,
+  url: string,
+  deleted: boolean
+}
+
+/**
  * ? Weather Interfaces ?
  */
 

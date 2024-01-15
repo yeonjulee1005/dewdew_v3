@@ -10,7 +10,7 @@
       {{ $t('texts.version', { version: config.public.serviceVersion.replaceAll('"', '') }) }}
     </span>
     <DialogMagicLink
-      :dialog-trigger="magicLinkDialogTrigger"
+      v-model:dialog-trigger="magicLinkDialogTrigger"
       :title="$t('placeholder.inputEmail')"
       @submit:email="loginMagicLink"
       @close:dialog="() => magicLinkDialogTrigger = false"

@@ -1,40 +1,43 @@
 <template>
   <div class="portfolio">
-    <ClientOnly>
-      <Flicking
-        :options="option"
-        :plugins="plugin"
-      >
-        <nuxt-picture
-          v-for="item in portfolioData"
-          :key="item.url"
-          class="portfolio-picture"
-          :src="item?.image ?? ''"
-          width="200"
-          height="200"
-          format="webp"
-          fit="cover"
-          :alt="item?.alt"
-          :img-attrs="{ class: 'portfolio-image' }"
-          :draggable="false"
-          @contextmenu.prevent
-          @click="selectPortfolio(item)"
-          @mouseenter="selectPortfolio(item)"
-        />
-        <template #viewport>
-          <div class="flicking-pagination" />
-        </template>
-      </Flicking>
-    </ClientOnly>
-    <DDCard v-if="selectedPortfolioData">
+    <Flicking
+      :options="option"
+      :plugins="plugin"
+    >
+      <nuxt-picture
+        v-for="item in portfolioData"
+        :key="item.url"
+        class="portfolio-picture"
+        :src="item?.image ?? ''"
+        width="200"
+        height="200"
+        format="webp"
+        fit="cover"
+        :alt="item?.alt"
+        :img-attrs="{ class: 'portfolio-image' }"
+        :draggable="false"
+        @contextmenu.prevent
+        @click="selectPortfolio(item)"
+        @mouseenter="selectPortfolio(item)"
+      />
+      <template #viewport>
+        <div class="flicking-pagination" />
+      </template>
+    </Flicking>
+    <DDCard
+      v-if="selectedPortfolioData"
+      class="portfolio-card"
+      :ui="{ ring: 'ring-0', divide: 'divide-fuchsia-200 dark:divide-fuchsia-950', rounded: 'rounded-2xl', background: 'bg-zinc-100 dark:bg-neutral-900' }"
+      @click="navigateTo(selectedPortfolioData.url, { external: true, open: { target: '_blank' } })"
+    >
       <template #header>
         <div class="flex flex-column gap-10">
-          <span class="card-title mb-default">
+          <p class="card-title mb-default">
             {{ locale === 'ko' ? selectedPortfolioData.title.ko : selectedPortfolioData.title.en }}
-          </span>
-          <span class="card-description mb-default">
+          </p>
+          <p class="card-description mb-default">
             {{ locale === 'ko' ? selectedPortfolioData.description.ko : selectedPortfolioData.description.en }}
-          </span>
+          </p>
         </div>
       </template>
       <nuxt-picture
@@ -48,7 +51,6 @@
         :img-attrs="{ class: 'image' }"
         :draggable="false"
         @contextmenu.prevent
-        @click="navigateTo(selectedPortfolioData.url, { external: true, open: { target: '_blank' } })"
       />
     </DDCard>
   </div>

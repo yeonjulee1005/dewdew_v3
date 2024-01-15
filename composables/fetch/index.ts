@@ -8,7 +8,7 @@ export const useFetchComposable = () => {
   const { mainMenuData, subMenuData, socialMenuData } = storeToRefs(useMenuStore())
 
   const { stackLogoData } = storeToRefs(useStackStore())
-  const { portfolioData } = storeToRefs(usePortfolioStore())
+  const { portfolioData, selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
   const loadMenuData = async (menuType:string) => {
     const { data }: SerializeObject = await useFetch('/api/menu', {
@@ -38,11 +38,25 @@ export const useFetchComposable = () => {
     })
 
     portfolioData.value = data.value
+    selectedPortfolioData.value = data.value[0]
   }
 
   const loadArchiveData = async () => {
     const { data }: SerializeObject = await useFetch('/api/archive', {
       headers: useRequestHeaders(['cookie']),
+      immediate: true
+    })
+
+    return data.value
+  }
+
+  const loadTechData = async (page: number, pageCount: number) => {
+    const { data } = await useFetch('/api/tech', {
+      headers: useRequestHeaders(['cookie']),
+      query: {
+        page,
+        pageCount
+      },
       immediate: true
     })
 
@@ -109,13 +123,23 @@ export const useFetchComposable = () => {
       if (error) {
         return error
       }
-    } else {
+    } else if (subMatOpt && subMatOptVal) {
       const { error } = await client
         .from(table)
         .delete()
         .eq('id', deleteId)
         .eq(matOpt, matOptVal)
         .eq(subMatOpt, subMatOptVal)
+
+      if (error) {
+        return error
+      }
+    } else {
+      const { error } = await client
+        .from(table)
+        .delete()
+        .eq('id', deleteId)
+        .eq(matOpt, matOptVal)
 
       if (error) {
         return error
@@ -146,6 +170,7 @@ export const useFetchComposable = () => {
     loadStackData,
     loadPortfolioData,
     loadArchiveData,
+    loadTechData,
     countData,
     insertData,
     upsertData,

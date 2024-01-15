@@ -5,10 +5,15 @@
 * *  Desktop *
 */
 .main-resume {
-  margin: calc($space-200 + $space-40) auto $space-200;
+  margin: calc($space-100 + $space-20) auto $space-200;
   .resume-container {
     .resume-title {
-      @include headline1;
+      @include headline5;
+      text-align: center;
+      &:last-child {
+        @include headline6;
+        text-align: center;
+      }
     }
     .educate-group,
     .career-group {

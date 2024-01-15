@@ -115,17 +115,17 @@
       </span>
     </div>
     <DialogHyperLink
-      :dialog-trigger="hyperLinkDialogTrigger"
+      v-model:dialog-trigger="hyperLinkDialogTrigger"
       @submit:link="submitHyperLink"
       @close:dialog="(trigger:boolean) => hyperLinkDialogTrigger = trigger"
     />
     <DialogYoutubeLink
-      :dialog-trigger="youtubeLinkDialogTrigger"
+      v-model:dialog-trigger="youtubeLinkDialogTrigger"
       @submit:link="submitYoutubeLink"
       @close:dialog="(trigger:boolean) => youtubeLinkDialogTrigger = trigger"
     />
     <DialogImageUpload
-      :dialog-trigger="imageUploadDialogTrigger"
+      v-model:dialog-trigger="imageUploadDialogTrigger"
       @submit:image="submitImage"
       @close:dialog="(trigger:boolean) => imageUploadDialogTrigger = trigger"
     />

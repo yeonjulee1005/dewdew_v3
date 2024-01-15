@@ -14,7 +14,7 @@
 
 .prev-button {
   position: relative;
-  top: calc($space-100 + $space-20);
+  top: $space-160;
   left: $space-10vw;
   z-index: 10;
 }
@@ -72,6 +72,15 @@
         color: $d-bg-color-00;
         margin: unset;
         align-self: flex-end;
+      }
+    }
+    &:hover {
+      .text-group {
+        .title,
+        .subtitle {
+          color: var(--d-red-color);
+          transition: color .3s;
+        }
       }
     }
   }

@@ -5,7 +5,7 @@
 * *  Mobile *
 */
 .main-resume {
-  margin: $space-200 auto $space-200;
+  margin: $space-80 auto $space-200;
   .resume-container {
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,12 @@
       margin: $space-20 auto;
     }
     .resume-title {
-      @include headline3;
+      @include headline5;
+      text-align: center;
+      &:last-child {
+        @include headline6;
+        text-align: center;
+      }
     }
     .accordion {
       padding: $space-20;

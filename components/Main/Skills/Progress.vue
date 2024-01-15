@@ -14,14 +14,8 @@
 
 <script setup lang="ts">
 
-withDefaults(
-  defineProps<{
-    progressData: ProgressData,
-    maxSize?: number | string[]
-  }>(),
-  {
-    maxSize: 100
-  }
-)
+defineProps<{
+  progressData: ProgressData,
+}>()
 
 </script>

@@ -1,21 +1,22 @@
 <template>
   <div class="main">
     <LazyMainIntroBanner
-      :main-title-trigger="mainTitleTrigger"
-      :main-text-trigger="mainTextTrigger"
+      v-model:main-title-trigger="mainTitleTrigger"
+      v-model:main-text-trigger="mainTextTrigger"
     />
-    <LazyMainScrollDown :scroll-down-trigger="scrollDownTrigger" />
-    <LazyMainResume :main-resume-trigger="mainResumeTrigger" />
+    <LazyMainScrollDown v-model:scroll-down-trigger="scrollDownTrigger" />
+    <LazyMainPrevTech v-model:prev-tech-trigger="prevTechTrigger" />
+    <LazyMainResume v-model:main-resume-trigger="mainResumeTrigger" />
     <LazyMainSkillsContents
-      :skills-text-trigger="mainSkillsTextTrigger"
-      :skills-bg-trigger="mainSkillsBgTrigger"
-      :skills-list-trigger="mainSkillsListTrigger"
+      v-model:skills-text-trigger="mainSkillsTextTrigger"
+      v-model:skills-bg-trigger="mainSkillsBgTrigger"
+      v-model:skills-list-trigger="mainSkillsListTrigger"
     />
     <LazyMainPortfolio
-      :portfolio-image-data="portfolioData"
-      :portfolio-trigger="referenceListTrigger"
+      v-model:portfolio-trigger="referenceListTrigger"
+      v-model:portfolio-image-data="portfolioData"
     />
-    <LazyMainContact :contact-trigger="contactTrigger" />
+    <LazyMainContact v-model:contact-trigger="contactTrigger" />
   </div>
 </template>
 
@@ -36,6 +37,7 @@ useHead({
 const mainTitleTrigger = ref(true)
 const mainTextTrigger = ref(true)
 const scrollDownTrigger = ref(true)
+const prevTechTrigger = ref(false)
 const mainResumeTrigger = ref(false)
 const mainSkillsTextTrigger = ref(false)
 const mainSkillsBgTrigger = ref(false)
@@ -66,37 +68,40 @@ const scrollDetect = () => {
 const mobile = (scrollY:number) => {
   mainTitleTrigger.value = scrollY < 200
   mainTextTrigger.value = scrollY < 350
-  scrollDownTrigger.value = scrollY < 160
-  mainResumeTrigger.value = scrollY > 200 && scrollY < 1400
-  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2600
+  scrollDownTrigger.value = scrollY < 150
+  prevTechTrigger.value = scrollY > 180
+  mainResumeTrigger.value = scrollY > 200 && scrollY < 1500
+  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2700
   mainSkillsBgTrigger.value = scrollY > 1300 && scrollY < 2900
-  mainSkillsListTrigger.value = scrollY > 2400 && scrollY < 5500
-  referenceListTrigger.value = scrollY > 5100 && scrollY < 10800
-  contactTrigger.value = scrollY > 10700
+  mainSkillsListTrigger.value = scrollY > 2800 && scrollY < 5850
+  referenceListTrigger.value = scrollY > 5800 && scrollY < 11000
+  contactTrigger.value = scrollY > 11200
 }
 
 const tablet = (scrollY:number) => {
   mainTitleTrigger.value = scrollY < 300
   mainTextTrigger.value = scrollY < 500
   scrollDownTrigger.value = scrollY < 200
-  mainResumeTrigger.value = scrollY > 300 && scrollY < 1600
-  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2500
-  mainSkillsBgTrigger.value = scrollY > 1200 && scrollY < 3500
-  mainSkillsListTrigger.value = scrollY > 2700 && scrollY < 5600
-  referenceListTrigger.value = scrollY > 5700 && scrollY < 8200
+  prevTechTrigger.value = scrollY > 280
+  mainResumeTrigger.value = scrollY > 400
+  mainSkillsTextTrigger.value = scrollY > 1900
+  mainSkillsBgTrigger.value = scrollY > 1400
+  mainSkillsListTrigger.value = scrollY > 2700
+  referenceListTrigger.value = scrollY > 5700
   contactTrigger.value = scrollY > 8000
 }
 
 const desktop = (scrollY:number) => {
-  mainTitleTrigger.value = scrollY < 500
+  mainTitleTrigger.value = scrollY < 400
   mainTextTrigger.value = scrollY < 450
-  scrollDownTrigger.value = scrollY < 650
-  mainResumeTrigger.value = scrollY > 150 && scrollY < 1250
-  mainSkillsTextTrigger.value = scrollY > 1300 && scrollY < 2200
-  mainSkillsBgTrigger.value = scrollY > 900 && scrollY < 3000
-  mainSkillsListTrigger.value = scrollY > 2300 && scrollY < 3800
-  referenceListTrigger.value = scrollY > 3600 && scrollY < 5800
-  contactTrigger.value = scrollY > 5600
+  scrollDownTrigger.value = scrollY < 250
+  prevTechTrigger.value = scrollY > 350 && scrollY < 1150
+  mainResumeTrigger.value = scrollY > 500 && scrollY < 1600
+  mainSkillsTextTrigger.value = scrollY > 1650 && scrollY < 2400
+  mainSkillsBgTrigger.value = scrollY > 1100 && scrollY < 3200
+  mainSkillsListTrigger.value = scrollY > 2500 && scrollY < 4000
+  referenceListTrigger.value = scrollY > 3800 && scrollY < 6200
+  contactTrigger.value = scrollY > 6000
 }
 
 loadStackData()
