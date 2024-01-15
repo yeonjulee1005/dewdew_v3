@@ -16,7 +16,7 @@
       @open-dialog="openImageDialog"
     />
     <DialogArchive
-      :dialog-trigger="imageDialogTrigger"
+      v-model:dialog-trigger="imageDialogTrigger"
       :select-image-data="selectImageData"
       @close:dialog="() => imageDialogTrigger = false"
     />

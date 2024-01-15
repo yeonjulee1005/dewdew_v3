@@ -21,14 +21,14 @@
 
 <script setup lang="ts">
 
-withDefaults(
-  defineProps<{
-    skillsImage: { orderIndex: { index: number }, title: string, url: string, deleted: boolean }[] | null | undefined,
-    skillsBgTrigger?: boolean
-  }>(),
-  {
-    skillsBgTrigger: false
-  }
-)
+const skillsBgTrigger = defineModel('skillsBgTrigger', {
+  type: Boolean,
+  default: false
+})
+
+const skillsImage = defineModel('skillsImage', {
+  type: Array<SkillsImage>,
+  default: []
+})
 
 </script>

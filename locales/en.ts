@@ -61,7 +61,10 @@ export default {
       diffusion: 'Air Exposed'
     },
     resume: {
-      title: 'RESUME'
+      name: [
+        'Software Engineer Yeonju',
+        'A.K.A Dewdew'
+      ]
     },
     skills: {
       frontDescription: {
@@ -142,12 +145,14 @@ export default {
     historyTitle: 'HISTORY OF'
   },
   tech: {
-    write: '글쓰기',
-    writeComment: '댓글쓰기',
-    articleTitle: '글제목',
-    article: '컨텐츠',
-    commentTitle: '댓글',
-    password: '비밀번호',
+    write: 'Write',
+    writeComment: 'Write Comment',
+    articleTitle: 'Article Title',
+    article: 'Content',
+    commentTitle: 'Comment',
+    name: 'Name',
+    content: 'Content',
+    password: 'Password',
     estimateReadTime: '{time} minutes'
   },
   blog: {

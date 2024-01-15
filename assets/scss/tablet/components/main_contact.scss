@@ -10,14 +10,13 @@
     align-items: center;
     width: $space-percent-100;
     .social {
-      width: $space-90vw;
+      width: $space-60vw;
       margin-bottom: $space-30;
     }
     .email {
-      width: $space-90vw;
       margin-top: $space-40;
       .email-form {
-        width: $space-300;
+        width: $space-50vw;
       }
     }
   }

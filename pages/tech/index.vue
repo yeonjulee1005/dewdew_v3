@@ -30,7 +30,7 @@
       show-last
     />
     <DialogCreateArticle
-      :create-article-trigger="createArticleTrigger"
+      v-model:dialog-trigger="createArticleTrigger"
       @create:article="writeArticle"
       @close:dialog="() => createArticleTrigger = false"
     />

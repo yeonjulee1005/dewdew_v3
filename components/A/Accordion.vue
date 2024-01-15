@@ -1,6 +1,6 @@
 <template>
   <DDAccordion
-    class="accordion"
+    class="accordion px-10 gap-2"
     :variant="accordionVariant"
     :color="accordionColor"
     :size="accordionSize"

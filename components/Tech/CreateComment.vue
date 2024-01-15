@@ -7,7 +7,7 @@
       @submit="onSubmit"
     >
       <DDFormGroup
-        :label="nameLabel"
+        :label="$t('tech.name')"
         name="name"
         size="xl"
         required
@@ -32,7 +32,7 @@
         </DDInput>
       </DDFormGroup>
       <DDFormGroup
-        :label="contentLabel"
+        :label="$t('tech.content')"
         name="message"
         size="xl"
         required
@@ -43,14 +43,14 @@
         />
       </DDFormGroup>
       <DDFormGroup
-        :label="passwordLabel"
+        :label="$t('tech.password')"
         name="password"
         size="xl"
         required
       >
         <DDInput
           v-model="formData.password"
-          :placeholder="passwordLabel"
+          :placeholder="$t('placeholder.inputPassword')"
           color="violet"
           size="lg"
           type="password"
@@ -106,19 +106,6 @@ const router = useRouter()
 
 const { passwordRegex, generateCommentName } = useUi()
 
-withDefaults(
-  defineProps<{
-    nameLabel?: string,
-    contentLabel?: string,
-    passwordLabel?: string
-  }>(),
-  {
-    nameLabel: '이름',
-    contentLabel: '내용',
-    passwordLabel: '비밀번호'
-  }
-)
-
 const emits = defineEmits([
   'create-comment'
 ])
@@ -136,7 +123,7 @@ const schema = object({
 
 type Schema = InferType<typeof schema>
 
-const formData = reactive({
+const formData = ref({
   name: generateCommentName(),
   message: '',
   password: ''
@@ -144,7 +131,7 @@ const formData = reactive({
 
 const onSubmit = (event: FormSubmitEvent<Schema>) => {
   if (!event.isTrusted) { return }
-  emits('create-comment', formData)
+  emits('create-comment', formData.value)
 }
 
 </script>

@@ -25,17 +25,13 @@
       .kakao-button,
       .linkedin-button,
       .instagram-button {
-        width: $space-percent-100;
+        width: $space-percent-80;
       }
     }
     .email {
-      width: $space-percent-50;
       .email-title {
         @include headline3;
         color: var(--d-blue-color);
-      }
-      .email-form {
-        width: $space-300;
       }
     }
   }

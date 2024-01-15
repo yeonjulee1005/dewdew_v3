@@ -24,15 +24,14 @@
 
 <script setup lang="ts">
 
-withDefaults(
-  defineProps<{
-    selectImageData: SerializeObject
-    dialogTrigger?: boolean
-  }>(),
-  {
-    dialogTrigger: false
-  }
-)
+defineProps<{
+  selectImageData: SerializeObject
+}>()
+
+const dialogTrigger = defineModel('dialogTrigger', {
+  type: Boolean,
+  default: false
+})
 
 defineEmits([
   'close:dialog'

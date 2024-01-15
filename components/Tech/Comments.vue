@@ -30,7 +30,7 @@
       :ui="{ rounded: 'rounded-fill'}"
     />
     <DialogPasswordCheck
-      :dialog-trigger="passwordDialogTrigger"
+      v-model:dialog-trigger="passwordDialogTrigger"
       @confirm-password="(password:string) => confirmDeleteComment(password)"
       @close-dialog="() => passwordDialogTrigger = false"
     />
@@ -63,7 +63,7 @@ const openPasswordDialog = (commentData: SerializeObject) => {
   }
 }
 
-const confirmDeleteComment = (password:string) => {
+const confirmDeleteComment = (password: string) => {
   emits('delete:comment', selectCommentData.value, password)
   passwordDialogTrigger.value = false
 }
