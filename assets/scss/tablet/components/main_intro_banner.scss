@@ -13,14 +13,16 @@
     line-height: $space-50;
   }
   .main-text-group {
-    top: calc($space-60vw + $space-80 );
+    top: calc($space-200 + $space-60);
+    left: $space-percent-5;
     width: fit-content;
+    padding: $space-20;
+    height: calc($space-100 + $space-30);
     .text {
       @include headline5;
       &:last-child {
         margin-top: $space-10;
         @include headline7;
-        color: var(--d-green-color-deep);
       }
     }
   }

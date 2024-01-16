@@ -5,7 +5,7 @@
       :key="index"
       :to="project.url"
       :target="project.url.includes('https') ? '_blank' : '_self'"
-      class="project-list mb-20"
+      class="project-list mb-20 border-2 border-rose-700 dark:border-rose-500 hover:border-rose-500 dark:hover:border-rose-700 focus:border-rose-500 dark:focus:border-rose-700 transition-border duration-300"
     >
       {{ project.title }}
     </nuxt-link>

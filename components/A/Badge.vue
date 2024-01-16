@@ -33,7 +33,7 @@ withDefaults(
   }>(),
   {
     customClass: '',
-    badgeColor: 'violet',
+    badgeColor: 'rose',
     badgeSize: 'lg',
     badgeVariant: 'soft',
     useIcon: true,

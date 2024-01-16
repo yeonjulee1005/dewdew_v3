@@ -114,7 +114,7 @@
   }
   hr {
     border: none;
-    border-top: $space-2 solid black;
+    border-top: $space-2 solid var(--d-color-19-deep);
     margin: 2rem 0;
   }
   code {

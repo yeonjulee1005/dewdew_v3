@@ -18,7 +18,7 @@
       @include headline3;
       align-self: flex-start;
       padding-left: $space-10;
-      border-left: $space-4 solid var(--d-bg-blue-color);
+      border-left: $space-4 solid var(--d-color-19-deep);
     }
     .time {
       width: fit-content;
@@ -52,8 +52,6 @@
     height: fit-content;
     margin: $space-40 auto;
     padding: $space-20 0;
-    border-top: $space-2 solid var(--d-text-dark-color);
-    border-bottom: $space-2 solid var(--d-text-dark-color);
     @include tiptap-template;
     .comments-title {
       margin: $space-20 $space-10;

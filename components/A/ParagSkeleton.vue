@@ -4,6 +4,7 @@
       v-if="pendingText"
       :class="skeletonClass"
       class="w-full"
+      :ui="{ rounded: 'rounded-fill', background: 'bg-zinc-200 dark:bg-neutral-800' }"
     />
     <p
       v-else

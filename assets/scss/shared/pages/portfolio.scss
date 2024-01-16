@@ -21,12 +21,7 @@
       margin: $space-10;
       width: $space-200;
       height: $space-200;
-      border-radius: $space-8;
-      border: $space-4 solid var(--d-bg-side-color);
-      transition: border .3s;
-      &:hover {
-        border: $space-4 solid $d-color-05-light;
-      }
+      cursor: pointer;
       .portfolio-image {
         width: calc($space-200 - $space-8);
         height: calc($space-200 - $space-8);

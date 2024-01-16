@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-justify-center flex-align-center gap-3">
     <DDButton
-      color="violet"
+      color="rose"
       size="md"
       variant="solid"
       @click="navigateTo('/main')"

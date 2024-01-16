@@ -1,9 +1,9 @@
 <template>
   <div
     v-if="editor"
-    class="tiptap-editor"
+    class="tiptap-editor bg-rose-100 dark:bg-rose-50/0 border-2 border-rose-300 dark:border-rose-400 rounded-lg"
   >
-    <div class="tiptap-editor__header gap-2">
+    <div class="tiptap-editor__header gap-2 border-b-2 border-rose-300 dark:border-rose-400">
       <TiptapGroupHeading
         v-if="!commentOption"
         :tiptap-editor="editor"

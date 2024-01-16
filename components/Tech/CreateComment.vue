@@ -15,7 +15,7 @@
         <DDInput
           v-model="formData.name"
           :placeholder="$t('placeholder.inputName')"
-          color="violet"
+          color="rose"
           size="lg"
           aria-label="name"
           :ui="{ icon: { trailing: { pointer: '' } } }"
@@ -51,7 +51,7 @@
         <DDInput
           v-model="formData.password"
           :placeholder="$t('placeholder.inputPassword')"
-          color="violet"
+          color="rose"
           size="lg"
           type="password"
           clearable
@@ -88,7 +88,6 @@
     <AButton
       custom-class="w-[fit-content] mt-4 mb-20"
       button-size="lg"
-      button-color="rose"
       use-leading
       icon-name="line-md:arrow-small-left"
       :button-text="$t('archives.back')"

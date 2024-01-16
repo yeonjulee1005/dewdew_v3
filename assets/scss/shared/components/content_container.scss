@@ -7,6 +7,7 @@
 .content-container {
   max-width: $space-1000;
   width: $space-90vw;
+  min-height: $space-80vh;
   margin: 0 auto;
   padding: $space-160 $space-20;
 
@@ -14,16 +15,13 @@
     @include headline5;
     color : var(--d-red-color);
   }
-
   h1 {
     @include headline1;
     padding: $space-20 $space-10;
   }
-
   li, p, span {
     line-height: 1.6;
   }
-
   a {
     text-decoration: none;
     color: unset;

@@ -5,7 +5,7 @@
     overlay
     :prevent-close="preventClose"
   >
-    <DDCard>
+    <DDCard :ui="{ divide: 'divide-rose-500 dark:divide-rose-400', background: 'bg-zinc-100/60 dark:bg-neutral-900' }">
       <template #header>
         <div
           v-if="title"
@@ -15,7 +15,6 @@
             {{ title }}
           </span>
           <AButton
-            color="violet"
             button-variant="ghost"
             use-leading
             icon-name="line-md:menu-to-close-alt-transition"

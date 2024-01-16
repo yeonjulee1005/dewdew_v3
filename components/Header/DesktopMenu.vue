@@ -1,17 +1,17 @@
 <template>
   <div
     v-if="isDesktop"
-    class="desktop-menu flex flex-fixed gap-40"
+    class="flex flex-fixed gap-40"
   >
     <nuxt-link
       v-for="(menu, index) in mainMenuData"
       v-show="index"
       :key="index"
-      class="menu-links flex-align-center"
+      class="desktop-menu-links flex-align-center"
       :to="menu.url"
       :aria-label="menu.title"
     >
-      <span>
+      <span class="text-rose-600 dark:text-rose-400">
         {{ menu.title }}
       </span>
     </nuxt-link>
@@ -24,6 +24,7 @@
     >
       <Icon
         :name="`line-md:${socialMenuData[0].icon}`"
+        class="text-rose-600 dark:text-rose-400"
         :width="28"
         :height="28"
       />
