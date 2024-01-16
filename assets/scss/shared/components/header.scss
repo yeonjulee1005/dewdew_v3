@@ -10,27 +10,19 @@
   align-items: center;
   background-color: var(--d-header-bg-color);
   filter: alpha(opacity=30);
-  z-index: 10;
+  z-index: 11;
   .header-container {
     width: $space-1000;
     .logo {
       margin: $space-10 $space-20;
-      width: $space-160;
+      min-width: $space-100;
       height: auto;
     }
-    .desktop-menu {
-      .menu-links {
-        @include headline4;
-        color: var(--d-text-dark-color);
-        text-decoration: none;
-        transition: all .1s ease-in-out;
-        cursor: pointer;
-        &:hover {
-          scale: 1.05;
-          color: var(--d-text-dark-color-deep);
-        }
-      }
+    .desktop-menu-links {
+      @include headline4;
+      text-decoration: none;
     }
+    .desktop-menu-links,
     .sns {
       cursor: pointer;
       transition: all .1s ease-in-out;
@@ -47,6 +39,9 @@
     .weather-pannel {
       height: $space-40;
       width: $space-percent-100;
+      span {
+        @include headline6;
+      }
     }
   }
 }

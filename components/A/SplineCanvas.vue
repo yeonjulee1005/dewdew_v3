@@ -1,7 +1,9 @@
 <template>
-  <div :class="canvasClass">
-    <spline-viewer :url="splineUrl" />
-  </div>
+  <ClientOnly>
+    <div :class="canvasClass">
+      <spline-viewer :url="splineUrl" />
+    </div>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">

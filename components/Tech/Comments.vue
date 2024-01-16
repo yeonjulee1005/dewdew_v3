@@ -1,5 +1,5 @@
 <template>
-  <div class="article-comments">
+  <div class="article-comments border-t-2 border-b-2 border-rose-300 dark:border-rose-400">
     <span class="comments-title">
       {{ commentTitle }}
     </span>
@@ -8,6 +8,7 @@
       v-show="commentData.length"
       :key="index"
       class="mt-4 mb-4"
+      :ui="{ ring: 'ring-2 ring-rose-300 dark:ring-rose-400', rounded: 'rounded-2xl', background: 'bg-zinc-100 dark:bg-neutral-900' }"
     >
       <div class="flex flex-row flex-space-between flex-align-center">
         <div class="message-component">
@@ -27,7 +28,7 @@
     <DDSkeleton
       v-show="!commentData.length"
       class="h-[100px] mt-4 mb-4"
-      :ui="{ rounded: 'rounded-fill'}"
+      :ui="{ rounded: 'rounded-fill', background: 'bg-zinc-100 dark:bg-neutral-900' }"
     />
     <DialogPasswordCheck
       v-model:dialog-trigger="passwordDialogTrigger"

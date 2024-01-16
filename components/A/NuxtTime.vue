@@ -1,15 +1,27 @@
 <template>
-  <NuxtTime
-    :datetime="dateTime"
-    :locale="locale"
-    :class="customClass"
-    :year="fullDateTime ? 'numeric' : '2-digit'"
-    :month="fullDateTime ? 'long' : 'short'"
-    :day="fullDateTime ? 'numeric' : '2-digit'"
-    :hour="fullDateTime ? 'numeric' : '2-digit'"
-    :minute="fullDateTime ? 'numeric' : '2-digit'"
-    :second="fullDateTime ? 'numeric' : '2-digit'"
-  />
+  <div>
+    <NuxtTime
+      v-if="fullDateTime"
+      :datetime="dateTime"
+      :locale="locale"
+      :class="customClass"
+      :year="capitalDateTime ? 'numeric' : '2-digit'"
+      :month="capitalDateTime ? 'long' : 'short'"
+      :day="capitalDateTime ? 'numeric' : '2-digit'"
+      :hour="capitalDateTime ? 'numeric' : '2-digit'"
+      :minute="capitalDateTime ? 'numeric' : '2-digit'"
+      :second="capitalDateTime ? 'numeric' : '2-digit'"
+    />
+    <NuxtTime
+      v-else
+      :datetime="dateTime"
+      :locale="locale"
+      :class="customClass"
+      :year="capitalDateTime ? 'numeric' : '2-digit'"
+      :month="capitalDateTime ? 'long' : 'short'"
+      :day="capitalDateTime ? 'numeric' : '2-digit'"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -20,12 +32,14 @@ withDefaults(
   defineProps<{
     dateTime?: string,
     customClass?: string,
-    fullDateTime?: boolean
+    fullDateTime?: boolean,
+    capitalDateTime?: boolean
   }>(),
   {
     dateTime: '',
     customClass: 'time flex mb-default',
-    fullDateTime: true
+    fullDateTime: true,
+    capitalDateTime: true
   }
 )
 

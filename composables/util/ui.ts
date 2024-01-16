@@ -124,6 +124,20 @@ export const useUi = () => {
     }
   }
 
+  const humidityColor = (humidity: number) => {
+    if (humidity < 20) {
+      return 'text-stone-500'
+    } else if (humidity >= 20 && humidity < 40) {
+      return 'text-emerald-500'
+    } else if (humidity >= 40 && humidity < 60) {
+      return 'text-teal-500'
+    } else if (humidity >= 60 && humidity < 80) {
+      return 'text-sky-500'
+    } else if (humidity >= 80) {
+      return 'text-blue-500'
+    }
+  }
+
   const weatherColor = (weather: string) => {
     if (weather === '맑음') {
       return 'text-yellow-600'
@@ -200,6 +214,7 @@ export const useUi = () => {
     generateCommentName,
     airDiffusionColor,
     uvColor,
+    humidityColor,
     weatherColor,
     temperatureColor,
     badgeColor,

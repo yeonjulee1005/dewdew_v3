@@ -22,7 +22,7 @@
     transform: rotateZ(90deg);
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
-    z-index: 9;
+    z-index: 10;
     opacity: 0;
     transition: opacity .75s;
     &.activate {
@@ -31,10 +31,9 @@
   }
   .main-text-group {
     position: absolute;
-    height: calc($space-100 + $space-30);
-    padding: $space-20;
+    height: calc($space-100 + $space-60);
+    padding: $space-30;
     gap: $space-4;
-    background-color: var(--d-content-bg-color);
     z-index: 9;
     opacity: 0;
     transition: opacity .75s;
@@ -42,7 +41,6 @@
       opacity: 1;
     }
     .text {
-      @include headline4;
       word-break: keep-all;
       align-self: flex-start;
     }

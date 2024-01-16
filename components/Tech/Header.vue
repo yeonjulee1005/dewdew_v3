@@ -21,7 +21,7 @@
     <DDInput
       v-if="editTrigger"
       v-model="copiedTitle"
-      color="violet"
+      color="rose"
       size="xl"
       aria-label="title"
       @change="() => $emit('update:title', copiedTitle)"
@@ -29,7 +29,7 @@
     <DDInput
       v-if="editTrigger"
       v-model="copiedTags"
-      color="violet"
+      color="rose"
       size="xl"
       aria-label="title"
       @change="() => $emit('update:tags', copiedTags)"

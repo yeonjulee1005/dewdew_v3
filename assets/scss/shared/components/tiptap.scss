@@ -10,17 +10,13 @@
   flex-direction: column;
   max-height: 40rem;
   width: $space-percent-100;
-  color: var(--d-text-dark-color);
-  background-color: var(--d-bg-white-color);
-  border: $space-2 solid var(--d-text-dark-color);
-  border-radius: 0.75rem;
   &__header {
     display: flex;
     align-items: center;
     flex: 0 0 auto;
     flex-wrap: wrap;
     padding: 0.25rem;
-    border-bottom: $space-2 solid var(--d-text-dark-color);
+    // border-bottom: $space-2 solid var(--d-text-dark-color);
   }
   &__content {
     height: $space-60vh;
@@ -90,9 +86,8 @@
 .ProseMirror {
   width: $space-percent-100;
   height: fit-content;
-  margin: $space-50 0 $space-8;
-  padding-top: $space-10;
-  padding-left: $space-4;
+  margin-top: $space-30;
+  padding: $space-50 0 $space-8 $space-4;
   > * + * {
     margin-top: 0.75em;
   }

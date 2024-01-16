@@ -1,7 +1,7 @@
 <template>
   <DDSelectMenu
     v-model="selectLocale"
-    color="violet"
+    color="rose"
     size="sm"
     variant="outline"
     :options="locales"

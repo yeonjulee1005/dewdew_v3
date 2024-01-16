@@ -17,7 +17,7 @@
       >
         <DDInput
           v-model="formData.name"
-          color="violet"
+          color="rose"
           :placeholder="$t('placeholder.inputName')"
           aria-label="name"
         />
@@ -30,7 +30,7 @@
       >
         <DDInput
           v-model="formData.email"
-          color="violet"
+          color="rose"
           :placeholder="$t('placeholder.inputEmail')"
           aria-label="email"
         />
@@ -43,7 +43,7 @@
       >
         <DDTextarea
           v-model="formData.message"
-          color="violet"
+          color="rose"
           :rows="5"
           variant="outline"
           resize
