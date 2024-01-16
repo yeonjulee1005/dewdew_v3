@@ -1,6 +1,6 @@
 <template>
   <Flicking
-    class="border-b-2 border-violet-700"
+    class="border-b-2 border-rose-800 dark:border-rose-600"
     :plugins="plugin"
     :options="option"
   >
@@ -97,8 +97,10 @@
           :text="weatherSecondData.r1n"
         />
         <AIconText
+          :custom-class="humidityColor(parseInt(weatherSecondData.reh))"
           icon-name="wi:humidity"
           :icon-size="30"
+          :text-class="humidityColor(parseInt(weatherSecondData.reh))"
           :text="weatherSecondData.reh"
         />
       </div>
@@ -113,7 +115,7 @@ import '@egjs/vue3-flicking/dist/flicking.css'
 
 const { uvData, airDiffusionData, weatherFirstData, weatherSecondData } = storeToRefs(useLocWeatherStore())
 
-const { airDiffusionColor, uvColor, weatherColor, temperatureColor } = useUi()
+const { airDiffusionColor, uvColor, humidityColor, weatherColor, temperatureColor } = useUi()
 
 const plugin = [
   new AutoPlay({

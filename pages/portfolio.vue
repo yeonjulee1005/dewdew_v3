@@ -7,7 +7,7 @@
       <nuxt-picture
         v-for="item in portfolioData"
         :key="item.url"
-        class="portfolio-picture"
+        class="portfolio-picture border-4 border-rose-400 dark:border-rose-400/70 rounded-lg hover:border-rose-800 hover:dark:border-rose-600/70  transition-border duration-300"
         :src="item?.image ?? ''"
         width="200"
         height="200"
@@ -27,7 +27,7 @@
     <DDCard
       v-if="selectedPortfolioData"
       class="portfolio-card"
-      :ui="{ ring: 'ring-0', divide: 'divide-fuchsia-200 dark:divide-fuchsia-950', rounded: 'rounded-2xl', background: 'bg-zinc-100 dark:bg-neutral-900' }"
+      :ui="{ ring: 'ring-0', divide: 'divide-rose-800 dark:divide-rose-400', rounded: 'rounded-2xl', background: 'bg-zinc-100 dark:bg-neutral-900' }"
       @click="navigateTo(selectedPortfolioData.url, { external: true, open: { target: '_blank' } })"
     >
       <template #header>

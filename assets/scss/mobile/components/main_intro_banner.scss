@@ -14,14 +14,15 @@
   }
   .main-text-group {
     top: $space-100vw;
-    width: $space-percent-80;
+    width: $space-100vw;
     margin-top: $space-50;
+    padding: 0 $space-20;
     background-color: unset;
     .text {
       @include headline7;
+      font-size: $space-12 + $space-2;
       &:last-child {
         margin-top: $space-10;
-        color: var(--d-green-color-deep);
       }
     }
   }

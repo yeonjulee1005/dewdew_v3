@@ -15,11 +15,6 @@
     text-decoration: none;
     padding: $space-16;
     border-radius: $space-16;
-    border: $space-2 solid var(--d-bg-blue-color-deep);
-    transition: border .5s;
     cursor: pointer;
-    &:hover, &:focus {
-      border: $space-2 solid var(--d-bg-red-color-deep);
-    }
   }
 }

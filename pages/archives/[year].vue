@@ -2,8 +2,9 @@
   <div class="archive-detail">
     <AButton
       custom-class="prev-button"
+      button-color="rose"
       button-size="lg"
-      button-variant="ghost"
+      button-variant="outline"
       button-label="back"
       use-leading
       icon-name="line-md:arrow-small-left"

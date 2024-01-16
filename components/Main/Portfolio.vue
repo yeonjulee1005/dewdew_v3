@@ -6,7 +6,7 @@
     <p class="section-title">
       {{ $t('main.reference.title') }}
     </p>
-    <div class="section-text-group flex gap-5">
+    <div class="section-text-group flex gap-5 border-b-2 border-rose-800 dark:border-rose-600">
       <p class="text">
         {{ $t('main.reference.description') }}
       </p>
@@ -35,14 +35,14 @@
         @click="navigatePortfolio(item)"
         @touchstart="navigatePortfolio(item)"
       >
-        <LazyASplineCanvas
+        <ASplineCanvas
           v-if="item.dynamic_thumbnail"
-          canvas-class="portfolio-thumb"
+          canvas-class="portfolio-thumb border-2 border-rose-800 dark:border-rose-600"
           :spline-url="item.dynamic_thumbnail"
         />
         <nuxt-img
           v-else
-          class="portfolio-thumb"
+          class="portfolio-thumb border-2 border-rose-800 dark:border-rose-600"
           :src="item.image"
           width="200"
           height="200"

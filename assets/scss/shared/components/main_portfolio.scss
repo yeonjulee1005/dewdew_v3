@@ -20,7 +20,6 @@
   }
   .section-text-group {
     width: fit-content;
-    border-bottom: $space-2 solid var(--d-bg-side-color);
     border-spacing: $space-10;
     .text {
       @include headline5;
@@ -96,11 +95,10 @@
         cursor: pointer;
         object-fit: cover;
         border-radius: $space-20;
-        border: $space-2 solid var(--d-bg-green-color-deep);
-        box-shadow: $space-2 $space-2 $space-4 var(--d-bg-main-color), $space-minus-2 $space-minus-2 $space-4 var(--d-bg-main-color);
+        box-shadow: 0 $space-4 $space-6 $space-2 var(--d-bg-main-color), 0 $space-4 $space-4 0 var(--d-bg-main-color);
         transition: all 0.2s ease-in-out;
         &:hover {
-          box-shadow: $space-4 $space-4 $space-8 var(--d-bg-sub-color), $space-minus-4 $space-minus-4 $space-8 var(--d-bg-sub-color);
+        box-shadow: 0 $space-4 $space-6 $space-2 var(--d-bg-sub-color), 0 $space-4 $space-4 0 var(--d-bg-sub-color);
         }
       }
     }

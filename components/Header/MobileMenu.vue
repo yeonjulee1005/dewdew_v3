@@ -3,7 +3,7 @@
     <DDButton
       v-if="!isDesktop"
       aria-label="mobile-menu"
-      color="violet"
+      color="rose"
       size="sm"
       variant="ghost"
       @click="() => sideMenuTrigger = true"
@@ -35,7 +35,7 @@
         />
         <DDButton
           variant="ghost"
-          color="violet"
+          color="rose"
           size="sm"
           @click="() => sideMenuTrigger = false"
         >

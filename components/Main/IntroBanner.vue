@@ -7,13 +7,13 @@
       {{ $t('main.intro.largeTitle') }}
     </span>
     <div
-      class="main-text-group flex flex-column"
+      class="main-text-group flex flex-column bg-rose-300/50 dark:bg-rose-600/50 rounded-lg"
       :class="{'activate': mainTextTrigger}"
     >
       <span
         v-for="(item, index) in $tm('main.intro.description')"
         :key="index"
-        class="text"
+        class="text text-zinc-50 dark:text-zinc-100"
       >
         {{ $rt(item) }}
       </span>

@@ -13,16 +13,14 @@
     line-height: $space-80;
   }
   .main-text-group {
-    top: calc($space-500 + $space-50);
+    top: calc($space-200 + $space-60);
     left: $space-percent-5;
     width: fit-content;
-    background-color: var(--d-content-bg-color);
     .text {
       @include headline4;
       &:last-child {
         margin-top: $space-10;
         @include headline6;
-        color: var(--d-green-color-deep);
       }
     }
   }

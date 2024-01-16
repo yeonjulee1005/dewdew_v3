@@ -5,6 +5,7 @@
       custom-class="time flex"
       :date-time="data.created_at"
       :full-date-time="false"
+      :capital-date-time="false"
     />
     <AButton
       :button-color="badgeColor(data.like)"

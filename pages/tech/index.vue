@@ -22,8 +22,12 @@
     <DDPagination
       v-model="currentPage"
       class="flex flex-justify-center m-4 pb-8"
-      :active-button="{ variant: 'outline', color: 'violet' }"
-      :inactive-button="{ color: 'gray' }"
+      :active-button="{ variant: 'ghost', color: 'indigo' }"
+      :inactive-button="{ variant: 'ghost', color: 'rose' }"
+      :prev-button="{ variant: 'ghost', color: 'rose' }"
+      :next-button="{ variant: 'ghost', color: 'rose' }"
+      :first-button="{ variant: 'ghost', color: 'rose' }"
+      :last-button="{ variant: 'ghost', color: 'rose' }"
       :page-count="currentPageSize"
       :total="count ?? 0"
       show-first
