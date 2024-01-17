@@ -20,7 +20,7 @@
     background-color: unset;
     .text {
       @include headline7;
-      font-size: $space-12 + $space-2;
+      font-size: calc($space-12 + $space-2);
       &:last-child {
         margin-top: $space-10;
       }
