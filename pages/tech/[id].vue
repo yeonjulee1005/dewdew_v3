@@ -134,7 +134,7 @@ const updateLikeCount = () => {
   const alreadyLike = clickedTechArticle.value.includes(techDetailData.value?.id ?? '')
   !alreadyLike
     ? updateTechBlogLikeCount()
-    : toast.add({ title: t('messages.alreadyPressLike'), color: 'rose', timeout: 3000 })
+    : toast.add({ title: t('messages.alreadyPressLike'), color: 'orange', timeout: 3000 })
 }
 
 const updateTechBlogLikeCount = async () => {
@@ -187,7 +187,7 @@ const deleteComment = async (comment:SerializeObject, password:string) => {
 const clickEditArticle = () => {
   adminAccess.value
     ? editTrigger.value = true
-    : toast.add({ title: t('messages.unAuthorizedWrite'), color: 'rose', timeout: 3000 })
+    : toast.add({ title: t('messages.unAuthorizedWrite'), color: 'orange', timeout: 3000 })
 }
 
 updateViewCount()

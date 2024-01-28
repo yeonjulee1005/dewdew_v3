@@ -2,7 +2,7 @@
   <div class="archive-detail">
     <AButton
       custom-class="prev-button"
-      button-color="rose"
+      button-color="orange"
       button-size="lg"
       button-variant="outline"
       button-label="back"

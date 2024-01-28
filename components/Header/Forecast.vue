@@ -1,6 +1,6 @@
 <template>
   <Flicking
-    class="border-b-2 border-rose-800 dark:border-rose-600"
+    class="border-b-2 border-orange-800 dark:border-orange-600"
     :plugins="plugin"
     :options="option"
   >

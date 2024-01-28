@@ -23,11 +23,11 @@
       v-model="currentPage"
       class="flex flex-justify-center m-4 pb-8"
       :active-button="{ variant: 'ghost', color: 'indigo' }"
-      :inactive-button="{ variant: 'ghost', color: 'rose' }"
-      :prev-button="{ variant: 'ghost', color: 'rose' }"
-      :next-button="{ variant: 'ghost', color: 'rose' }"
-      :first-button="{ variant: 'ghost', color: 'rose' }"
-      :last-button="{ variant: 'ghost', color: 'rose' }"
+      :inactive-button="{ variant: 'ghost', color: 'orange' }"
+      :prev-button="{ variant: 'ghost', color: 'orange' }"
+      :next-button="{ variant: 'ghost', color: 'orange' }"
+      :first-button="{ variant: 'ghost', color: 'orange' }"
+      :last-button="{ variant: 'ghost', color: 'orange' }"
       :page-count="currentPageSize"
       :total="count ?? 0"
       show-first
@@ -109,7 +109,7 @@ const { data: count } = useAsyncData('techCount', async () => {
 const openCreateArticleDialog = () => {
   adminAccess.value
     ? createArticleTrigger.value = true
-    : toast.add({ title: t('messages.unAuthorizedWrite'), color: 'rose', timeout: 3000 })
+    : toast.add({ title: t('messages.unAuthorizedWrite'), color: 'orange', timeout: 3000 })
 }
 
 const writeArticle = async (recordData:Article) => {

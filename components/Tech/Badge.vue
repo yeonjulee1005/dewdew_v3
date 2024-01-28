@@ -8,7 +8,7 @@
       v-show="tags.includes(',')"
       :key="index"
       custom-class="flex gap-2 w-[fit-content]"
-      badge-color="rose"
+      badge-color="orange"
       :badge-size="badgeSize"
       icon-name="ant-design:tags-twotone"
       :badge-text="tag"
@@ -16,7 +16,7 @@
     <ABadge
       v-show="!tags.includes(',')"
       custom-class="w-[fit-content]"
-      badge-color="rose"
+      badge-color="orange"
       :badge-size="badgeSize"
       icon-name="ant-design:tags-twotone"
       :badge-text="tags"
