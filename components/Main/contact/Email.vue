@@ -17,7 +17,7 @@
       >
         <DDInput
           v-model="formData.name"
-          color="rose"
+          color="orange"
           :placeholder="$t('placeholder.inputName')"
           aria-label="name"
         />
@@ -30,7 +30,7 @@
       >
         <DDInput
           v-model="formData.email"
-          color="rose"
+          color="orange"
           :placeholder="$t('placeholder.inputEmail')"
           aria-label="email"
         />
@@ -43,7 +43,7 @@
       >
         <DDTextarea
           v-model="formData.message"
-          color="rose"
+          color="orange"
           :rows="5"
           variant="outline"
           resize
@@ -111,7 +111,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   await send('dewdew', props.emailTemplate, event.data, props.emailKey).then(() => {
     toast.add({ title: t('messages.successEmailSend'), color: 'emerald', timeout: 3000 })
   }).catch(() => {
-    toast.add({ title: t('messages.failEmailSend'), color: 'rose', timeout: 3000 })
+    toast.add({ title: t('messages.failEmailSend'), color: 'orange', timeout: 3000 })
   })
 }
 

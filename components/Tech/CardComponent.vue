@@ -1,7 +1,7 @@
 <template>
   <DDCard
     class="tech-card mt-6 mb-4"
-    :ui="{ ring: 'ring-0', divide: 'divide-rose-500 dark:divide-rose-400', rounded: 'rounded-2xl', background: 'bg-zinc-100/60 dark:bg-neutral-900' }"
+    :ui="{ ring: 'ring-0', divide: 'divide-orange-500 dark:divide-orange-400', rounded: 'rounded-2xl', background: 'bg-zinc-100/60 dark:bg-neutral-900' }"
   >
     <template #header>
       <div class="flex flex-col gap-6">

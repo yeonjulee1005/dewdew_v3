@@ -45,7 +45,7 @@ const setUserCoreData = async (userId:string) => {
 
   toast.add({
     title: data.admin ? t('messages.welcome') : t('messages.notAdmin'),
-    color: data.admin ? 'rose' : 'fuchsia',
+    color: data.admin ? 'orange' : 'fuchsia',
     timeout: 3000
   })
   navigateTo(data.admin ? '/tech?page=1&count=4' : '/')

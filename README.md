@@ -1,5 +1,3 @@
-# Dooramgi
-
 ![Dewdew](./.github/assets/dewdew.jpg)
 
 ## 안녕하세요. FE 개발자 이연주 입니다.

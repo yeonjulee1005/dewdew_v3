@@ -6,7 +6,7 @@
     <p class="section-title">
       {{ $t('main.reference.title') }}
     </p>
-    <div class="section-text-group flex gap-5 border-b-2 border-rose-800 dark:border-rose-600">
+    <div class="section-text-group flex gap-5 border-b-2 border-orange-800 dark:border-orange-600">
       <p class="text">
         {{ $t('main.reference.description') }}
       </p>
@@ -37,12 +37,12 @@
       >
         <ASplineCanvas
           v-if="item.dynamic_thumbnail"
-          canvas-class="portfolio-thumb border-2 border-rose-800 dark:border-rose-600"
+          canvas-class="portfolio-thumb border-2 border-orange-800 dark:border-orange-600"
           :spline-url="item.dynamic_thumbnail"
         />
         <nuxt-img
           v-else
-          class="portfolio-thumb border-2 border-rose-800 dark:border-rose-600"
+          class="portfolio-thumb border-2 border-orange-800 dark:border-orange-600"
           :src="item.image"
           width="200"
           height="200"

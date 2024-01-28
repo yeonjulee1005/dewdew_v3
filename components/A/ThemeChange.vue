@@ -1,6 +1,6 @@
 <template>
   <DDButton
-    color="rose"
+    color="orange"
     variant="ghost"
     aria-label="theme"
     @click="isDark = !isDark"

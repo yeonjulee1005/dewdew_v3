@@ -5,7 +5,7 @@
     overlay
     :prevent-close="preventClose"
   >
-    <DDCard :ui="{ divide: 'divide-rose-500 dark:divide-rose-400', background: 'bg-zinc-100/60 dark:bg-neutral-900' }">
+    <DDCard :ui="{ divide: 'divide-orange-500 dark:divide-orange-400', background: 'bg-zinc-100/60 dark:bg-neutral-900' }">
       <template #header>
         <div
           v-if="title"

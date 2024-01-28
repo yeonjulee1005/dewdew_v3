@@ -56,7 +56,7 @@ withDefaults(
   }>(),
   {
     accordionVariant: 'solid',
-    accordionColor: 'rose',
+    accordionColor: 'orange',
     accordionSize: 'xl',
     educateGroupClass: 'educate-group flex flex-align-center gap-2',
     careerGroupClass: 'career-group flex flex-align-center gap-2',

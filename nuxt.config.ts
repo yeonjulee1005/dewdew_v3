@@ -26,7 +26,6 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/robots',
     '@nuxtjs/supabase',
-    '@nuxtjs/eslint-module',
     '@nuxtjs/html-validator',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/i18n',
