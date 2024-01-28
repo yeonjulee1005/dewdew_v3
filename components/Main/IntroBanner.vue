@@ -7,7 +7,7 @@
       {{ $t('main.intro.largeTitle') }}
     </span>
     <div
-      class="main-text-group flex flex-column bg-rose-300/50 dark:bg-rose-600/50 rounded-lg"
+      class="main-text-group flex flex-column bg-orange-300/50 dark:bg-orange-600/50 rounded-lg"
       :class="{'activate': mainTextTrigger}"
     >
       <span

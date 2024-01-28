@@ -1,6 +1,6 @@
 <template>
   <DDButton
-    color="rose"
+    color="orange"
     variant="ghost"
     aria-label="theme"
     @click="isDark = !isDark"
@@ -24,7 +24,7 @@ const isDark = computed({
     return colorMode.value === 'dark'
   },
   set () {
-    useFavicon(colorMode.value !== 'dark' ? 'favicon-32x32.png' : 'favicon-light-32x32.png')
+    useFavicon(colorMode.value !== 'dark' ? '/favicon-32x32.png' : '/favicon-light-32x32.png')
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
   }
 })

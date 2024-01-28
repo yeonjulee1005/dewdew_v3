@@ -6,7 +6,7 @@
       button-size="lg"
       use-leading
       icon-name="line-md:heart-filled"
-      :button-color="activateLike ? 'rose' : 'amber'"
+      :button-color="activateLike ? 'orange' : 'amber'"
       @click:button="$emit('click-affix')"
     />
   </div>

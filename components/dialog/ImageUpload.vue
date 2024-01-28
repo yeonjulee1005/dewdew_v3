@@ -107,7 +107,7 @@ const uploadImage = async (file:File) => {
   const uploadError = await uploadStorage('tech', filePath, file)
 
   if (uploadError) {
-    toast.add({ title: String(uploadError), color: 'rose', timeout: 3000 })
+    toast.add({ title: String(uploadError), color: 'orange', timeout: 3000 })
   }
   toast.add({ title: t('messages.successImageUpload'), color: 'emerald', timeout: 3000 })
   await downloadImage(filePath)
@@ -121,7 +121,7 @@ const downloadImage = async (imageName:string) => {
 
 const submitImage = () => {
   if (!exportUrl.value) {
-    toast.add({ title: t('messages.imageRequire'), color: 'rose', timeout: 3000 })
+    toast.add({ title: t('messages.imageRequire'), color: 'orange', timeout: 3000 })
     return
   }
   emits('submit:image', exportUrl.value, imageHyperLinkTrigger.value ? hyperLink.value : '')

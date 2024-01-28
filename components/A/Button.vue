@@ -69,7 +69,7 @@ withDefaults(
     roundButton: false,
     buttonDisabled: false,
     buttonPadding: true,
-    buttonColor: 'rose',
+    buttonColor: 'orange',
     buttonSize: 'sm',
     buttonVariant: 'outline',
     buttonLabel: 'button',

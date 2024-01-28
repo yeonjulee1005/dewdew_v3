@@ -11,7 +11,7 @@
       :to="menu.url"
       :aria-label="menu.title"
     >
-      <span class="text-rose-600 dark:text-rose-400">
+      <span class="text-orange-600 dark:text-orange-400">
         {{ menu.title }}
       </span>
     </nuxt-link>
@@ -24,7 +24,7 @@
     >
       <Icon
         :name="`line-md:${socialMenuData[0].icon}`"
-        class="text-rose-600 dark:text-rose-400"
+        class="text-orange-600 dark:text-orange-400"
         :width="28"
         :height="28"
       />

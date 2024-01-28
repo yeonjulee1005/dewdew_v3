@@ -15,7 +15,7 @@
         <DDInput
           v-model="formData.name"
           :placeholder="$t('placeholder.inputName')"
-          color="rose"
+          color="orange"
           size="lg"
           aria-label="name"
           :ui="{ icon: { trailing: { pointer: '' } } }"
@@ -51,7 +51,7 @@
         <DDInput
           v-model="formData.password"
           :placeholder="$t('placeholder.inputPassword')"
-          color="rose"
+          color="orange"
           size="lg"
           type="password"
           clearable
