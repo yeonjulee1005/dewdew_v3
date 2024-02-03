@@ -23,8 +23,8 @@
     line-height: 1.6;
   }
   a {
-    text-decoration: none;
-    color: unset;
+    text-decoration: underline;
+    color: var(--d-yellow-color);
   }
 
   .menu-list {
@@ -149,49 +149,6 @@
         padding: 0;
         background: none;
         font-size: 0.8rem;
-      }
-      .hljs-comment,
-      .hljs-quote {
-        color: var(--el-color-white);
-      }
-      .hljs-variable,
-      .hljs-template-variable,
-      .hljs-attribute,
-      .hljs-tag,
-      .hljs-name,
-      .hljs-regexp,
-      .hljs-link,
-      .hljs-selector-id,
-      .hljs-selector-class {
-        color: var(--el-color-white);
-      }
-      .hljs-number,
-      .hljs-meta,
-      .hljs-built_in,
-      .hljs-builtin-name,
-      .hljs-literal,
-      .hljs-type,
-      .hljs-params {
-        color: var(--el-color-white);
-      }
-      .hljs-string,
-      .hljs-symbol,
-      .hljs-bullet {
-        color: var(--el-color-white);
-      }
-      .hljs-title,
-      .hljs-section {
-        color: var(--el-color-white);
-      }
-      .hljs-keyword,
-      .hljs-selector-tag {
-        color: var(--el-color-white);
-      }
-      .hljs-emphasis {
-        font-style: italic;
-      }
-      .hljs-strong {
-        font-weight: 700;
       }
     }
   }
