@@ -30,10 +30,16 @@ head:
 
 ::card{class="content-card"}
 기술 외적인 포스팅을 올리기 위한 색션입니다.<br>
-해당 색션은는 `Nuxt Content`를 이용하여, `markdown`으로 간단하게 작성할 수 있도록 구현하였습니다.
+해당 색션은는 `Nuxt Content`를 이용하여,<br>
+`markdown`으로 간단하게 작성할 수 있도록 구현하였습니다.<br><br>
 ::
 
 ::card{class="menu-list"}
 ### 발행된 블로그 리스트입니다.<br>
-- ### [2023년을 회고하며...(20231229)](/blog/20231229)
+- #### [2024년 1월 회고 (20240203)](/blog/20240203)
+- #### [2023년을 회고하며...(20231229)](/blog/20231229)
+::
+
+::card{class="content-card"}
+![23년 도쿄](https://api.dewdew.dev/storage/v1/object/public/blog/index-cover.webp)
 ::
