@@ -9,7 +9,7 @@
           {{ $t('blog.recentPost') }}
         </span>
         <NuxtLink
-          v-for="(link, index) of reverseNavigation(navigation[0].children)"
+          v-for="(link, index) of reverseNavigation(navigation[0]?.children)"
           v-show="index < 5 && link._path !== '/blog'"
           :key="link._path"
           class="navigation-link"
