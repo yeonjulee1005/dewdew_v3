@@ -1,9 +1,6 @@
 <template>
   <DDContainer class="content-container flex gap-4">
-    <ContentNavigation
-      v-slot="{ navigation }"
-      :query="blogQuery"
-    >
+    <ContentNavigation v-slot="{ navigation }">
       <div class="content-navigation flex flex-column gap-2 mt-20">
         <span
           v-if="navigation.length"
@@ -64,8 +61,6 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
 
 const { t } = useLocale()
 const { path } = useRoute()
-
-const blogQuery = queryContent('blog')
 
 const reverseNavigation = (children: NavItem[] | undefined) => {
   if (!children) {
