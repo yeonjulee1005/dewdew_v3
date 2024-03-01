@@ -1,15 +1,15 @@
 <template>
   <DDContainer class="content-container flex gap-4">
-    <ContentNavigation
-      v-slot="{ navigation }"
-      :query="blogQuery"
-    >
+    <ContentNavigation v-slot="{ navigation }">
       <div class="content-navigation flex flex-column gap-2 mt-20">
-        <span class="navigation-title">
+        <span
+          v-if="navigation.length"
+          class="navigation-title"
+        >
           {{ $t('blog.recentPost') }}
         </span>
         <NuxtLink
-          v-for="(link, index) of reverseNavigation(navigation[0].children)"
+          v-for="(link, index) of reverseNavigation(navigation[0]?.children)"
           v-show="index < 5 && link._path !== '/blog'"
           :key="link._path"
           class="navigation-link"
@@ -61,8 +61,6 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
 
 const { t } = useLocale()
 const { path } = useRoute()
-
-const blogQuery = queryContent('blog')
 
 const reverseNavigation = (children: NavItem[] | undefined) => {
   if (!children) {
