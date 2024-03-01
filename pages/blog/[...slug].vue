@@ -29,7 +29,7 @@
           :date-time="doc.date"
         />
         <ContentRenderer
-          class="w-full mb-20"
+          class="w-full mb-20 break-keep"
           :value="doc"
         />
         <Giscus

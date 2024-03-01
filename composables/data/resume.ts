@@ -8,7 +8,15 @@ export const useResumeData = () => {
     },
     {
       icon: 'i-heroicons-building-office',
-      label: '[2022.04 ~ Current] 가제트코리아',
+      label: '[2024.02 ~ Current] 이구구(예정)',
+      slot: 'career',
+      description: [
+        'CTO / Co-Founder'
+      ]
+    },
+    {
+      icon: 'i-heroicons-building-office',
+      label: '[2022.04 ~ 2024.02] 가제트코리아',
       slot: 'career',
       description: [
         'FE Tech Lead',
