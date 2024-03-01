@@ -8,7 +8,7 @@ export const useResumeData = () => {
     },
     {
       icon: 'i-heroicons-building-office',
-      label: '[2024.02 ~ Current] 이구구(예정)',
+      label: '[2024.02 ~ Current] 이구구',
       slot: 'career',
       description: [
         'CTO / Co-Founder'
