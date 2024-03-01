@@ -8,8 +8,8 @@
     <template #leading>
       <Icon
         :name="isDark ? 'line-md:moon-filled-loop' : 'line-md:moon-filled-alt-to-sunny-filled-loop-transition'"
-        :width="24"
-        :height="24"
+        :width="isDesktop ? 24 : 20"
+        :height="isDesktop ? 24 : 20"
       />
     </template>
   </DDButton>
@@ -17,6 +17,7 @@
 
 <script setup lang="ts">
 
+const { isDesktop } = useDevice()
 const colorMode = useColorMode()
 
 const isDark = computed({

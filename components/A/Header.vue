@@ -5,7 +5,7 @@
       <div class="flex-auto" />
       <HeaderDesktopMenu />
       <AThemeChange />
-      <ALanguageChange />
+      <ALanguageChange v-if="isDesktop" />
       <HeaderMobileMenu />
     </div>
     <LazyHeaderForecast

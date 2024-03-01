@@ -21,7 +21,7 @@
       class="mobile-menu"
       label="side-menu"
     >
-      <div class="flex flex-align-center flex-space-between p-5">
+      <div class="flex flex-align-center flex-space-between p-3">
         <nuxt-img
           class="mobile-logo flex-fixed"
           :src="url('dewdew_logo.webp', 'assets', 'logo')"
@@ -42,8 +42,8 @@
           <template #leading>
             <Icon
               name="line-md:menu-to-close-alt-transition"
-              :width="24"
-              :height="24"
+              :width="isDesktop ? 24 : 20"
+              :height="isDesktop ? 24 : 20"
             />
           </template>
         </DDButton>
@@ -79,6 +79,7 @@
           {{ sns.title }}
         </span>
       </nuxt-link>
+      <ALanguageChange class="w-fit p-3" />
       <LazyHeaderForecast class="forecast m-3" />
     </DDSlideover>
   </div>
