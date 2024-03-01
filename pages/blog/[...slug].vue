@@ -5,10 +5,12 @@
       :query="blogQuery"
     >
       <div class="content-navigation flex flex-column gap-2 mt-20">
-        <span class="navigation-title">
+        <span
+          v-if="navigation.length"
+          class="navigation-title"
+        >
           {{ $t('blog.recentPost') }}
         </span>
-        {{ navigation }}
         <NuxtLink
           v-for="(link, index) of reverseNavigation(navigation[0]?.children)"
           v-show="index < 5 && link._path !== '/blog'"
