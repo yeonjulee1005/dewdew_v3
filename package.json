@@ -4,7 +4,7 @@
     "name": "Dewdew",
     "email": "yeonju.lee1005@gmail.com"
   },
-  "version": "2.8.0",
+  "version": "2.8.1",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -96,7 +96,7 @@
     "@polka/url": "1.0.0-next.23"
   },
   "dependencies": {
-    "nuxt/typescript": "nuxt/typescript",
+    "vue": "^3.4.27",
     "yup": "^1.3.2"
   }
 }
