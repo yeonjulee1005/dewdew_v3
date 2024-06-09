@@ -13,19 +13,17 @@
 </template>
 
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
-    trigger: boolean,
+    trigger: boolean
     activateLike?: boolean
   }>(),
   {
-    activateLike: false
-  }
+    activateLike: false,
+  },
 )
 
 defineEmits([
-  'click-affix'
+  'click-affix',
 ])
-
 </script>

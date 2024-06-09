@@ -16,8 +16,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { isDesktop } = useDevice()
 const { url } = useImageStorage()
-
 </script>

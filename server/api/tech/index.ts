@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const page = query.page ? Number(query.page) : 1
   const pageCount = query.pageCount ? Number(query.pageCount) : 10
 
-  const supabasePageCalc = (page:number, pageCount:number, firstRange:boolean): number => {
+  const supabasePageCalc = (page: number, pageCount: number, firstRange: boolean): number => {
     return firstRange
       ? (page - 1) * pageCount
       : (page * pageCount) - 1

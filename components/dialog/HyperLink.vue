@@ -46,35 +46,36 @@ const { hyperLinkRegex } = useUi()
 
 const dialogTrigger = defineModel('dialogTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const emits = defineEmits([
   'close:dialog',
-  'submit:link'
+  'submit:link',
 ])
 
 const schema = object({
   hyperLink: string()
     .required(t('messages.linkRequire'))
-    .matches(hyperLinkRegex, t('messages.linkFormat'))
+    .matches(hyperLinkRegex, t('messages.linkFormat')),
 })
 
 type Schema = InferType<typeof schema>
 
 const formData = reactive({
-  hyperLink: ''
+  hyperLink: '',
 })
 
 const onSubmit = (event: FormSubmitEvent<Schema>) => {
-  if (!event.isTrusted) { return }
+  if (!event.isTrusted) {
+    return
+  }
   emits('submit:link', formData.hyperLink)
   closeDialog(false)
 }
 
-const closeDialog = (trigger:boolean) => {
+const closeDialog = (trigger: boolean) => {
   emits('close:dialog', trigger)
   formData.hyperLink = ''
 }
-
 </script>

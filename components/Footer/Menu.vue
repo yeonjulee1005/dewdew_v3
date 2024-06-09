@@ -12,7 +12,5 @@
 </template>
 
 <script setup lang="ts">
-
 const { mainMenuData } = storeToRefs(useMenuStore())
-
 </script>

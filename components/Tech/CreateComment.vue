@@ -106,7 +106,7 @@ const router = useRouter()
 const { passwordRegex, generateCommentName } = useUi()
 
 const emits = defineEmits([
-  'create-comment'
+  'create-comment',
 ])
 
 const schema = object({
@@ -117,7 +117,7 @@ const schema = object({
     .required(t('messages.passwordRequire'))
     .matches(passwordRegex, t('messages.passwordFormat')),
   message: string()
-    .required(t('messages.contentRequire'))
+    .required(t('messages.contentRequire')),
 })
 
 type Schema = InferType<typeof schema>
@@ -125,12 +125,13 @@ type Schema = InferType<typeof schema>
 const formData = ref({
   name: generateCommentName(),
   message: '',
-  password: ''
+  password: '',
 })
 
 const onSubmit = (event: FormSubmitEvent<Schema>) => {
-  if (!event.isTrusted) { return }
+  if (!event.isTrusted) {
+    return
+  }
   emits('create-comment', formData.value)
 }
-
 </script>

@@ -13,12 +13,11 @@
 </template>
 
 <script setup lang="ts">
-
 const { helloList } = useHelloData()
 
 const state = reactive({
   currentHelloIndex: 0,
-  currentHello: helloList[0]
+  currentHello: helloList[0],
 })
 
 let timeoutId: number | undefined
@@ -41,5 +40,4 @@ onUnmounted(() => {
     clearTimeout(timeoutId)
   }
 })
-
 </script>

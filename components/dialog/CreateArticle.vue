@@ -55,19 +55,19 @@ const { t } = useLocale()
 
 const createArticleTrigger = defineModel('dialogTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const emits = defineEmits([
   'create:article',
-  'close:dialog'
+  'close:dialog',
 ])
 
 const schema = object({
   title: string()
     .required(t('messages.titleRequire')),
   desc: string()
-    .required(t('messages.articleRequire'))
+    .required(t('messages.articleRequire')),
 })
 
 type Schema = InferType<typeof schema>
@@ -76,17 +76,18 @@ const formData = reactive({
   title: '',
   desc: '',
   raw_article: '',
-  like: 0
+  like: 0,
 })
 
 const onSubmit = (event: FormSubmitEvent<Schema>) => {
-  if (!event.isTrusted) { return }
+  if (!event.isTrusted) {
+    return
+  }
   emits('create:article', formData)
 }
 
-const updateArticle = (article:string, rawArticle:string) => {
+const updateArticle = (article: string, rawArticle: string) => {
   formData.desc = article
   formData.raw_article = rawArticle
 }
-
 </script>

@@ -10,9 +10,9 @@ export const useTranslateCoords = () => {
    */
 
   interface Coords {
-    lat?: number;
-    lng?: number;
-    x?: number;
+    lat?: number
+    lng?: number
+    x?: number
     y?: number
   }
 
@@ -53,27 +53,38 @@ export const useTranslateCoords = () => {
       let ra = Math.tan(Math.PI * 0.25 + (v1) * DEGRAD * 0.5)
       ra = re * sf / Math.pow(ra, sn)
       let theta = v2 * DEGRAD - olon
-      if (theta > Math.PI) { theta -= 2.0 * Math.PI }
-      if (theta < -Math.PI) { theta += 2.0 * Math.PI }
+      if (theta > Math.PI) {
+        theta -= 2.0 * Math.PI
+      }
+      if (theta < -Math.PI) {
+        theta += 2.0 * Math.PI
+      }
       theta *= sn
       rs.x = Math.floor(ra * Math.sin(theta) + XO + 0.5)
       rs.y = Math.floor(ro - ra * Math.cos(theta) + YO + 0.5)
-    } else {
+    }
+    else {
       rs.x = v1
       rs.y = v2
       const xn = v1 - XO
       const yn = ro - v2 + YO
       ra = Math.sqrt(xn * xn + yn * yn)
-      if (sn < 0.0) { ra = -ra }
+      if (sn < 0.0) {
+        ra = -ra
+      }
       let alat = Math.pow((re * sf / ra), (1.0 / sn))
       alat = 2.0 * Math.atan(alat) - Math.PI * 0.5
       let theta: number = 0.0
       if (Math.abs(xn) <= 0.0) {
         theta = 0.0
-      } else if (Math.abs(yn) <= 0.0) {
+      }
+      else if (Math.abs(yn) <= 0.0) {
         theta = Math.PI * 0.5
-        if (xn < 0.0) { theta = -theta }
-      } else { theta = Math.atan2(xn, yn) }
+        if (xn < 0.0) {
+          theta = -theta
+        }
+      }
+      else { theta = Math.atan2(xn, yn) }
       const alon = theta / sn + olon
       rs.lat = alat * RADDEG
       rs.lng = alon * RADDEG
@@ -82,6 +93,6 @@ export const useTranslateCoords = () => {
   }
 
   return {
-    dfsXyConvert
+    dfsXyConvert,
   }
 }

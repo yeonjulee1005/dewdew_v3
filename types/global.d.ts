@@ -7,8 +7,8 @@ declare module 'typeit'
 type SerializeObject = /* unresolved */ any
 
 interface Window {
-  skipWaiting: any,
-  __WB_MANIFEST: any
+  skipWaiting: () => Promise<void>
+  __WB_MANIFEST: Array<unknown>
 }
 
 interface IndexSignature {
@@ -16,42 +16,42 @@ interface IndexSignature {
 }
 
 interface Menu {
-  title: string,
-  url: string,
-  menu_type: string,
-  icon?: string,
+  title: string
+  url: string
+  menu_type: string
+  icon?: string
 }
 
 interface Colors {
-  color: string,
+  color: string
   percent: number
 }
 
 interface ProgressData {
-  emoji: string,
-  percent: number,
+  emoji: string
+  percent: number
   title: string
 }
 
 interface Article {
-  title?: string,
-  desc?: string,
-  raw_article?: string,
-  like: number,
-  deleted?: boolean,
+  title?: string
+  desc?: string
+  raw_article?: string
+  like: number
+  deleted?: boolean
   update_user_id?: string
 }
 
 interface CreateComment {
-  name: string,
-  message: string,
+  name: string
+  message: string
   password: string
 }
 
 interface AccordionItem {
-  icon: string,
-  label: string,
-  slot: string,
+  icon: string
+  label: string
+  slot: string
   description: string[] | string
 }
 
@@ -60,21 +60,21 @@ interface AccordionItem {
  */
 
 interface PortfolioType {
-  orderIndex: { index: number },
-  title: { ko: string; en: string },
-  description: { ko: string; en: string },
-  url: string,
-  image: string,
-  dynamic_thumbnail: string,
-  thumbnail: string,
-  alt: string,
+  orderIndex: { index: number }
+  title: { ko: string, en: string }
+  description: { ko: string, en: string }
+  url: string
+  image: string
+  dynamic_thumbnail: string
+  thumbnail: string
+  alt: string
   deleted: boolean
 }
 
 interface SkillsImage {
-  orderIndex: { index: number },
-  title: string,
-  url: string,
+  orderIndex: { index: number }
+  title: string
+  url: string
   deleted: boolean
 }
 
@@ -83,47 +83,47 @@ interface SkillsImage {
  */
 
 interface WeatherItem {
-  h0?: string,
-  h3?: string,
-  baseDate: string,
-  baseTime: string,
-  category: string,
-  fcstDate: string,
-  fcstTime: string,
-  fcstValue: string,
-  nx: string,
+  h0?: string
+  h3?: string
+  baseDate: string
+  baseTime: string
+  category: string
+  fcstDate: string
+  fcstTime: string
+  fcstValue: string
+  nx: string
   ny: string
 }
 
 interface CommonLivingInterface {
-  [key: string]: string,
-  areaNo: string,
-  code: string,
-  date: string,
-  h3: string,
-  h6: string,
-  h9: string,
-  h12: string,
-  h15: string,
-  h18: string,
-  h21: string,
-  h24: string,
-  h27: string,
-  h30: string,
-  h33: string,
-  h36: string,
-  h39: string,
-  h42: string,
-  h45: string,
-  h48: string,
-  h51: string,
-  h54: string,
-  h57: string,
-  h60: string,
-  h63: string,
-  h66: string,
-  h69: string,
-  h72: string,
+  [key: string]: string
+  areaNo: string
+  code: string
+  date: string
+  h3: string
+  h6: string
+  h9: string
+  h12: string
+  h15: string
+  h18: string
+  h21: string
+  h24: string
+  h27: string
+  h30: string
+  h33: string
+  h36: string
+  h39: string
+  h42: string
+  h45: string
+  h48: string
+  h51: string
+  h54: string
+  h57: string
+  h60: string
+  h63: string
+  h66: string
+  h69: string
+  h72: string
   h75: string
 }
 
@@ -138,16 +138,16 @@ interface AirDiffusionItem extends CommonLivingInterface {
 interface WeatherData {
   response: {
     header: {
-      resultCode: string,
+      resultCode: string
       resultMsg: string
-    },
+    }
     body: {
-      dataType: string,
+      dataType: string
       items: {
         item: WeatherItem[] | AirDiffusionItem[] | UvItem[]
-      },
-      pageNo: number,
-      numOfRows: number,
+      }
+      pageNo: number
+      numOfRows: number
       totalCount: number
     }
   }
@@ -155,38 +155,38 @@ interface WeatherData {
 
 interface WeatherDataMapType {
   [key: string]: {
-    [key: number]: string;
-  } | ((value: number | string) => string);
+    [key: number]: string
+  } | ((value: number | string) => string)
 }
 
 interface LivingDataMapType {
   [key: number]: {
-    [key: number]: string;
+    [key: number]: string
   }
 }
 
 interface weatherFirstData {
-  sky: string,
-  t1h: string,
-  vec: string,
+  sky: string
+  t1h: string
+  vec: string
   wsd: string
 }
 
 interface weatherSecondData {
-  pty: string,
-  r1n: string,
+  pty: string
+  r1n: string
   reh: string
 }
 
 interface UvData {
-  location: string,
-  uv: string,
+  location: string
+  uv: string
   uvIndex: number
 }
 
 interface AirDiffusionData {
-  location: string,
-  diffusion: string,
+  location: string
+  diffusion: string
   diffusionIndex: number
 }
 
@@ -195,9 +195,9 @@ interface AirDiffusionData {
  */
 
 interface KoreanLocationCode {
-  code: number,
-  firstLoc: string,
-  secondLoc: string,
-  geoX: number,
+  code: number
+  firstLoc: string
+  secondLoc: string
+  geoX: number
   geoY: number
 }

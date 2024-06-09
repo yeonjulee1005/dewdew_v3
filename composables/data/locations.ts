@@ -6,6 +6,6 @@ export const useKorLocation = () => {
   }
 
   return {
-    filteredLocations
+    filteredLocations,
   }
 }

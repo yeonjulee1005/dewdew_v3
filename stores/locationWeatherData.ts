@@ -45,8 +45,12 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
     const uvIndexData: WeatherData = await $fetch(`https://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/getUVIdxV4?serviceKey=${livingIndexQuery(currentLocationCode.value?.code ?? 0, genDateFormat('YYYYMMDDHH'))}`)
     const diffusionData: WeatherData = await $fetch(`https://apis.data.go.kr/1360000/LivingWthrIdxServiceV4/getAirDiffusionIdxV4?serviceKey=${livingIndexQuery(currentLocationCode.value?.code ?? 0, genDateFormat('YYYYMMDDHH'))}`)
 
-    if (!uvIndexData.response) { return }
-    if (!diffusionData.response) { return }
+    if (!uvIndexData.response) {
+      return
+    }
+    if (!diffusionData.response) {
+      return
+    }
 
     recordLivingData(parseInt(uvIndexData.response.body.items.item[0].h0 ?? ''), parseInt(diffusionData.response.body.items.item[0].h3 ?? ''))
   }
@@ -54,7 +58,9 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
   const fetchWeatherData = async () => {
     const data: WeatherData = await $fetch(`https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst?serviceKey=${weatherQuery(genDateFormat('YYYYMMDD'), getForecastHour(), geoX.value ?? 0, geoY.value ?? 0)}`)
 
-    if (!data.response) { return }
+    if (!data.response) {
+      return
+    }
     recordWeatherData(data.response.body.items.item as WeatherItem[])
   }
 
@@ -62,13 +68,13 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
     uvData.value = {
       location: currentLocationCode.value?.firstLoc.concat(' ', currentLocationCode.value?.secondLoc) ?? '',
       uv: loadLivingData(uvKey, 'uv'),
-      uvIndex: uvKey
+      uvIndex: uvKey,
     }
 
     airDiffusionData.value = {
       location: currentLocationCode.value?.firstLoc.concat(' ', currentLocationCode.value?.secondLoc) ?? '',
       diffusion: loadLivingData(diffusionKey, 'diffusion'),
-      diffusionIndex: diffusionKey
+      diffusionIndex: diffusionKey,
     }
   }
 
@@ -77,13 +83,13 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
       sky: getWeatherData('sky', filterWeatherData(response, 'SKY', 0)?.fcstValue ?? 0),
       t1h: getWeatherData('t1h', filterWeatherData(response, 'T1H', 0)?.fcstValue ?? 0),
       vec: getWeatherData('vec', Math.floor((parseInt(filterWeatherData(response, 'VEC', 0)?.fcstValue ?? '0') + 22.5) / 45)),
-      wsd: getWeatherData('wsd', filterWeatherData(response, 'WSD', 0)?.fcstValue ?? 0)
+      wsd: getWeatherData('wsd', filterWeatherData(response, 'WSD', 0)?.fcstValue ?? 0),
     }
 
     weatherSecondData.value = {
       pty: getWeatherData('pty', filterWeatherData(response, 'PTY', 0)?.fcstValue ?? 0),
       r1n: getWeatherData('r1n', filterWeatherData(response, 'RN1', 0)?.fcstValue ?? 0),
-      reh: getWeatherData('reh', filterWeatherData(response, 'REH', 0)?.fcstValue ?? 0)
+      reh: getWeatherData('reh', filterWeatherData(response, 'REH', 0)?.fcstValue ?? 0),
     }
   }
 
@@ -92,7 +98,7 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
     return typeof data === 'function' ? data(value) : data[value as number]
   }
 
-  const filterWeatherData = (data: WeatherItem[], category: string, index:number) => {
+  const filterWeatherData = (data: WeatherItem[], category: string, index: number) => {
     return data.filter((item: WeatherItem) => item.category === category).at(index)
   }
 
@@ -108,10 +114,10 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
     weatherFirstData,
     weatherSecondData,
     fetchLivingData,
-    fetchWeatherData
+    fetchWeatherData,
   }
 }, {
   persist: {
-    storage: persistedState.localStorage
-  }
+    storage: persistedState.localStorage,
+  },
 })

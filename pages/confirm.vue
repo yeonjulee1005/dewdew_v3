@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-
 const user = useSupabaseUser()
 const client = useSupabaseClient()
 
@@ -24,10 +23,10 @@ const { logout } = useFetchComposable()
 const toast = useToast()
 
 definePageMeta({
-  layout: 'raw'
+  layout: 'raw',
 })
 
-const setUserCoreData = async (userId:string) => {
+const setUserCoreData = async (userId: string) => {
   const { data, error } = await client
     .from('profiles')
     .select('admin')
@@ -46,7 +45,7 @@ const setUserCoreData = async (userId:string) => {
   toast.add({
     title: data.admin ? t('messages.welcome') : t('messages.notAdmin'),
     color: data.admin ? 'orange' : 'fuchsia',
-    timeout: 3000
+    timeout: 3000,
   })
   navigateTo(data.admin ? '/tech?page=1&count=4' : '/')
 }
@@ -56,5 +55,4 @@ watch(() => user.value, () => {
     setUserCoreData(user.value?.id)
   }
 }, { immediate: true })
-
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div
     class="main-prev-tech flex flex-column mt-20 gap-8"
-    :class="{'activate': prevTechTrigger}"
+    :class="{ activate: prevTechTrigger }"
   >
     <div>
       <span class="title mx-10">
@@ -40,20 +40,20 @@ const plugin = [
     duration: 0,
     animationDuration: 10000,
     direction: 'NEXT',
-    stopOnHover: true
-  })
+    stopOnHover: true,
+  }),
 ]
 
 const option = {
   movetype: 'freeScroll',
   inputType: ['touch', 'mouse'],
   circular: true,
-  deceleration: 0.0035
+  deceleration: 0.0035,
 }
 
 const prevTechTrigger = defineModel('prevTechTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const techData = await loadTechData(1, 10)
@@ -61,5 +61,4 @@ const techData = await loadTechData(1, 10)
 const navigateTech = (techId: string) => {
   navigateTo(`/tech/${techId}`)
 }
-
 </script>

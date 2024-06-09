@@ -33,9 +33,7 @@
 </template>
 
 <script setup lang="ts">
-
 const { isDesktop } = useDevice()
 
 const { mainMenuData, socialMenuData } = useMenuStore()
-
 </script>

@@ -42,12 +42,12 @@ const { badgeColor } = useUi()
 
 withDefaults(
   defineProps<{
-    articleId: string,
-    addOnClass?: string,
-    data: SerializeObject,
-    estimateReadTime?: number,
-    useNuxtTime?: boolean,
-    activateLike?: boolean,
+    articleId: string
+    addOnClass?: string
+    data: SerializeObject
+    estimateReadTime?: number
+    useNuxtTime?: boolean
+    activateLike?: boolean
     badgeSize?: BadgeSize | undefined
   }>(),
   {
@@ -55,12 +55,11 @@ withDefaults(
     estimateReadTime: 0,
     useNuxtTime: false,
     activateLike: false,
-    badgeSize: 'sm'
-  }
+    badgeSize: 'sm',
+  },
 )
 
 defineEmits([
-  'update-count'
+  'update-count',
 ])
-
 </script>

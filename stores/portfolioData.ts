@@ -9,15 +9,15 @@ export const usePortfolioStore = defineStore('portfolioData', () => {
    *
    */
 
-  const portfolioData = ref<{ orderIndex: {index: number }, title: { ko: string, en: string}, description: { ko: string, en: string}, url: string, image: string, dynamic_thumbnail: string, thumbnail: string, alt: string, deleted: boolean }[] | null>()
-  const selectedPortfolioData = ref<{ orderIndex: {index: number }, title: { ko: string, en: string}, description: { ko: string, en: string}, url: string, image: string, dynamic_thumbnail: string, thumbnail: string, alt: string, deleted: boolean } | null>()
+  const portfolioData = ref<{ orderIndex: { index: number }, title: { ko: string, en: string }, description: { ko: string, en: string }, url: string, image: string, dynamic_thumbnail: string, thumbnail: string, alt: string, deleted: boolean }[] | null>()
+  const selectedPortfolioData = ref<{ orderIndex: { index: number }, title: { ko: string, en: string }, description: { ko: string, en: string }, url: string, image: string, dynamic_thumbnail: string, thumbnail: string, alt: string, deleted: boolean } | null>()
 
   return {
     portfolioData,
-    selectedPortfolioData
+    selectedPortfolioData,
   }
 }, {
   persist: {
-    storage: persistedState.localStorage
-  }
+    storage: persistedState.localStorage,
+  },
 })

@@ -14,10 +14,10 @@ export const useTechStore = defineStore('techStoreData', () => {
 
   return {
     clickedTechArticle,
-    adminAccess
+    adminAccess,
   }
 }, {
   persist: {
-    storage: persistedState.localStorage
-  }
+    storage: persistedState.localStorage,
+  },
 })

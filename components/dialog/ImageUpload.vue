@@ -60,7 +60,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { t } = useLocale()
 
 const { loadStorage, uploadStorage } = useFetchComposable()
@@ -69,12 +68,12 @@ const toast = useToast()
 
 const dialogTrigger = defineModel('dialogTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const emits = defineEmits([
   'close:dialog',
-  'submit:image'
+  'submit:image',
 ])
 
 const exportUrl = ref('')
@@ -92,15 +91,17 @@ const uploadFile = (event: Event) => {
     const file = target.files[0]
     if (!limitType.includes(file.type)) {
       toast.add({ title: t('messages.imageUploadFormat'), color: 'violet', timeout: 3000 })
-    } else if (file.size / 1024 / 1024 > 5) {
+    }
+    else if (file.size / 1024 / 1024 > 5) {
       toast.add({ title: t('messages.imageUploadSmallSize'), color: 'violet', timeout: 3000 })
-    } else {
+    }
+    else {
       uploadImage(file)
     }
   }
 }
 
-const uploadImage = async (file:File) => {
+const uploadImage = async (file: File) => {
   const fileExt = file.name.split('.').pop()
   const filePath = `${genUid()}.${fileExt}`
 
@@ -113,8 +114,10 @@ const uploadImage = async (file:File) => {
   await downloadImage(filePath)
 }
 
-const downloadImage = async (imageName:string) => {
-  if (!imageName) { return }
+const downloadImage = async (imageName: string) => {
+  if (!imageName) {
+    return
+  }
 
   exportUrl.value = await loadStorage('tech', imageName)
 }
@@ -129,8 +132,7 @@ const submitImage = () => {
   closeDialog(false)
 }
 
-const closeDialog = (trigger:boolean) => {
+const closeDialog = (trigger: boolean) => {
   emits('close:dialog', trigger)
 }
-
 </script>

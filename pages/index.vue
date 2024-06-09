@@ -9,15 +9,13 @@
 </template>
 
 <script setup lang="ts">
-
 const { t } = useLocale()
 
 useHead({
-  title: t('pageTitle.dewdew')
+  title: t('pageTitle.dewdew'),
 })
 
 definePageMeta({
-  layout: 'raw'
+  layout: 'raw',
 })
-
 </script>

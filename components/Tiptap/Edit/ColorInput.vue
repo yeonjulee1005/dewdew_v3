@@ -11,22 +11,21 @@
 </template>
 
 <script setup lang="ts">
-
-import { Editor } from '@tiptap/vue-3'
+import type { Editor } from '@tiptap/vue-3'
 
 withDefaults(
   defineProps<{
-    colorValue?: string,
-    tiptapEditor: Editor,
+    colorValue?: string
+    tiptapEditor: Editor
     tooltipText?: string
   }>(),
   {
     colorValue: '#ffffff',
-    tooltipText: ''
-  }
+    tooltipText: '',
+  },
 )
 
-const imageColor = (event:Event) => {
+const imageColor = (event: Event) => {
   const target = event.target as HTMLButtonElement
   let color = ''
   target
@@ -34,5 +33,4 @@ const imageColor = (event:Event) => {
     : color = ''
   return color
 }
-
 </script>
