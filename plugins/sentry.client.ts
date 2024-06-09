@@ -3,25 +3,25 @@ import * as Sentry from '@sentry/vue'
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig()
   const app = nuxtApp.vueApp
-  const router = useRouter()
+  // const router = useRouter()
 
   Sentry.init({
     app,
     dsn: 'https://af6e95d35134b404d6ac0d7c6c61a09e@o4506513187667968.ingest.sentry.io/4506513194287104',
     environment: import.meta.dev ? 'development' : 'production',
     integrations: [
-      new Sentry.BrowserTracing({
-      // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
-        routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-        tracingOrigins: ['dewdew.dev', 'www.dewdew.dev', /^\//],
-        tracePropagationTargets: ['localhost', /^https:\/\/api.dewdew\.dev/],
-      }),
-      new Sentry.Replay(
-        // {
-        //   maskAllText: false,
-        //   blockAllMedia: false
-        // }
-      ),
+      // new Sentry.BrowserTracing({
+      // // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
+      //   // routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      //   tracingOrigins: ['dewdew.dev', 'www.dewdew.dev', /^\//],
+      //   tracePropagationTargets: ['localhost', /^https:\/\/api.dewdew\.dev/],
+      // }),
+      // new Sentry.Replay(
+      //   // {
+      //   //   maskAllText: false,
+      //   //   blockAllMedia: false
+      //   // }
+      // ),
     ],
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
