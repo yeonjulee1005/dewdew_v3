@@ -16,18 +16,16 @@
 </template>
 
 <script setup lang="ts">
-
 const { isDesktop } = useDevice()
 const colorMode = useColorMode()
 
 const isDark = computed({
-  get () {
+  get() {
     return colorMode.value === 'dark'
   },
-  set () {
+  set() {
     useFavicon(colorMode.value !== 'dark' ? '/favicon-32x32.png' : '/favicon-light-32x32.png')
     colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-  }
+  },
 })
-
 </script>

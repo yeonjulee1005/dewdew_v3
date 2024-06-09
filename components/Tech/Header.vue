@@ -39,30 +39,28 @@
 </template>
 
 <script setup lang="ts">
-
 const router = useRouter()
 
 const props = withDefaults(
   defineProps<{
-    title?: string,
-    tags?: string,
-    createdAt?: string,
+    title?: string
+    tags?: string
+    createdAt?: string
     editTrigger?: boolean
   }>(),
   {
     title: '',
     tags: '',
     createdAt: '',
-    editTrigger: false
-  }
+    editTrigger: false,
+  },
 )
 
 defineEmits([
   'update:title',
-  'update:tags'
+  'update:tags',
 ])
 
 const copiedTitle = ref(props.title)
 const copiedTags = ref(props.tags)
-
 </script>

@@ -10,13 +10,13 @@ export const useFetchComposable = () => {
   const { stackLogoData } = storeToRefs(useStackStore())
   const { portfolioData, selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
-  const loadMenuData = async (menuType:string) => {
+  const loadMenuData = async (menuType: string) => {
     const { data }: SerializeObject = await useFetch('/api/menu', {
       headers: useRequestHeaders(['cookie']),
       params: {
-        menuType
+        menuType,
       },
-      immediate: true
+      immediate: true,
     })
 
     replaceMenuData(data.value, menuType)
@@ -25,7 +25,7 @@ export const useFetchComposable = () => {
   const loadStackData = async () => {
     const { data }: SerializeObject = await useFetch('/api/stack', {
       headers: useRequestHeaders(['cookie']),
-      immediate: true
+      immediate: true,
     })
 
     stackLogoData.value = data.value
@@ -34,7 +34,7 @@ export const useFetchComposable = () => {
   const loadPortfolioData = async () => {
     const { data }: SerializeObject = await useFetch('/api/portfolio', {
       headers: useRequestHeaders(['cookie']),
-      immediate: true
+      immediate: true,
     })
 
     portfolioData.value = data.value
@@ -44,7 +44,7 @@ export const useFetchComposable = () => {
   const loadArchiveData = async () => {
     const { data }: SerializeObject = await useFetch('/api/archive', {
       headers: useRequestHeaders(['cookie']),
-      immediate: true
+      immediate: true,
     })
 
     return data.value
@@ -55,9 +55,9 @@ export const useFetchComposable = () => {
       headers: useRequestHeaders(['cookie']),
       query: {
         page,
-        pageCount
+        pageCount,
       },
-      immediate: true
+      immediate: true,
     })
 
     return data.value
@@ -106,7 +106,7 @@ export const useFetchComposable = () => {
       .from(storage)
       .upload(path, file, {
         cacheControl: '3600',
-        upsert: true
+        upsert: true,
       })
 
     return error
@@ -123,7 +123,8 @@ export const useFetchComposable = () => {
       if (error) {
         return error
       }
-    } else if (subMatOpt && subMatOptVal) {
+    }
+    else if (subMatOpt && subMatOptVal) {
       const { error } = await client
         .from(table)
         .delete()
@@ -134,7 +135,8 @@ export const useFetchComposable = () => {
       if (error) {
         return error
       }
-    } else {
+    }
+    else {
       const { error } = await client
         .from(table)
         .delete()
@@ -151,7 +153,7 @@ export const useFetchComposable = () => {
     await client.auth.signOut()
   }
 
-  const replaceMenuData = (menuData:{ orderIndex: { index: number }, title: string, icon: string, menu_type: string, url: string, image_url: string, deleted: boolean }[] | null, menuType:string) => {
+  const replaceMenuData = (menuData: { orderIndex: { index: number }, title: string, icon: string, menu_type: string, url: string, image_url: string, deleted: boolean }[] | null, menuType: string) => {
     switch (menuType) {
       case 'root' :
         mainMenuData.value = menuData
@@ -177,6 +179,6 @@ export const useFetchComposable = () => {
     loadStorage,
     uploadStorage,
     deleteData,
-    logout
+    logout,
   }
 }

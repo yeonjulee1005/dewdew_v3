@@ -42,7 +42,6 @@
 </template>
 
 <script setup lang="ts">
-
 const user = useSupabaseUser()
 
 const { t } = useLocale()
@@ -60,8 +59,8 @@ useHead({
     { property: 'description', content: t('openGraph.tech') },
     { property: 'og:title', content: t('pageTitle.tech') },
     { property: 'og:description', content: t('openGraph.tech') },
-    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
-  ]
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` },
+  ],
 })
 
 const currentPage = ref(1)
@@ -76,11 +75,11 @@ watch(() => currentPage.value, () => {
   router.push({
     query: {
       ...router.currentRoute.value.query,
-      page: currentPage.value
-    }
+      page: currentPage.value,
+    },
   })
 }, {
-  immediate: true
+  immediate: true,
 })
 
 const { data: techData, refresh: techRefresh, pending: pendingTechData } = useAsyncData('techData', async () => {
@@ -88,14 +87,14 @@ const { data: techData, refresh: techRefresh, pending: pendingTechData } = useAs
     headers: useRequestHeaders(['cookie']),
     query: {
       page: currentPage.value,
-      pageCount: currentPageSize.value
-    }
+      pageCount: currentPageSize.value,
+    },
   })
 
   return data.value
 }, {
   immediate: true,
-  watch: [currentPage, currentPageSize]
+  watch: [currentPage, currentPageSize],
 })
 
 const { data: count } = useAsyncData('techCount', async () => {
@@ -103,7 +102,7 @@ const { data: count } = useAsyncData('techCount', async () => {
 
   return data.count
 }, {
-  immediate: true
+  immediate: true,
 })
 
 const openCreateArticleDialog = () => {
@@ -112,10 +111,10 @@ const openCreateArticleDialog = () => {
     : toast.add({ title: t('messages.unAuthorizedWrite'), color: 'orange', timeout: 3000 })
 }
 
-const writeArticle = async (recordData:Article) => {
-  const articleData:SerializeObject = {
+const writeArticle = async (recordData: Article) => {
+  const articleData: SerializeObject = {
     update_user_id: user.value?.id,
-    ...recordData
+    ...recordData,
   }
 
   const error = await upsertData(articleData, 'tech')
@@ -126,5 +125,4 @@ const writeArticle = async (recordData:Article) => {
     techRefresh()
   }
 }
-
 </script>

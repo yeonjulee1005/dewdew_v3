@@ -1,7 +1,7 @@
 <template>
   <div
     class="main-portfolio flex flex-column flex-justify-center gap-10"
-    :class="{'activate': portfolioTrigger}"
+    :class="{ activate: portfolioTrigger }"
   >
     <p class="section-title">
       {{ $t('main.reference.title') }}
@@ -68,24 +68,22 @@
 </template>
 
 <script setup lang="ts">
-
 const { locale } = useLocale()
 
 const { selectedPortfolioData } = storeToRefs(usePortfolioStore())
 
 const portfolioTrigger = defineModel('portfolioTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const portfolioImageData = defineModel('portfolioImageData', {
   type: Array<PortfolioType>,
-  default: []
+  default: [],
 })
 
 const navigatePortfolio = (item: SerializeObject) => {
   selectedPortfolioData.value = item
   navigateTo('/portfolio')
 }
-
 </script>

@@ -5,18 +5,17 @@
 </template>
 
 <script setup lang="ts">
-
 import TypeIt from 'typeit'
 
 const { typeHello } = useHelloData()
 
 const typeItHello = () => {
-  if (process.client) {
+  if (import.meta.client) {
     new TypeIt('#hello-intro-title', {
       strings: typeHello,
       lifeLike: true,
       deleteSpeed: 100,
-      loop: true
+      loop: true,
     }).go()
   }
 }
@@ -24,5 +23,4 @@ const typeItHello = () => {
 onMounted(() => {
   typeItHello()
 })
-
 </script>

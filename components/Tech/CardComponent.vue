@@ -34,17 +34,15 @@
 </template>
 
 <script setup lang="ts">
-
 const { estimateReadingTime } = useUi()
 
 withDefaults(
   defineProps<{
-    cardItem: SerializeObject,
+    cardItem: SerializeObject
     pendingData?: boolean
   }>(),
   {
-    pendingData: true
-  }
+    pendingData: true,
+  },
 )
-
 </script>

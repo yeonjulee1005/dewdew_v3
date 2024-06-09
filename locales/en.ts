@@ -8,11 +8,11 @@ export default {
     colorsTranslate: 'Find my color!',
     blog: 'Blog',
     tech: 'Tech Blog',
-    archives: 'Archives'
+    archives: 'Archives',
   },
   pageSubTitle: {
     colorsTranslate: 'Find my color..',
-    hhkb: 'HHKB Keyboard Modeling'
+    hhkb: 'HHKB Keyboard Modeling',
   },
   openGraph: {
     main: '안녕하세요. FE 개발자 이연주입니다.',
@@ -22,7 +22,7 @@ export default {
     hhkb: 'Spline을 이용한 HHKB 키보드 모델링 입니다.',
     blog: 'FE개발자 이연주의 블로그 입니다.',
     tech: 'FE개발자 이연주의 개발 블로그 입니다.',
-    archives: 'FE개발자 이연주의 사진기록 입니다.'
+    archives: 'FE개발자 이연주의 사진기록 입니다.',
   },
   texts: {
     enter: 'Enter',
@@ -41,10 +41,10 @@ export default {
     regenerate: 'Regenerate',
     version: 'Version {version}',
     copyright: 'Copyright © Yeonju Lee All Rights Reserved.',
-    designed: 'Designed by Yeonju Lee.'
+    designed: 'Designed by Yeonju Lee.',
   },
   login: {
-    process: 'Processing login!'
+    process: 'Processing login!',
   },
   main: {
     intro: {
@@ -52,75 +52,75 @@ export default {
       description: [
         'A person who tries hard cannot beat a person who enjoys.',
         'I am Yeonju Lee, a developer who enjoys both development and hobbies.',
-        'This page was created with \'Nuxt3, Supabase\'.'
+        'This page was created with \'Nuxt3, Supabase\'.',
       ],
-      scroll: '👇🏻 Scroll Down'
+      scroll: '👇🏻 Scroll Down',
     },
     forecast: {
       uv: 'UV',
-      diffusion: 'Air Exposed'
+      diffusion: 'Air Exposed',
     },
     resume: {
       name: [
         'Software Engineer Yeonju',
-        'A.K.A Dewdew'
-      ]
+        'A.K.A Dewdew',
+      ],
     },
     skills: {
       frontDescription: {
         title: [
           'Hello.',
-          'I\'m Yeonju, FE engineer.'
+          'I\'m Yeonju, FE engineer.',
         ],
         first: [
           'It may not be a glamorous life,',
           'but I am a developer who enjoys working ',
           'and experiencing new things',
-          'in this once-in-a-lifetime life.'
+          'in this once-in-a-lifetime life.',
         ],
         second: [
           'New tech stacks are coming out every day.',
           'I believe it\'s important to learn and use the latest tech stacks without resistance,',
-          'I think it\'s important to create services efficiently.'
+          'I think it\'s important to create services efficiently.',
         ],
         third: [
           'Although I didn\'t major in it, I\'m growing as a developer',
-          'who learns and strives harder.'
-        ]
+          'who learns and strives harder.',
+        ],
       },
       backDescription: {
         title: [
-          'Core Stack'
+          'Core Stack',
         ],
         first: [
           'FE: nuxt3(vue3), astro',
           'BE: supabase',
-          'UI: element-plus, nuxt-ui'
+          'UI: element-plus, nuxt-ui',
         ],
         second: [
           'Modules: nuxt-img, nuxt-content, nuxt-i18n',
-          'vite-pwa, vueuse, pinia, tiptap'
+          'vite-pwa, vueuse, pinia, tiptap',
         ],
         third: [
           'Language: javascript, typescript',
           'Style: scss, tailwind',
-          'Design: figma'
-        ]
-      }
+          'Design: figma',
+        ],
+      },
     },
     reference: {
       title: 'Project',
       description: 'List of development portfolios.',
       moveTo: 'Move to',
-      background: 'PROJECTS'
+      background: 'PROJECTS',
     },
     contact: 'CONTACT',
     social: 'Social Contact',
     kakao: {
       title: 'Kakao Talk',
-      contact: 'Contact to kakao'
+      contact: 'Contact to kakao',
     },
-    email: 'Email'
+    email: 'Email',
   },
   colorsTranslate: {
     dropper: 'Dropper',
@@ -133,16 +133,16 @@ export default {
     cmykLabel: 'CMYK Color',
     uploadFile: 'Upload files.',
     dropperDesc: 'and Dropper Color',
-    checkDropper: 'Check.'
+    checkDropper: 'Check.',
   },
   hhkb: {
     title: 'HHKB Keyboard Modeling',
-    inputPlaceholder: 'If you type in English or click the keyboard with the mouse, the 3D modeled hhkb keyboard below will work.'
+    inputPlaceholder: 'If you type in English or click the keyboard with the mouse, the 3D modeled hhkb keyboard below will work.',
   },
   archives: {
     title: 'Dewdew History',
     back: 'Back',
-    historyTitle: 'HISTORY OF'
+    historyTitle: 'HISTORY OF',
   },
   tech: {
     write: 'Write',
@@ -153,13 +153,13 @@ export default {
     name: 'Name',
     content: 'Content',
     password: 'Password',
-    estimateReadTime: '{time} minutes'
+    estimateReadTime: '{time} minutes',
   },
   blog: {
-    recentPost: 'Recent Post'
+    recentPost: 'Recent Post',
   },
   dialog: {
-    magicLinkTitle: 'Please enter your email!'
+    magicLinkTitle: 'Please enter your email!',
   },
   pwa: {
     readyPwa: 'Ready to use PWA!',
@@ -169,11 +169,11 @@ export default {
     send: 'Send',
     installPwa: 'Install PWA',
     install: 'Install',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
   },
   localeMenu: {
     korean: 'Korean',
-    english: 'English'
+    english: 'English',
   },
   placeholder: {
     inputYoutube: 'Input youtube link.',
@@ -182,7 +182,7 @@ export default {
     inputEmail: 'Input email.',
     inputPassword: 'Input password.',
     inputTitle: 'Input title.',
-    inputContent: 'Input content.'
+    inputContent: 'Input content.',
   },
   messages: {
     failed: 'Failed..TT',
@@ -222,7 +222,7 @@ export default {
     successPressLike: 'Press like success ❤️',
     successCreateComment: 'Thank you for writing a comment ❤️',
     deleteComment: 'Delete comment.',
-    successAdmin: 'Welcome! Dewdew'
+    successAdmin: 'Welcome! Dewdew',
   },
   tiptap: {
     placeholder: 'Input content!🤨',
@@ -277,7 +277,7 @@ export default {
     dialog: {
       hyperLinkTitle: 'Input hyper link',
       youtubeLinkTitle: 'Input youtube link',
-      imageUploadTitle: 'Upload image'
-    }
-  }
+      imageUploadTitle: 'Upload image',
+    },
+  },
 }

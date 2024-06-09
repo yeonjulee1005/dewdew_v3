@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { coords, resume } = useGeolocation()
 
 const { meta, fullPath } = useRoute()
@@ -41,7 +40,7 @@ useHead({
     return title && !title?.includes(t('pageTitle.yeonju'))
       ? title?.concat(' | ', t('pageTitle.yeonju'))
       : null
-  }
+  },
 })
 
 watch(() => genDateFormat('HH'), () => {
@@ -50,7 +49,6 @@ watch(() => genDateFormat('HH'), () => {
     fetchWeatherData()
   }
 })
-
 
 watch(() => coords.value, () => {
   if (coords.value.latitude === Infinity) {
@@ -79,7 +77,7 @@ const initWeatherData = () => {
 const seoUrl = 'https://www.dewdew.dev'
 const seoImage = 'https://api.dewdew.dev/storage/v1/object/public/assets/banner/main_banner.webp'
 
-if (process.server) {
+if (import.meta.server) {
   useHead({
     title: (meta.title as string) ?? '개발자 이연주 | Dewdew',
     meta: () => [
@@ -99,7 +97,7 @@ if (process.server) {
       { property: 'og:image:height', content: '200' },
       { property: 'og:image:type', content: 'image/png' },
       { property: 'og:title', content: (meta.title as string) ?? t('pageTitle.yeonju') },
-      { property: 'og:description', content: (meta.description as string) ?? t('openGraph.main') }
+      { property: 'og:description', content: (meta.description as string) ?? t('openGraph.main') },
     ],
     link: [
       { rel: 'canonical', href: fullPath },
@@ -110,17 +108,16 @@ if (process.server) {
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'manifest', href: '/manifest.webmanifest' },
-      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' }
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#5bbad5' },
     ],
     script: [
       {
         hid: 'spiine-viewer',
         src: 'https://unpkg.com/@splinetool/viewer@1.0.17/build/spline-viewer.js',
         type: 'module',
-        defer: true
-      }
-    ]
+        defer: true,
+      },
+    ],
   })
 }
-
 </script>

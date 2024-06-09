@@ -2,7 +2,7 @@ export const useSkillData = () => {
   const skillTitleList = {
     frontEndTitle: 'FE Skills',
     backEndTitle: 'BE Skills',
-    toolsTitle: 'Tools'
+    toolsTitle: 'Tools',
   }
 
   const frontEnd = [
@@ -21,7 +21,7 @@ export const useSkillData = () => {
     { title: 'HTML5', percent: 90, emoji: '🚀' },
     { title: 'CSS3', percent: 80, emoji: '🚀' },
     { title: 'Swift', percent: 10, emoji: '📖' },
-    { title: 'Flutter', percent: 15, emoji: '📖' }
+    { title: 'Flutter', percent: 15, emoji: '📖' },
   ]
 
   const backEnd = [
@@ -33,7 +33,7 @@ export const useSkillData = () => {
     { title: 'PostgreSQL', percent: 50, emoji: '💻' },
     { title: 'Docker', percent: 10, emoji: '💻' },
     { title: 'Kubernetes', percent: 5, emoji: '📖' },
-    { title: 'Python', percent: 15, emoji: '📖' }
+    { title: 'Python', percent: 15, emoji: '📖' },
   ]
 
   const devOps = [
@@ -52,13 +52,13 @@ export const useSkillData = () => {
     { title: 'Postman', percent: 90, emoji: '🚀' },
     { title: 'Illustration', percent: 70, emoji: '💻' },
     { title: 'XD', percent: 80, emoji: '💻' },
-    { title: 'Zeplin', percent: 65, emoji: '💻' }
+    { title: 'Zeplin', percent: 65, emoji: '💻' },
   ]
 
   return {
     skillTitleList,
     frontEnd,
     backEnd,
-    devOps
+    devOps,
   }
 }

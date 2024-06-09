@@ -121,15 +121,14 @@ const plugin = [
   new AutoPlay({
     animationDuration: 2000,
     direction: 'NEXT',
-    stopOnHover: true
-  })
+    stopOnHover: true,
+  }),
 ]
 
 const option = {
   inputType: ['touch', 'mouse'],
   circular: true,
   horizontal: false,
-  deceleration: 0.004
+  deceleration: 0.004,
 }
-
 </script>

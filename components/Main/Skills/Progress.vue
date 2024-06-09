@@ -13,9 +13,7 @@
 </template>
 
 <script setup lang="ts">
-
 defineProps<{
-  progressData: ProgressData,
+  progressData: ProgressData
 }>()
-
 </script>

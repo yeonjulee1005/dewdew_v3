@@ -17,10 +17,10 @@ export const useMenuStore = defineStore('menuData', () => {
   return {
     mainMenuData,
     subMenuData,
-    socialMenuData
+    socialMenuData,
   }
 }, {
   persist: {
-    storage: persistedState.localStorage
-  }
+    storage: persistedState.localStorage,
+  },
 })

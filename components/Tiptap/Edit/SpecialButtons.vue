@@ -12,29 +12,27 @@
 </template>
 
 <script setup lang="ts">
-
 const props = withDefaults(
   defineProps<{
-    iconType: string,
-    action: Function,
-    disabled?: boolean,
-    tooltipTrigger?: boolean,
+    iconType: string
+    action: () => void
+    disabled?: boolean
+    tooltipTrigger?: boolean
     tooltipText?: string
   }>(),
   {
     disabled: false,
     tooltipTrigger: true,
-    tooltipText: ''
-  }
+    tooltipText: '',
+  },
 )
 
 const emits = defineEmits([
-  'select-button'
+  'select-button',
 ])
 
 const clickAction = () => {
   props.action()
   emits('select-button')
 }
-
 </script>

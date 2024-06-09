@@ -44,28 +44,30 @@ const { passwordRegex } = useUi()
 
 const dialogTrigger = defineModel('dialogTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const emits = defineEmits([
   'confirm-password',
-  'close-dialog'
+  'close-dialog',
 ])
 
 const schema = object({
   password: string()
     .required(t('messages.passwordRequire'))
-    .matches(passwordRegex, t('messages.passwordFormat'))
+    .matches(passwordRegex, t('messages.passwordFormat')),
 })
 
 type Schema = InferType<typeof schema>
 
 const formData = reactive({
-  password: ''
+  password: '',
 })
 
 const onSubmit = (event: FormSubmitEvent<Schema>) => {
-  if (!event.isTrusted) { return }
+  if (!event.isTrusted) {
+    return
+  }
   emits('confirm-password', formData.password)
   closeDialog()
 }
@@ -74,5 +76,4 @@ const closeDialog = () => {
   formData.password = ''
   emits('close-dialog')
 }
-
 </script>

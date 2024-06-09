@@ -36,26 +36,26 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "archiveGroup_archive_id_fkey"
-            columns: ["archive_id"]
+            foreignKeyName: 'archiveGroup_archive_id_fkey'
+            columns: ['archive_id']
             isOneToOne: false
-            referencedRelation: "archiveImage"
-            referencedColumns: ["id"]
+            referencedRelation: 'archiveImage'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "archiveGroup_archive_order_id_fkey"
-            columns: ["archive_order_id"]
+            foreignKeyName: 'archiveGroup_archive_order_id_fkey'
+            columns: ['archive_order_id']
             isOneToOne: false
-            referencedRelation: "archiveIndex"
-            referencedColumns: ["id"]
+            referencedRelation: 'archiveIndex'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "archiveGroup_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'archiveGroup_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "portfolio"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'portfolio'
+            referencedColumns: ['id']
+          },
         ]
       }
       archiveImage: {
@@ -91,12 +91,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "archiveImage_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'archiveImage_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       archiveIndex: {
@@ -129,12 +129,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "archiveIndex_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'archiveIndex_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       main: {
@@ -179,33 +179,33 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "main_desc_id_fkey"
-            columns: ["desc_id"]
+            foreignKeyName: 'main_desc_id_fkey'
+            columns: ['desc_id']
             isOneToOne: false
-            referencedRelation: "textDescription"
-            referencedColumns: ["id"]
+            referencedRelation: 'textDescription'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "main_orderId_fkey"
-            columns: ["orderId"]
+            foreignKeyName: 'main_orderId_fkey'
+            columns: ['orderId']
             isOneToOne: false
-            referencedRelation: "orderIndex"
-            referencedColumns: ["id"]
+            referencedRelation: 'orderIndex'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "main_text_id_fkey"
-            columns: ["text_id"]
+            foreignKeyName: 'main_text_id_fkey'
+            columns: ['text_id']
             isOneToOne: false
-            referencedRelation: "textTitle"
-            referencedColumns: ["id"]
+            referencedRelation: 'textTitle'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "main_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'main_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       orderIndex: {
@@ -244,12 +244,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "orderIndex_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'orderIndex_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       pageMenu: {
@@ -294,19 +294,19 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "pageMenu_order_id_fkey"
-            columns: ["order_id"]
+            foreignKeyName: 'pageMenu_order_id_fkey'
+            columns: ['order_id']
             isOneToOne: false
-            referencedRelation: "orderIndex"
-            referencedColumns: ["id"]
+            referencedRelation: 'orderIndex'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "pageMenu_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'pageMenu_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       portfolio: {
@@ -357,33 +357,33 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "portfolio_description_fkey"
-            columns: ["description"]
+            foreignKeyName: 'portfolio_description_fkey'
+            columns: ['description']
             isOneToOne: false
-            referencedRelation: "textDescription"
-            referencedColumns: ["id"]
+            referencedRelation: 'textDescription'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "portfolio_order_id_fkey"
-            columns: ["order_id"]
+            foreignKeyName: 'portfolio_order_id_fkey'
+            columns: ['order_id']
             isOneToOne: false
-            referencedRelation: "orderIndex"
-            referencedColumns: ["id"]
+            referencedRelation: 'orderIndex'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "portfolio_title_fkey"
-            columns: ["title"]
+            foreignKeyName: 'portfolio_title_fkey'
+            columns: ['title']
             isOneToOne: false
-            referencedRelation: "textTitle"
-            referencedColumns: ["id"]
+            referencedRelation: 'textTitle'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "portfolio_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'portfolio_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       profiles: {
@@ -416,12 +416,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "profiles_id_fkey"
-            columns: ["id"]
+            foreignKeyName: 'profiles_id_fkey'
+            columns: ['id']
             isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'users'
+            referencedColumns: ['id']
+          },
         ]
       }
       stackLogo: {
@@ -460,19 +460,19 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "stackLogo_order_id_fkey"
-            columns: ["order_id"]
+            foreignKeyName: 'stackLogo_order_id_fkey'
+            columns: ['order_id']
             isOneToOne: false
-            referencedRelation: "orderIndex"
-            referencedColumns: ["id"]
+            referencedRelation: 'orderIndex'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "stackLogo_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'stackLogo_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       tech: {
@@ -517,12 +517,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "tech_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'tech_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       techComment: {
@@ -558,12 +558,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "techComment_tech_id_fkey"
-            columns: ["tech_id"]
+            foreignKeyName: 'techComment_tech_id_fkey'
+            columns: ['tech_id']
             isOneToOne: false
-            referencedRelation: "tech"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'tech'
+            referencedColumns: ['id']
+          },
         ]
       }
       textDescription: {
@@ -605,12 +605,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "textDescription_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'textDescription_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
       textTitle: {
@@ -652,12 +652,12 @@ interface SupabaseDataBase {
         }
         Relationships: [
           {
-            foreignKeyName: "textTitle_update_user_id_fkey"
-            columns: ["update_user_id"]
+            foreignKeyName: 'textTitle_update_user_id_fkey'
+            columns: ['update_user_id']
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["id"]
-          }
+            referencedRelation: 'profiles'
+            referencedColumns: ['id']
+          },
         ]
       }
     }
@@ -678,80 +678,80 @@ interface SupabaseDataBase {
 
 type Tables<
   PublicTableNameOrOptions extends
-    | keyof (Database["public"]["Tables"] & Database["public"]["Views"])
-    | { schema: keyof Database },
+  | keyof (Database['public']['Tables'] & Database['public']['Views'])
+  | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
-        Database[PublicTableNameOrOptions["schema"]]["Views"])
-    : never = never
+    ? keyof (Database[PublicTableNameOrOptions['schema']]['Tables'] &
+    Database[PublicTableNameOrOptions['schema']]['Views'])
+    : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
-      Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+  ? (Database[PublicTableNameOrOptions['schema']]['Tables'] &
+  Database[PublicTableNameOrOptions['schema']]['Views'])[TableName] extends {
       Row: infer R
     }
-    ? R
+      ? R
+      : never
+  : PublicTableNameOrOptions extends keyof (Database['public']['Tables'] &
+  Database['public']['Views'])
+    ? (Database['public']['Tables'] &
+    Database['public']['Views'])[PublicTableNameOrOptions] extends {
+        Row: infer R
+      }
+        ? R
+        : never
     : never
-  : PublicTableNameOrOptions extends keyof (Database["public"]["Tables"] &
-      Database["public"]["Views"])
-  ? (Database["public"]["Tables"] &
-      Database["public"]["Views"])[PublicTableNameOrOptions] extends {
-      Row: infer R
-    }
-    ? R
-    : never
-  : never
 
 type TablesInsert<
   PublicTableNameOrOptions extends
-    | keyof Database["public"]["Tables"]
-    | { schema: keyof Database },
+  | keyof Database['public']['Tables']
+  | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
-    : never = never
+    ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
+    : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Insert: infer I
-    }
+  ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
+    Insert: infer I
+  }
     ? I
     : never
-  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
-  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+  : PublicTableNameOrOptions extends keyof Database['public']['Tables']
+    ? Database['public']['Tables'][PublicTableNameOrOptions] extends {
       Insert: infer I
     }
-    ? I
+      ? I
+      : never
     : never
-  : never
 
 type TablesUpdate<
   PublicTableNameOrOptions extends
-    | keyof Database["public"]["Tables"]
-    | { schema: keyof Database },
+  | keyof Database['public']['Tables']
+  | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicTableNameOrOptions["schema"]]["Tables"]
-    : never = never
+    ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
+    : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Update: infer U
-    }
+  ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
+    Update: infer U
+  }
     ? U
     : never
-  : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
-  ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
+  : PublicTableNameOrOptions extends keyof Database['public']['Tables']
+    ? Database['public']['Tables'][PublicTableNameOrOptions] extends {
       Update: infer U
     }
-    ? U
+      ? U
+      : never
     : never
-  : never
 
 type Enums<
   PublicEnumNameOrOptions extends
-    | keyof Database["public"]["Enums"]
-    | { schema: keyof Database },
+  | keyof Database['public']['Enums']
+  | { schema: keyof Database },
   EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
-    ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
-    : never = never
+    ? keyof Database[PublicEnumNameOrOptions['schema']]['Enums']
+    : never = never,
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
-  : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
-  ? Database["public"]["Enums"][PublicEnumNameOrOptions]
-  : never
+  ? Database[PublicEnumNameOrOptions['schema']]['Enums'][EnumName]
+  : PublicEnumNameOrOptions extends keyof Database['public']['Enums']
+    ? Database['public']['Enums'][PublicEnumNameOrOptions]
+    : never

@@ -1,23 +1,19 @@
-module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true
+import withNuxt from './.nuxt/eslint.config.mjs'
+
+export default withNuxt({
+  rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
   },
-  extends: [
-    '@nuxt/eslint-config',
-    '@nuxtjs/eslint-config-typescript'
-  ],
-  plugins: ['vitest'],
+}).override('nuxt/javascript', {
   rules: {
     'no-console': 'off',
-    quotes: ['error', 'single'],
-    indent: [
+    'quotes': ['error', 'single'],
+    'indent': [
       2,
       2,
       {
-        SwitchCase: 1
-      }
+        SwitchCase: 1,
+      },
     ],
     'vue/no-v-html': 'off',
     'no-trailing-spaces': 'error',
@@ -25,43 +21,43 @@ module.exports = {
     'space-infix-ops': 'error',
     'vue/mustache-interpolation-spacing': ['error', 'always'],
     'vue/singleline-html-element-content-newline': ['error', {
-      ignoreWhenNoAttributes: false
+      ignoreWhenNoAttributes: false,
     }],
     'no-multiple-empty-lines':
-      ['error', { max: 2 }
+      ['error', { max: 2 },
       ],
     'vue/no-required-prop-with-default': [
       'error',
       {
-        autofix: false
-      }
+        autofix: false,
+      },
     ],
     'vue/max-attributes-per-line': [
       'error',
       {
         singleline: {
-          max: 1
+          max: 1,
         },
         multiline: {
-          max: 1
-        }
-      }
+          max: 1,
+        },
+      },
     ],
     'vue/first-attribute-linebreak': [
       'error',
       {
         singleline: 'beside',
-        multiline: 'below'
-      }
+        multiline: 'below',
+      },
     ],
     'vue/html-closing-bracket-newline': [
       'error',
       {
         singleline: 'never',
-        multiline: 'always'
-      }
+        multiline: 'always',
+      },
     ],
     'vue/multi-word-component-names': 'off',
-    'import/prefer-default-export': 'off'
-  }
-}
+    'import/prefer-default-export': 'off',
+  },
+})

@@ -1,7 +1,7 @@
 <template>
   <div
     class="main-contact flex flex-column flex-align-center"
-    :class="{'activate': contactTrigger}"
+    :class="{ activate: contactTrigger }"
   >
     <div class="contact-title mb-40">
       {{ $t('main.contact') }}
@@ -54,7 +54,6 @@
 </template>
 
 <script setup lang="ts">
-
 const config = useRuntimeConfig()
 const { url } = useImageStorage()
 
@@ -62,7 +61,6 @@ const { socialMenuData } = storeToRefs(useMenuStore())
 
 const contactTrigger = defineModel('contactTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
-
 </script>

@@ -10,20 +10,18 @@
 </template>
 
 <script setup lang="ts">
-
 const { locale } = useLocale()
 
 withDefaults(
   defineProps<{
-    dateTime?: string,
-    customClass?: string,
+    dateTime?: string
+    customClass?: string
     fullDate?: boolean
   }>(),
   {
     dateTime: '',
     customClass: 'time flex',
-    fullDate: true
-  }
+    fullDate: true,
+  },
 )
-
 </script>

@@ -20,21 +20,19 @@
 </template>
 
 <script setup lang="ts">
-
 const { t, locale, setLocale } = useLocale()
 
 const locales = [
   { label: t('localeMenu.korean'), value: 'ko' },
-  { label: t('localeMenu.english'), value: 'en' }
+  { label: t('localeMenu.english'), value: 'en' },
 ]
 
 const selectLocale = computed({
-  get () {
+  get() {
     return locale.value
   },
-  set (value) {
+  set(value) {
     setLocale(value)
-  }
+  },
 })
-
 </script>

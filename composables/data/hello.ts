@@ -22,16 +22,16 @@ export const useHelloData = () => {
     'مرحبا!',
     'Merhaba!',
     'नमस्ते!',
-    'ہیلو!'
+    'ہیلو!',
   ]
 
   const typeHello = [
     '안녕하세요.',
-    'FE 개발자 이연주 입니다.'
+    'FE 개발자 이연주 입니다.',
   ]
 
   return {
     helloList,
-    typeHello
+    typeHello,
   }
 }

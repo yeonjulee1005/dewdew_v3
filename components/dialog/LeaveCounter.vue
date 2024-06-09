@@ -22,24 +22,26 @@
 </template>
 
 <script setup lang="ts">
-
 const { idle } = useIdle(10 * 60 * 1000)
 
 let countInterval: ReturnType<typeof setInterval> | null = null
 
 const count = ref(60)
 
-const idleTrigger = computed(() => { return idle.value })
+const idleTrigger = computed(() => {
+  return idle.value
+})
 const leaveDialogTrigger = ref(false)
 
 watch(() => idleTrigger.value, () => {
   if (idleTrigger.value) {
     leaveDialogTrigger.value = true
     generateCountInterval(0, 1000, countDisplay)
-  } else if (countInterval !== null) {
+  }
+  else if (countInterval !== null) {
     clearInterval(countInterval)
   }
-}, { immediate: true }
+}, { immediate: true },
 )
 
 const generateCountInterval = (count: number, delay: number, callback: (countDown: number, count: number) => void): void => {
@@ -66,5 +68,4 @@ const countDisplay = (index: number, _count: number): void => {
 const closeLeaveDialog = () => {
   leaveDialogTrigger.value = false
 }
-
 </script>

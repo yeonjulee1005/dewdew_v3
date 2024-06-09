@@ -159,21 +159,21 @@ const { BaseCustomMediaNode } = useTiptapImage()
 
 const props = withDefaults(
   defineProps<{
-    textData?: string,
-    textLimit?: number,
-    fullOption?: boolean,
+    textData?: string
+    textLimit?: number
+    fullOption?: boolean
     commentOption?: boolean
   }>(),
   {
     textData: '',
     textLimit: 300,
     fullOption: false,
-    commentOption: false
-  }
+    commentOption: false,
+  },
 )
 
 const emits = defineEmits([
-  'update:model-value'
+  'update:model-value',
 ])
 
 const editor = ref()
@@ -194,44 +194,44 @@ onMounted(() => {
     content: props.textData,
     extensions: [
       starterKit.configure({
-        codeBlock: false
+        codeBlock: false,
       }),
       placeholder.configure({
-        placeholder: t('tiptap.placeholder')
+        placeholder: t('tiptap.placeholder'),
       }),
       characterCount.configure({
-        limit: props.textLimit
+        limit: props.textLimit,
       }),
       CodeBlock,
       underline,
       textAlign.configure({
-        types: ['heading', 'paragraph']
+        types: ['heading', 'paragraph'],
       }),
       highlight.configure({ multicolor: true }),
       focus.configure({
         className: 'has-focus',
-        mode: 'all'
+        mode: 'all',
       }),
       taskItem.configure({
-        nested: true
+        nested: true,
       }),
       taskList,
       link.configure({
         HTMLAttributes: {
           rel: 'noopener noreferrer',
-          target: '_blank'
+          target: '_blank',
         },
         protocols: [
           'ftp',
           'mailto',
           {
             scheme: 'tel',
-            optionalSlashes: true
-          }
-        ]
+            optionalSlashes: true,
+          },
+        ],
       }),
       table.configure({
-        resizable: true
+        resizable: true,
       }),
       tableRow,
       tableHeader,
@@ -242,14 +242,14 @@ onMounted(() => {
         interfaceLanguage: 'ko',
         modestBranding: true,
         width: 400,
-        height: 280
+        height: 280,
       }),
       BaseCustomMediaNode,
-      Color
+      Color,
     ],
     onUpdate: () => {
       emits('update:model-value', editor.value.getHTML(), editor.value.state.doc.textContent)
-    }
+    },
   })
 })
 
@@ -258,22 +258,21 @@ onBeforeUnmount(() => {
   editor.value = null
 })
 
-const submitHyperLink = (link:string) => {
+const submitHyperLink = (link: string) => {
   link
     ? editor.value?.chain().focus().setLink({ href: link, target: '_blank' }).run()
     : editor.value?.chain().focus().unsetLink().run()
 }
 
-const submitYoutubeLink = (link:string) => {
+const submitYoutubeLink = (link: string) => {
   editor.value?.commands.setYoutubeVideo({
     src: link,
     width: windowWidth.value > 600 ? 400 : windowWidth.value - 100,
-    height: windowWidth.value > 600 ? 280 : 200
+    height: windowWidth.value > 600 ? 280 : 200,
   })
 }
 
-const submitImage = (imageUrl:string, hyperLink:string) => {
+const submitImage = (imageUrl: string, hyperLink: string) => {
   editor.value?.chain().focus().setImage({ src: imageUrl, href: hyperLink === '' ? undefined : hyperLink }).run()
 }
-
 </script>

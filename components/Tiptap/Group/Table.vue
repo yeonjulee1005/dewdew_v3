@@ -58,18 +58,17 @@
 </template>
 
 <script setup lang="ts">
-import { Editor } from '@tiptap/vue-3'
+import type { Editor } from '@tiptap/vue-3'
 
 const { isDesktop } = useDevice()
 
 withDefaults(
   defineProps<{
-    tiptapEditor: Editor,
+    tiptapEditor: Editor
     fullOption?: boolean
   }>(),
   {
-    fullOption: false
-  }
+    fullOption: false,
+  },
 )
-
 </script>

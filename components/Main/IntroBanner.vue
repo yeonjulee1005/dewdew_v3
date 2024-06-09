@@ -2,13 +2,13 @@
   <div class="main-intro flex flex-justify-center">
     <span
       class="main-title"
-      :class="{'activate': mainTitleTrigger}"
+      :class="{ activate: mainTitleTrigger }"
     >
       {{ $t('main.intro.largeTitle') }}
     </span>
     <div
       class="main-text-group flex flex-column bg-orange-300/50 dark:bg-orange-600/50 rounded-lg"
-      :class="{'activate': mainTextTrigger}"
+      :class="{ activate: mainTextTrigger }"
     >
       <span
         v-for="(item, index) in $tm('main.intro.description')"
@@ -26,7 +26,7 @@
       legacy-format="webp"
       fit="cover"
       alt="main-banner"
-      :img-attrs="{class: 'banner'}"
+      :img-attrs="{ class: 'banner' }"
       :draggable="false"
       @contextmenu.prevent
     />
@@ -34,17 +34,15 @@
 </template>
 
 <script setup lang=ts>
-
 const { url } = useImageStorage()
 
 const mainTitleTrigger = defineModel('mainTitleTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const mainTextTrigger = defineModel('mainTextTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
-
 </script>

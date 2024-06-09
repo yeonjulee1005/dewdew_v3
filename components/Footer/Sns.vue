@@ -17,7 +17,5 @@
 </template>
 
 <script setup lang="ts">
-
 const { socialMenuData } = storeToRefs(useMenuStore())
-
 </script>

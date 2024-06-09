@@ -25,7 +25,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { t } = useLocale()
 const { path } = useRoute()
 
@@ -35,12 +34,12 @@ useHead({
     { property: 'description', content: t('openGraph.archives') },
     { property: 'og:title', content: t('pageTitle.archives') },
     { property: 'og:description', content: t('openGraph.archives') },
-    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
-  ]
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` },
+  ],
 })
 
 definePageMeta({
-  layout: 'default'
+  layout: 'default',
 })
 
 const selectImageData = ref<SerializeObject>()
@@ -49,14 +48,13 @@ const imageDialogTrigger = ref(false)
 const { data: yearData }: SerializeObject = await useFetch('/api/archive/detail', {
   headers: useRequestHeaders(['cookie']),
   params: {
-    years: path.split('/archives/')[1]
+    years: path.split('/archives/')[1],
   },
-  immediate: true
+  immediate: true,
 })
 
-const openImageDialog = (imageData:SerializeObject) => {
+const openImageDialog = (imageData: SerializeObject) => {
   selectImageData.value = imageData
   imageDialogTrigger.value = true
 }
-
 </script>

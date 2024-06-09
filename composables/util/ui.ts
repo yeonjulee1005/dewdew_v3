@@ -13,54 +13,55 @@ export const useUi = () => {
     return String(value).split(char)[0]
   }
 
-  const comma = (val:number) => {
+  const comma = (val: number) => {
     return String(val).replace(uncommaRegex, '$1,')
   }
 
-  const uncomma = (val:number) => {
+  const uncomma = (val: number) => {
     return String(val).replace(commaRegex, '')
   }
 
-  const checkHyperLink = (link:string) => {
+  const checkHyperLink = (link: string) => {
     return !!hyperLinkRegex.test(link)
   }
 
-  const checkYoutubeLink = (link:string) => {
+  const checkYoutubeLink = (link: string) => {
     return !!youtubeRegex.test(link)
   }
 
-  const checkEmail = (val:string) => {
+  const checkEmail = (val: string) => {
     return !!emailRegex.test(val)
   }
 
-  const checkPassword = (val:string) => {
+  const checkPassword = (val: string) => {
     return !!passwordRegex.test(val)
   }
 
-  const textInclude = (text:string, search:string) => {
+  const textInclude = (text: string, search: string) => {
     return text.toLowerCase().includes(search.toLowerCase())
   }
 
-  const estimateReadingTime = (text:string) => {
+  const estimateReadingTime = (text: string) => {
     const wpm = 225
     const words = text.trim().split(/\s+/).length
     const time = Math.ceil(words / wpm)
     return time
   }
 
-  const copyClipBoard = async (val:string) => {
+  const copyClipBoard = async (val: string) => {
     try {
       await navigator.clipboard.writeText(val)
-    } catch (err) {
+    }
+    catch (err) {
       console.error('클립보드 복사에 실패했습니다.', err)
     }
   }
 
-  const randomOrder = (dataValue:number) => {
+  const randomOrder = (dataValue: number) => {
     return Math.floor(Math.random() * dataValue)
   }
 
-  const removeHtmlTags = (text:string) => {
+  const removeHtmlTags = (text: string) => {
     return text.replaceAll('<p>', '').replaceAll('</p>', '').replaceAll('<br>', '')
   }
 
@@ -101,11 +102,14 @@ export const useUi = () => {
   const airDiffusionColor = (airDiffusion: number) => {
     if (airDiffusion === 25) {
       return 'text-rose-600'
-    } else if (airDiffusion === 50) {
+    }
+    else if (airDiffusion === 50) {
       return 'text-orange-600'
-    } else if (airDiffusion === 75) {
+    }
+    else if (airDiffusion === 75) {
       return 'text-sky-600'
-    } else if (airDiffusion === 100) {
+    }
+    else if (airDiffusion === 100) {
       return 'text-emerald-600'
     }
   }
@@ -113,13 +117,17 @@ export const useUi = () => {
   const uvColor = (uv: number) => {
     if (uv < 3) {
       return 'text-emerald-600'
-    } else if (uv >= 3 && uv < 6) {
+    }
+    else if (uv >= 3 && uv < 6) {
       return 'text-sky-600'
-    } else if (uv >= 6 && uv < 8) {
+    }
+    else if (uv >= 6 && uv < 8) {
       return 'text-orange-600'
-    } else if (uv >= 8 && uv < 11) {
+    }
+    else if (uv >= 8 && uv < 11) {
       return 'text-rose-600'
-    } else if (uv >= 11) {
+    }
+    else if (uv >= 11) {
       return 'text-red-600'
     }
   }
@@ -127,13 +135,17 @@ export const useUi = () => {
   const humidityColor = (humidity: number) => {
     if (humidity < 20) {
       return 'text-stone-500'
-    } else if (humidity >= 20 && humidity < 40) {
+    }
+    else if (humidity >= 20 && humidity < 40) {
       return 'text-emerald-500'
-    } else if (humidity >= 40 && humidity < 60) {
+    }
+    else if (humidity >= 40 && humidity < 60) {
       return 'text-teal-500'
-    } else if (humidity >= 60 && humidity < 80) {
+    }
+    else if (humidity >= 60 && humidity < 80) {
       return 'text-sky-500'
-    } else if (humidity >= 80) {
+    }
+    else if (humidity >= 80) {
       return 'text-blue-500'
     }
   }
@@ -141,9 +153,11 @@ export const useUi = () => {
   const weatherColor = (weather: string) => {
     if (weather === '맑음') {
       return 'text-yellow-600'
-    } else if (weather === '구름 많음') {
+    }
+    else if (weather === '구름 많음') {
       return 'text-sky-600'
-    } else if (weather === '흐림') {
+    }
+    else if (weather === '흐림') {
       return 'text-yellow-600'
     }
   }
@@ -152,33 +166,44 @@ export const useUi = () => {
     const temperture = parseInt(temperature)
     if (temperture >= 30) {
       return 'text-orange-600'
-    } else if (temperture < 30 && temperture >= 15) {
+    }
+    else if (temperture < 30 && temperture >= 15) {
       return 'text-orange-300'
-    } else if (temperture < 15 && temperture >= 5) {
+    }
+    else if (temperture < 15 && temperture >= 5) {
       return 'text-sky-600'
-    } else if (temperture < 5) {
+    }
+    else if (temperture < 5) {
       return 'text-blue-600'
     }
   }
 
-  const badgeColor = (likeCount:number) => {
+  const badgeColor = (likeCount: number) => {
     if (likeCount === 0) {
       return 'red'
-    } else if (likeCount > 0 && likeCount < 10) {
+    }
+    else if (likeCount > 0 && likeCount < 10) {
       return 'orange'
-    } else if (likeCount >= 10 && likeCount < 20) {
+    }
+    else if (likeCount >= 10 && likeCount < 20) {
       return 'yellow'
-    } else if (likeCount >= 20 && likeCount < 50) {
+    }
+    else if (likeCount >= 20 && likeCount < 50) {
       return 'emerald'
-    } else if (likeCount >= 50 && likeCount < 100) {
+    }
+    else if (likeCount >= 50 && likeCount < 100) {
       return 'teal'
-    } else if (likeCount >= 100 && likeCount < 250) {
+    }
+    else if (likeCount >= 100 && likeCount < 250) {
       return 'sky'
-    } else if (likeCount >= 250 && likeCount < 500) {
+    }
+    else if (likeCount >= 250 && likeCount < 500) {
       return 'cyan'
-    } else if (likeCount >= 500 && likeCount < 1000) {
+    }
+    else if (likeCount >= 500 && likeCount < 1000) {
       return 'violet'
-    } else if (likeCount >= 1000) {
+    }
+    else if (likeCount >= 1000) {
       return 'rose'
     }
   }
@@ -218,6 +243,6 @@ export const useUi = () => {
     weatherColor,
     temperatureColor,
     badgeColor,
-    progressColor
+    progressColor,
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div
     class="skills-descriptions flex flex-column"
-    :class="{'activate': skillsTextTrigger, 'reverse': toggleTrigger}"
+    :class="{ activate: skillsTextTrigger, reverse: toggleTrigger }"
     @click="() => toggleTrigger = !toggleTrigger"
   >
     <p
@@ -34,7 +34,7 @@
     </p>
     <div
       class="skills-title-box flex flex-column flex-justify-end flex-align-end"
-      :class="{'reverse': toggleTrigger}"
+      :class="{ reverse: toggleTrigger }"
     >
       <Icon
         class="reverse-icon"
@@ -47,12 +47,10 @@
 </template>
 
 <script setup lang="ts">
-
 const skillsTextTrigger = defineModel('skillsTextTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const toggleTrigger = ref(true)
-
 </script>

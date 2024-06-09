@@ -21,7 +21,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { t } = useLocale()
 const { path } = useRoute()
 
@@ -33,8 +32,7 @@ useHead({
     { property: 'description', content: t('openGraph.hhkb') },
     { property: 'og:title', content: t('pageSubTitle.hhkb') },
     { property: 'og:description', content: t('openGraph.hhkb') },
-    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
-  ]
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` },
+  ],
 })
-
 </script>

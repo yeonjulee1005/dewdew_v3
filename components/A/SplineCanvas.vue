@@ -7,15 +7,13 @@
 </template>
 
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
-    canvasClass?: string,
+    canvasClass?: string
     splineUrl: string
   }>(),
   {
-    canvasClass: ''
-  }
+    canvasClass: '',
+  },
 )
-
 </script>

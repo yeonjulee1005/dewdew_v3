@@ -29,12 +29,11 @@ import type { BadgeSize } from '@nuxt/ui/dist/runtime/types'
 
 withDefaults(
   defineProps<{
-    tags: string,
+    tags: string
     badgeSize?: BadgeSize | undefined
   }>(),
   {
-    badgeSize: 'lg'
-  }
+    badgeSize: 'lg',
+  },
 )
-
 </script>
