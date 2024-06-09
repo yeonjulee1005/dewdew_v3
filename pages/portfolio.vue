@@ -74,23 +74,23 @@ useHead({
     { property: 'description', content: t('openGraph.portfolio') },
     { property: 'og:title', content: t('pageTitle.portfolio') },
     { property: 'og:description', content: t('openGraph.portfolio') },
-    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
-  ]
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` },
+  ],
 })
 
 const plugin = [
   new AutoPlay({
     animationDuration: 1000,
     direction: 'NEXT',
-    stopOnHover: true
+    stopOnHover: true,
   }),
-  new Pagination({ type: 'scroll' })
+  new Pagination({ type: 'scroll' }),
 ]
 
 const option = {
   inputType: ['touch', 'mouse'],
   circular: true,
-  deceleration: 0.0035
+  deceleration: 0.0035,
 }
 
 if (!portfolioData.value) {
@@ -103,5 +103,4 @@ if (!portfolioData.value) {
 const selectPortfolio = (item: SerializeObject) => {
   selectedPortfolioData.value = item
 }
-
 </script>

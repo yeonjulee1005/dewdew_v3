@@ -25,22 +25,20 @@
 </template>
 
 <script setup lang="ts">
-
 const { locale } = useLocale()
 
 withDefaults(
   defineProps<{
-    dateTime?: string,
-    customClass?: string,
-    fullDateTime?: boolean,
+    dateTime?: string
+    customClass?: string
+    fullDateTime?: boolean
     capitalDateTime?: boolean
   }>(),
   {
     dateTime: '',
     customClass: 'time flex mb-default',
     fullDateTime: true,
-    capitalDateTime: true
-  }
+    capitalDateTime: true,
+  },
 )
-
 </script>

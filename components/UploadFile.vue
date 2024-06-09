@@ -28,18 +28,17 @@
 </template>
 
 <script setup lang="ts">
-
 const toast = useToast()
 
 const props = withDefaults(
   defineProps<{
-    draggable?: boolean,
-    customClass?: string,
-    fileTypeAlarm?: string,
-    fileSizeAlarm?: string,
-    limitType?: string[],
-    limitWidth?: number,
-    limitHeight?: number,
+    draggable?: boolean
+    customClass?: string
+    fileTypeAlarm?: string
+    fileSizeAlarm?: string
+    limitType?: string[]
+    limitWidth?: number
+    limitHeight?: number
     limitSize?: number
   }>(),
   {
@@ -50,8 +49,8 @@ const props = withDefaults(
     limitType: () => [],
     limitWidth: 0,
     limitHeight: 0,
-    limitSize: 0
-  }
+    limitSize: 0,
+  },
 )
 
 const previewFile = ref('')
@@ -62,12 +61,13 @@ const uploadFile = (event: Event) => {
     const file = target.files[0]
     if (!props.limitType.includes(file.type)) {
       toast.add({ title: props.fileTypeAlarm, color: 'violet', timeout: 3000 })
-    } else if (file.size / props.limitHeight / props.limitWidth > props.limitSize) {
+    }
+    else if (file.size / props.limitHeight / props.limitWidth > props.limitSize) {
       toast.add({ title: props.fileSizeAlarm, color: 'violet', timeout: 3000 })
-    } else {
+    }
+    else {
       previewFile.value = URL.createObjectURL(file)
     }
   }
 }
-
 </script>

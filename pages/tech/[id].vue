@@ -44,7 +44,6 @@
 </template>
 
 <script setup lang="ts">
-
 const user = useSupabaseUser()
 const { y } = useWindowScroll()
 
@@ -65,23 +64,23 @@ const editTrigger = ref(false)
 const { data: techDetailData, refresh: techRefresh }: SerializeObject = await useFetch('/api/tech/detail', {
   headers: useRequestHeaders(['cookie']),
   query: {
-    techBlogId: params.id
+    techBlogId: params.id,
   },
   immediate: true,
-  watch: [params]
+  watch: [params],
 })
 
 const { data: techCommentData, refresh: techCommentRefresh }: SerializeObject = await useFetch('/api/tech/comment', {
   headers: useRequestHeaders(['cookie']),
   query: {
-    techBlogId: params.id
+    techBlogId: params.id,
   },
   immediate: true,
-  watch: [params]
+  watch: [params],
 })
 
 const updateData = ref<SerializeObject>({
-  ...techDetailData.value
+  ...techDetailData.value,
 })
 
 useHead({
@@ -91,8 +90,8 @@ useHead({
     { property: 'description', content: t('openGraph.tech') },
     { property: 'og:title', content: techDetailData.value?.title },
     { property: 'og:url', content: `https://www.dewdew.kr${path}` },
-    { property: 'og:description', content: t('openGraph.tech') }
-  ]
+    { property: 'og:description', content: t('openGraph.tech') },
+  ],
 })
 
 watch(() => y.value, () => {
@@ -101,16 +100,16 @@ watch(() => y.value, () => {
     : displayFloatButtonTrigger.value = false
 })
 
-const editArticle = (text:string, rawText:string) => {
+const editArticle = (text: string, rawText: string) => {
   updateData.value.desc = text
   updateData.value.raw_article = rawText
   updateData.value.update_user_id = user.value?.id ?? ''
 }
 
 const updateViewCount = async () => {
-  const countData:SerializeObject = {
+  const countData: SerializeObject = {
     id: params.id,
-    view_count: (techDetailData.value?.view_count ?? 0) + 1
+    view_count: (techDetailData.value?.view_count ?? 0) + 1,
   }
 
   const error = await upsertData(countData, 'tech')
@@ -138,9 +137,9 @@ const updateLikeCount = () => {
 }
 
 const updateTechBlogLikeCount = async () => {
-  const countData:SerializeObject = {
+  const countData: SerializeObject = {
     id: params.id,
-    like: parseInt(techDetailData.value?.like ?? '') + 1
+    like: parseInt(techDetailData.value?.like ?? '') + 1,
   }
 
   const error = await upsertData(countData, 'tech')
@@ -152,10 +151,10 @@ const updateTechBlogLikeCount = async () => {
   }
 }
 
-const createComment = async (commentData:CreateComment) => {
-  const createCommentData:SerializeObject = {
+const createComment = async (commentData: CreateComment) => {
+  const createCommentData: SerializeObject = {
     ...commentData,
-    tech_id: params.id
+    tech_id: params.id,
   }
 
   const error = await insertData(createCommentData, 'techComment')
@@ -166,7 +165,7 @@ const createComment = async (commentData:CreateComment) => {
   }
 }
 
-const deleteAdminComment = async (comment:SerializeObject) => {
+const deleteAdminComment = async (comment: SerializeObject) => {
   const error = await deleteData(comment.id, 'techComment', true, 'tech_id', String(params.id), '', '')
 
   if (!error) {
@@ -175,7 +174,7 @@ const deleteAdminComment = async (comment:SerializeObject) => {
   }
 }
 
-const deleteComment = async (comment:SerializeObject, password:string) => {
+const deleteComment = async (comment: SerializeObject, password: string) => {
   const error = await deleteData(comment.id, 'techComment', false, 'tech_id', String(params.id), 'password', password)
 
   if (!error) {
@@ -191,5 +190,4 @@ const clickEditArticle = () => {
 }
 
 updateViewCount()
-
 </script>

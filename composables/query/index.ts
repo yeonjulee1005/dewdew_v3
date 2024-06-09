@@ -6,7 +6,7 @@ export const useQuery = () => {
     const searchParams = new URLSearchParams([
       ['areaNo', areaNo.toString()],
       ['time', dateTime],
-      ['dataType', 'json']
+      ['dataType', 'json'],
     ])
 
     return config.public.dataPortalApiKey + '&' + searchParams.toString()
@@ -20,7 +20,7 @@ export const useQuery = () => {
       ['base_date', date.toString()],
       ['base_time', time.toString()],
       ['nx', splitByChar(nx, '.').toString()],
-      ['ny', splitByChar(ny, '.').toString()]
+      ['ny', splitByChar(ny, '.').toString()],
     ])
 
     return config.public.dataPortalApiKey + '&' + searchParams.toString()
@@ -28,6 +28,6 @@ export const useQuery = () => {
 
   return {
     livingIndexQuery,
-    weatherQuery
+    weatherQuery,
   }
 }

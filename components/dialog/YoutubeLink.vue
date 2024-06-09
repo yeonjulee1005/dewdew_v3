@@ -46,35 +46,36 @@ const { youtubeRegex } = useUi()
 
 const dialogTrigger = defineModel('dialogTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const emits = defineEmits([
   'close:dialog',
-  'submit:link'
+  'submit:link',
 ])
 
 const schema = object({
   youtube: string()
     .required(t('messages.youtubeRequire'))
-    .matches(youtubeRegex, t('messages.youtubeFormat'))
+    .matches(youtubeRegex, t('messages.youtubeFormat')),
 })
 
 type Schema = InferType<typeof schema>
 
 const formData = reactive({
-  youtube: ''
+  youtube: '',
 })
 
 const onSubmit = (event: FormSubmitEvent<Schema>) => {
-  if (!event.isTrusted) { return }
+  if (!event.isTrusted) {
+    return
+  }
   emits('submit:link', formData.youtube)
   closeDialog(false)
 }
 
-const closeDialog = (trigger:boolean) => {
+const closeDialog = (trigger: boolean) => {
   emits('close:dialog', trigger)
   formData.youtube = ''
 }
-
 </script>

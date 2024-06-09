@@ -19,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-
 const supabase = useSupabaseClient()
 const config = useRuntimeConfig()
 
@@ -32,18 +31,17 @@ const getUrl = () => {
   return url.concat('confirm')
 }
 
-const loginMagicLink = async (email:string) => {
+const loginMagicLink = async (email: string) => {
   const { error } = await supabase.auth
     .signInWithOtp({
       email,
       options: {
-        emailRedirectTo: getUrl()
-      }
+        emailRedirectTo: getUrl(),
+      },
     })
 
   if (error) {
     throw createError({ statusMessage: error.message })
   }
 }
-
 </script>

@@ -46,28 +46,30 @@ const toast = useToast()
 
 const dialogTrigger = defineModel('dialogTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const emits = defineEmits([
   'close:dialog',
-  'submit:email'
+  'submit:email',
 ])
 
 const schema = object({
   email: string()
     .email(t('messages.emailFormat'))
-    .required(t('messages.emailRequire'))
+    .required(t('messages.emailRequire')),
 })
 
 type Schema = InferType<typeof schema>
 
 const formData = reactive({
-  email: ''
+  email: '',
 })
 
 const onSubmit = (event: FormSubmitEvent<Schema>) => {
-  if (!event.isTrusted) { return }
+  if (!event.isTrusted) {
+    return
+  }
   toast.add({ title: t('messages.successEmailSend'), color: 'emerald', timeout: 3000 })
   emits('submit:email', formData.email)
   closeDialog()
@@ -76,5 +78,4 @@ const onSubmit = (event: FormSubmitEvent<Schema>) => {
 const closeDialog = () => {
   emits('close:dialog')
 }
-
 </script>

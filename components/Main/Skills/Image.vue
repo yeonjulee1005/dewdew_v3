@@ -1,7 +1,7 @@
 <template>
   <div
     class="skill-images"
-    :class="{'activate': skillsBgTrigger}"
+    :class="{ activate: skillsBgTrigger }"
   >
     <nuxt-img
       v-for="image in skillsImage"
@@ -20,15 +20,13 @@
 </template>
 
 <script setup lang="ts">
-
 const skillsBgTrigger = defineModel('skillsBgTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const skillsImage = defineModel('skillsImage', {
   type: Array<SkillsImage>,
-  default: []
+  default: [],
 })
-
 </script>

@@ -7,7 +7,7 @@
     />
     <div
       class="skill-list flex flex-align-start"
-      :class="{'activate': skillsListTrigger}"
+      :class="{ activate: skillsListTrigger }"
     >
       <div class="frontend-list flex flex-column flex-justify-center">
         <span class="skill-title-text flex flex-column">
@@ -44,24 +44,22 @@
 </template>
 
 <script setup lang="ts">
-
 const { stackLogoData } = storeToRefs(useStackStore())
 
 const { skillTitleList, frontEnd, backEnd, devOps } = useSkillData()
 
 const skillsTextTrigger = defineModel('skillsTextTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const skillsBgTrigger = defineModel('skillsBgTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 const skillsListTrigger = defineModel('skillsListTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
-
 </script>

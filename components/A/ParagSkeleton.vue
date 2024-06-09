@@ -16,20 +16,18 @@
 </template>
 
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
-    pendingText?: boolean,
-    paragraphText?: string,
-    skeletonClass?: string,
+    pendingText?: boolean
+    paragraphText?: string
+    skeletonClass?: string
     paragraphClass?: string
   }>(),
   {
     pendingText: true,
     paragraphText: '',
     skeletonClass: 'h-8',
-    paragraphClass: ''
-  }
+    paragraphClass: '',
+  },
 )
-
 </script>

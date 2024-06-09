@@ -23,18 +23,16 @@
 </template>
 
 <script setup lang="ts">
-
 defineProps<{
   selectImageData: SerializeObject
 }>()
 
 const dialogTrigger = defineModel('dialogTrigger', {
   type: Boolean,
-  default: false
+  default: false,
 })
 
 defineEmits([
-  'close:dialog'
+  'close:dialog',
 ])
-
 </script>

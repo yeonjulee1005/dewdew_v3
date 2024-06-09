@@ -8,11 +8,11 @@ export default {
     colorsTranslate: '내 색상 찾아줘!',
     blog: 'Blog',
     tech: 'Tech Blog',
-    archives: 'Archives'
+    archives: 'Archives',
   },
   pageSubTitle: {
     colorsTranslate: '내 색상 찾아줘..',
-    hhkb: 'HHKB 키보드 모델링'
+    hhkb: 'HHKB 키보드 모델링',
   },
   openGraph: {
     main: '안녕하세요. FE 개발자 이연주입니다.',
@@ -22,7 +22,7 @@ export default {
     hhkb: 'Spline을 이용한 HHKB 키보드 모델링 입니다.',
     blog: 'FE개발자 이연주의 블로그 입니다.',
     tech: 'FE개발자 이연주의 개발 블로그 입니다.',
-    archives: 'FE개발자 이연주의 사진기록 입니다.'
+    archives: 'FE개발자 이연주의 사진기록 입니다.',
   },
   texts: {
     enter: '들어가기',
@@ -41,10 +41,10 @@ export default {
     regenerate: '재생성',
     version: '버전 {version}',
     copyright: 'Copyright © Yeonju Lee All Rights Reserved.',
-    designed: 'Designed by Yeonju Lee.'
+    designed: 'Designed by Yeonju Lee.',
   },
   login: {
-    process: '로그인 중입니다!'
+    process: '로그인 중입니다!',
   },
   main: {
     intro: {
@@ -52,74 +52,74 @@ export default {
       description: [
         '노력하는 사람은 즐기는 사람을 이길 수 없습니다.',
         '개발과 취미를 즐기며 살아가는 개발자 이연주입니다.',
-        '본 페이지는 \'Nuxt3, Supabase\' 로 제작되었습니다.'
+        '본 페이지는 \'Nuxt3, Supabase\' 로 제작되었습니다.',
       ],
-      scroll: '👇🏻 아래로 스크롤'
+      scroll: '👇🏻 아래로 스크롤',
     },
     forecast: {
       uv: '자외선',
-      diffusion: '대기정체'
+      diffusion: '대기정체',
     },
     resume: {
       name: [
         'Software Engineer 이연주',
-        'A.K.A Dewdew'
-      ]
+        'A.K.A Dewdew',
+      ],
     },
     skills: {
       frontDescription: {
         title: [
           '안녕하세요.',
-          'FE 엔지니어 이연주 입니다.'
+          'FE 엔지니어 이연주 입니다.',
         ],
         first: [
           '화려한 삶은 아니지만,',
           '한번뿐인 인생에서 즐겁게 일하며 새로운 것들을',
-          '경험하고 성장하고 있는 개발자 입니다.'
+          '경험하고 성장하고 있는 개발자 입니다.',
         ],
         second: [
           '매일마다 새로운 기술스택이 나오고 있습니다.',
           '최신 기술스택에 대한 저항없이 학습하고 사용해보며,',
-          '능률적으로 서비스를 만드는 것이 중요하다고 생각합니다.'
+          '능률적으로 서비스를 만드는 것이 중요하다고 생각합니다.',
         ],
         third: [
           '비전공이지만, 그래도 그만큼 더 열심히 배우고 노력하는',
-          '개발자로 성장해 가고 있습니다.'
-        ]
+          '개발자로 성장해 가고 있습니다.',
+        ],
       },
       backDescription: {
         title: [
-          '코어 스택'
+          '코어 스택',
         ],
         first: [
           'FE: nuxt3(vue3), astro',
           'BE: supabase',
-          'UI: element-plus, nuxt-ui'
+          'UI: element-plus, nuxt-ui',
         ],
         second: [
           'Modules: nuxt-img, nuxt-content, nuxt-i18n',
-          'vite-pwa, vueuse, pinia, tiptap'
+          'vite-pwa, vueuse, pinia, tiptap',
         ],
         third: [
           'Language: javascript, typescript',
           'Style: scss, tailwind',
-          'Design: figma'
-        ]
-      }
+          'Design: figma',
+        ],
+      },
     },
     reference: {
       title: '프로젝트',
       description: '개발 포트폴리오 리스트 입니다.',
       moveTo: '보러가기',
-      background: 'PROJECTS'
+      background: 'PROJECTS',
     },
     contact: 'CONTACT',
     social: 'Social Contact',
     kakao: {
       title: 'Kakao Talk',
-      contact: '카카오톡으로 연락하기'
+      contact: '카카오톡으로 연락하기',
     },
-    email: 'Email'
+    email: 'Email',
   },
   colorsTranslate: {
     dropper: '스포이드',
@@ -132,16 +132,16 @@ export default {
     cmykLabel: 'CMYK Color',
     uploadFile: '파일을 올려주세요.',
     dropperDesc: '그리고 스포이드로 컬러를',
-    checkDropper: '확인해주세요.'
+    checkDropper: '확인해주세요.',
   },
   hhkb: {
     title: 'HHKB Keyboard Modeling',
-    inputPlaceholder: '영어로 작성하거나 마우스로 키보드를 클릭하면, 아래의 3D 모델링된 hhkb 키보드가 동작합니다.'
+    inputPlaceholder: '영어로 작성하거나 마우스로 키보드를 클릭하면, 아래의 3D 모델링된 hhkb 키보드가 동작합니다.',
   },
   archives: {
     title: 'Dewdew History',
     back: '뒤로가기',
-    historyTitle: 'HISTORY OF'
+    historyTitle: 'HISTORY OF',
   },
   tech: {
     write: '글쓰기',
@@ -152,10 +152,10 @@ export default {
     name: '이름',
     content: '내용',
     password: '비밀번호',
-    estimateReadTime: '{time}분'
+    estimateReadTime: '{time}분',
   },
   blog: {
-    recentPost: '최근 포스트'
+    recentPost: '최근 포스트',
   },
   pwa: {
     readyPwa: 'PWA를 사용할 준비가 됬어요!',
@@ -164,11 +164,11 @@ export default {
     close: '닫기',
     installPwa: 'PWA 설치하기',
     install: '설치',
-    cancel: '취소'
+    cancel: '취소',
   },
   localeMenu: {
     korean: '한국어',
-    english: '영어'
+    english: '영어',
   },
   placeholder: {
     inputYoutube: '유튜브 링크를 입력해주세요.',
@@ -177,7 +177,7 @@ export default {
     inputEmail: '이메일을 적어주세요!',
     inputPassword: '비밀번호를 입력해주세요.',
     inputTitle: '제목을 입력해주세요.',
-    inputContent: '내용을 입력해주세요.'
+    inputContent: '내용을 입력해주세요.',
   },
   messages: {
     failed: '실패했어요 ㅠㅠ',
@@ -217,7 +217,7 @@ export default {
     successPressLike: '좋아요를 눌렀어요 ❤️',
     successCreateComment: '댓글을 작성해주셔서 감사해요 ❤️',
     deleteComment: '댓글을 삭제하셨군요😢 다시 작성해주실거죠?',
-    successAdmin: '어서와요! 듀듀'
+    successAdmin: '어서와요! 듀듀',
   },
   tiptap: {
     placeholder: '내용을 입력해주시지요!🤨',
@@ -272,7 +272,7 @@ export default {
     dialog: {
       hyperLinkTitle: '링크를 입력해주세요.',
       youtubeLinkTitle: '유튜브 링크를 입력해주세요.',
-      imageUploadTitle: '이미지를 선택해주세요.'
-    }
-  }
+      imageUploadTitle: '이미지를 선택해주세요.',
+    },
+  },
 }

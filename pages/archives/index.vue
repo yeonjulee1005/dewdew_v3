@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { t } = useLocale()
 const { path } = useRoute()
 
@@ -25,29 +24,30 @@ useHead({
     { property: 'description', content: t('openGraph.archives') },
     { property: 'og:title', content: t('pageTitle.archives') },
     { property: 'og:description', content: t('openGraph.archives') },
-    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
-  ]
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` },
+  ],
 })
-
 
 const { data: thumbImageData }: SerializeObject = useAsyncData('archiveData', async () => {
   const data = await loadArchiveData()
 
   return generateThumbImageData(data)
 }, {
-  immediate: true
+  immediate: true,
 })
 
-const generateThumbImageData = (imageData:SerializeObject) => {
-  const thumbImageData:{ title: string, url: string, route: string }[] = []
+const generateThumbImageData = (imageData: SerializeObject) => {
+  const thumbImageData: { title: string, url: string, route: string }[] = []
 
-  imageData.forEach((image:{ index: number, title: string, deleted: boolean, archiveImage: { title: string, years: string, url: string}[] }) => {
-    if (!image.archiveImage) { return }
+  imageData.forEach((image: { index: number, title: string, deleted: boolean, archiveImage: { title: string, years: string, url: string }[] }) => {
+    if (!image.archiveImage) {
+      return
+    }
 
-    const result:{ title: string, url: string, route: string } = {
+    const result: { title: string, url: string, route: string } = {
       title: image.title,
       url: image.archiveImage[randomOrder(image.archiveImage.length)]?.url,
-      route: `/archives/${image.title}`
+      route: `/archives/${image.title}`,
     }
 
     thumbImageData.push(result)
@@ -55,5 +55,4 @@ const generateThumbImageData = (imageData:SerializeObject) => {
 
   return thumbImageData
 }
-
 </script>

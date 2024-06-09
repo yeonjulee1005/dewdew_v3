@@ -39,17 +39,16 @@
 </template>
 
 <script setup lang="ts">
-
 const { adminAccess } = storeToRefs(useTechStore())
 
 defineProps<{
-  commentTitle: string,
+  commentTitle: string
   commentData: SerializeObject[]
 }>()
 
 const emits = defineEmits([
   'delete:admin-comment',
-  'delete:comment'
+  'delete:comment',
 ])
 
 const selectCommentData = ref<SerializeObject>()
@@ -58,7 +57,8 @@ const passwordDialogTrigger = ref(false)
 const openPasswordDialog = (commentData: SerializeObject) => {
   if (adminAccess.value) {
     emits('delete:admin-comment', commentData)
-  } else {
+  }
+  else {
     selectCommentData.value = commentData
     passwordDialogTrigger.value = true
   }
@@ -68,5 +68,4 @@ const confirmDeleteComment = (password: string) => {
   emits('delete:comment', selectCommentData.value, password)
   passwordDialogTrigger.value = false
 }
-
 </script>

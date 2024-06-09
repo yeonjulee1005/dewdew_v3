@@ -13,15 +13,14 @@
 </template>
 
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
-    useIcon?: boolean,
-    defaultClass?: string,
-    customClass?: string,
-    textClass?: string,
-    iconName?: string,
-    iconSize?: number,
+    useIcon?: boolean
+    defaultClass?: string
+    customClass?: string
+    textClass?: string
+    iconName?: string
+    iconSize?: number
     text?: string
   }>(),
   {
@@ -31,8 +30,7 @@ withDefaults(
     textClass: '',
     iconName: '',
     iconSize: 34,
-    text: ''
-  }
+    text: '',
+  },
 )
-
 </script>

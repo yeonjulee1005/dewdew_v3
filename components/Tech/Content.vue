@@ -15,19 +15,17 @@
 </template>
 
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
-    techBlogDetailData: SerializeObject,
+    techBlogDetailData: SerializeObject
     editTrigger?: boolean
   }>(),
   {
-    editTrigger: false
-  }
+    editTrigger: false,
+  },
 )
 
 defineEmits([
-  'update:article-content'
+  'update:article-content',
 ])
-
 </script>

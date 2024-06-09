@@ -147,7 +147,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { t } = useLocale()
 const { path } = useRoute()
 
@@ -162,8 +161,8 @@ useHead({
     { property: 'description', content: t('openGraph.colorsTranslate') },
     { property: 'og:title', content: t('pageTitle.colorsTranslate') },
     { property: 'og:description', content: t('openGraph.colorsTranslate') },
-    { property: 'og:url', content: `https://www.dewdew.kr${path}` }
-  ]
+    { property: 'og:url', content: `https://www.dewdew.kr${path}` },
+  ],
 })
 
 const formData = reactive({
@@ -172,7 +171,7 @@ const formData = reactive({
   hexColor: '',
   rgbColor: '',
   hslColor: '',
-  cmykColor: ''
+  cmykColor: '',
 })
 
 watch(() => formData.hexColor, () => {
@@ -190,7 +189,7 @@ watch(() => formData.hexColor, () => {
   }
 }, { immediate: true })
 
-const copyColor = (color:string) => {
+const copyColor = (color: string) => {
   copy(color)
   toast.add({ title: t('messages.copy'), color: 'emerald', timeout: 3000 })
 }
@@ -203,21 +202,27 @@ const initColorData = () => {
 
 const colorPicker = () => {
   open().then((res) => {
-    if (res) { formData.hexColor = res.sRGBHex }
+    if (res) {
+      formData.hexColor = res.sRGBHex
+    }
   })
 }
 
-const hexToRgb = (color:string) => {
+const hexToRgb = (color: string) => {
   const initColor = color.split('#')[1].match(/.{1,2}/g)
-  if (!initColor?.length) { return }
+  if (!initColor?.length) {
+    return
+  }
   const rgb = 'rgb('.concat(String(parseInt(initColor[0], 16)), ',', String(parseInt(initColor[1], 16)), ',', String(parseInt(initColor[2], 16)), ')')
   rgbToCmyk(parseInt(initColor[0], 16), parseInt(initColor[1], 16), parseInt(initColor[2], 16))
   formData.rgbColor = rgb
 }
 
-const hexToHsl = (color:string) => {
+const hexToHsl = (color: string) => {
   const initColor = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(color)
-  if (!initColor?.length) { return }
+  if (!initColor?.length) {
+    return
+  }
   const red = parseInt(initColor[1], 16) / 255
   const green = parseInt(initColor[2], 16) / 255
   const blue = parseInt(initColor[3], 16) / 255
@@ -257,7 +262,7 @@ const hexToHsl = (color:string) => {
   formData.hslColor = 'hsl('.concat(String(h), ',', String(s), '%,', String(l), '%)')
 }
 
-const rgbToCmyk = (red:number, green:number, blue:number) => {
+const rgbToCmyk = (red: number, green: number, blue: number) => {
   let c = 1 - (red / 255)
   let m = 1 - (green / 255)
   let y = 1 - (blue / 255)
@@ -281,5 +286,4 @@ const rgbToCmyk = (red:number, green:number, blue:number) => {
 }
 
 initColorData()
-
 </script>

@@ -21,7 +21,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { t } = useLocale()
 const { width } = useWindowSize()
 const { y } = useWindowScroll()
@@ -31,7 +30,7 @@ const { portfolioData } = storeToRefs(usePortfolioStore())
 const { loadStackData, loadPortfolioData } = useFetchComposable()
 
 useHead({
-  title: t('pageTitle.main')
+  title: t('pageTitle.main'),
 })
 
 const mainTitleTrigger = ref(true)
@@ -65,7 +64,7 @@ const scrollDetect = () => {
   }
 }
 
-const mobile = (scrollY:number) => {
+const mobile = (scrollY: number) => {
   mainTitleTrigger.value = scrollY < 200
   mainTextTrigger.value = scrollY < 350
   scrollDownTrigger.value = scrollY < 150
@@ -78,7 +77,7 @@ const mobile = (scrollY:number) => {
   contactTrigger.value = scrollY > 11200
 }
 
-const tablet = (scrollY:number) => {
+const tablet = (scrollY: number) => {
   mainTitleTrigger.value = scrollY < 300
   mainTextTrigger.value = scrollY < 500
   scrollDownTrigger.value = scrollY < 200
@@ -91,7 +90,7 @@ const tablet = (scrollY:number) => {
   contactTrigger.value = scrollY > 8000
 }
 
-const desktop = (scrollY:number) => {
+const desktop = (scrollY: number) => {
   mainTitleTrigger.value = scrollY < 400
   mainTextTrigger.value = scrollY < 450
   scrollDownTrigger.value = scrollY < 250
@@ -106,5 +105,4 @@ const desktop = (scrollY:number) => {
 
 loadStackData()
 loadPortfolioData()
-
 </script>

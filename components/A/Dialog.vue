@@ -48,21 +48,20 @@
 </template>
 
 <script setup lang="ts">
-
 const modalTrigger = ref(false)
 
 const props = withDefaults(
   defineProps<{
-    dialogTrigger?: boolean,
-    fullScreen?: boolean,
-    preventClose?: boolean,
-    dialogTitleClass?: string,
-    title?: string,
-    doubleFirstText?: string,
-    doubleSecondText?: string,
-    hideDoubleButton?: boolean,
-    hideFirstButton?: boolean,
-    hideSecondButton?: boolean,
+    dialogTrigger?: boolean
+    fullScreen?: boolean
+    preventClose?: boolean
+    dialogTitleClass?: string
+    title?: string
+    doubleFirstText?: string
+    doubleSecondText?: string
+    hideDoubleButton?: boolean
+    hideFirstButton?: boolean
+    hideSecondButton?: boolean
     disableFirstButton?: boolean
   }>(),
   {
@@ -76,14 +75,14 @@ const props = withDefaults(
     hideDoubleButton: false,
     hideFirstButton: false,
     hideSecondButton: false,
-    disableFirstButton: false
-  }
+    disableFirstButton: false,
+  },
 )
 
 const emits = defineEmits([
   'close-dialog',
   'click-first-button',
-  'click-second-button'
+  'click-second-button',
 ])
 
 watch(() => props.dialogTrigger, (value) => {
@@ -95,5 +94,4 @@ watch(() => modalTrigger.value, (value) => {
     emits('close-dialog')
   }
 }, { immediate: true })
-
 </script>

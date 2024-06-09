@@ -11,10 +11,10 @@ export const useStackStore = defineStore('stackData', () => {
   const stackLogoData = ref<{ orderIndex: { index: number }, title: string, url: string, deleted: boolean }[] | null>()
 
   return {
-    stackLogoData
+    stackLogoData,
   }
 }, {
   persist: {
-    storage: persistedState.localStorage
-  }
+    storage: persistedState.localStorage,
+  },
 })

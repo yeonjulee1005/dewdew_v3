@@ -73,15 +73,15 @@ const toast = useToast()
 
 const props = withDefaults(
   defineProps<{
-    formTitle?: string,
-    emailTemplate?: string,
+    formTitle?: string
+    emailTemplate?: string
     emailKey?: string
   }>(),
   {
     formTitle: '',
     emailTemplate: '',
-    emailKey: ''
-  }
+    emailKey: '',
+  },
 )
 
 const schema = object({
@@ -94,7 +94,7 @@ const schema = object({
     .required(t('messages.emailRequire')),
   message: string()
     .min(20, t('messages.contentFormat'))
-    .required(t('messages.contentRequire'))
+    .required(t('messages.contentRequire')),
 })
 
 type Schema = InferType<typeof schema>
@@ -102,11 +102,13 @@ type Schema = InferType<typeof schema>
 const formData = reactive({
   name: '',
   email: '',
-  message: ''
+  message: '',
 })
 
 const onSubmit = async (event: FormSubmitEvent<Schema>) => {
-  if (!event.isTrusted) { return }
+  if (!event.isTrusted) {
+    return
+  }
 
   await send('dewdew', props.emailTemplate, event.data, props.emailKey).then(() => {
     toast.add({ title: t('messages.successEmailSend'), color: 'emerald', timeout: 3000 })
@@ -114,5 +116,4 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
     toast.add({ title: t('messages.failEmailSend'), color: 'orange', timeout: 3000 })
   })
 }
-
 </script>

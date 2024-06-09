@@ -25,20 +25,18 @@
 </template>
 
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
     editTrigger?: boolean
   }>(),
   {
-    editTrigger: false
-  }
+    editTrigger: false,
+  },
 )
 
 defineEmits([
   'check:admin',
   'update:article',
-  'edit:cancel'
+  'edit:cancel',
 ])
-
 </script>

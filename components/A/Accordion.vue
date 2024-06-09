@@ -38,20 +38,19 @@
 </template>
 
 <script setup lang="ts">
-
 withDefaults(
   defineProps<{
-    accordionItems: AccordionItem[],
-    accordionVariant?: 'solid' | 'outline' | 'ghost' | 'soft',
-    accordionColor?: string,
-    accordionSize?: string,
-    educateGroupClass?: string,
-    careerGroupClass?: string,
-    educateIconClass?: string,
-    careerIconClass?: string,
-    educateIconName?: string,
-    careerIconName?: string,
-    educateText?: string,
+    accordionItems: AccordionItem[]
+    accordionVariant?: 'solid' | 'outline' | 'ghost' | 'soft'
+    accordionColor?: string
+    accordionSize?: string
+    educateGroupClass?: string
+    careerGroupClass?: string
+    educateIconClass?: string
+    careerIconClass?: string
+    educateIconName?: string
+    careerIconName?: string
+    educateText?: string
     careerText?: string
   }>(),
   {
@@ -65,8 +64,7 @@ withDefaults(
     educateIconName: 'line-md:buy-me-a-coffee-twotone',
     careerIconName: 'line-md:construction-twotone',
     educateText: 'text',
-    careerText: 'text'
-  }
+    careerText: 'text',
+  },
 )
-
 </script>

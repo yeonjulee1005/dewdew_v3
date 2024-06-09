@@ -7,18 +7,19 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: {
-        lang: 'ko'
+        lang: 'ko',
       },
       meta: [
-        { property: 'Imagetoolbar', content: 'no' }
+        { property: 'Imagetoolbar', content: 'no' },
       ],
       link: [
-        { rel: 'canonical', href: 'https://www.dewdew.dev' }
-      ]
-    }
+        { rel: 'canonical', href: 'https://www.dewdew.dev' },
+      ],
+    },
   },
   modules: [
     '@nuxt/ui',
+    '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/devtools',
     '@nuxt/content',
@@ -36,30 +37,36 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    'dayjs-nuxt'
+    'dayjs-nuxt',
   ],
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+    checker: true,
+  },
   css: [
-    '~/assets/scss/style.scss'
+    '~/assets/scss/style.scss',
   ],
   ui: {
-    prefix: 'DD'
+    prefix: 'DD',
   },
   components: [
     {
       path: '~/components',
-      pathPrefix: true
-    }
+      pathPrefix: true,
+    },
   ],
   imports: {
     dirs: [
       'composables/**',
-      'stores/**'
-    ]
+      'stores/**',
+    ],
   },
   pinia: {
     storesDirs: [
-      './stores/**'
-    ]
+      './stores/**',
+    ],
   },
   supabase: {
     redirect: false,
@@ -75,25 +82,25 @@ export default defineNuxtConfig({
         '/projects',
         '/projects/*',
         '/archives',
-        '/archives/*'
-      ]
+        '/archives/*',
+      ],
     },
     clientOptions: {
       auth: {
         flowType: 'pkce',
         detectSessionInUrl: true,
         persistSession: true,
-        autoRefreshToken: true
-      }
-    }
+        autoRefreshToken: true,
+      },
+    },
   },
   vite: {
     vue: {
       template: {
         compilerOptions: {
-          isCustomElement: tag => tag === 'spline-viewer'
-        }
-      }
+          isCustomElement: tag => tag === 'spline-viewer',
+        },
+      },
     },
     build: {
       sourcemap: true,
@@ -101,18 +108,18 @@ export default defineNuxtConfig({
       minify: 'terser',
       terserOptions: {
         compress: {
-          drop_console: true
-        }
-      }
+          drop_console: true,
+        },
+      },
     },
     plugins: [
       sentryVitePlugin({
         org: 'dewdew',
         project: 'dewdew_v3',
         authToken: process.env.SENTRY_AUTH_TOKEN,
-        telemetry: false
-      })
-    ]
+        telemetry: false,
+      }),
+    ],
   },
   runtimeConfig: {
     public: {
@@ -120,8 +127,8 @@ export default defineNuxtConfig({
       emailJSsTemplate: process.env.EMAILJS_TEMPLATE,
       dataPortalApiKey: process.env.DATA_PORTAL_API_KEY,
       siteUrl: process.env.BASE_URL,
-      serviceVersion: JSON.stringify(packageJson.version)
-    }
+      serviceVersion: JSON.stringify(packageJson.version),
+    },
   },
   content: {
     highlight: {
@@ -129,9 +136,9 @@ export default defineNuxtConfig({
       theme: {
         default: 'github-light',
         dark: 'github-dark',
-        sepia: 'dracula-soft'
-      }
-    }
+        sepia: 'dracula-soft',
+      },
+    },
   },
   htmlValidator: {
     failOnError: true,
@@ -140,18 +147,18 @@ export default defineNuxtConfig({
         'wcag/h37': 'warn',
         'element-permitted-content': 'warn',
         'element-required-attributes': 'warn',
-        'attribute-empty-style': 'off'
-      }
-    }
+        'attribute-empty-style': 'off',
+      },
+    },
   },
   fontMetrics: {
     fonts: [
       {
         fallbackName: 'Pretendard fallback',
         family: 'Pretendard',
-        fallbacks: ['Arial']
-      }
-    ]
+        fallbacks: ['Arial'],
+      },
+    ],
   },
   pwa: {
     scope: '/',
@@ -163,59 +170,62 @@ export default defineNuxtConfig({
       globPatterns: ['**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}', '/'],
       runtimeCaching: [{
         urlPattern: '/',
-        handler: 'NetworkFirst'
-      }]
+        handler: 'NetworkFirst',
+      }],
+    },
+    manifest: {
+      theme_color: '#705757',
     },
     client: {
       installPrompt: true,
-      periodicSyncForUpdates: 20
+      periodicSyncForUpdates: 20,
     },
     devOptions: {
       enabled: true,
       suppressWarnings: true,
       navigateFallbackAllowlist: [/^\/$/],
-      type: 'module'
-    }
+      type: 'module',
+    },
   },
   i18n: {
     langDir: './locales',
     locales: [
       { code: 'ko', file: 'ko.ts' },
-      { code: 'en', file: 'en.ts' }
+      { code: 'en', file: 'en.ts' },
     ],
     defaultLocale: 'ko',
-    strategy: 'no_prefix'
+    strategy: 'no_prefix',
   },
   dayjs: {
     locales: ['ko'],
     plugins: ['relativeTime', 'utc', 'timezone'],
     defaultLocale: 'ko',
-    defaultTimezone: 'Asia/Seoul'
+    defaultTimezone: 'Asia/Seoul',
   },
   devtools: {
     enabled: true,
     timeline: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
   experimental: {
-    componentIslands: true
+    componentIslands: true,
   },
   stylelint: {
-    lintOnStart: true
+    lintOnStart: true,
   },
   vueuse: {
-    ssrHandlers: false
+    ssrHandlers: false,
   },
   typescript: {
-    shim: false
+    shim: false,
   },
   robots: {
     rules: [
-      { UserAgent: '*', Allow: '/' }
-    ]
+      { UserAgent: '*', Allow: '/' },
+    ],
   },
   site: {
-    url: 'https://www.dewdew.dev'
-  }
+    url: 'https://www.dewdew.dev',
+  },
 })

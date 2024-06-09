@@ -22,13 +22,13 @@ import type { BadgeSize, BadgeVariant } from '@nuxt/ui/dist/runtime/types'
 
 withDefaults(
   defineProps<{
-    customClass?: string,
-    badgeColor?: string,
-    badgeSize?: BadgeSize | undefined,
-    badgeVariant?: BadgeVariant | undefined,
-    useIcon?: boolean,
-    iconName?: string,
-    iconSize?: number,
+    customClass?: string
+    badgeColor?: string
+    badgeSize?: BadgeSize | undefined
+    badgeVariant?: BadgeVariant | undefined
+    useIcon?: boolean
+    iconName?: string
+    iconSize?: number
     badgeText?: string | number
   }>(),
   {
@@ -39,8 +39,7 @@ withDefaults(
     useIcon: true,
     iconName: '',
     iconSize: 22,
-    badgeText: ''
-  }
+    badgeText: '',
+  },
 )
-
 </script>

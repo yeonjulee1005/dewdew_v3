@@ -86,7 +86,6 @@
 </template>
 
 <script setup lang="ts">
-
 const { isDesktop } = useDevice()
 
 const { mainMenuData, socialMenuData } = useMenuStore()
@@ -98,5 +97,4 @@ const clickLogo = () => {
   navigateTo('/main')
   sideMenuTrigger.value = false
 }
-
 </script>

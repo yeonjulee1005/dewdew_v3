@@ -47,7 +47,7 @@ export const useCommentName = () => {
       '신중한',
       '딱딱한',
       '정직한',
-      '섹시한'
+      '섹시한',
     ],
     backName: [
       '늑대',
@@ -111,11 +111,11 @@ export const useCommentName = () => {
       '칼국수',
       '냉면',
       '향수',
-      '치즈'
-    ]
+      '치즈',
+    ],
   }
 
   return {
-    commentName
+    commentName,
   }
 }

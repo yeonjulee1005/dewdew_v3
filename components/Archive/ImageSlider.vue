@@ -19,7 +19,7 @@
               height="300"
               format="webp"
               loading="lazy"
-              :img-attrs="{class: 'thumbnail'}"
+              :img-attrs="{ class: 'thumbnail' }"
               :alt="image?.title ?? 'image'"
               :draggable="false"
               @contextmenu.prevent
@@ -68,31 +68,31 @@ const { width } = useWindowSize()
 
 withDefaults(
   defineProps<{
-    imageData: { title: string, url: string, route: string }[] | null | undefined,
-    mainSliderTrigger?: boolean,
-    showPagination?: boolean,
+    imageData: { title: string, url: string, route: string }[] | null | undefined
+    mainSliderTrigger?: boolean
+    showPagination?: boolean
     showNavigation?: boolean
   }>(),
   {
     mainSliderTrigger: false,
     showPagination: true,
-    showNavigation: true
-  }
+    showNavigation: true,
+  },
 )
 
 defineEmits([
-  'open-dialog'
+  'open-dialog',
 ])
 
 const plugin = [
   new AutoPlay({
     animationDuration: 1000,
     direction: 'NEXT',
-    stopOnHover: true
+    stopOnHover: true,
   }),
   new Arrow(),
   // new Fade(),
-  new Pagination({ type: 'scroll' })
+  new Pagination({ type: 'scroll' }),
 ]
 
 const option = {
@@ -102,17 +102,18 @@ const option = {
   inputType: ['touch', 'mouse'],
   circular: true,
   circularFallback: 'bound',
-  deceleration: 0.004
+  deceleration: 0.004,
 }
 
 watch(() => width.value, () => {
   if (width.value < 500) {
     option.panelsPerView = 1.5
-  } else if (width.value < 1000) {
+  }
+  else if (width.value < 1000) {
     option.panelsPerView = 2
-  } else {
+  }
+  else {
     option.panelsPerView = 4
   }
 })
-
 </script>

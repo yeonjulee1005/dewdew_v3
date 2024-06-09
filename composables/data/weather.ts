@@ -3,7 +3,7 @@ export const useWeatherMapData = () => {
     sky: {
       1: '맑음,wi:solar-eclipse',
       3: '구름많음,wi:day-cloudy-windy',
-      4: '흐림,wi:cloudy-windy'
+      4: '흐림,wi:cloudy-windy',
     },
     t1h: (value: number | string) => `${value}`,
     vec: {
@@ -23,7 +23,7 @@ export const useWeatherMapData = () => {
       13: '서북,wi:wind-direction-nw',
       14: '서북,wi:wind-direction-nw',
       15: '서북,wi:wind-direction-nw',
-      16: '북,wi:wind-direction-n'
+      16: '북,wi:wind-direction-n',
     },
     wsd: (value: number | string) => `${value}m/s`,
     pty: {
@@ -33,17 +33,17 @@ export const useWeatherMapData = () => {
       3: '눈,wi:snow',
       5: '빗방울,wi:rain-wind',
       6: '빗방울/눈날림,wi:rain-mix',
-      7: '눈날림,wi:snow-wind'
+      7: '눈날림,wi:snow-wind',
     },
     r1n: (value: number | string) => `${value}`,
-    reh: (value: number | string) => `${value}`
+    reh: (value: number | string) => `${value}`,
   }
 
   const airDiffusionMapData: LivingDataMapType = {
     25: '매우높음,streamline:smiley-emoji-terrified',
     50: '높음,streamline:smiley-grumpy',
     75: '보통,streamline:smiley-kiss',
-    100: '낮음,streamline:smiley-sparks'
+    100: '낮음,streamline:smiley-sparks',
   }
 
   const uvMapData: LivingDataMapType = {
@@ -59,19 +59,20 @@ export const useWeatherMapData = () => {
     9: '매우높음,streamline:smiley-emoji-terrified',
     10: '매우높음,streamline:smiley-emoji-terrified',
     11: '위험,streamline:skull-1',
-    12: '위험,streamline:skull-1'
+    12: '위험,streamline:skull-1',
   }
 
   const loadLivingData = (index: number, type: string) => {
     if (type === 'uv') {
       return uvMapData[index] as string
-    } else {
+    }
+    else {
       return airDiffusionMapData[index] as string
     }
   }
 
   return {
     weatherMapData,
-    loadLivingData
+    loadLivingData,
   }
 }

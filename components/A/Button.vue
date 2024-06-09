@@ -48,20 +48,20 @@ import type { ButtonSize, ButtonVariant } from '@nuxt/ui/dist/runtime/types/butt
 
 withDefaults(
   defineProps<{
-    customClass?: string,
-    roundButton?: boolean,
-    buttonDisabled?: boolean,
-    buttonPadding?: boolean,
-    buttonColor?: string,
-    buttonSize?: ButtonSize | undefined,
-    buttonVariant?: ButtonVariant | undefined,
-    buttonLabel?: string,
-    useLeading?: boolean,
-    iconName?: string,
-    imageSrc?: string,
-    iconSize?: number,
-    imageSize?: number,
-    buttonTextStyle?: string,
+    customClass?: string
+    roundButton?: boolean
+    buttonDisabled?: boolean
+    buttonPadding?: boolean
+    buttonColor?: string
+    buttonSize?: ButtonSize | undefined
+    buttonVariant?: ButtonVariant | undefined
+    buttonLabel?: string
+    useLeading?: boolean
+    iconName?: string
+    imageSrc?: string
+    iconSize?: number
+    imageSize?: number
+    buttonTextStyle?: string
     buttonText?: string
   }>(),
   {
@@ -79,14 +79,13 @@ withDefaults(
     iconSize: 24,
     imageSize: 36,
     buttonTextStyle: '',
-    buttonText: ''
-  }
+    buttonText: '',
+  },
 )
 
 defineEmits([
   'click:button',
   'mouseenter:button',
-  'mouseleave:button'
+  'mouseleave:button',
 ])
-
 </script>
