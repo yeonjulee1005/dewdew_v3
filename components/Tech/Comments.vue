@@ -10,7 +10,7 @@
       class="mt-4 mb-4"
       :ui="{ ring: 'ring-2 ring-orange-300 dark:ring-orange-400', rounded: 'rounded-2xl', background: 'bg-zinc-100 dark:bg-neutral-900' }"
     >
-      <div class="flex flex-row flex-space-between flex-align-center">
+      <div class="flex flex-row justify-between items-center">
         <div class="message-component">
           <p class="name">
             {{ comment.name }}

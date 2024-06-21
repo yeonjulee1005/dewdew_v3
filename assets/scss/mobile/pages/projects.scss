@@ -6,7 +6,9 @@
 * ? Mobile ?
 */
 .projects {
+  top: $space-100;
   width: $space-100vw;
+  margin: 0 0 $space-100;
   .project-list {
     width: $space-80vw;
     @include headline5;

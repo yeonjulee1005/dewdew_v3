@@ -25,7 +25,7 @@ withDefaults(
   }>(),
   {
     useIcon: true,
-    defaultClass: 'flex flex-align-center gap-1',
+    defaultClass: 'flex items-center gap-1',
     customClass: '',
     textClass: '',
     iconName: '',

@@ -1,5 +1,5 @@
 <template>
-  <div class="title flex flex-column flex-align-center">
+  <div class="title flex flex-column items-center">
     <span id="hello-intro-title" />
   </div>
 </template>

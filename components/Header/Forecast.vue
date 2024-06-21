@@ -6,7 +6,7 @@
   >
     <div
       :key="1"
-      class="weather-pannel flex flex-align-center"
+      class="weather-pannel flex items-center"
     >
       <div
         v-if="uvData"
@@ -31,7 +31,7 @@
     </div>
     <div
       :key="2"
-      class="weather-pannel flex flex-align-center"
+      class="weather-pannel flex items-center"
     >
       <div
         v-if="airDiffusionData"
@@ -56,7 +56,7 @@
     </div>
     <div
       :key="3"
-      class="weather-pannel flex flex-align-center"
+      class="weather-pannel flex items-center"
     >
       <div
         v-if="weatherFirstData"
@@ -82,7 +82,7 @@
     </div>
     <div
       key="4"
-      class="weather-pannel flex flex-align-center"
+      class="weather-pannel flex items-center"
     >
       <div
         v-if="weatherSecondData"

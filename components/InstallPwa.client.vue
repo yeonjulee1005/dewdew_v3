@@ -30,7 +30,7 @@
       class="pwa-toast flex gap-4"
       role="alert"
     >
-      <div class="flex flex-column flex-align-center">
+      <div class="flex flex-column items-center">
         <span class="message">
           {{ $t('pwa.installPwa') }}
         </span>

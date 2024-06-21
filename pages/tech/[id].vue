@@ -1,5 +1,5 @@
 <template>
-  <div class="tech-article flex flex-column flex-align-center">
+  <div class="tech-article flex flex-column items-center">
     <TechHeader
       :title="techDetailData?.title"
       :tags="techDetailData?.tags"

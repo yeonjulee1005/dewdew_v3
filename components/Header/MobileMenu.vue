@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex items-center">
     <DDButton
       aria-label="mobile-menu"
       color="orange"
@@ -20,7 +20,7 @@
       class="mobile-menu"
       label="side-menu"
     >
-      <div class="flex flex-align-center flex-space-between p-3">
+      <div class="flex items-center justify-between p-3">
         <nuxt-img
           class="mobile-logo flex-fixed"
           :src="url('dewdew_logo.webp', 'assets', 'logo')"
@@ -50,7 +50,7 @@
       <nuxt-link
         v-for="(menu, index) in mainMenuData"
         :key="index"
-        class="mobile-menu-links flex-align-center p-3"
+        class="mobile-menu-links items-center p-3"
         :to="menu.url"
         :aria-label="menu.title"
         @click="() => sideMenuTrigger = false"
@@ -64,7 +64,7 @@
         v-for="(sns, index) in socialMenuData"
         v-show="index < 2"
         :key="index"
-        class="sns flex flex-align-center gap-2 p-3"
+        class="sns flex items-center gap-2 p-3"
         :to="sns.url"
         target="_blank"
         aria-label="github"

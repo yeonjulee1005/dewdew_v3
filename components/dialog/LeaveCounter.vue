@@ -4,7 +4,7 @@
     hide-double-button
     @close-dialog="closeLeaveDialog"
   >
-    <div class="leave-dialog flex flex-column flex-justify-center flex-align-center gap-10">
+    <div class="leave-dialog flex flex-column justify-center items-center gap-10">
       <span class="leave-texts">
         {{ $t('messages.leavePage') }}
       </span>
