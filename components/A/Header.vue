@@ -3,10 +3,10 @@
     <div class="header-container flex flex-align-center gap-20">
       <HeaderLogo />
       <div class="flex-auto" />
-      <HeaderDesktopMenu />
+      <HeaderDesktopMenu v-if="isDesktop" />
       <AThemeChange />
       <ALanguageChange v-if="isDesktop" />
-      <HeaderMobileMenu />
+      <HeaderMobileMenu v-else />
     </div>
     <LazyHeaderForecast
       v-if="isDesktop"

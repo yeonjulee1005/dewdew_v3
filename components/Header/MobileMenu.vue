@@ -1,7 +1,6 @@
 <template>
   <div>
     <DDButton
-      v-if="!isDesktop"
       aria-label="mobile-menu"
       color="orange"
       size="sm"
@@ -42,8 +41,8 @@
           <template #leading>
             <Icon
               name="line-md:menu-to-close-alt-transition"
-              :width="isDesktop ? 24 : 20"
-              :height="isDesktop ? 24 : 20"
+              :width="20"
+              :height="20"
             />
           </template>
         </DDButton>
@@ -86,8 +85,6 @@
 </template>
 
 <script setup lang="ts">
-const { isDesktop } = useDevice()
-
 const { mainMenuData, socialMenuData } = useMenuStore()
 const { url } = useImageStorage()
 
