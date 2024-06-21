@@ -4,7 +4,7 @@
       v-for="(menu, index) in mainMenuData"
       v-show="index"
       :key="index"
-      class="desktop-menu-links flex-align-center"
+      class="desktop-menu-links items-center"
       :to="menu.url"
       :aria-label="menu.title"
     >
@@ -14,7 +14,7 @@
     </nuxt-link>
     <nuxt-link
       v-if="socialMenuData"
-      class="sns flex flex-align-center flex-justify-center"
+      class="sns flex items-center justify-center"
       :to="socialMenuData[0].url"
       target="_blank"
       aria-label="github"

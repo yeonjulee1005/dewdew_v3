@@ -7,6 +7,7 @@
 */
 .color-translate {
   position: relative;
+  flex-direction: row;
   width: $space-100vw;
   .upload-drag-files {
     height: calc($space-200 + $space-20);

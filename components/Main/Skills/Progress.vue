@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-align-end gap-4 mb-8">
+  <div class="flex items-end gap-4 mb-8">
     <p class="skills-text">
       {{ progressData.title }}
     </p>

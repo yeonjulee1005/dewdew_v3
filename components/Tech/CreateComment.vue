@@ -1,5 +1,5 @@
 <template>
-  <div class="article-create-comment flex flex-column flex-align-end mb-40">
+  <div class="article-create-comment flex flex-column items-end mb-40">
     <DDForm
       :schema="schema"
       :state="formData"
@@ -59,7 +59,7 @@
           :ui="{ icon: { trailing: { pointer: '' } } }"
         >
           <template #trailing>
-            <div class="flex flex-justify-center space-x-1">
+            <div class="flex justify-center space-x-1">
               <AButton
                 v-show="formData.password !== ''"
                 button-variant="ghost"

@@ -68,13 +68,13 @@ const mobile = (scrollY: number) => {
   mainTitleTrigger.value = scrollY < 200
   mainTextTrigger.value = scrollY < 350
   scrollDownTrigger.value = scrollY < 150
-  prevTechTrigger.value = scrollY > 180
-  mainResumeTrigger.value = scrollY > 200 && scrollY < 1500
-  mainSkillsTextTrigger.value = scrollY > 1500 && scrollY < 2700
-  mainSkillsBgTrigger.value = scrollY > 1300 && scrollY < 2900
-  mainSkillsListTrigger.value = scrollY > 2800 && scrollY < 5850
-  referenceListTrigger.value = scrollY > 5800 && scrollY < 11000
-  contactTrigger.value = scrollY > 11200
+  prevTechTrigger.value = scrollY > 400
+  mainResumeTrigger.value = scrollY > 700 && scrollY < 2000
+  mainSkillsTextTrigger.value = scrollY > 2000 && scrollY < 3200
+  mainSkillsBgTrigger.value = scrollY > 2100 && scrollY < 3500
+  mainSkillsListTrigger.value = scrollY > 3500 && scrollY < 6300
+  referenceListTrigger.value = scrollY > 6400 && scrollY < 11800
+  contactTrigger.value = scrollY > 11900
 }
 
 const tablet = (scrollY: number) => {

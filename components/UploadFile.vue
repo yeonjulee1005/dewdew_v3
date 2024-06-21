@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-column flex-align-center gap-6">
+  <div class="flex flex-column items-center gap-6">
     <DDFormGroup
       :label="$t('colorsTranslate.uploadFile')"
       :help="props.fileTypeAlarm.concat(', ', props.fileSizeAlarm)"

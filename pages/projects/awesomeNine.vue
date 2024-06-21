@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-align-center flex-justify-center">
+  <div class="h-full flex items-center justify-center">
     <nuxt-link
       :to="`https://api.instagram.com/oauth/authorize?client_id=${instagramId}&redirect_uri=${redirectUri}&scope=user_profile,user_media&response_type=code`"
       external

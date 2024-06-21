@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-prev-tech flex flex-column mt-20 gap-8"
+    class="main-prev-tech flex flex-column gap-8"
     :class="{ activate: prevTechTrigger }"
   >
     <div>

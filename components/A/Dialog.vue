@@ -9,7 +9,7 @@
       <template #header>
         <div
           v-if="title"
-          class="flex flex-align-center flex-space-between"
+          class="flex items-center justify-between"
         >
           <span :class="dialogTitleClass">
             {{ title }}
@@ -27,7 +27,7 @@
         v-if="!hideDoubleButton"
         #footer
       >
-        <div class="A-dialog-double-button flex flex-justify-end gap-16 ">
+        <div class="A-dialog-double-button flex justify-end gap-16 ">
           <AButton
             v-if="!hideFirstButton"
             :button-disabled="disableFirstButton"

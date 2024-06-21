@@ -8,7 +8,7 @@
     hide-double-button
     @close-dialog="() => $emit('close:dialog')"
   >
-    <div class="archive-image flex w-full flex-justify-center">
+    <div class="archive-image flex w-full justify-center">
       <nuxt-img
         :src="selectImageData?.url"
         format="webp"

@@ -1,11 +1,11 @@
 <template>
   <div
-    class="color-translate flex flex-row flex-justify-center flex-align-center gap-20"
+    class="color-translate flex justify-center items-center gap-20"
     :style="formData.backgroundColor"
   >
     <div class="color-picker-group flex flex-column gap-20">
       <AButton
-        custom-class="eye-dropper flex-justify-center"
+        custom-class="eye-dropper justify-center"
         use-leading
         icon-name="wpf:color-dropper"
         :button-text="$t('colorsTranslate.dropper')"

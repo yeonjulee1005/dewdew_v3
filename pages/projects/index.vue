@@ -1,5 +1,5 @@
 <template>
-  <div class="projects flex flex-column flex-justify-center flex-align-center">
+  <div class="projects flex flex-column justify-center items-center">
     <nuxt-link
       v-for="(project, index) in subMenuData"
       :key="index"

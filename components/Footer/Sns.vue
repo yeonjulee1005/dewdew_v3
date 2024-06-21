@@ -1,9 +1,9 @@
 <template>
-  <div class="footer-sns-container flex flex-justify-center">
+  <div class="footer-sns-container flex justify-center">
     <nuxt-link
       v-for="image in socialMenuData"
       :key="image.title"
-      class="sns-links flex flex-justify-center"
+      class="sns-links flex justify-center"
       :to="image.url"
       target="_blank"
     >

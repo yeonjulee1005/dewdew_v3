@@ -33,7 +33,7 @@
       {{ $rt(third) }}
     </p>
     <div
-      class="skills-title-box flex flex-column flex-justify-end flex-align-end"
+      class="skills-title-box flex flex-column justify-end items-end"
       :class="{ reverse: toggleTrigger }"
     >
       <Icon

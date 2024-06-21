@@ -1,12 +1,12 @@
 <template>
-  <div class="header flex flex-column flex-justify-center flex-align-center">
-    <div class="header-container flex flex-align-center gap-20">
+  <div class="header flex flex-column justify-center items-center">
+    <div class="header-container flex items-center gap-3">
       <HeaderLogo />
       <div class="flex-auto" />
       <HeaderDesktopMenu v-if="isDesktop" />
-      <AThemeChange />
       <ALanguageChange v-if="isDesktop" />
-      <HeaderMobileMenu v-else />
+      <AThemeChange />
+      <HeaderMobileMenu v-if="isMobileOrTablet" />
     </div>
     <LazyHeaderForecast
       v-if="isDesktop"
@@ -16,5 +16,5 @@
 </template>
 
 <script setup lang="ts">
-const { isDesktop } = useDevice()
+const { isDesktop, isMobileOrTablet } = useDevice()
 </script>

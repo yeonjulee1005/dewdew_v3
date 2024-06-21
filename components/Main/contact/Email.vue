@@ -1,5 +1,5 @@
 <template>
-  <div class="email flex flex-column flex-align-center">
+  <div class="email flex flex-column items-center">
     <div class="email-title">
       {{ props.formTitle }}
     </div>
