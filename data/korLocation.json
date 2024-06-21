@@ -10164,6 +10164,13 @@
     "geoY": 38
   },
   {
+    "code": 5011068000,
+    "firstLoc": "제주",
+    "secondLoc": "제주시",
+    "geoX": 52,
+    "geoY": 37
+  },
+  {
     "code": 5013000000,
     "firstLoc": "제주",
     "secondLoc": "서귀포",

@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="isDesktop"
-    class="flex flex-fixed gap-40"
-  >
+  <div class="flex flex-fixed gap-40">
     <nuxt-link
       v-for="(menu, index) in mainMenuData"
       v-show="index"
@@ -33,7 +30,5 @@
 </template>
 
 <script setup lang="ts">
-const { isDesktop } = useDevice()
-
 const { mainMenuData, socialMenuData } = useMenuStore()
 </script>
