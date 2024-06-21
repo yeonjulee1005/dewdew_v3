@@ -6,10 +6,10 @@
       v-model:skills-bg-trigger="skillsBgTrigger"
     />
     <div
-      class="skill-list flex flex-align-start"
+      class="skill-list flex items-start"
       :class="{ activate: skillsListTrigger }"
     >
-      <div class="frontend-list flex flex-column flex-justify-center">
+      <div class="frontend-list flex flex-column justify-center">
         <span class="skill-title-text flex flex-column">
           {{ skillTitleList.frontEndTitle }}
         </span>
@@ -19,7 +19,7 @@
           :progress-data="item"
         />
       </div>
-      <div class="backend-list flex flex-column flex-justify-center">
+      <div class="backend-list flex flex-column justify-center">
         <span class="skill-title-text flex flex-column">
           {{ skillTitleList.backEndTitle }}
         </span>
@@ -29,7 +29,7 @@
           :progress-data="item"
         />
       </div>
-      <div class="tools-list flex flex-column flex-justify-center">
+      <div class="tools-list flex flex-column justify-center">
         <span class="skill-title-text flex flex-column">
           {{ skillTitleList.toolsTitle }}
         </span>

@@ -9,7 +9,7 @@
   >
     <template #indicator>
       <div
-        class="flex flex-justify-end"
+        class="flex justify-end"
         :style="{ width: `${useEmoji ? count : (count / 60) * 100}%`, minWidth: '60px' }"
       >
         <span> {{ useEmoji ? emoji.concat(' ', String(count), '%') : String(count).concat(' S') }} </span>

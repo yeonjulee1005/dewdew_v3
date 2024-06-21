@@ -9,18 +9,10 @@
   .header-container {
     width: $space-100vw;
     height: fit-content;
-    padding: $space-20;
+    padding: $space-10;
     .logo {
       width: $space-100;
       height: auto;
-    }
-    .github {
-      width: $space-24;
-      height: auto;
-      transition: all .1s ease-in-out;
-      &:hover {
-        scale: 1.1;
-      }
     }
   }
   .forecast {

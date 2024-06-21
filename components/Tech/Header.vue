@@ -1,5 +1,5 @@
 <template>
-  <div class="article-header flex flex-column flex-space-between gap-6 mb-default">
+  <div class="article-header flex flex-column justify-between gap-6 mb-default">
     <AButton
       custom-class="w-[fit-content]"
       button-size="lg"

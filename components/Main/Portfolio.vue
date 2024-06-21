@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-portfolio flex flex-column flex-justify-center gap-10"
+    class="main-portfolio flex flex-column justify-center gap-10"
     :class="{ activate: portfolioTrigger }"
   >
     <p class="section-title">
@@ -11,7 +11,7 @@
         {{ $t('main.reference.description') }}
       </p>
       <div
-        class="move-portfolio flex flex-align-center gap-1"
+        class="move-portfolio flex items-center gap-1"
         @click="navigateTo('/portfolio')"
       >
         <p class="enter-text">
@@ -27,11 +27,11 @@
     <p class="section-bg-text">
       {{ $t('main.reference.background') }}
     </p>
-    <div class="portfolio-list flex flex-row flex-wrap flex-justify-center flex-align-center">
+    <div class="portfolio-list flex flex-row flex-wrap justify-center items-center">
       <div
         v-for="item in portfolioImageData"
         :key="item.url"
-        class="portfolio-item flex flex-column flex-justify-center flex-align-center"
+        class="portfolio-item flex flex-column justify-center items-center"
         @click="navigatePortfolio(item)"
         @touchstart="navigatePortfolio(item)"
       >

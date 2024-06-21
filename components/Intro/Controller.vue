@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-justify-center flex-align-center gap-3">
+  <div class="flex justify-center items-center gap-3">
     <DDButton
       color="orange"
       size="md"

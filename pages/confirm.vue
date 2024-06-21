@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-column flex-justify-center flex-align-center gap-4">
+  <div class="h-full flex flex-column justify-center items-center gap-4">
     <Icon
       name="svg-spinners:clock"
       :width="160"

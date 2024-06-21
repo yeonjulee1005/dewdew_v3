@@ -1,5 +1,5 @@
 <template>
-  <div class="like-button flex flex-justify-end flex-align-center">
+  <div class="like-button flex justify-end items-center">
     <AButton
       :custom-class="`fixed-like ${trigger ? 'fixed-like-on' : ''}`"
       round-button

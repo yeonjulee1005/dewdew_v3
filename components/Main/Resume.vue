@@ -1,10 +1,10 @@
 <template>
   <div
-    class="main-resume flex flex-justify-center flex-align-center"
+    class="main-resume flex justify-center items-center"
     :class="{ activate: mainResumeTrigger }"
   >
     <div class="resume-container flex p-10 gap-8">
-      <div class="flex flex-column flex-align-center gap-8">
+      <div class="flex flex-column items-center gap-8">
         <nuxt-img
           class="resume-image"
           :class="{ reverse: toggleTrigger }"

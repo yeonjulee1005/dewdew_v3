@@ -23,7 +23,7 @@
       v-slot="{ doc }"
       head
     >
-      <div class="flex flex-column flex-align-end w-full">
+      <div class="flex flex-column items-end w-full">
         <ANuxtDate
           v-if="doc.date"
           :date-time="doc.date"

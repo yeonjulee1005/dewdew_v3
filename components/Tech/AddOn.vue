@@ -51,7 +51,7 @@ withDefaults(
     badgeSize?: BadgeSize | undefined
   }>(),
   {
-    addOnClass: 'article-add-on flex flex-wrap flex-justify-end mb-20 gap-4',
+    addOnClass: 'article-add-on flex flex-wrap justify-end mb-20 gap-4',
     estimateReadTime: 0,
     useNuxtTime: false,
     activateLike: false,

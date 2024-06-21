@@ -1,13 +1,13 @@
 <template>
   <div
-    class="main-contact flex flex-column flex-align-center"
+    class="main-contact flex flex-column items-center"
     :class="{ activate: contactTrigger }"
   >
     <div class="contact-title mb-40">
       {{ $t('main.contact') }}
     </div>
-    <div class="contact-lists flex flex-row flex-space-between">
-      <div class="social flex flex-column flex-align-center flex-space-between gap-4">
+    <div class="contact-lists flex flex-row justify-between">
+      <div class="social flex flex-column items-center justify-between gap-4">
         <div class="title mt-default mb-default">
           {{ $t('main.social') }}
         </div>

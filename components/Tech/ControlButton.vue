@@ -1,5 +1,5 @@
 <template>
-  <div class="button-group flex flex-justify-end gap-16 mb-20">
+  <div class="button-group flex justify-end gap-16 mb-20">
     <AButton
       v-if="!editTrigger"
       button-class="edit-blog"

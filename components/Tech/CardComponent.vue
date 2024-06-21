@@ -15,7 +15,7 @@
           badge-size="lg"
         />
         <TechAddOn
-          add-on-class="tech-add-on flex flex-wrap flex-align-center flex-justify-end gap-4"
+          add-on-class="tech-add-on flex flex-wrap items-center justify-end gap-4"
           :article-id="cardItem.id"
           :data="cardItem"
           tag-size="lg"

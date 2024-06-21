@@ -1,6 +1,6 @@
 <template>
-  <div class="tech-lists flex flex-column flex-justify-center flex-align-center">
-    <div class="write-button-container flex flex-justify-end">
+  <div class="tech-lists flex flex-column justify-center items-center">
+    <div class="write-button-container flex justify-end">
       <ClientOnly>
         <AButton
           v-if="adminAccess"
@@ -21,7 +21,7 @@
     />
     <DDPagination
       v-model="currentPage"
-      class="flex flex-justify-center m-4 pb-8"
+      class="flex justify-center m-4 pb-8"
       :active-button="{ variant: 'ghost', color: 'indigo' }"
       :inactive-button="{ variant: 'ghost', color: 'orange' }"
       :prev-button="{ variant: 'ghost', color: 'orange' }"

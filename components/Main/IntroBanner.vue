@@ -1,5 +1,5 @@
 <template>
-  <div class="main-intro flex flex-justify-center">
+  <div class="main-intro flex justify-center">
     <span
       class="main-title"
       :class="{ activate: mainTitleTrigger }"
