@@ -15,6 +15,6 @@ export const useStackStore = defineStore('stackData', () => {
   }
 }, {
   persist: {
-    storage: persistedState.localStorage,
+    storage: piniaPluginPersistedstate.localStorage(),
   },
 })

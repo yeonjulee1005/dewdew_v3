@@ -21,6 +21,6 @@ export const useMenuStore = defineStore('menuData', () => {
   }
 }, {
   persist: {
-    storage: persistedState.localStorage,
+    storage: piniaPluginPersistedstate.localStorage(),
   },
 })

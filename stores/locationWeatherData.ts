@@ -116,6 +116,6 @@ export const useLocWeatherStore = defineStore('weatherData', () => {
   }
 }, {
   persist: {
-    storage: persistedState.localStorage,
+    storage: piniaPluginPersistedstate.sessionStorage(),
   },
 })

@@ -9,12 +9,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'ko',
       },
-      meta: [
-        { property: 'Imagetoolbar', content: 'no' },
-      ],
-      link: [
-        { rel: 'canonical', href: 'https://www.dewdew.dev' },
-      ],
     },
   },
   modules: [
@@ -25,18 +19,16 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/device',
     '@nuxtjs/fontaine',
-    '@nuxtjs/robots',
+    '@nuxtjs/seo',
     '@nuxtjs/supabase',
     '@nuxtjs/html-validator',
     '@nuxtjs/stylelint-module',
     '@nuxtjs/i18n',
     'nuxt-time',
-    'nuxt-icon',
-    'nuxt-simple-sitemap',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
     '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
     'dayjs-nuxt',
   ],
   eslint: {
@@ -93,6 +85,10 @@ export default defineNuxtConfig({
         autoRefreshToken: true,
       },
     },
+  },
+  sourcemap: {
+    server: true,
+    client: true,
   },
   vite: {
     vue: {
@@ -160,6 +156,13 @@ export default defineNuxtConfig({
       },
     ],
   },
+  future: {
+    compatibilityVersion: 4,
+  },
+  colorMode: {
+    preference: 'light',
+    fallback: 'system',
+  },
   pwa: {
     scope: '/',
     base: '/',
@@ -188,7 +191,7 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    langDir: './locales',
+    langDir: 'locales',
     locales: [
       { code: 'ko', file: 'ko.ts' },
       { code: 'en', file: 'en.ts' },
@@ -219,11 +222,6 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false,
-  },
-  robots: {
-    rules: [
-      { UserAgent: '*', Allow: '/' },
-    ],
   },
   site: {
     url: 'https://www.dewdew.dev',

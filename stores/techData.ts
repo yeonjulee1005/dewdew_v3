@@ -18,6 +18,6 @@ export const useTechStore = defineStore('techStoreData', () => {
   }
 }, {
   persist: {
-    storage: persistedState.localStorage,
+    storage: piniaPluginPersistedstate.localStorage(),
   },
 })

@@ -59,5 +59,14 @@ export default withNuxt({
     ],
     'vue/multi-word-component-names': 'off',
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/no-unused-expressions': [
+      'warn',
+      {
+        allowTernary: true,
+        allowShortCircuit: true,
+        allowTaggedTemplates: true,
+        enforceForJSX: true,
+      },
+    ],
   },
 })

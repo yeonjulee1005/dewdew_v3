@@ -18,6 +18,6 @@ export const usePortfolioStore = defineStore('portfolioData', () => {
   }
 }, {
   persist: {
-    storage: persistedState.localStorage,
+    storage: piniaPluginPersistedstate.localStorage(),
   },
 })
